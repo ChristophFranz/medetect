@@ -65,6 +65,7 @@ const Inspection = () => {
       userId={userId}
       userTags={userTags}
       showFooter={true}
+      showBack={true}
     >
       <InspectionView />
     </AppLayout>

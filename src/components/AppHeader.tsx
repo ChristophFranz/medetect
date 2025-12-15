@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { LogOut, UserPlus } from "lucide-react";
+import { LogOut, UserPlus, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface AppHeaderProps {
@@ -9,6 +9,8 @@ interface AppHeaderProps {
   userId?: string;
   userName?: string;
   userTags?: string[];
+  showBack?: boolean;
+  backTo?: string;
 }
 
 const AppHeader = ({ 
@@ -17,7 +19,9 @@ const AppHeader = ({
   onLogout,
   userId,
   userName,
-  userTags = []
+  userTags = [],
+  showBack = false,
+  backTo
 }: AppHeaderProps) => {
   const navigate = useNavigate();
   
@@ -35,9 +39,28 @@ const AppHeader = ({
     }
   };
 
+  const handleBack = () => {
+    if (backTo) {
+      navigate(backTo);
+    } else if (userId && userName) {
+      navigate(`/selection?user=${userId}&name=${encodeURIComponent(userName)}`);
+    }
+  };
+
   return (
     <header className="w-full bg-header rounded-t-lg flex items-center justify-between px-4 py-2">
       <div className="flex items-center gap-2">
+        {showBack && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleBack}
+            className="text-xs h-7 px-2 text-header-foreground hover:bg-header-foreground/20"
+          >
+            <ArrowLeft size={14} className="mr-1" />
+            Back
+          </Button>
+        )}
         {showNavigation && (
           <span className="text-sm font-medium text-header-foreground">
             {getPageTitle()}

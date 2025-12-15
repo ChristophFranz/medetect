@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { UserPlus, CheckCircle, XCircle, X } from "lucide-react";
+import { UserPlus, CheckCircle, XCircle, X, ArrowLeft } from "lucide-react";
 
 type UserTag = "medetect_team" | "nurses" | "administrator";
 
@@ -190,6 +190,8 @@ const NewUser = () => {
     return null;
   }
 
+  const backToDatabase = `/database?user=${userId}&name=${encodeURIComponent(userName)}`;
+
   if (!hasAccess) {
     return (
       <AppLayout
@@ -200,6 +202,8 @@ const NewUser = () => {
         userId={userId}
         userTags={userTags}
         showFooter={true}
+        showBack={true}
+        backTo={backToDatabase}
       >
         <div className="flex items-center justify-center h-full">
           <p className="text-muted-foreground">Access denied. Administrator privileges required.</p>
@@ -217,6 +221,8 @@ const NewUser = () => {
       userId={userId}
       userTags={userTags}
       showFooter={true}
+      showBack={true}
+      backTo={backToDatabase}
     >
       {/* Result Popup Overlay */}
       {resultPopup.show && (
@@ -282,13 +288,23 @@ const NewUser = () => {
                 </div>
               </div>
 
-              <Button 
-                onClick={closePopup} 
-                className="mt-4 w-full"
-                variant={resultPopup.success ? "default" : "outline"}
-              >
-                {resultPopup.success ? "Create Another" : "Try Again"}
-              </Button>
+              <div className="flex gap-2 mt-4 w-full">
+                <Button 
+                  onClick={() => navigate(backToDatabase)} 
+                  variant="outline"
+                  className="flex-1"
+                >
+                  <ArrowLeft size={14} className="mr-1" />
+                  Back
+                </Button>
+                <Button 
+                  onClick={closePopup} 
+                  className="flex-1"
+                  variant={resultPopup.success ? "default" : "outline"}
+                >
+                  {resultPopup.success ? "Create Another" : "Try Again"}
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -58,6 +58,7 @@ const Database = () => {
       userId={userId}
       userTags={userTags}
       showFooter={true}
+      showBack={true}
     >
       <DatabaseView userTags={userTags} />
     </AppLayout>
