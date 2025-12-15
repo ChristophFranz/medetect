@@ -3,13 +3,18 @@ import { useEffect, useRef, useState } from "react";
 interface CameraViewProps {
   onImageCapture?: (imageData: string) => void;
   isCapturing?: boolean;
+  onCameraReady?: (ready: boolean) => void;
 }
 
-const CameraView = ({ onImageCapture, isCapturing = false }: CameraViewProps) => {
+const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: CameraViewProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hasCamera, setHasCamera] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    onCameraReady?.(hasCamera);
+  }, [hasCamera, onCameraReady]);
 
   useEffect(() => {
     const startCamera = async () => {
