@@ -72,20 +72,54 @@ const InspectionView = () => {
       <div className="flex-1 space-y-4">
         {/* Camera or captured image display */}
         {showCamera ? (
-          <CameraView 
-            onImageCapture={handleImageCapture}
-            isCapturing={isCapturing}
-            onCameraReady={handleCameraReady}
-          />
-        ) : (
-          <div className="relative w-full aspect-video bg-muted rounded-lg overflow-hidden border border-border flex items-center justify-center">
-            {layer2Image && (
-              <img 
-                src={layer2Image} 
-                alt="Layer 2 capture" 
-                className="w-full h-full object-cover"
-              />
+          <div className="relative">
+            <CameraView 
+              onImageCapture={handleImageCapture}
+              isCapturing={isCapturing}
+              onCameraReady={handleCameraReady}
+            />
+            {/* Layer 1 thumbnail overlay when capturing layer 2 */}
+            {captureStep === "layer2" && layer1Image && (
+              <div className="absolute top-3 left-3 w-24 h-18 rounded-md overflow-hidden border-2 border-primary shadow-lg">
+                <img 
+                  src={layer1Image} 
+                  alt="Layer 1 captured" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-0.5 text-center">
+                  Top Layer ✓
+                </div>
+              </div>
             )}
+          </div>
+        ) : (
+          <div className="relative w-full aspect-video bg-muted rounded-lg overflow-hidden border border-border">
+            <div className="grid grid-cols-2 h-full">
+              {layer1Image && (
+                <div className="relative border-r border-border">
+                  <img 
+                    src={layer1Image} 
+                    alt="Layer 1 capture" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
+                    Top Layer
+                  </div>
+                </div>
+              )}
+              {layer2Image && (
+                <div className="relative">
+                  <img 
+                    src={layer2Image} 
+                    alt="Layer 2 capture" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
+                    2nd Layer
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
