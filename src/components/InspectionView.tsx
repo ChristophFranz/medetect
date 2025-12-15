@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
 import { Button } from "./ui/button";
-import { Camera, Layers, CheckCircle2 } from "lucide-react";
+import { Camera, Layers, CheckCircle2, RotateCcw, X } from "lucide-react";
 import { Card } from "./ui/card";
 
 type CaptureStep = "layer1" | "layer2" | "analysing" | "complete";
@@ -18,8 +18,22 @@ const InspectionView = () => {
     setIsCameraReady(ready);
   }, []);
 
+  const [recaptureMode, setRecaptureMode] = useState<"layer1" | "layer2" | null>(null);
+
   const handleImageCapture = (imageData: string) => {
     setIsCapturing(false);
+    
+    if (recaptureMode === "layer1") {
+      setLayer1Image(imageData);
+      setRecaptureMode(null);
+      return;
+    }
+    
+    if (recaptureMode === "layer2") {
+      setLayer2Image(imageData);
+      setRecaptureMode(null);
+      return;
+    }
     
     if (captureStep === "layer1") {
       setLayer1Image(imageData);
@@ -33,6 +47,14 @@ const InspectionView = () => {
         setCaptureStep("complete");
       }, 3000);
     }
+  };
+
+  const handleRecapture = (layer: "layer1" | "layer2") => {
+    setRecaptureMode(layer);
+  };
+
+  const cancelRecapture = () => {
+    setRecaptureMode(null);
   };
 
   const handleCapture = () => {
@@ -65,7 +87,7 @@ const InspectionView = () => {
     return null;
   };
 
-  const showCamera = captureStep === "layer1" || captureStep === "layer2";
+  const showCamera = captureStep === "layer1" || captureStep === "layer2" || recaptureMode !== null;
 
   return (
     <div className="flex flex-col md:flex-row gap-6 animate-fade-in">
@@ -78,8 +100,8 @@ const InspectionView = () => {
               isCapturing={isCapturing}
               onCameraReady={handleCameraReady}
             />
-            {/* Layer 1 thumbnail overlay when capturing layer 2 */}
-            {captureStep === "layer2" && layer1Image && (
+            {/* Layer 1 thumbnail overlay when capturing layer 2 (not when recapturing layer 1) */}
+            {captureStep === "layer2" && layer1Image && recaptureMode !== "layer1" && (
               <div className="absolute top-3 left-3 w-24 h-18 rounded-md overflow-hidden border-2 border-primary shadow-lg">
                 <img 
                   src={layer1Image} 
@@ -89,6 +111,27 @@ const InspectionView = () => {
                 <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-0.5 text-center">
                   Top Layer ✓
                 </div>
+                <button 
+                  onClick={() => handleRecapture("layer1")}
+                  className="absolute top-1 right-1 p-1 bg-black/60 rounded-full hover:bg-black/80 transition-colors"
+                >
+                  <RotateCcw className="w-3 h-3 text-white" />
+                </button>
+              </div>
+            )}
+            {/* Recapture mode indicator */}
+            {recaptureMode && (
+              <div className="absolute top-3 right-3 flex items-center gap-2">
+                <div className="bg-orange-500/90 text-white px-3 py-1.5 rounded-md text-sm font-medium flex items-center gap-2">
+                  <RotateCcw className="w-4 h-4" />
+                  Recapturing {recaptureMode === "layer1" ? "Top Layer" : "2nd Layer"}
+                </div>
+                <button 
+                  onClick={cancelRecapture}
+                  className="p-1.5 bg-black/60 rounded-full hover:bg-black/80 transition-colors"
+                >
+                  <X className="w-4 h-4 text-white" />
+                </button>
               </div>
             )}
           </div>
@@ -96,7 +139,7 @@ const InspectionView = () => {
           <div className="relative w-full aspect-video bg-muted rounded-lg overflow-hidden border border-border">
             <div className="grid grid-cols-2 h-full">
               {layer1Image && (
-                <div className="relative border-r border-border">
+                <div className="relative border-r border-border group">
                   <img 
                     src={layer1Image} 
                     alt="Layer 1 capture" 
@@ -105,10 +148,18 @@ const InspectionView = () => {
                   <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
                     Top Layer
                   </div>
+                  {captureStep !== "complete" && (
+                    <button 
+                      onClick={() => handleRecapture("layer1")}
+                      className="absolute top-2 right-2 p-1.5 bg-black/60 rounded-full hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
+                    >
+                      <RotateCcw className="w-4 h-4 text-white" />
+                    </button>
+                  )}
                 </div>
               )}
               {layer2Image && (
-                <div className="relative">
+                <div className="relative group">
                   <img 
                     src={layer2Image} 
                     alt="Layer 2 capture" 
@@ -117,6 +168,14 @@ const InspectionView = () => {
                   <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
                     2nd Layer
                   </div>
+                  {captureStep !== "complete" && (
+                    <button 
+                      onClick={() => handleRecapture("layer2")}
+                      className="absolute top-2 right-2 p-1.5 bg-black/60 rounded-full hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
+                    >
+                      <RotateCcw className="w-4 h-4 text-white" />
+                    </button>
+                  )}
                 </div>
               )}
             </div>
@@ -128,7 +187,12 @@ const InspectionView = () => {
           {showCamera && isCameraReady && (
             <Button onClick={handleCapture} className="flex-1" disabled={isCapturing}>
               <Camera className="w-4 h-4 mr-2" />
-              {captureStep === "layer1" ? "Capture Top Layer" : "Capture 2nd Layer"}
+              {recaptureMode 
+                ? `Recapture ${recaptureMode === "layer1" ? "Top Layer" : "2nd Layer"}`
+                : captureStep === "layer1" 
+                  ? "Capture Top Layer" 
+                  : "Capture 2nd Layer"
+              }
             </Button>
           )}
           {captureStep === "complete" && (
@@ -147,7 +211,7 @@ const InspectionView = () => {
         />
 
         {/* Prompt box - only shows when camera is ready */}
-        {isCameraReady && showCamera && (
+        {isCameraReady && showCamera && !recaptureMode && (
           <Card className="p-4 bg-primary/10 border-primary/30">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
