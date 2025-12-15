@@ -1,53 +1,42 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
+import { Button } from "./ui/button";
+import { Camera } from "lucide-react";
 
-type InspectionStatus = "capturing" | "captured" | "analysing" | "complete";
+type InspectionStatus = "live" | "captured" | "analysing" | "complete";
 
 const InspectionView = () => {
-  const [status, setStatus] = useState<InspectionStatus>("capturing");
+  const [status, setStatus] = useState<InspectionStatus>("live");
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [isCapturing, setIsCapturing] = useState(false);
 
-  const handleImageCapture = useCallback((imageData: string) => {
+  const handleImageCapture = (imageData: string) => {
     setCapturedImage(imageData);
     setStatus("captured");
-  }, []);
-
-  useEffect(() => {
-    // Auto-capture after 2 seconds
-    const captureTimer = setTimeout(() => {
-      setIsCapturing(true);
-    }, 2000);
-
-    return () => clearTimeout(captureTimer);
-  }, []);
-
-  useEffect(() => {
-    if (status === "captured") {
-      // Start analysing after capture
-      const analyseTimer = setTimeout(() => {
-        setStatus("analysing");
-      }, 1000);
-
-      return () => clearTimeout(analyseTimer);
-    }
-  }, [status]);
-
-  useEffect(() => {
-    if (status === "analysing") {
-      // Complete analysis after 3 seconds
-      const completeTimer = setTimeout(() => {
+    setIsCapturing(false);
+    
+    // Start analysis after capture
+    setTimeout(() => {
+      setStatus("analysing");
+      setTimeout(() => {
         setStatus("complete");
       }, 3000);
+    }, 1000);
+  };
 
-      return () => clearTimeout(completeTimer);
-    }
-  }, [status]);
+  const handleCapture = () => {
+    setIsCapturing(true);
+  };
+
+  const handleReset = () => {
+    setCapturedImage(null);
+    setStatus("live");
+  };
 
   return (
     <div className="flex flex-col md:flex-row gap-6 animate-fade-in">
-      <div className="flex-1">
+      <div className="flex-1 space-y-4">
         {capturedImage ? (
           <img 
             src={capturedImage} 
@@ -60,6 +49,19 @@ const InspectionView = () => {
             isCapturing={isCapturing}
           />
         )}
+        <div className="flex gap-2">
+          {status === "live" && (
+            <Button onClick={handleCapture} className="flex-1">
+              <Camera className="w-4 h-4 mr-2" />
+              Capture Image
+            </Button>
+          )}
+          {status === "complete" && (
+            <Button onClick={handleReset} variant="outline" className="flex-1">
+              New Inspection
+            </Button>
+          )}
+        </div>
       </div>
       <div className="w-full md:w-64">
         <AnalysisStatus status={status} capturedImage={capturedImage} />
