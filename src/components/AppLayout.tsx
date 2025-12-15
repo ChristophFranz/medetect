@@ -8,6 +8,8 @@ interface AppLayoutProps {
   activeTab?: "inspection" | "database";
   onLogout?: () => void;
   userName?: string;
+  userId?: string;
+  userTags?: string[];
   showFooter?: boolean;
 }
 
@@ -17,6 +19,8 @@ const AppLayout = ({
   activeTab = "inspection",
   onLogout,
   userName,
+  userId,
+  userTags = [],
   showFooter = false
 }: AppLayoutProps) => {
   return (
@@ -26,6 +30,9 @@ const AppLayout = ({
           showNavigation={showNavigation}
           activeTab={activeTab}
           onLogout={onLogout}
+          userId={userId}
+          userName={userName}
+          userTags={userTags}
         />
         <div className="p-6 md:p-8 flex-1">
           {children}

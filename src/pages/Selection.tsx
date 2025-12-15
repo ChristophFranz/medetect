@@ -3,12 +3,17 @@ import { useEffect, useState } from "react";
 import AppLayout from "@/components/AppLayout";
 import { Button } from "@/components/ui/button";
 import { Camera, Database } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+
+type UserTag = "medetect_team" | "nurses" | "administrator";
 
 const Selection = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
+  const [userTags, setUserTags] = useState<UserTag[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = searchParams.get("user");
@@ -21,18 +26,42 @@ const Selection = () => {
     
     setUserId(user);
     setUserName(decodeURIComponent(name));
+
+    // Fetch user tags
+    const fetchTags = async () => {
+      const { data } = await supabase
+        .from("users")
+        .select("tags")
+        .eq("id", user)
+        .maybeSingle();
+      
+      if (data?.tags) {
+        setUserTags(data.tags as UserTag[]);
+      }
+      setLoading(false);
+    };
+
+    fetchTags();
   }, [searchParams, navigate]);
 
   const handleSelection = (mode: "inspection" | "database") => {
     navigate(`/${mode}?user=${userId}&name=${encodeURIComponent(userName)}`);
   };
 
-  if (!userId) {
+  // Check access permissions based on tags
+  const canAccessInspection = userTags.includes("nurses") || userTags.includes("medetect_team");
+  const canAccessDatabase = userTags.includes("nurses") || userTags.includes("administrator") || userTags.includes("medetect_team");
+
+  if (!userId || loading) {
     return null;
   }
 
   return (
-    <AppLayout>
+    <AppLayout
+      userId={userId}
+      userName={userName}
+      userTags={userTags}
+    >
       <div className="flex flex-col items-center justify-center gap-8 animate-fade-in">
         <div className="text-center">
           <h1 className="text-2xl font-semibold text-foreground mb-2">
@@ -42,25 +71,29 @@ const Selection = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-6">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => handleSelection("inspection")}
-            className="flex flex-col items-center gap-4 h-auto py-8 px-12 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
-          >
-            <Camera size={48} className="text-accent" />
-            <span className="text-lg font-medium">Inspection System</span>
-          </Button>
+          {canAccessInspection && (
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => handleSelection("inspection")}
+              className="flex flex-col items-center gap-4 h-auto py-8 px-12 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
+            >
+              <Camera size={48} className="text-accent" />
+              <span className="text-lg font-medium">Inspection System</span>
+            </Button>
+          )}
           
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => handleSelection("database")}
-            className="flex flex-col items-center gap-4 h-auto py-8 px-12 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
-          >
-            <Database size={48} className="text-accent" />
-            <span className="text-lg font-medium">Database Access</span>
-          </Button>
+          {canAccessDatabase && (
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => handleSelection("database")}
+              className="flex flex-col items-center gap-4 h-auto py-8 px-12 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
+            >
+              <Database size={48} className="text-accent" />
+              <span className="text-lg font-medium">Database Access</span>
+            </Button>
+          )}
         </div>
       </div>
     </AppLayout>

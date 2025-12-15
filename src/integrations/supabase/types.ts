@@ -43,29 +43,29 @@ export type Database = {
       users: {
         Row: {
           created_at: string
-          department: string | null
           id: string
           name: string
           nfc_tag_id: string
           role: string | null
+          tags: Database["public"]["Enums"]["user_tag"][] | null
           updated_at: string
         }
         Insert: {
           created_at?: string
-          department?: string | null
           id?: string
           name: string
           nfc_tag_id: string
           role?: string | null
+          tags?: Database["public"]["Enums"]["user_tag"][] | null
           updated_at?: string
         }
         Update: {
           created_at?: string
-          department?: string | null
           id?: string
           name?: string
           nfc_tag_id?: string
           role?: string | null
+          tags?: Database["public"]["Enums"]["user_tag"][] | null
           updated_at?: string
         }
         Relationships: []
@@ -82,9 +82,17 @@ export type Database = {
         }
         Returns: boolean
       }
+      has_tag: {
+        Args: {
+          _tag: Database["public"]["Enums"]["user_tag"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
       app_role: "admin" | "user"
+      user_tag: "medetect_team" | "nurses" | "administrator"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -213,6 +221,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      user_tag: ["medetect_team", "nurses", "administrator"],
     },
   },
 } as const

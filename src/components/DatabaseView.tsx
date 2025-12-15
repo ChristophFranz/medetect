@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ChevronRight, ChevronLeft, Eye, Download, Mail, Shield } from "lucide-react";
-import { useSearchParams } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "./ui/button";
 import {
   Table,
@@ -30,33 +28,20 @@ const mockCases: InspectionCase[] = [
 ];
 
 type FilterType = "recent" | "flagged" | "date" | "user" | null;
+type UserTag = "medetect_team" | "nurses" | "administrator";
 
-const DatabaseView = () => {
+interface DatabaseViewProps {
+  userTags: UserTag[];
+}
+
+const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>(null);
   const [cases] = useState<InspectionCase[]>(mockCases);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [showAdminTab, setShowAdminTab] = useState(false);
-  const [searchParams] = useSearchParams();
 
-  const userId = searchParams.get("user");
-
-  useEffect(() => {
-    const checkAdminRole = async () => {
-      if (!userId) return;
-      
-      const { data } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("role", "admin")
-        .maybeSingle();
-      
-      setIsAdmin(!!data);
-    };
-
-    checkAdminRole();
-  }, [userId]);
+  // Check if user can access hidden database (admin tab)
+  const canAccessHiddenDatabase = userTags.includes("administrator") || userTags.includes("medetect_team");
 
   const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(activeFilter === filter ? null : filter);
@@ -116,7 +101,7 @@ const DatabaseView = () => {
                 </Button>
               </div>
 
-              {isAdmin && (
+              {canAccessHiddenDatabase && (
                 <div className="pt-4 border-t border-border mt-4">
                   <p className="text-sm font-medium text-muted-foreground flex items-center gap-2 mb-2">
                     <Shield className="w-4 h-4" /> Admin
@@ -127,7 +112,7 @@ const DatabaseView = () => {
                     className="w-full justify-center text-xs"
                     onClick={() => setShowAdminTab(!showAdminTab)}
                   >
-                    Admin Panel
+                    Hidden Database
                   </Button>
                 </div>
               )}
