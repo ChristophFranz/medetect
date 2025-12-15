@@ -197,30 +197,6 @@ const InspectionView = () => {
           </Card>
         )}
         
-        {/* Captured layers preview */}
-        {(layer1Image || layer2Image) && (
-          <Card className="p-3 space-y-2">
-            <p className="text-sm font-medium text-muted-foreground">Captured Layers</p>
-            <div className="grid grid-cols-2 gap-2">
-              {layer1Image && (
-                <div className="space-y-1">
-                  <div className="aspect-square rounded-md overflow-hidden border border-border">
-                    <img src={layer1Image} alt="Layer 1" className="w-full h-full object-cover" />
-                  </div>
-                  <p className="text-xs text-center text-muted-foreground">Top Layer</p>
-                </div>
-              )}
-              {layer2Image && (
-                <div className="space-y-1">
-                  <div className="aspect-square rounded-md overflow-hidden border border-border">
-                    <img src={layer2Image} alt="Layer 2" className="w-full h-full object-cover" />
-                  </div>
-                  <p className="text-xs text-center text-muted-foreground">2nd Layer</p>
-                </div>
-              )}
-            </div>
-          </Card>
-        )}
       </div>
     </div>
   );
