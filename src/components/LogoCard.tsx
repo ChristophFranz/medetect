@@ -1,18 +1,30 @@
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 
 interface LogoCardProps {
-  showScanButton?: boolean;
+  showNfcInput?: boolean;
 }
 
-const LogoCard = ({ showScanButton = true }: LogoCardProps) => {
+const LogoCard = ({ showNfcInput = false }: LogoCardProps) => {
   const navigate = useNavigate();
+  const [nfcValue, setNfcValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleScanClick = () => {
-    // Simulate NFC scan - in production, this would be triggered by actual NFC scan
-    // For demo, we'll navigate to login with a sample user ID
-    navigate("/login?nfc=12345");
-  };
+  useEffect(() => {
+    if (showNfcInput && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [showNfcInput]);
+
+  useEffect(() => {
+    if (nfcValue.length >= 5) {
+      const timer = setTimeout(() => {
+        navigate(`/login?nfc=${encodeURIComponent(nfcValue)}`);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [nfcValue, navigate]);
 
   return (
     <div className="flex flex-col items-center gap-6 p-8 bg-card rounded-lg border border-border shadow-sm animate-slide-up">
@@ -21,15 +33,19 @@ const LogoCard = ({ showScanButton = true }: LogoCardProps) => {
         <span className="text-sm text-muted-foreground">Logo</span>
       </div>
       
-      {showScanButton && (
-        <Button 
-          variant="accent" 
-          size="lg"
-          onClick={handleScanClick}
-          className="min-w-[120px]"
-        >
-          Scan<br />to Login
-        </Button>
+      {showNfcInput && (
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-sm text-muted-foreground">Scan NFC tag to login</p>
+          <Input
+            ref={inputRef}
+            type="text"
+            value={nfcValue}
+            onChange={(e) => setNfcValue(e.target.value)}
+            placeholder="Awaiting NFC scan..."
+            className="min-w-[200px] text-center"
+            autoFocus
+          />
+        </div>
       )}
     </div>
   );
