@@ -9,7 +9,7 @@ interface User {
   id: string;
   name: string;
   role: string | null;
-  department: string | null;
+  tags: string[] | null;
 }
 
 const Login = () => {
@@ -23,12 +23,12 @@ const Login = () => {
       setLoading(true);
       const { data, error } = await supabase
         .from("users")
-        .select("id, name, role, department")
+        .select("id, name, role, tags")
         .eq("nfc_tag_id", nfcId)
         .maybeSingle();
 
       if (data && !error) {
-        setUser(data);
+        setUser(data as User);
         
         // Auto-redirect to selection after 2 seconds
         const redirectTimer = setTimeout(() => {
