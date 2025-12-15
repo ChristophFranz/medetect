@@ -55,6 +55,8 @@ const ToolsClassification = () => {
     return null;
   }
 
+  const backToDatabase = `/database?user=${userId}&name=${encodeURIComponent(userName)}`;
+
   return (
     <AppLayout
       showNavigation={true}
@@ -64,6 +66,8 @@ const ToolsClassification = () => {
       userId={userId}
       userTags={userTags}
       showFooter={true}
+      showBack={true}
+      backTo={backToDatabase}
     >
       <ToolsClassificationView />
     </AppLayout>

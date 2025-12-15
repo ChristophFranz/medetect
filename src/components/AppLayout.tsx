@@ -11,6 +11,8 @@ interface AppLayoutProps {
   userId?: string;
   userTags?: string[];
   showFooter?: boolean;
+  showBack?: boolean;
+  backTo?: string;
 }
 
 const AppLayout = ({ 
@@ -21,7 +23,9 @@ const AppLayout = ({
   userName,
   userId,
   userTags = [],
-  showFooter = false
+  showFooter = false,
+  showBack = false,
+  backTo
 }: AppLayoutProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-background">
@@ -33,6 +37,8 @@ const AppLayout = ({
           userId={userId}
           userName={userName}
           userTags={userTags}
+          showBack={showBack}
+          backTo={backTo}
         />
         <div className="p-6 md:p-8 flex-1">
           {children}
