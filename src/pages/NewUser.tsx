@@ -162,7 +162,7 @@ const NewUser = () => {
               id="nfcTagId"
               value={nfcTagId}
               onChange={(e) => setNfcTagId(e.target.value)}
-              placeholder="Enter NFC Tag ID"
+              placeholder="Scan NFC Tag ID"
               required
             />
           </div>
