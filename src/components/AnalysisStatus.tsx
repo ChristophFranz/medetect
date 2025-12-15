@@ -1,17 +1,18 @@
-import { Loader2 } from "lucide-react";
+import { Loader2, Video } from "lucide-react";
 
 interface AnalysisStatusProps {
-  status: "capturing" | "captured" | "analysing" | "complete";
+  status: "live" | "captured" | "analysing" | "complete";
   capturedImage?: string | null;
 }
 
 const AnalysisStatus = ({ status, capturedImage }: AnalysisStatusProps) => {
   return (
     <div className="flex flex-col items-center justify-center p-6 bg-card rounded-lg border border-border min-h-[200px]">
-      {status === "capturing" && (
+      {status === "live" && (
         <div className="text-center animate-fade-in">
-          <p className="text-xl font-medium text-foreground">Capturing</p>
-          <p className="text-xl font-medium text-foreground">Image</p>
+          <Video className="w-8 h-8 text-primary mx-auto mb-2" />
+          <p className="text-xl font-medium text-foreground">Live Feed</p>
+          <p className="text-sm text-muted-foreground mt-2">Camera ready</p>
         </div>
       )}
       
@@ -25,6 +26,7 @@ const AnalysisStatus = ({ status, capturedImage }: AnalysisStatusProps) => {
         <div className="text-center animate-fade-in">
           <p className="text-xl font-medium text-foreground mb-4">Analysing</p>
           <Loader2 className="w-8 h-8 animate-spin text-foreground mx-auto" />
+          <p className="text-sm text-muted-foreground mt-2">~3 seconds</p>
         </div>
       )}
       
