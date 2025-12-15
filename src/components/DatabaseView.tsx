@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { ChevronRight, ChevronLeft, FileText, Copy, MessageSquare } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronRight, ChevronLeft, Eye, Download, Mail, Shield } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "./ui/button";
 import {
   Table,
@@ -33,6 +35,28 @@ const DatabaseView = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>(null);
   const [cases] = useState<InspectionCase[]>(mockCases);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showAdminTab, setShowAdminTab] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  const userId = searchParams.get("user");
+
+  useEffect(() => {
+    const checkAdminRole = async () => {
+      if (!userId) return;
+      
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .eq("role", "admin")
+        .maybeSingle();
+      
+      setIsAdmin(!!data);
+    };
+
+    checkAdminRole();
+  }, [userId]);
 
   const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(activeFilter === filter ? null : filter);
@@ -91,6 +115,22 @@ const DatabaseView = () => {
                   By User
                 </Button>
               </div>
+
+              {isAdmin && (
+                <div className="pt-4 border-t border-border mt-4">
+                  <p className="text-sm font-medium text-muted-foreground flex items-center gap-2 mb-2">
+                    <Shield className="w-4 h-4" /> Admin
+                  </p>
+                  <Button
+                    variant={showAdminTab ? "secondary" : "outline"}
+                    size="sm"
+                    className="w-full justify-center text-xs"
+                    onClick={() => setShowAdminTab(!showAdminTab)}
+                  >
+                    Admin Panel
+                  </Button>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -136,25 +176,25 @@ const DatabaseView = () => {
                         variant="ghost"
                         size="icon"
                         className="h-7 w-7"
-                        title="View Report"
+                        title="View Case"
                       >
-                        <FileText className="w-4 h-4" />
+                        <Eye className="w-4 h-4" />
                       </Button>
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-7 w-7"
-                        title="Copy"
+                        title="Download Case"
                       >
-                        <Copy className="w-4 h-4" />
+                        <Download className="w-4 h-4" />
                       </Button>
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-7 w-7"
-                        title="Notes"
+                        title="Secure Email Case"
                       >
-                        <MessageSquare className="w-4 h-4" />
+                        <Mail className="w-4 h-4" />
                       </Button>
                     </div>
                   </TableCell>
