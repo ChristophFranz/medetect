@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronRight, ChevronLeft, Eye, Download, Mail, Shield } from "lucide-react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { ChevronRight, ChevronLeft, Eye, Download, Mail, Wrench } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Table,
@@ -38,10 +39,17 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>(null);
   const [cases] = useState<InspectionCase[]>(mockCases);
-  const [showAdminTab, setShowAdminTab] = useState(false);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  // Check if user can access hidden database (admin tab)
-  const canAccessHiddenDatabase = userTags.includes("administrator") || userTags.includes("medetect_team");
+  // Check if user can access tools classification database
+  const canAccessToolsClassification = userTags.includes("administrator") || userTags.includes("medetect_team");
+
+  const handleToolsClassificationClick = () => {
+    const user = searchParams.get("user");
+    const name = searchParams.get("name");
+    navigate(`/tools-classification?user=${user}&name=${name}`);
+  };
 
   const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(activeFilter === filter ? null : filter);
@@ -101,18 +109,18 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
                 </Button>
               </div>
 
-              {canAccessHiddenDatabase && (
+              {canAccessToolsClassification && (
                 <div className="pt-4 border-t border-border mt-4">
                   <p className="text-sm font-medium text-muted-foreground flex items-center gap-2 mb-2">
-                    <Shield className="w-4 h-4" /> Admin
+                    <Wrench className="w-4 h-4" /> Tools
                   </p>
                   <Button
-                    variant={showAdminTab ? "secondary" : "outline"}
+                    variant="outline"
                     size="sm"
                     className="w-full justify-center text-xs"
-                    onClick={() => setShowAdminTab(!showAdminTab)}
+                    onClick={handleToolsClassificationClick}
                   >
-                    Hidden Database
+                    Tools Classification
                   </Button>
                 </div>
               )}

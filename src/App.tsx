@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Selection from "./pages/Selection";
 import Inspection from "./pages/Inspection";
 import Database from "./pages/Database";
+import ToolsClassification from "./pages/ToolsClassification";
 import NewUser from "./pages/NewUser";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/selection" element={<Selection />} />
           <Route path="/inspection" element={<Inspection />} />
           <Route path="/database" element={<Database />} />
+          <Route path="/tools-classification" element={<ToolsClassification />} />
           <Route path="/new-user" element={<NewUser />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
