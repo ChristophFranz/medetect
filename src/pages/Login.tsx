@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AppLayout from "@/components/AppLayout";
 import LogoCard from "@/components/LogoCard";
@@ -13,14 +13,23 @@ const mockUsers: Record<string, { name: string; id: string }> = {
 
 const Login = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [user, setUser] = useState<{ name: string; id: string } | null>(null);
 
   useEffect(() => {
     const nfcId = searchParams.get("nfc");
     if (nfcId && mockUsers[nfcId]) {
-      setUser(mockUsers[nfcId]);
+      const foundUser = mockUsers[nfcId];
+      setUser(foundUser);
+      
+      // Auto-redirect to inspection after 2 seconds
+      const redirectTimer = setTimeout(() => {
+        navigate(`/inspection?user=${foundUser.id}`);
+      }, 2000);
+
+      return () => clearTimeout(redirectTimer);
     }
-  }, [searchParams]);
+  }, [searchParams, navigate]);
 
   return (
     <AppLayout>
