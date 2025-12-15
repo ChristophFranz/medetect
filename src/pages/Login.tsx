@@ -30,9 +30,9 @@ const Login = () => {
       if (data && !error) {
         setUser(data);
         
-        // Auto-redirect to inspection after 2 seconds
+        // Auto-redirect to selection after 2 seconds
         const redirectTimer = setTimeout(() => {
-          navigate(`/inspection?user=${data.id}&name=${encodeURIComponent(data.name)}`);
+          navigate(`/selection?user=${data.id}&name=${encodeURIComponent(data.name)}`);
         }, 2000);
 
         return () => clearTimeout(redirectTimer);

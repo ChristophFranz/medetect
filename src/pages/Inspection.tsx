@@ -2,57 +2,43 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AppLayout from "@/components/AppLayout";
 import InspectionView from "@/components/InspectionView";
-import DatabaseView from "@/components/DatabaseView";
-
-// Mock user database
-const mockUsers: Record<string, { name: string; id: string }> = {
-  "12345": { name: "Matthias", id: "12345" },
-  "67890": { name: "Sarah", id: "67890" },
-  "11111": { name: "John", id: "11111" },
-};
 
 const Inspection = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<"inspection" | "database">("inspection");
-  const [user, setUser] = useState<{ name: string; id: string } | null>(null);
+  const [userName, setUserName] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
 
   useEffect(() => {
-    const userId = searchParams.get("user");
-    if (userId && mockUsers[userId]) {
-      setUser(mockUsers[userId]);
-    } else {
-      // Redirect to landing if no valid user
+    const user = searchParams.get("user");
+    const name = searchParams.get("name");
+    
+    if (!user || !name) {
       navigate("/");
+      return;
     }
+    
+    setUserId(user);
+    setUserName(decodeURIComponent(name));
   }, [searchParams, navigate]);
 
   const handleLogout = () => {
-    navigate("/");
+    navigate("/login");
   };
 
-  const handleTabChange = (tab: "inspection" | "database") => {
-    setActiveTab(tab);
-  };
-
-  if (!user) {
+  if (!userId) {
     return null;
   }
 
   return (
     <AppLayout
       showNavigation={true}
-      activeTab={activeTab}
-      onTabChange={handleTabChange}
+      activeTab="inspection"
       onLogout={handleLogout}
-      userName={`User_${user.id}`}
+      userName={userName}
       showFooter={true}
     >
-      {activeTab === "inspection" ? (
-        <InspectionView />
-      ) : (
-        <DatabaseView />
-      )}
+      <InspectionView />
     </AppLayout>
   );
 };
