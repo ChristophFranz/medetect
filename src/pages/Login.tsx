@@ -13,14 +13,16 @@ interface User {
 }
 
 const Login = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     const fetchUser = async (nfcId: string) => {
       setLoading(true);
+      setNotFound(false);
       const { data, error } = await supabase
         .from("users")
         .select("id, name, role, tags")
@@ -36,6 +38,10 @@ const Login = () => {
         }, 2000);
 
         return () => clearTimeout(redirectTimer);
+      } else {
+        // User not found - show error and clear the nfc param
+        setNotFound(true);
+        setSearchParams({});
       }
       setLoading(false);
     };
@@ -43,14 +49,21 @@ const Login = () => {
     const nfcId = searchParams.get("nfc");
     if (nfcId) {
       fetchUser(nfcId);
+    } else {
+      // Reset state when nfc param is cleared
+      setNotFound(false);
+      setUser(null);
     }
-  }, [searchParams, navigate]);
+  }, [searchParams, navigate, setSearchParams]);
 
   return (
     <AppLayout>
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 animate-fade-in">
         <LogoCard showNfcInput={!user && !loading} />
         {loading && <p className="text-muted-foreground">Looking up user...</p>}
+        {notFound && (
+          <p className="text-destructive font-medium">User does not exist. Try another NFC card.</p>
+        )}
         {user && <UserWelcomeCard userName={user.name} />}
       </div>
     </AppLayout>
