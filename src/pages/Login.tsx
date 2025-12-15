@@ -3,31 +3,46 @@ import { useEffect, useState } from "react";
 import AppLayout from "@/components/AppLayout";
 import LogoCard from "@/components/LogoCard";
 import UserWelcomeCard from "@/components/UserWelcomeCard";
+import { supabase } from "@/integrations/supabase/client";
 
-// Mock user database - in production, this would come from a backend
-const mockUsers: Record<string, { name: string; id: string }> = {
-  "12345": { name: "Matthias", id: "12345" },
-  "67890": { name: "Sarah", id: "67890" },
-  "11111": { name: "John", id: "11111" },
-};
+interface User {
+  id: string;
+  name: string;
+  role: string | null;
+  department: string | null;
+}
 
 const Login = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [user, setUser] = useState<{ name: string; id: string } | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const nfcId = searchParams.get("nfc");
-    if (nfcId && mockUsers[nfcId]) {
-      const foundUser = mockUsers[nfcId];
-      setUser(foundUser);
-      
-      // Auto-redirect to inspection after 2 seconds
-      const redirectTimer = setTimeout(() => {
-        navigate(`/inspection?user=${foundUser.id}`);
-      }, 2000);
+    const fetchUser = async (nfcId: string) => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("users")
+        .select("id, name, role, department")
+        .eq("nfc_tag_id", nfcId)
+        .maybeSingle();
 
-      return () => clearTimeout(redirectTimer);
+      if (data && !error) {
+        setUser(data);
+        
+        // Auto-redirect to inspection after 2 seconds
+        const redirectTimer = setTimeout(() => {
+          navigate(`/inspection?user=${data.id}&name=${encodeURIComponent(data.name)}`);
+        }, 2000);
+
+        return () => clearTimeout(redirectTimer);
+      }
+      setLoading(false);
+    };
+
+    const nfcId = searchParams.get("nfc");
+    if (nfcId) {
+      fetchUser(nfcId);
     }
   }, [searchParams, navigate]);
 
@@ -35,6 +50,7 @@ const Login = () => {
     <AppLayout>
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 animate-fade-in">
         <LogoCard showScanButton={true} />
+        {loading && <p className="text-muted-foreground">Looking up user...</p>}
         {user && <UserWelcomeCard userName={user.name} />}
       </div>
     </AppLayout>
