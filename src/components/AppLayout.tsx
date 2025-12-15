@@ -6,7 +6,6 @@ interface AppLayoutProps {
   children: ReactNode;
   showNavigation?: boolean;
   activeTab?: "inspection" | "database";
-  onTabChange?: (tab: "inspection" | "database") => void;
   onLogout?: () => void;
   userName?: string;
   showFooter?: boolean;
@@ -16,7 +15,6 @@ const AppLayout = ({
   children, 
   showNavigation = false,
   activeTab = "inspection",
-  onTabChange,
   onLogout,
   userName,
   showFooter = false
@@ -27,9 +25,7 @@ const AppLayout = ({
         <AppHeader 
           showNavigation={showNavigation}
           activeTab={activeTab}
-          onTabChange={onTabChange}
           onLogout={onLogout}
-          showWindowControls={showNavigation}
         />
         <div className="p-6 md:p-8 flex-1">
           {children}
