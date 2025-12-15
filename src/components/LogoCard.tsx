@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
 interface LogoCardProps {
@@ -8,8 +8,17 @@ interface LogoCardProps {
 
 const LogoCard = ({ showNfcInput = false }: LogoCardProps) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [nfcValue, setNfcValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Clear input when nfc param is removed (after failed lookup)
+  useEffect(() => {
+    const nfcParam = searchParams.get("nfc");
+    if (!nfcParam && nfcValue) {
+      setNfcValue("");
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (showNfcInput && inputRef.current) {
