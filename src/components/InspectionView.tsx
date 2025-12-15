@@ -89,33 +89,58 @@ const InspectionView = () => {
           </div>
         )}
 
+        {/* Capture/Reset buttons */}
+        <div className="flex gap-2">
+          {showCamera && isCameraReady && (
+            <Button onClick={handleCapture} className="flex-1" disabled={isCapturing}>
+              <Camera className="w-4 h-4 mr-2" />
+              {captureStep === "layer1" ? "Capture Top Layer" : "Capture 2nd Layer"}
+            </Button>
+          )}
+          {captureStep === "complete" && (
+            <Button onClick={handleReset} variant="outline" className="flex-1">
+              New Inspection
+            </Button>
+          )}
+        </div>
+      </div>
+      
+      {/* Right side - Analysis status, prompt box, and captured images */}
+      <div className="w-full md:w-64 space-y-4">
+        <AnalysisStatus 
+          status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
+          capturedImage={layer2Image || layer1Image} 
+        />
+
         {/* Prompt box - only shows when camera is ready */}
         {isCameraReady && showCamera && (
           <Card className="p-4 bg-primary/10 border-primary/30">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-full bg-primary/20">
-                <Layers className="w-5 h-5 text-primary" />
-              </div>
-              <div className="flex-1">
-                <p className="font-medium text-foreground">{getPromptMessage()}</p>
-                <p className="text-sm text-muted-foreground">
-                  {captureStep === "layer1" && "Position the camera above the tool box and capture when ready"}
-                  {captureStep === "layer2" && "Remove the top layer and capture the second layer"}
-                </p>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-full bg-primary/20">
+                  <Layers className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground text-sm">{getPromptMessage()}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {captureStep === "layer1" && "Position camera and capture"}
+                    {captureStep === "layer2" && "Remove top layer and capture"}
+                  </p>
+                </div>
               </div>
               {captureStep === "layer2" && layer1Image && (
-                <div className="flex-shrink-0">
-                  <div className="relative w-16 h-16 rounded-md overflow-hidden border-2 border-primary/50">
+                <div className="flex items-center gap-2 pt-2 border-t border-primary/20">
+                  <div className="relative w-12 h-12 rounded-md overflow-hidden border-2 border-primary/50">
                     <img 
                       src={layer1Image} 
                       alt="Layer 1 captured" 
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-0 right-0 bg-primary rounded-tl-md p-0.5">
-                      <CheckCircle2 className="w-3 h-3 text-primary-foreground" />
+                      <CheckCircle2 className="w-2.5 h-2.5 text-primary-foreground" />
                     </div>
                   </div>
-                  <p className="text-xs text-center text-muted-foreground mt-1">Layer 1</p>
+                  <p className="text-xs text-muted-foreground">Layer 1 captured</p>
                 </div>
               )}
             </div>
@@ -133,33 +158,10 @@ const InspectionView = () => {
                   <Layers className="w-5 h-5 text-primary animate-pulse" />
                 )}
               </div>
-              <p className="font-medium text-foreground">{getPromptMessage()}</p>
+              <p className="font-medium text-foreground text-sm">{getPromptMessage()}</p>
             </div>
           </Card>
         )}
-
-        {/* Capture/Reset buttons */}
-        <div className="flex gap-2">
-          {showCamera && isCameraReady && (
-            <Button onClick={handleCapture} className="flex-1" disabled={isCapturing}>
-              <Camera className="w-4 h-4 mr-2" />
-              {captureStep === "layer1" ? "Capture Top Layer" : "Capture 2nd Layer"}
-            </Button>
-          )}
-          {captureStep === "complete" && (
-            <Button onClick={handleReset} variant="outline" className="flex-1">
-              New Inspection
-            </Button>
-          )}
-        </div>
-      </div>
-      
-      {/* Right side - Analysis status with captured images */}
-      <div className="w-full md:w-64 space-y-4">
-        <AnalysisStatus 
-          status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
-          capturedImage={layer2Image || layer1Image} 
-        />
         
         {/* Captured layers preview */}
         {(layer1Image || layer2Image) && (
