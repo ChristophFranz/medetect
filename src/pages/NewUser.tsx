@@ -6,16 +6,31 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { toast } from "sonner";
-import { UserPlus } from "lucide-react";
+import { UserPlus, CheckCircle, XCircle, X } from "lucide-react";
 
 type UserTag = "medetect_team" | "nurses" | "administrator";
+
+interface ResultPopup {
+  show: boolean;
+  success: boolean;
+  nfcTagId: string;
+  name: string;
+  tags: UserTag[];
+  errorMessage?: string;
+}
+
+const tagLabels: Record<UserTag, string> = {
+  nurses: "Nurses",
+  administrator: "Administrator",
+  medetect_team: "Medetect Team",
+};
 
 const NewUser = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
+  const [userTags, setUserTags] = useState<UserTag[]>([]);
   const [hasAccess, setHasAccess] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +40,15 @@ const NewUser = () => {
   const [role, setRole] = useState("");
   const [selectedTags, setSelectedTags] = useState<UserTag[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Result popup state
+  const [resultPopup, setResultPopup] = useState<ResultPopup>({
+    show: false,
+    success: false,
+    nfcTagId: "",
+    name: "",
+    tags: [],
+  });
 
   useEffect(() => {
     const user = searchParams.get("user");
@@ -51,6 +75,7 @@ const NewUser = () => {
       
       if (data?.tags) {
         const tags = data.tags as UserTag[];
+        setUserTags(tags);
         const canAccess = tags.includes("administrator") || tags.includes("medetect_team");
         setHasAccess(canAccess);
       }
@@ -72,16 +97,34 @@ const NewUser = () => {
     );
   };
 
+  const closePopup = () => {
+    setResultPopup(prev => ({ ...prev, show: false }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!nfcTagId.trim() || !newUserName.trim()) {
-      toast.error("Please fill in NFC Tag ID and Name");
+      setResultPopup({
+        show: true,
+        success: false,
+        nfcTagId: nfcTagId.trim(),
+        name: newUserName.trim(),
+        tags: selectedTags,
+        errorMessage: "Please fill in NFC Tag ID and Name",
+      });
       return;
     }
 
     if (selectedTags.length === 0) {
-      toast.error("Please select at least one tag");
+      setResultPopup({
+        show: true,
+        success: false,
+        nfcTagId: nfcTagId.trim(),
+        name: newUserName.trim(),
+        tags: [],
+        errorMessage: "Please select at least one tag",
+      });
       return;
     }
 
@@ -98,21 +141,46 @@ const NewUser = () => {
         });
 
       if (error) {
+        let errorMessage = "Failed to create user";
         if (error.code === "23505") {
-          toast.error("A user with this NFC Tag ID already exists");
+          errorMessage = "A user with this NFC Tag ID already exists";
         } else {
-          toast.error("Failed to create user: " + error.message);
+          errorMessage = error.message;
         }
+        
+        setResultPopup({
+          show: true,
+          success: false,
+          nfcTagId: nfcTagId.trim(),
+          name: newUserName.trim(),
+          tags: selectedTags,
+          errorMessage,
+        });
         return;
       }
 
-      toast.success("User created successfully");
+      setResultPopup({
+        show: true,
+        success: true,
+        nfcTagId: nfcTagId.trim(),
+        name: newUserName.trim(),
+        tags: selectedTags,
+      });
+
+      // Clear form on success
       setNfcTagId("");
       setNewUserName("");
       setRole("");
       setSelectedTags([]);
     } catch (err) {
-      toast.error("An unexpected error occurred");
+      setResultPopup({
+        show: true,
+        success: false,
+        nfcTagId: nfcTagId.trim(),
+        name: newUserName.trim(),
+        tags: selectedTags,
+        errorMessage: "An unexpected error occurred",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -129,6 +197,8 @@ const NewUser = () => {
         activeTab="database"
         onLogout={handleLogout}
         userName={userName}
+        userId={userId}
+        userTags={userTags}
         showFooter={true}
       >
         <div className="flex items-center justify-center h-full">
@@ -144,8 +214,86 @@ const NewUser = () => {
       activeTab="database"
       onLogout={handleLogout}
       userName={userName}
+      userId={userId}
+      userTags={userTags}
       showFooter={true}
     >
+      {/* Result Popup Overlay */}
+      {resultPopup.show && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-background/60 backdrop-blur-sm"
+            onClick={closePopup}
+          />
+          <div 
+            className={`relative z-10 w-full max-w-sm rounded-lg border-2 p-6 shadow-xl backdrop-blur-md transition-all ${
+              resultPopup.success 
+                ? "bg-green-500/20 border-green-500/50" 
+                : "bg-red-500/20 border-red-500/50"
+            }`}
+          >
+            <button
+              onClick={closePopup}
+              className="absolute top-3 right-3 text-foreground/70 hover:text-foreground transition-colors"
+            >
+              <X size={20} />
+            </button>
+            
+            <div className="flex flex-col items-center gap-4">
+              {resultPopup.success ? (
+                <CheckCircle className="w-16 h-16 text-green-500" />
+              ) : (
+                <XCircle className="w-16 h-16 text-red-500" />
+              )}
+              
+              <h2 className={`text-xl font-semibold ${
+                resultPopup.success ? "text-green-400" : "text-red-400"
+              }`}>
+                {resultPopup.success ? "User Created Successfully" : "User Creation Failed"}
+              </h2>
+
+              {resultPopup.errorMessage && (
+                <p className="text-red-300 text-sm text-center">
+                  {resultPopup.errorMessage}
+                </p>
+              )}
+
+              <div className="w-full space-y-2 mt-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">NFC Tag ID:</span>
+                  <span className="font-medium text-foreground">
+                    {resultPopup.nfcTagId || "—"}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Name:</span>
+                  <span className="font-medium text-foreground">
+                    {resultPopup.name || "—"}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Tags:</span>
+                  <span className="font-medium text-foreground">
+                    {resultPopup.tags.length > 0 
+                      ? resultPopup.tags.map(t => tagLabels[t]).join(", ")
+                      : "—"
+                    }
+                  </span>
+                </div>
+              </div>
+
+              <Button 
+                onClick={closePopup} 
+                className="mt-4 w-full"
+                variant={resultPopup.success ? "default" : "outline"}
+              >
+                {resultPopup.success ? "Create Another" : "Try Again"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-col items-center justify-center gap-8 animate-fade-in max-w-md mx-auto">
         <div className="text-center">
           <UserPlus className="w-12 h-12 mx-auto mb-4 text-accent" />
