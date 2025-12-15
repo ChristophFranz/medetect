@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <AppLayout>
       <div className="flex flex-col items-center justify-center animate-fade-in">
-        <LogoCard showScanButton={false} />
+        <LogoCard showNfcInput={false} />
       </div>
     </AppLayout>
   );
