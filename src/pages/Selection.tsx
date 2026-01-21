@@ -55,6 +55,10 @@ const Selection = () => {
     navigate(`/${mode}?user=${userId}&name=${encodeURIComponent(userName)}`);
   };
 
+  const handleLogout = () => {
+    navigate("/login");
+  };
+
   // Check access permissions based on tags
   const canAccessInspection = userTags.includes("nurses") || userTags.includes("medetect_team");
   const canAccessDatabase = userTags.includes("nurses") || userTags.includes("administrator") || userTags.includes("medetect_team");
@@ -68,6 +72,7 @@ const Selection = () => {
       userId={userId}
       userName={userName}
       userTags={userTags}
+      onLogout={handleLogout}
     >
       <div className="flex flex-col items-center justify-center gap-8 animate-fade-in">
         <div className="text-center">
