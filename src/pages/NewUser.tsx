@@ -67,18 +67,24 @@ const NewUser = () => {
     const checkAccess = async () => {
       if (!userId) return;
       
-      const { data } = await supabase
-        .from("users")
-        .select("tags")
-        .eq("id", userId)
-        .maybeSingle();
-      
-      if (data?.tags) {
-        const tags = data.tags as UserTag[];
-        setUserTags(tags);
-        const canAccess = tags.includes("administrator") || tags.includes("medetect_team");
-        setHasAccess(canAccess);
+      // Server-side access verification
+      const { data, error } = await supabase.functions.invoke('verify-access', {
+        body: { 
+          user_id: userId, 
+          required_tags: ['administrator', 'medetect_team'] 
+        }
+      });
+
+      if (error || !data?.authorized) {
+        setHasAccess(false);
+        setLoading(false);
+        return;
       }
+
+      if (data?.user?.tags) {
+        setUserTags(data.user.tags as UserTag[]);
+      }
+      setHasAccess(true);
       setLoading(false);
     };
 
@@ -131,22 +137,19 @@ const NewUser = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from("users")
-        .insert({
+      // Use Edge Function for secure user creation
+      const { data, error } = await supabase.functions.invoke('create-user', {
+        body: {
+          requesting_user_id: userId,
           nfc_tag_id: nfcTagId.trim(),
           name: newUserName.trim(),
           role: role.trim() || null,
-          tags: selectedTags,
-        });
-
-      if (error) {
-        let errorMessage = "Failed to create user";
-        if (error.code === "23505") {
-          errorMessage = "A user with this NFC Tag ID already exists";
-        } else {
-          errorMessage = error.message;
+          tags: selectedTags
         }
+      });
+
+      if (error || data?.error) {
+        const errorMessage = data?.error || error?.message || "Failed to create user";
         
         setResultPopup({
           show: true,

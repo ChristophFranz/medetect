@@ -23,18 +23,18 @@ const Login = () => {
     const fetchUser = async (nfcId: string) => {
       setLoading(true);
       setNotFound(false);
-      const { data, error } = await supabase
-        .from("users")
-        .select("id, name, role, tags")
-        .eq("nfc_tag_id", nfcId)
-        .maybeSingle();
+      
+      // Use Edge Function for secure NFC lookup
+      const { data, error } = await supabase.functions.invoke('nfc-lookup', {
+        body: { nfc_tag_id: nfcId }
+      });
 
-      if (data && !error) {
-        setUser(data as User);
+      if (data?.found && data?.user && !error) {
+        setUser(data.user as User);
         
         // Auto-redirect to selection after 2 seconds
         const redirectTimer = setTimeout(() => {
-          navigate(`/selection?user=${data.id}&name=${encodeURIComponent(data.name)}`);
+          navigate(`/selection?user=${data.user.id}&name=${encodeURIComponent(data.user.name)}`);
         }, 2000);
 
         return () => clearTimeout(redirectTimer);
