@@ -12,6 +12,7 @@ const Database = () => {
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const [userTags, setUserTags] = useState<UserTag[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = searchParams.get("user");
@@ -25,27 +26,35 @@ const Database = () => {
     setUserId(user);
     setUserName(decodeURIComponent(name));
 
-    // Fetch user tags
-    const fetchTags = async () => {
-      const { data } = await supabase
-        .from("users")
-        .select("tags")
-        .eq("id", user)
-        .maybeSingle();
-      
-      if (data?.tags) {
-        setUserTags(data.tags as UserTag[]);
+    // Server-side access verification
+    const verifyAccess = async () => {
+      const { data, error } = await supabase.functions.invoke('verify-access', {
+        body: { 
+          user_id: user, 
+          required_tags: ['nurses', 'administrator', 'medetect_team'] 
+        }
+      });
+
+      if (error || !data?.authorized) {
+        // Redirect to login if not authorized
+        navigate("/login");
+        return;
       }
+
+      if (data?.user?.tags) {
+        setUserTags(data.user.tags as UserTag[]);
+      }
+      setLoading(false);
     };
 
-    fetchTags();
+    verifyAccess();
   }, [searchParams, navigate]);
 
   const handleLogout = () => {
     navigate("/login");
   };
 
-  if (!userId) {
+  if (loading || !userId) {
     return null;
   }
 

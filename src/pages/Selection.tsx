@@ -27,21 +27,28 @@ const Selection = () => {
     setUserId(user);
     setUserName(decodeURIComponent(name));
 
-    // Fetch user tags
-    const fetchTags = async () => {
-      const { data } = await supabase
-        .from("users")
-        .select("tags")
-        .eq("id", user)
-        .maybeSingle();
-      
-      if (data?.tags) {
-        setUserTags(data.tags as UserTag[]);
+    // Server-side verification to get user tags securely
+    const verifyUser = async () => {
+      const { data, error } = await supabase.functions.invoke('verify-access', {
+        body: { 
+          user_id: user, 
+          required_tags: ['nurses', 'administrator', 'medetect_team'] 
+        }
+      });
+
+      if (error || !data?.authorized) {
+        // Redirect to login if user doesn't exist or has no valid tags
+        navigate("/login");
+        return;
+      }
+
+      if (data?.user?.tags) {
+        setUserTags(data.user.tags as UserTag[]);
       }
       setLoading(false);
     };
 
-    fetchTags();
+    verifyUser();
   }, [searchParams, navigate]);
 
   const handleSelection = (mode: "inspection" | "database") => {
@@ -52,7 +59,7 @@ const Selection = () => {
   const canAccessInspection = userTags.includes("nurses") || userTags.includes("medetect_team");
   const canAccessDatabase = userTags.includes("nurses") || userTags.includes("administrator") || userTags.includes("medetect_team");
 
-  if (!userId || loading) {
+  if (loading || !userId) {
     return null;
   }
 

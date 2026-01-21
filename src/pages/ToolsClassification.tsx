@@ -12,6 +12,7 @@ const ToolsClassification = () => {
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const [userTags, setUserTags] = useState<UserTag[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = searchParams.get("user");
@@ -25,33 +26,35 @@ const ToolsClassification = () => {
     setUserId(user);
     setUserName(decodeURIComponent(name));
 
-    // Fetch user tags
-    const fetchTags = async () => {
-      const { data } = await supabase
-        .from("users")
-        .select("tags")
-        .eq("id", user)
-        .maybeSingle();
-      
-      if (data?.tags) {
-        const tags = data.tags as UserTag[];
-        // Verify user has access to this page
-        if (!tags.includes("administrator") && !tags.includes("medetect_team")) {
-          navigate(`/database?user=${user}&name=${encodeURIComponent(name)}`);
-          return;
+    // Server-side access verification
+    const verifyAccess = async () => {
+      const { data, error } = await supabase.functions.invoke('verify-access', {
+        body: { 
+          user_id: user, 
+          required_tags: ['administrator', 'medetect_team'] 
         }
-        setUserTags(tags);
+      });
+
+      if (error || !data?.authorized) {
+        // Redirect to database if not authorized for tools classification
+        navigate(`/database?user=${user}&name=${encodeURIComponent(name)}`);
+        return;
       }
+
+      if (data?.user?.tags) {
+        setUserTags(data.user.tags as UserTag[]);
+      }
+      setLoading(false);
     };
 
-    fetchTags();
+    verifyAccess();
   }, [searchParams, navigate]);
 
   const handleLogout = () => {
     navigate("/login");
   };
 
-  if (!userId) {
+  if (loading || !userId) {
     return null;
   }
 
