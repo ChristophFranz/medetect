@@ -7,6 +7,11 @@ interface UseVoiceCommandOptions {
 }
 
 // Type definitions for Web Speech API
+type SpeechRecognitionResult = {
+  isFinal: boolean;
+  [index: number]: { transcript: string };
+};
+
 type SpeechRecognitionType = {
   continuous: boolean;
   interimResults: boolean;
@@ -14,7 +19,7 @@ type SpeechRecognitionType = {
   start: () => void;
   stop: () => void;
   onstart: (() => void) | null;
-  onresult: ((event: { results: { length: number; [index: number]: { isFinal: boolean; [index: number]: { transcript: string } } } }) => void) | null;
+  onresult: ((event: { results: { length: number; [index: number]: SpeechRecognitionResult } }) => void) | null;
   onerror: ((event: { error: string }) => void) | null;
   onend: (() => void) | null;
 };
@@ -23,7 +28,10 @@ export function useVoiceCommand({ commands, enabled = true, continuous = true }:
   const [isListening, setIsListening] = useState(false);
   const [isSupported, setIsSupported] = useState(false);
   const [lastCommand, setLastCommand] = useState<string | null>(null);
+  const [transcript, setTranscript] = useState<string>("");
+  const [isCommandMatch, setIsCommandMatch] = useState(false);
   const recognitionRef = useRef<SpeechRecognitionType | null>(null);
+  const transcriptTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,7 +51,7 @@ export function useVoiceCommand({ commands, enabled = true, continuous = true }:
 
     const recognition = new SpeechRecognitionConstructor() as SpeechRecognitionType;
     recognition.continuous = continuous;
-    recognition.interimResults = false;
+    recognition.interimResults = true; // Enable interim results for real-time display
     recognition.lang = "en-US";
 
     recognition.onstart = () => {
@@ -52,18 +60,40 @@ export function useVoiceCommand({ commands, enabled = true, continuous = true }:
 
     recognition.onresult = (event) => {
       const lastResult = event.results[event.results.length - 1];
+      const transcriptText = lastResult[0].transcript.toLowerCase().trim();
+      
+      // Update transcript display
+      setTranscript(transcriptText);
+      
+      // Clear previous timeout
+      if (transcriptTimeoutRef.current) {
+        clearTimeout(transcriptTimeoutRef.current);
+      }
+      
       if (lastResult.isFinal) {
-        const transcript = lastResult[0].transcript.toLowerCase().trim();
-        console.log("Voice command heard:", transcript);
+        console.log("Voice command heard:", transcriptText);
         
         // Check if any command matches
+        let matched = false;
         for (const [command, handler] of Object.entries(commands)) {
-          if (transcript.includes(command.toLowerCase())) {
+          if (transcriptText.includes(command.toLowerCase())) {
             setLastCommand(command);
+            setIsCommandMatch(true);
+            matched = true;
             handler();
             break;
           }
         }
+        
+        if (!matched) {
+          setIsCommandMatch(false);
+        }
+        
+        // Clear transcript after 2 seconds
+        transcriptTimeoutRef.current = setTimeout(() => {
+          setTranscript("");
+          setIsCommandMatch(false);
+        }, 2000);
       }
     };
 
@@ -119,6 +149,8 @@ export function useVoiceCommand({ commands, enabled = true, continuous = true }:
     isListening,
     isSupported,
     lastCommand,
+    transcript,
+    isCommandMatch,
     startListening,
     stopListening,
   };

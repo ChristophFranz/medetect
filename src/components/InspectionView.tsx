@@ -72,7 +72,7 @@ const InspectionView = () => {
   // Voice command support
   const showCamera = captureStep === "layer1" || captureStep === "layer2" || recaptureMode !== null;
   
-  const { isListening, isSupported } = useVoiceCommand({
+  const { isListening, isSupported, transcript, isCommandMatch } = useVoiceCommand({
     commands: voiceCommands,
     enabled: isCameraReady && showCamera,
   });
@@ -150,10 +150,28 @@ const InspectionView = () => {
                 </button>
               </div>
             )}
-            {/* Voice command indicator */}
+            {/* Voice command indicator and transcript */}
             {isSupported && !recaptureMode && (
-              <div className="absolute bottom-3 right-3">
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
+              <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">
+                {/* Transcript display */}
+                {transcript && (
+                  <div className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium animate-fade-in ${
+                    isCommandMatch 
+                      ? "bg-green-500/90 text-white" 
+                      : "bg-black/70 text-white"
+                  }`}>
+                    <div className="flex items-center gap-2">
+                      <span className="text-white/60 text-xs">Heard:</span>
+                      <span className="capitalize">"{transcript}"</span>
+                      {isCommandMatch && (
+                        <CheckCircle2 className="w-4 h-4 ml-auto" />
+                      )}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Voice status indicator */}
+                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium shrink-0 ${
                   isListening 
                     ? "bg-green-500/90 text-white" 
                     : "bg-black/60 text-white/70"
