@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ToolImage {
-  id: number;
+  id: string;
   url: string;
   name: string;
   capturedAt: string;
@@ -13,56 +14,84 @@ interface ToolImage {
 interface Tool {
   id: number;
   name: string;
+  folderName: string;
   description: string;
   images: ToolImage[];
 }
 
-// Mock data - will be replaced with actual database data
-const mockTools: Tool[] = [
+const toolDefinitions = [
   {
     id: 1,
     name: "Chop Phaco",
+    folderName: "chop-phaco",
     description: "Phacoemulsification chopper instrument",
-    images: [
-      { id: 1, url: "/placeholder.svg", name: "Chop Phaco - Sample 1", capturedAt: "03/01/2024 14:23:00" },
-      { id: 2, url: "/placeholder.svg", name: "Chop Phaco - Sample 2", capturedAt: "10/03/2024 09:15:00" },
-      { id: 3, url: "/placeholder.svg", name: "Chop Phaco - Sample 3", capturedAt: "15/05/2024 11:30:00" },
-    ],
   },
   {
     id: 2,
     name: "Forceps Macpherson",
+    folderName: "forceps-macpherson",
     description: "Macpherson tying forceps for suture manipulation",
-    images: [
-      { id: 4, url: "/placeholder.svg", name: "Forceps Macpherson - Sample 1", capturedAt: "05/02/2024 10:45:00" },
-      { id: 5, url: "/placeholder.svg", name: "Forceps Macpherson - Sample 2", capturedAt: "22/04/2024 16:20:00" },
-    ],
   },
   {
     id: 3,
     name: "Forceps Utrata",
+    folderName: "forceps-utrata",
     description: "Utrata capsulorhexis forceps",
-    images: [
-      { id: 6, url: "/placeholder.svg", name: "Forceps Utrata - Sample 1", capturedAt: "12/01/2024 08:30:00" },
-      { id: 7, url: "/placeholder.svg", name: "Forceps Utrata - Sample 2", capturedAt: "28/03/2024 13:55:00" },
-      { id: 8, url: "/placeholder.svg", name: "Forceps Utrata - Sample 3", capturedAt: "19/06/2024 15:10:00" },
-      { id: 9, url: "/placeholder.svg", name: "Forceps Utrata - Sample 4", capturedAt: "02/08/2024 09:40:00" },
-    ],
   },
   {
     id: 4,
     name: "Hook Sinskey",
+    folderName: "hook-sinskey",
     description: "Sinskey hook for IOL manipulation",
-    images: [
-      { id: 10, url: "/placeholder.svg", name: "Hook Sinskey - Sample 1", capturedAt: "18/02/2024 11:15:00" },
-    ],
   },
 ];
 
 const ToolsClassificationView = () => {
   const [expandedTool, setExpandedTool] = useState<number | null>(null);
+  const [tools, setTools] = useState<Tool[]>([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const fetchToolImages = async () => {
+      const toolsWithImages: Tool[] = [];
+
+      for (const toolDef of toolDefinitions) {
+        const { data: files, error } = await supabase.storage
+          .from("tool-images")
+          .list(toolDef.folderName);
+
+        if (error) {
+          console.error(`Error fetching images for ${toolDef.name}:`, error);
+          toolsWithImages.push({ ...toolDef, images: [] });
+          continue;
+        }
+
+        const images: ToolImage[] = (files || [])
+          .filter((file) => file.name !== ".emptyFolderPlaceholder")
+          .map((file) => {
+            const { data: urlData } = supabase.storage
+              .from("tool-images")
+              .getPublicUrl(`${toolDef.folderName}/${file.name}`);
+
+            return {
+              id: file.id,
+              url: urlData.publicUrl,
+              name: file.name.replace(/\.[^/.]+$/, ""),
+              capturedAt: new Date(file.created_at).toLocaleString(),
+            };
+          });
+
+        toolsWithImages.push({ ...toolDef, images });
+      }
+
+      setTools(toolsWithImages);
+      setLoading(false);
+    };
+
+    fetchToolImages();
+  }, []);
 
   const handleToolClick = (toolId: number) => {
     setExpandedTool(expandedTool === toolId ? null : toolId);
@@ -73,6 +102,14 @@ const ToolsClassificationView = () => {
     const name = searchParams.get("name");
     navigate(`/database?user=${user}&name=${name}`);
   };
+
+  if (loading) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <p className="text-muted-foreground">Loading tools...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="h-full animate-fade-in">
@@ -92,7 +129,7 @@ const ToolsClassificationView = () => {
 
       {/* Tools List */}
       <div className="space-y-3">
-        {mockTools.map((tool) => (
+        {tools.map((tool) => (
           <div
             key={tool.id}
             className="bg-card border border-border rounded-lg overflow-hidden"
