@@ -4,6 +4,16 @@ import { Button } from "./ui/button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "./ui/alert-dialog";
 
 interface ToolImage {
   id: string;
@@ -19,6 +29,12 @@ interface Tool {
   folderName: string;
   description: string;
   images: ToolImage[];
+}
+
+interface DeleteTarget {
+  folderName: string;
+  fileName: string;
+  imageName: string;
 }
 
 const toolDefinitions = [
@@ -52,6 +68,8 @@ const ToolsClassificationView = () => {
   const [expandedTool, setExpandedTool] = useState<number | null>(null);
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
+  const [deleteTarget, setDeleteTarget] = useState<DeleteTarget | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -96,8 +114,11 @@ const ToolsClassificationView = () => {
     fetchToolImages();
   }, []);
 
-  const handleDeleteImage = async (folderName: string, fileName: string) => {
-    const filePath = `${folderName}/${fileName}`;
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+    
+    setIsDeleting(true);
+    const filePath = `${deleteTarget.folderName}/${deleteTarget.fileName}`;
     
     const { error } = await supabase.storage
       .from("tool-images")
@@ -109,14 +130,16 @@ const ToolsClassificationView = () => {
         description: "Failed to delete image. Please try again.",
         variant: "destructive",
       });
+      setIsDeleting(false);
+      setDeleteTarget(null);
       return;
     }
 
     // Update local state to remove the deleted image
     setTools((prevTools) =>
       prevTools.map((tool) =>
-        tool.folderName === folderName
-          ? { ...tool, images: tool.images.filter((img) => img.fileName !== fileName) }
+        tool.folderName === deleteTarget.folderName
+          ? { ...tool, images: tool.images.filter((img) => img.fileName !== deleteTarget.fileName) }
           : tool
       )
     );
@@ -125,6 +148,9 @@ const ToolsClassificationView = () => {
       title: "Image deleted",
       description: "The image has been removed successfully.",
     });
+    
+    setIsDeleting(false);
+    setDeleteTarget(null);
   };
 
   const handleToolClick = (toolId: number) => {
@@ -146,6 +172,27 @@ const ToolsClassificationView = () => {
   }
 
   return (
+    <>
+      <AlertDialog open={!!deleteTarget} onOpenChange={(open) => !open && setDeleteTarget(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Image</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete "{deleteTarget?.imageName}"? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              disabled={isDeleting}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              {isDeleting ? "Deleting..." : "Delete"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     <div className="h-full animate-fade-in">
       {/* Header with Back Button */}
       <div className="flex items-center gap-4 mb-6">
@@ -219,7 +266,11 @@ const ToolsClassificationView = () => {
                         className="absolute top-2 right-2 h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleDeleteImage(tool.folderName, image.fileName);
+                          setDeleteTarget({
+                            folderName: tool.folderName,
+                            fileName: image.fileName,
+                            imageName: image.name,
+                          });
                         }}
                       >
                         <Trash2 className="h-4 w-4" />
@@ -233,6 +284,7 @@ const ToolsClassificationView = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
