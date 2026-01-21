@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      inspection_cases: {
+        Row: {
+          case_number: number
+          created_at: string
+          folder_path: string
+          id: string
+          layer1_image_path: string | null
+          layer2_image_path: string | null
+          patient_name: string
+          updated_at: string
+          user_id: string
+          user_name: string
+        }
+        Insert: {
+          case_number?: number
+          created_at?: string
+          folder_path: string
+          id?: string
+          layer1_image_path?: string | null
+          layer2_image_path?: string | null
+          patient_name: string
+          updated_at?: string
+          user_id: string
+          user_name: string
+        }
+        Update: {
+          case_number?: number
+          created_at?: string
+          folder_path?: string
+          id?: string
+          layer1_image_path?: string | null
+          layer2_image_path?: string | null
+          patient_name?: string
+          updated_at?: string
+          user_id?: string
+          user_name?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

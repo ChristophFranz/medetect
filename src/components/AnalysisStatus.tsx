@@ -1,7 +1,7 @@
-import { Loader2, Video } from "lucide-react";
+import { Loader2, Video, Save } from "lucide-react";
 
 interface AnalysisStatusProps {
-  status: "live" | "captured" | "analysing" | "complete";
+  status: "live" | "captured" | "saving" | "complete";
   capturedImage?: string | null;
 }
 
@@ -22,17 +22,18 @@ const AnalysisStatus = ({ status, capturedImage }: AnalysisStatusProps) => {
         </div>
       )}
       
-      {status === "analysing" && (
+      {status === "saving" && (
         <div className="text-center animate-fade-in">
-          <p className="text-xl font-medium text-foreground mb-4">Analysing</p>
+          <Save className="w-8 h-8 text-primary mx-auto mb-2" />
+          <p className="text-xl font-medium text-foreground mb-4">Saving Case</p>
           <Loader2 className="w-8 h-8 animate-spin text-foreground mx-auto" />
-          <p className="text-sm text-muted-foreground mt-2">~3 seconds</p>
+          <p className="text-sm text-muted-foreground mt-2">Uploading images...</p>
         </div>
       )}
       
       {status === "complete" && (
         <div className="text-center animate-fade-in">
-          <p className="text-xl font-medium text-accent">Analysis Complete</p>
+          <p className="text-xl font-medium text-accent">Case Saved!</p>
         </div>
       )}
     </div>

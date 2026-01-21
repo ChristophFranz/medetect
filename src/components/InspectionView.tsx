@@ -1,19 +1,33 @@
 import { useState, useCallback, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
 import { Button } from "./ui/button";
-import { Camera, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff } from "lucide-react";
+import { Camera, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
 import { Card } from "./ui/card";
 import { useVoiceCommand } from "@/hooks/use-voice-command";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
-type CaptureStep = "layer1" | "layer2" | "analysing" | "complete";
+type CaptureStep = "layer1" | "layer2" | "saving" | "complete";
+
+interface SavedCase {
+  case_number: number;
+  patient_name: string;
+  folder_path: string;
+}
 
 const InspectionView = () => {
+  const [searchParams] = useSearchParams();
+  const userId = searchParams.get("user") || "";
+  const userName = decodeURIComponent(searchParams.get("name") || "");
+  
   const [captureStep, setCaptureStep] = useState<CaptureStep>("layer1");
   const [layer1Image, setLayer1Image] = useState<string | null>(null);
   const [layer2Image, setLayer2Image] = useState<string | null>(null);
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
+  const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
 
   const handleCameraReady = useCallback((ready: boolean) => {
     setIsCameraReady(ready);
@@ -41,12 +55,44 @@ const InspectionView = () => {
       setCaptureStep("layer2");
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
-      setCaptureStep("analysing");
+      // Will trigger save via the saveCase function
+      saveCase(layer1Image!, imageData);
+    }
+  };
+
+  const saveCase = async (layer1: string, layer2: string) => {
+    setCaptureStep("saving");
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('save-inspection-case', {
+        body: {
+          user_id: userId,
+          user_name: userName,
+          layer1_image: layer1,
+          layer2_image: layer2,
+        }
+      });
+
+      if (error || !data?.success) {
+        throw new Error(error?.message || data?.error || "Failed to save case");
+      }
+
+      setSavedCase(data.case);
+      setCaptureStep("complete");
       
-      // Start analysis after both images captured
-      setTimeout(() => {
-        setCaptureStep("complete");
-      }, 3000);
+      toast({
+        title: `Case ${String(data.case.case_number).padStart(2, "0")} saved`,
+        description: `Patient: ${data.case.patient_name}`,
+      });
+    } catch (err) {
+      console.error("Save case error:", err);
+      toast({
+        title: "Failed to save case",
+        description: err instanceof Error ? err.message : "Please try again",
+        variant: "destructive",
+      });
+      // Reset to layer2 so user can try again
+      setCaptureStep("layer2");
     }
   };
 
@@ -89,15 +135,17 @@ const InspectionView = () => {
         return "Please capture the TOP LAYER of the surgical tool box";
       case "layer2":
         return "Please capture the 2ND LAYER of the surgical tool box";
-      case "analysing":
-        return "Analysing captured images...";
+      case "saving":
+        return "Saving case to database...";
       case "complete":
-        return "Analysis complete!";
+        return savedCase 
+          ? `Case ${String(savedCase.case_number).padStart(2, "0")} saved!`
+          : "Case saved!";
     }
   };
 
   const getCurrentImage = () => {
-    if (captureStep === "layer2" || captureStep === "analysing" || captureStep === "complete") {
+    if (captureStep === "layer2" || captureStep === "saving" || captureStep === "complete") {
       return layer2Image || layer1Image;
     }
     return null;
@@ -301,18 +349,25 @@ const InspectionView = () => {
           </Card>
         )}
 
-        {/* Analysis status prompt */}
-        {(captureStep === "analysing" || captureStep === "complete") && (
+        {/* Saving/Complete status prompt */}
+        {(captureStep === "saving" || captureStep === "complete") && (
           <Card className={`p-4 ${captureStep === "complete" ? "bg-green-500/10 border-green-500/30" : "bg-primary/10 border-primary/30"}`}>
             <div className="flex items-center gap-3">
               <div className={`p-2 rounded-full ${captureStep === "complete" ? "bg-green-500/20" : "bg-primary/20"}`}>
                 {captureStep === "complete" ? (
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
                 ) : (
-                  <Layers className="w-5 h-5 text-primary animate-pulse" />
+                  <Loader2 className="w-5 h-5 text-primary animate-spin" />
                 )}
               </div>
-              <p className="font-medium text-foreground text-sm">{getPromptMessage()}</p>
+              <div className="flex-1">
+                <p className="font-medium text-foreground text-sm">{getPromptMessage()}</p>
+                {captureStep === "complete" && savedCase && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Patient: {savedCase.patient_name}
+                  </p>
+                )}
+              </div>
             </div>
           </Card>
         )}

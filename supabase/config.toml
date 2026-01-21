@@ -1,1 +1,4 @@
 project_id = "kiepkxuhydgqnbotgkpe"
+
+[functions.save-inspection-case]
+verify_jwt = false
