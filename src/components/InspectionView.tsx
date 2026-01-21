@@ -1,9 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
 import { Button } from "./ui/button";
-import { Camera, Layers, CheckCircle2, RotateCcw, X } from "lucide-react";
+import { Camera, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff } from "lucide-react";
 import { Card } from "./ui/card";
+import { useVoiceCommand } from "@/hooks/use-voice-command";
 
 type CaptureStep = "layer1" | "layer2" | "analysing" | "complete";
 
@@ -57,9 +58,24 @@ const InspectionView = () => {
     setRecaptureMode(null);
   };
 
-  const handleCapture = () => {
-    setIsCapturing(true);
-  };
+  const handleCapture = useCallback(() => {
+    if (isCameraReady && showCamera) {
+      setIsCapturing(true);
+    }
+  }, [isCameraReady]);
+
+  // Memoize commands to prevent recreation on every render
+  const voiceCommands = useMemo(() => ({
+    "capture": handleCapture,
+  }), [handleCapture]);
+
+  // Voice command support
+  const showCamera = captureStep === "layer1" || captureStep === "layer2" || recaptureMode !== null;
+  
+  const { isListening, isSupported } = useVoiceCommand({
+    commands: voiceCommands,
+    enabled: isCameraReady && showCamera,
+  });
 
   const handleReset = () => {
     setLayer1Image(null);
@@ -87,7 +103,7 @@ const InspectionView = () => {
     return null;
   };
 
-  const showCamera = captureStep === "layer1" || captureStep === "layer2" || recaptureMode !== null;
+  // showCamera already defined above with voice commands
 
   return (
     <div className="flex flex-col md:flex-row gap-6 animate-fade-in">
@@ -132,6 +148,28 @@ const InspectionView = () => {
                 >
                   <X className="w-4 h-4 text-white" />
                 </button>
+              </div>
+            )}
+            {/* Voice command indicator */}
+            {isSupported && !recaptureMode && (
+              <div className="absolute bottom-3 right-3">
+                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
+                  isListening 
+                    ? "bg-green-500/90 text-white" 
+                    : "bg-black/60 text-white/70"
+                }`}>
+                  {isListening ? (
+                    <>
+                      <Mic className="w-3.5 h-3.5 animate-pulse" />
+                      Say "Capture"
+                    </>
+                  ) : (
+                    <>
+                      <MicOff className="w-3.5 h-3.5" />
+                      Voice off
+                    </>
+                  )}
+                </div>
               </div>
             )}
           </div>
