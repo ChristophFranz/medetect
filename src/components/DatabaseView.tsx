@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ChevronRight, ChevronLeft, Eye, Download, Mail, Wrench, Loader2 } from "lucide-react";
+import { ChevronRight, ChevronLeft, Eye, Download, Mail, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Table,
@@ -11,6 +11,9 @@ import {
   TableRow,
 } from "./ui/table";
 import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import DatabaseFilters from "./DatabaseFilters";
+import CaseDetailDialog from "./CaseDetailDialog";
 
 interface InspectionCase {
   id: string;
@@ -19,10 +22,11 @@ interface InspectionCase {
   user_id: string;
   user_name: string;
   folder_path: string;
+  layer1_image_path: string | null;
+  layer2_image_path: string | null;
   created_at: string;
 }
 
-type FilterType = "recent" | "flagged" | "date" | "user" | null;
 type UserTag = "medetect_team" | "nurses" | "administrator";
 
 interface DatabaseViewProps {
@@ -30,30 +34,30 @@ interface DatabaseViewProps {
 }
 
 const DatabaseView = ({ userTags }: DatabaseViewProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<FilterType>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [cases, setCases] = useState<InspectionCase[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedCase, setSelectedCase] = useState<InspectionCase | null>(null);
+  const [detailDialogOpen, setDetailDialogOpen] = useState(false);
+  const [downloadingCaseId, setDownloadingCaseId] = useState<string | null>(null);
+  
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { toast } = useToast();
 
-  const userId = searchParams.get("user");
-
-  // Check if user can access tools classification database
   const canAccessToolsClassification = userTags.includes("administrator") || userTags.includes("medetect_team");
 
-  useEffect(() => {
-    fetchCases();
-  }, [activeFilter, userId]);
-
-  const fetchCases = async () => {
+  const fetchCases = useCallback(async () => {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke('get-inspection-cases', {
         body: { 
-          user_id: userId,
-          filter_type: activeFilter,
-          filter_value: activeFilter === 'user' ? userId : undefined
+          filter_type: selectedUserId ? 'user' : selectedDate ? 'date' : null,
+          filter_value: selectedUserId || (selectedDate ? selectedDate.toISOString() : null),
+          search_query: searchQuery
         }
       });
 
@@ -70,7 +74,15 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchQuery, selectedUserId, selectedDate]);
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      fetchCases();
+    }, 300);
+
+    return () => clearTimeout(debounceTimer);
+  }, [fetchCases]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -96,8 +108,63 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
     navigate(`/tools-classification?user=${user}&name=${name}`);
   };
 
-  const handleFilterClick = (filter: FilterType) => {
-    setActiveFilter(activeFilter === filter ? null : filter);
+  const handleViewCase = (caseItem: InspectionCase) => {
+    setSelectedCase(caseItem);
+    setDetailDialogOpen(true);
+  };
+
+  const handleDownloadCase = async (caseItem: InspectionCase) => {
+    setDownloadingCaseId(caseItem.id);
+    
+    try {
+      const downloadImage = async (imagePath: string | null, filename: string) => {
+        if (!imagePath) return;
+        
+        const { data } = supabase.storage
+          .from('case-images')
+          .getPublicUrl(imagePath);
+        
+        const response = await fetch(data.publicUrl);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      };
+
+      if (caseItem.layer1_image_path) {
+        await downloadImage(caseItem.layer1_image_path, `case-${caseItem.case_number}-layer1.jpg`);
+      }
+      
+      if (caseItem.layer2_image_path) {
+        await downloadImage(caseItem.layer2_image_path, `case-${caseItem.case_number}-layer2.jpg`);
+      }
+
+      toast({
+        title: "Download Complete",
+        description: `Case ${caseItem.case_number} images downloaded successfully.`,
+      });
+    } catch (error) {
+      console.error('Error downloading case:', error);
+      toast({
+        title: "Download Failed",
+        description: "Failed to download case images.",
+        variant: "destructive",
+      });
+    } finally {
+      setDownloadingCaseId(null);
+    }
+  };
+
+  const handleEmailCase = (caseItem: InspectionCase) => {
+    toast({
+      title: "Email Feature",
+      description: "Email functionality requires Resend integration. Please contact support to enable this feature.",
+    });
   };
 
   return (
@@ -105,71 +172,26 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
       {/* Collapsible Sidebar */}
       <div
         className={`relative flex transition-all duration-300 ease-in-out ${
-          sidebarOpen ? "w-48" : "w-8"
+          sidebarOpen ? "w-56" : "w-8"
         }`}
       >
         {/* Sidebar Content */}
         <div
           className={`bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 ${
-            sidebarOpen ? "w-48 p-4" : "w-0 p-0 border-0"
+            sidebarOpen ? "w-56 p-4" : "w-0 p-0 border-0"
           }`}
         >
           {sidebarOpen && (
-            <div className="space-y-4">
-              <p className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-                <span>▽</span> Quick Filter
-              </p>
-              <div className="space-y-2">
-                <Button
-                  variant={activeFilter === "recent" ? "secondary" : "outline"}
-                  size="sm"
-                  className="w-full justify-center text-xs"
-                  onClick={() => handleFilterClick("recent")}
-                >
-                  Recent Scans
-                </Button>
-                <Button
-                  variant={activeFilter === "flagged" ? "secondary" : "outline"}
-                  size="sm"
-                  className="w-full justify-center text-xs"
-                  onClick={() => handleFilterClick("flagged")}
-                >
-                  Flagged Cases
-                </Button>
-                <Button
-                  variant={activeFilter === "date" ? "secondary" : "outline"}
-                  size="sm"
-                  className="w-full justify-center text-xs"
-                  onClick={() => handleFilterClick("date")}
-                >
-                  By Date
-                </Button>
-                <Button
-                  variant={activeFilter === "user" ? "secondary" : "outline"}
-                  size="sm"
-                  className="w-full justify-center text-xs"
-                  onClick={() => handleFilterClick("user")}
-                >
-                  My Cases
-                </Button>
-              </div>
-
-              {canAccessToolsClassification && (
-                <div className="pt-4 border-t border-border mt-4">
-                  <p className="text-sm font-medium text-muted-foreground flex items-center gap-2 mb-2">
-                    <Wrench className="w-4 h-4" /> Tools
-                  </p>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full justify-center text-xs"
-                    onClick={handleToolsClassificationClick}
-                  >
-                    Tools Classification
-                  </Button>
-                </div>
-              )}
-            </div>
+            <DatabaseFilters
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              selectedUserId={selectedUserId}
+              onUserChange={setSelectedUserId}
+              selectedDate={selectedDate}
+              onDateChange={setSelectedDate}
+              canAccessToolsClassification={canAccessToolsClassification}
+              onToolsClassificationClick={handleToolsClassificationClick}
+            />
           )}
         </div>
 
@@ -227,6 +249,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
                           size="icon"
                           className="h-7 w-7"
                           title="View Case"
+                          onClick={() => handleViewCase(caseItem)}
                         >
                           <Eye className="w-4 h-4" />
                         </Button>
@@ -235,14 +258,21 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
                           size="icon"
                           className="h-7 w-7"
                           title="Download Case"
+                          onClick={() => handleDownloadCase(caseItem)}
+                          disabled={downloadingCaseId === caseItem.id}
                         >
-                          <Download className="w-4 h-4" />
+                          {downloadingCaseId === caseItem.id ? (
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                          ) : (
+                            <Download className="w-4 h-4" />
+                          )}
                         </Button>
                         <Button
                           variant="ghost"
                           size="icon"
                           className="h-7 w-7"
-                          title="Secure Email Case"
+                          title="Email Case"
+                          onClick={() => handleEmailCase(caseItem)}
                         >
                           <Mail className="w-4 h-4" />
                         </Button>
@@ -255,6 +285,13 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
           )}
         </div>
       </div>
+
+      {/* Case Detail Dialog */}
+      <CaseDetailDialog
+        open={detailDialogOpen}
+        onOpenChange={setDetailDialogOpen}
+        caseData={selectedCase}
+      />
     </div>
   );
 };
