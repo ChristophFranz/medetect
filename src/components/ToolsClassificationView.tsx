@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowLeft, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 interface ToolImage {
   id: string;
   url: string;
   name: string;
+  fileName: string;
   capturedAt: string;
 }
 
@@ -79,6 +81,7 @@ const ToolsClassificationView = () => {
               id: file.id,
               url: urlData.publicUrl,
               name: file.name.replace(/\.[^/.]+$/, ""),
+              fileName: file.name,
               capturedAt: new Date(file.created_at).toLocaleString(),
             };
           });
@@ -92,6 +95,37 @@ const ToolsClassificationView = () => {
 
     fetchToolImages();
   }, []);
+
+  const handleDeleteImage = async (folderName: string, fileName: string) => {
+    const filePath = `${folderName}/${fileName}`;
+    
+    const { error } = await supabase.storage
+      .from("tool-images")
+      .remove([filePath]);
+
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to delete image. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Update local state to remove the deleted image
+    setTools((prevTools) =>
+      prevTools.map((tool) =>
+        tool.folderName === folderName
+          ? { ...tool, images: tool.images.filter((img) => img.fileName !== fileName) }
+          : tool
+      )
+    );
+
+    toast({
+      title: "Image deleted",
+      description: "The image has been removed successfully.",
+    });
+  };
 
   const handleToolClick = (toolId: number) => {
     setExpandedTool(expandedTool === toolId ? null : toolId);
@@ -162,7 +196,7 @@ const ToolsClassificationView = () => {
                   {tool.images.map((image) => (
                     <div
                       key={image.id}
-                      className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-colors cursor-pointer"
+                      className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-colors group relative"
                     >
                       <div className="aspect-square bg-muted">
                         <img
@@ -179,6 +213,17 @@ const ToolsClassificationView = () => {
                           {image.capturedAt}
                         </p>
                       </div>
+                      <Button
+                        variant="destructive"
+                        size="icon"
+                        className="absolute top-2 right-2 h-7 w-7 opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteImage(tool.folderName, image.fileName);
+                        }}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
                     </div>
                   ))}
                 </div>
