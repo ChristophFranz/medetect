@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ChevronRight, ChevronLeft, Eye, Download, Mail, Wrench } from "lucide-react";
+import { ChevronRight, ChevronLeft, Eye, Download, Mail, Wrench, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Table,
@@ -10,23 +10,17 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import { supabase } from "@/integrations/supabase/client";
 
 interface InspectionCase {
-  id: number;
-  caseNo: string;
-  date: string;
-  time: string;
+  id: string;
+  case_number: number;
+  patient_name: string;
+  user_id: string;
+  user_name: string;
+  folder_path: string;
+  created_at: string;
 }
-
-// Mock data - will be replaced with actual database data
-const mockCases: InspectionCase[] = [
-  { id: 1, caseNo: "Case - 123", date: "03/01/2024", time: "14:23:00" },
-  { id: 2, caseNo: "Case - 145", date: "10/03/2024", time: "14:23:00" },
-  { id: 3, caseNo: "Case - 167", date: "27/05/2024", time: "14:23:00" },
-  { id: 4, caseNo: "Case - 188", date: "01/06/2024", time: "14:23:00" },
-  { id: 5, caseNo: "Case - 299", date: "13/07/2024", time: "14:23:00" },
-  { id: 6, caseNo: "Case - 381", date: "18/11/2024", time: "14:23:00" },
-];
 
 type FilterType = "recent" | "flagged" | "date" | "user" | null;
 type UserTag = "medetect_team" | "nurses" | "administrator";
@@ -38,12 +32,63 @@ interface DatabaseViewProps {
 const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<FilterType>(null);
-  const [cases] = useState<InspectionCase[]>(mockCases);
+  const [cases, setCases] = useState<InspectionCase[]>([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
+  const userId = searchParams.get("user");
+
   // Check if user can access tools classification database
   const canAccessToolsClassification = userTags.includes("administrator") || userTags.includes("medetect_team");
+
+  useEffect(() => {
+    fetchCases();
+  }, [activeFilter, userId]);
+
+  const fetchCases = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('get-inspection-cases', {
+        body: { 
+          user_id: userId,
+          filter_type: activeFilter,
+          filter_value: activeFilter === 'user' ? userId : undefined
+        }
+      });
+
+      if (error) {
+        console.error('Error fetching cases:', error);
+        return;
+      }
+
+      if (data?.cases) {
+        setCases(data.cases);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  };
+
+  const formatTime = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  };
 
   const handleToolsClassificationClick = () => {
     const user = searchParams.get("user");
@@ -105,7 +150,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
                   className="w-full justify-center text-xs"
                   onClick={() => handleFilterClick("user")}
                 >
-                  By User
+                  My Cases
                 </Button>
               </div>
 
@@ -144,57 +189,70 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
       {/* Main Table Area */}
       <div className="flex-1 ml-4">
         <div className="bg-card border border-border rounded-lg overflow-hidden">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-muted/50">
-                <TableHead className="w-16 text-center">No.</TableHead>
-                <TableHead>Case No.</TableHead>
-                <TableHead className="w-32 text-center">Date</TableHead>
-                <TableHead className="w-28 text-center">Time</TableHead>
-                <TableHead className="w-28 text-center">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {cases.map((caseItem) => (
-                <TableRow key={caseItem.id} className="hover:bg-muted/30">
-                  <TableCell className="text-center font-medium">
-                    {caseItem.id}
-                  </TableCell>
-                  <TableCell>{caseItem.caseNo}</TableCell>
-                  <TableCell className="text-center">{caseItem.date}</TableCell>
-                  <TableCell className="text-center">{caseItem.time}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center justify-center gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7"
-                        title="View Case"
-                      >
-                        <Eye className="w-4 h-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7"
-                        title="Download Case"
-                      >
-                        <Download className="w-4 h-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-7 w-7"
-                        title="Secure Email Case"
-                      >
-                        <Mail className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </TableCell>
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+            </div>
+          ) : cases.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+              <p className="text-sm">No inspection cases found</p>
+              <p className="text-xs mt-1">Cases will appear here after completing inspections</p>
+            </div>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-muted/50">
+                  <TableHead className="w-16 text-center">No.</TableHead>
+                  <TableHead>Case No. (Patient)</TableHead>
+                  <TableHead className="w-32 text-center">Date</TableHead>
+                  <TableHead className="w-28 text-center">Time</TableHead>
+                  <TableHead className="w-28 text-center">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {cases.map((caseItem, index) => (
+                  <TableRow key={caseItem.id} className="hover:bg-muted/30">
+                    <TableCell className="text-center font-medium">
+                      {index + 1}
+                    </TableCell>
+                    <TableCell>
+                      Case {caseItem.case_number} ({caseItem.patient_name})
+                    </TableCell>
+                    <TableCell className="text-center">{formatDate(caseItem.created_at)}</TableCell>
+                    <TableCell className="text-center">{formatTime(caseItem.created_at)}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center justify-center gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7"
+                          title="View Case"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7"
+                          title="Download Case"
+                        >
+                          <Download className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-7 w-7"
+                          title="Secure Email Case"
+                        >
+                          <Mail className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </div>
       </div>
     </div>
