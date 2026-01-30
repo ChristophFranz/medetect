@@ -182,7 +182,6 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
               onLoad={handleIpCameraLoad}
               onError={handleIpCameraError}
               className="w-full h-full object-cover"
-              crossOrigin="anonymous"
             />
           )}
           <canvas ref={canvasRef} className="hidden" />
