@@ -165,8 +165,8 @@ const InspectionView = () => {
   // Memoize commands to prevent recreation on every render
   const voiceCommands = useMemo(() => ({
     "capture": handleCapture,
-    "recapture top": handleRecaptureTop,
-    "recapture second": handleRecaptureSecond,
+    "recap top": handleRecaptureTop,
+    "recap second": handleRecaptureSecond,
     "new inspection": handleReset,
     "cancel": cancelRecapture,
   }), [handleCapture, handleRecaptureTop, handleRecaptureSecond, handleReset, cancelRecapture]);
@@ -283,12 +283,12 @@ const InspectionView = () => {
                   {isListening ? (
                     <>
                       <Mic className="w-5 h-5 animate-pulse" />
-                      Voice Active
+                      Mic Active
                     </>
                   ) : (
                     <>
                       <MicOff className="w-5 h-5" />
-                      Voice Off
+                      Mic Off
                     </>
                   )}
                 </div>
@@ -393,7 +393,7 @@ const InspectionView = () => {
               <p className={`font-semibold text-sm ${
                 isListening ? "text-green-600 dark:text-green-400" : "text-muted-foreground"
               }`}>
-                {isListening ? "🎙️ Voice Active" : !isSupported ? "🎙️ Voice Unavailable" : "🎙️ Voice Inactive"}
+                {isListening ? "🎙️ Microphone Active" : !isSupported ? "🎙️ Microphone Unavailable" : "🎙️ Microphone Inactive"}
               </p>
               <p className="text-xs text-muted-foreground mt-0.5">
                 {isListening 
@@ -410,7 +410,7 @@ const InspectionView = () => {
           {isListening && (
             <div className="mt-3 pt-3 border-t border-border/50 space-y-1.5">
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Say:</p>
-              {["Capture", "Recapture top", "Recapture second", "New inspection"].map((cmd) => (
+              {["Capture", "Recap top", "Recap second", "New inspection"].map((cmd) => (
                 <div key={cmd} className="flex items-center gap-2 text-sm text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
                   <span>"{cmd}"</span>
