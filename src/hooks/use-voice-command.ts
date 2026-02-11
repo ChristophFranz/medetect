@@ -105,14 +105,16 @@ export function useVoiceCommand({ commands, enabled = true, continuous = true }:
     };
 
     recognition.onend = () => {
-      setIsListening(false);
-      // Restart if continuous mode and still enabled
+      // Only mark as not listening if we're NOT going to restart
       if (continuous && enabled && recognitionRef.current === recognition) {
         try {
           recognition.start();
         } catch (e) {
           console.log("Could not restart recognition");
+          setIsListening(false);
         }
+      } else {
+        setIsListening(false);
       }
     };
 
