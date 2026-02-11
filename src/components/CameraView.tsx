@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Camera, Globe, RefreshCw } from "lucide-react";
+import { Camera, Globe, RefreshCw, ExternalLink } from "lucide-react";
 
 type CameraSource = "webcam" | "ip";
+type IpDisplayMode = "mjpeg" | "iframe";
 
 interface CameraViewProps {
   onImageCapture?: (imageData: string) => void;
@@ -11,34 +11,50 @@ interface CameraViewProps {
   onCameraReady?: (ready: boolean) => void;
 }
 
+const FIXED_IP_BASE = "http://192.168.1.10";
+
+const MJPEG_CANDIDATES = [
+  `${FIXED_IP_BASE}/mjpeg`,
+  `${FIXED_IP_BASE}/video`,
+  `${FIXED_IP_BASE}/video/mjpg`,
+  `${FIXED_IP_BASE}/mjpg/video.mjpg`,
+  `${FIXED_IP_BASE}/cgi-bin/mjpg/video.cgi`,
+  `${FIXED_IP_BASE}/axis-cgi/mjpg/video.cgi`,
+];
+
 const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: CameraViewProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
+
   const [hasCamera, setHasCamera] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  // Camera source state
+
   const [cameraSource, setCameraSource] = useState<CameraSource>("webcam");
-  const [ipCameraUrl, setIpCameraUrl] = useState("http://192.168.0.10");
-  const [ipCameraConnected, setIpCameraConnected] = useState(false);
+
+  // IP camera states
+  const [ipConnected, setIpConnected] = useState(false);
+  const [ipMode, setIpMode] = useState<IpDisplayMode>("mjpeg");
+  const [ipUrl, setIpUrl] = useState<string>(MJPEG_CANDIDATES[0]);
+  const [ipTryIndex, setIpTryIndex] = useState(0);
+  const [reloadKey, setReloadKey] = useState(0);
+
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    const isReady = cameraSource === "webcam" ? hasCamera : ipCameraConnected;
+    const isReady = cameraSource === "webcam" ? hasCamera : ipConnected;
     onCameraReady?.(isReady);
-  }, [hasCamera, ipCameraConnected, cameraSource, onCameraReady]);
+  }, [hasCamera, ipConnected, cameraSource, onCameraReady]);
 
   // Webcam setup
   useEffect(() => {
     if (cameraSource !== "webcam") return;
-    
+
     const startCamera = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: { facingMode: "environment" },
         });
-        
+
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
           setHasCamera(true);
@@ -56,37 +72,70 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
     return () => {
       if (videoRef.current?.srcObject) {
         const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
-        tracks.forEach(track => track.stop());
+        tracks.forEach((track) => track.stop());
       }
     };
   }, [cameraSource]);
 
-  // IP camera connection handler
-  const handleIpCameraConnect = () => {
-    setIpCameraConnected(false);
+  // When switching to IP mode, start with MJPEG attempt #0
+  useEffect(() => {
+    if (cameraSource !== "ip") return;
+
     setError(null);
-    // Force iframe reload by briefly clearing and resetting
-    if (iframeRef.current) {
-      iframeRef.current.src = "";
-      setTimeout(() => {
-        if (iframeRef.current) {
-          iframeRef.current.src = ipCameraUrl;
-        }
-      }, 100);
-    }
+    setIpConnected(false);
+    setIpMode("mjpeg");
+    setIpTryIndex(0);
+    setIpUrl(MJPEG_CANDIDATES[0]);
+    setReloadKey((k) => k + 1);
+  }, [cameraSource]);
+
+  const handleIpReload = () => {
+    setError(null);
+    setIpConnected(false);
+    setIpMode("mjpeg");
+    setIpTryIndex(0);
+    setIpUrl(MJPEG_CANDIDATES[0]);
+    setReloadKey((k) => k + 1);
   };
 
-  const handleIframeLoad = () => {
-    setIpCameraConnected(true);
+  const handleMjpegError = () => {
+    // Try next candidate; if none left, fall back to iframe gateway
+    const next = ipTryIndex + 1;
+    if (next < MJPEG_CANDIDATES.length) {
+      setIpTryIndex(next);
+      setIpUrl(MJPEG_CANDIDATES[next]);
+      setReloadKey((k) => k + 1);
+      return;
+    }
+
+    setIpMode("iframe");
+    setIpUrl(FIXED_IP_BASE);
+    setReloadKey((k) => k + 1);
+  };
+
+  const handleIpLoad = () => {
+    setIpConnected(true);
     setError(null);
   };
 
   const handleIframeError = () => {
-    setIpCameraConnected(false);
-    setError("Failed to connect to IP camera. Check URL and network connection.");
+    setIpConnected(false);
+    setError("Could not load the camera gateway. Check that you are on the same network as 192.168.1.10.");
   };
 
-  // Capture handling
+  const switchSource = (source: CameraSource) => {
+    // Stop webcam if switching away
+    if (cameraSource === "webcam" && videoRef.current?.srcObject) {
+      const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
+      tracks.forEach((track) => track.stop());
+    }
+    setCameraSource(source);
+    setError(null);
+    setHasCamera(false);
+    setIpConnected(false);
+  };
+
+  // Capture handling (webcam only, unchanged)
   useEffect(() => {
     if (!isCapturing) return;
 
@@ -94,7 +143,7 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
       const canvas = canvasRef.current;
       const video = videoRef.current;
       const ctx = canvas.getContext("2d");
-      
+
       if (ctx) {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -102,25 +151,16 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
         const imageData = canvas.toDataURL("image/jpeg");
         onImageCapture?.(imageData);
       }
-    } else if (cameraSource === "ip" && ipCameraConnected) {
-      // Cannot capture frames from cross-origin iframe
-      // Notify user that capture is not supported for IP camera iframe mode
-      console.warn("Frame capture is not supported for IP camera iframe mode");
-      setError("Frame capture is not available for IP camera mode. Use webcam for capturing.");
+    } else if (cameraSource === "ip") {
+      // Still blocked for capture unless same-origin/proxy
+      console.warn("IP camera capture not supported without a same-origin proxy/snapshot endpoint.");
     }
-  }, [isCapturing, hasCamera, ipCameraConnected, cameraSource, onImageCapture]);
+  }, [isCapturing, hasCamera, cameraSource, onImageCapture]);
 
-  const switchSource = (source: CameraSource) => {
-    // Stop webcam if switching away
-    if (cameraSource === "webcam" && videoRef.current?.srcObject) {
-      const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
-      tracks.forEach(track => track.stop());
-    }
-    setCameraSource(source);
-    setError(null);
-    setHasCamera(false);
-    setIpCameraConnected(false);
-  };
+  const ipSrcWithBuster =
+    ipMode === "mjpeg"
+      ? `${ipUrl}${ipUrl.includes("?") ? "&" : "?"}t=${reloadKey}`
+      : `${FIXED_IP_BASE}${FIXED_IP_BASE.includes("?") ? "&" : "?"}t=${reloadKey}`;
 
   return (
     <div className="space-y-3">
@@ -135,6 +175,7 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
           <Camera className="w-4 h-4 mr-2" />
           Webcam
         </Button>
+
         <Button
           variant={cameraSource === "ip" ? "default" : "outline"}
           size="sm"
@@ -146,18 +187,26 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
         </Button>
       </div>
 
-      {/* IP camera URL input */}
+      {/* IP controls (no input, fixed IP) */}
       {cameraSource === "ip" && (
-        <div className="flex gap-2">
-          <Input
-            value={ipCameraUrl}
-            onChange={(e) => setIpCameraUrl(e.target.value)}
-            placeholder="http://192.168.0.10/video"
-            className="flex-1 text-sm"
-          />
-          <Button size="sm" variant="outline" onClick={handleIpCameraConnect}>
-            <RefreshCw className="w-4 h-4" />
+        <div className="flex gap-2 items-center">
+          <Button size="sm" variant="outline" onClick={handleIpReload}>
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Reload
           </Button>
+
+          <a
+            href={FIXED_IP_BASE}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center text-sm underline"
+          >
+            Open Gateway <ExternalLink className="w-4 h-4 ml-1" />
+          </a>
+
+          <div className="ml-auto text-xs text-muted-foreground">
+            {ipMode === "mjpeg" ? `Trying stream: ${ipTryIndex + 1}/${MJPEG_CANDIDATES.length}` : "Gateway mode"}
+          </div>
         </div>
       )}
 
@@ -169,28 +218,31 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
       ) : (
         <div className="relative w-full aspect-video bg-foreground/90 rounded-lg overflow-hidden border border-border">
           {cameraSource === "webcam" ? (
-            <video
-              ref={videoRef}
-              autoPlay
-              playsInline
-              muted
+            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+          ) : ipMode === "mjpeg" ? (
+            <img
+              src={ipSrcWithBuster}
               className="w-full h-full object-cover"
+              onLoad={handleIpLoad}
+              onError={handleMjpegError}
+              alt="IP Camera Stream"
             />
           ) : (
             <iframe
               ref={iframeRef}
-              src={ipCameraUrl}
-              title="IP Camera Stream"
-              onLoad={handleIframeLoad}
+              src={ipSrcWithBuster}
+              title="IP Camera Gateway"
+              onLoad={handleIpLoad}
+              // iframe onError is unreliable, but keep it
               onError={handleIframeError}
               className="w-full h-full border-0"
-              allow="camera; microphone"
             />
           )}
+
           <canvas ref={canvasRef} className="hidden" />
-          
-          {/* Loading state */}
-          {((cameraSource === "webcam" && !hasCamera) || (cameraSource === "ip" && !ipCameraConnected)) && !error && (
+
+          {/* Loading overlay */}
+          {((cameraSource === "webcam" && !hasCamera) || (cameraSource === "ip" && !ipConnected)) && !error && (
             <div className="absolute inset-0 flex items-center justify-center bg-muted">
               <p className="text-muted-foreground">
                 {cameraSource === "webcam" ? "Loading camera..." : "Connecting to IP camera..."}
