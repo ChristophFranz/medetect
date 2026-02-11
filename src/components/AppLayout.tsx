@@ -29,7 +29,7 @@ const AppLayout = ({
 }: AppLayoutProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-background">
-      <div className="w-full max-w-4xl bg-card/50 rounded-lg shadow-lg overflow-hidden border border-border flex flex-col">
+      <div className="w-full max-w-4xl h-[85vh] bg-card/50 rounded-lg shadow-lg overflow-hidden border border-border flex flex-col">
         <AppHeader 
           showNavigation={showNavigation}
           activeTab={activeTab}
@@ -40,7 +40,7 @@ const AppLayout = ({
           showBack={showBack}
           backTo={backTo}
         />
-        <div className="p-6 md:p-8 flex-1">
+        <div className="p-6 md:p-8 flex-1 overflow-auto">
           {children}
         </div>
         {showFooter && <AppFooter userName={userName} />}
