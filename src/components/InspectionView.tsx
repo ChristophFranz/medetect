@@ -29,7 +29,7 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
-  const { signalReady, signalCapturedThenReady, signalCaptured, cancelPending } = useAudioCues();
+  const { signalReady, signalCapturedThenReady, signalCaptured, signalInspectionComplete, cancelPending } = useAudioCues();
   const hasPlayedReadyRef = useRef(false);
 
   const handleCameraReady = useCallback((ready: boolean) => {
@@ -83,8 +83,7 @@ const InspectionView = () => {
       hasPlayedReadyRef.current = true;
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
-      signalCaptured(); // just captured sound, no countdown since we're saving
-      // Will trigger save via the saveCase function
+      signalInspectionComplete();
       saveCase(layer1Image!, imageData);
     }
   };

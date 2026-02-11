@@ -30,6 +30,10 @@ export function useAudioCues() {
     }, delaySec * 1000);
   }, []);
 
+  const signalInspectionComplete = useCallback(() => {
+    speak("Inspection successful, analysing tools");
+  }, []);
+
   const cancelPending = useCallback(() => {
     if (countdownRef.current) {
       clearTimeout(countdownRef.current);
@@ -37,5 +41,5 @@ export function useAudioCues() {
     }
   }, []);
 
-  return { signalReady, signalCaptured, signalCapturedThenReady, cancelPending };
+  return { signalReady, signalCaptured, signalCapturedThenReady, signalInspectionComplete, cancelPending };
 }
