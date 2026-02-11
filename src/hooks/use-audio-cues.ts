@@ -1,18 +1,30 @@
 import { useCallback, useRef } from "react";
 
-function speak(text: string) {
-  if (!("speechSynthesis" in window)) return;
+function speak(text: string, onEnd?: () => void) {
+  if (!("speechSynthesis" in window)) {
+    onEnd?.();
+    return;
+  }
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 1.0;
   utterance.pitch = 1.0;
   utterance.volume = 1.0;
+  if (onEnd) {
+    utterance.onend = () => onEnd();
+  }
   window.speechSynthesis.speak(utterance);
 }
 
 export type PositionContext = "layer1" | "layer2" | "recapture";
 
-export function useAudioCues() {
+interface UseAudioCuesOptions {
+  onReadyToCapture?: () => void;
+}
+
+export function useAudioCues(options?: UseAudioCuesOptions) {
   const countdownRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const onReadyRef = useRef(options?.onReadyToCapture);
+  onReadyRef.current = options?.onReadyToCapture;
 
   /** Speak positioning prompt, then "Ready to capture image" after delaySec */
   const signalPosition = useCallback((context: PositionContext, delaySec = 5) => {
@@ -25,7 +37,10 @@ export function useAudioCues() {
 
     speak(msg);
     countdownRef.current = setTimeout(() => {
-      speak("Ready to capture image");
+      speak("Ready to capture image", () => {
+        // After TTS finishes, signal that mic should be active
+        onReadyRef.current?.();
+      });
       countdownRef.current = null;
     }, delaySec * 1000);
   }, []);

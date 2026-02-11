@@ -29,7 +29,13 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
-  const { signalPosition, signalCaptured, signalInspectionComplete, cancelPending } = useAudioCues();
+  const startListeningRef = useRef<(() => void) | null>(null);
+  const { signalPosition, signalCaptured, signalInspectionComplete, cancelPending } = useAudioCues({
+    onReadyToCapture: () => {
+      // Restart speech recognition after TTS finishes
+      startListeningRef.current?.();
+    },
+  });
   const hasPlayedReadyRef = useRef(false);
 
   const handleCameraReady = useCallback((ready: boolean) => {
@@ -168,10 +174,15 @@ const InspectionView = () => {
   // Voice command support - enabled whenever camera is ready or in complete state
   const voiceEnabled = (isCameraReady && showCamera) || captureStep === "complete";
   
-  const { isListening, isSupported, transcript, isCommandMatch } = useVoiceCommand({
+  const { isListening, isSupported, transcript, isCommandMatch, startListening } = useVoiceCommand({
     commands: voiceCommands,
     enabled: voiceEnabled,
   });
+
+  // Keep ref in sync so audio cues can restart recognition
+  useEffect(() => {
+    startListeningRef.current = startListening;
+  }, [startListening]);
 
 
   const getPromptMessage = () => {
