@@ -19,12 +19,15 @@ export type PositionContext = "layer1" | "layer2" | "recapture";
 
 interface UseAudioCuesOptions {
   onReadyToCapture?: () => void;
+  onCapturedDone?: () => void;
 }
 
 export function useAudioCues(options?: UseAudioCuesOptions) {
   const countdownRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const onReadyRef = useRef(options?.onReadyToCapture);
   onReadyRef.current = options?.onReadyToCapture;
+  const onCapturedDoneRef = useRef(options?.onCapturedDone);
+  onCapturedDoneRef.current = options?.onCapturedDone;
 
   /** Speak positioning prompt, then "Ready to capture image" after delaySec */
   const signalPosition = useCallback((context: PositionContext, delaySec = 5) => {
@@ -46,7 +49,9 @@ export function useAudioCues(options?: UseAudioCuesOptions) {
   }, []);
 
   const signalCaptured = useCallback(() => {
-    speak("Image captured");
+    speak("Image captured", () => {
+      onCapturedDoneRef.current?.();
+    });
   }, []);
 
   const signalInspectionComplete = useCallback(() => {
