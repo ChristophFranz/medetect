@@ -76,22 +76,22 @@ const Selection = () => {
     >
       <div className="flex flex-col items-center justify-center gap-8 animate-fade-in flex-1">
         <div className="text-center">
-          <h1 className="text-2xl font-semibold text-foreground mb-2">
+          <h1 className="text-3xl font-semibold text-foreground mb-3">
             Welcome, {userName}
           </h1>
-          <p className="text-muted-foreground">Please select an option to continue</p>
+          <p className="text-lg text-muted-foreground">Please select an option to continue</p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-6">
+        <div className="flex flex-col sm:flex-row gap-8">
           {canAccessInspection && (
             <Button
               variant="outline"
               size="lg"
               onClick={() => handleSelection("inspection")}
-              className="flex flex-col items-center gap-4 h-auto py-8 px-12 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
+              className="flex flex-col items-center gap-5 h-auto py-12 px-16 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
             >
-              <Camera size={48} className="text-accent" />
-              <span className="text-lg font-medium">Inspection System</span>
+              <Camera size={64} className="text-accent" />
+              <span className="text-xl font-medium">Inspection System</span>
             </Button>
           )}
           
@@ -100,10 +100,10 @@ const Selection = () => {
               variant="outline"
               size="lg"
               onClick={() => handleSelection("database")}
-              className="flex flex-col items-center gap-4 h-auto py-8 px-12 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
+              className="flex flex-col items-center gap-5 h-auto py-12 px-16 bg-card hover:bg-accent/10 border-2 hover:border-accent transition-all"
             >
-              <Database size={48} className="text-accent" />
-              <span className="text-lg font-medium">Database Access</span>
+              <Database size={64} className="text-accent" />
+              <span className="text-xl font-medium">Database Access</span>
             </Button>
           )}
         </div>
