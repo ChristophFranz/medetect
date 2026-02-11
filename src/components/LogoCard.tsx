@@ -36,22 +36,22 @@ const LogoCard = ({ showNfcInput = false }: LogoCardProps) => {
   }, [nfcValue, navigate]);
 
   return (
-    <div className="flex flex-col items-center gap-6 p-8 bg-card rounded-lg border border-border shadow-sm animate-slide-up">
-      <div className="flex flex-col items-center justify-center w-32 h-24 border-2 border-dashed border-muted-foreground/30 rounded-md">
-        <span className="text-lg font-semibold text-foreground">MEDetect</span>
-        <span className="text-sm text-muted-foreground">Logo</span>
+    <div className="flex flex-col items-center gap-8 p-12 bg-card rounded-lg border border-border shadow-sm animate-slide-up flex-1 justify-center min-w-[280px]">
+      <div className="flex flex-col items-center justify-center w-48 h-36 border-2 border-dashed border-muted-foreground/30 rounded-md">
+        <span className="text-2xl font-semibold text-foreground">MEDetect</span>
+        <span className="text-base text-muted-foreground">Logo</span>
       </div>
       
       {showNfcInput && (
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-sm text-muted-foreground">Scan NFC tag to login</p>
+        <div className="flex flex-col items-center gap-3">
+          <p className="text-base text-muted-foreground">Scan NFC tag to login</p>
           <Input
             ref={inputRef}
             type="text"
             value={nfcValue}
             onChange={(e) => setNfcValue(e.target.value)}
             placeholder="Awaiting NFC scan..."
-            className="min-w-[200px] text-center"
+            className="min-w-[260px] text-center text-base h-11"
             autoFocus
           />
         </div>
