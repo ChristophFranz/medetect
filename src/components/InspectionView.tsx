@@ -29,7 +29,7 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
-  const { signalReady, signalCapturedThenReady, signalCaptured, signalInspectionComplete, signalRecapture, cancelPending } = useAudioCues();
+  const { signalPosition, signalCaptured, signalInspectionComplete, cancelPending } = useAudioCues();
   const hasPlayedReadyRef = useRef(false);
 
   const handleCameraReady = useCallback((ready: boolean) => {
@@ -44,13 +44,14 @@ const InspectionView = () => {
   useEffect(() => {
     if (isCameraReady && showCamera) {
       if (!hasPlayedReadyRef.current) {
-        signalReady();
+        const context = recaptureMode ? "recapture" : captureStep === "layer2" ? "layer2" : "layer1";
+        signalPosition(context);
         hasPlayedReadyRef.current = true;
       }
     } else {
       hasPlayedReadyRef.current = false;
     }
-  }, [isCameraReady, showCamera, signalReady]);
+  }, [isCameraReady, showCamera, signalPosition, captureStep, recaptureMode]);
 
   // Cleanup pending timers on unmount
   useEffect(() => cancelPending, [cancelPending]);
@@ -61,26 +62,21 @@ const InspectionView = () => {
     if (recaptureMode === "layer1") {
       setLayer1Image(imageData);
       setRecaptureMode(null);
-      // Play captured sound, then ready sound after 5s
-      signalCapturedThenReady(5);
-      hasPlayedReadyRef.current = true; // prevent double ready sound
+      signalCaptured();
       return;
     }
     
     if (recaptureMode === "layer2") {
       setLayer2Image(imageData);
       setRecaptureMode(null);
-      signalCapturedThenReady(5);
-      hasPlayedReadyRef.current = true;
+      signalCaptured();
       return;
     }
     
     if (captureStep === "layer1") {
       setLayer1Image(imageData);
       setCaptureStep("layer2");
-      // Captured layer 1 → play captured sound, then ready sound after 5s for layer 2
-      signalCapturedThenReady(5);
-      hasPlayedReadyRef.current = true;
+      signalCaptured();
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
       signalInspectionComplete();
@@ -126,7 +122,6 @@ const InspectionView = () => {
 
   const handleRecapture = (layer: "layer1" | "layer2") => {
     setRecaptureMode(layer);
-    signalRecapture();
   };
 
   const cancelRecapture = () => {
