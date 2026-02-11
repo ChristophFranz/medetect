@@ -29,7 +29,7 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
-  const { signalReady, signalCapturedThenReady, signalCaptured, signalInspectionComplete, cancelPending } = useAudioCues();
+  const { signalReady, signalCapturedThenReady, signalCaptured, signalInspectionComplete, signalRecapture, cancelPending } = useAudioCues();
   const hasPlayedReadyRef = useRef(false);
 
   const handleCameraReady = useCallback((ready: boolean) => {
@@ -126,6 +126,7 @@ const InspectionView = () => {
 
   const handleRecapture = (layer: "layer1" | "layer2") => {
     setRecaptureMode(layer);
+    signalRecapture();
   };
 
   const cancelRecapture = () => {
