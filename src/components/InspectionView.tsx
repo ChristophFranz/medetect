@@ -264,20 +264,20 @@ const InspectionView = () => {
                 )}
                 
                 {/* Voice status indicator */}
-                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium shrink-0 ${
+                <div className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-semibold shrink-0 shadow-lg backdrop-blur-sm transition-colors ${
                   isListening 
-                    ? "bg-green-500/90 text-white" 
-                    : "bg-black/60 text-white/70"
+                    ? "bg-green-500/90 text-white ring-2 ring-green-400/50" 
+                    : "bg-black/70 text-white/70"
                 }`}>
                   {isListening ? (
                     <>
-                      <Mic className="w-3.5 h-3.5 animate-pulse" />
-                      Voice active
+                      <Mic className="w-5 h-5 animate-pulse" />
+                      Voice Active
                     </>
                   ) : (
                     <>
-                      <MicOff className="w-3.5 h-3.5" />
-                      Voice off
+                      <MicOff className="w-5 h-5" />
+                      Voice Off
                     </>
                   )}
                 </div>
