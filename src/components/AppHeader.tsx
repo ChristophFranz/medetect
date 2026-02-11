@@ -48,7 +48,7 @@ const AppHeader = ({
   };
 
   return (
-    <header className="w-full bg-header rounded-t-lg flex items-center justify-between px-4 py-2">
+    <header className="w-full bg-header rounded-t-lg flex items-center justify-between px-4 py-2 min-h-[44px]">
       <div className="flex items-center gap-2">
         {showBack && (
           <Button
