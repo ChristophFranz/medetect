@@ -231,7 +231,7 @@ const InspectionView = () => {
             />
             {/* Layer 1 thumbnail overlay when capturing layer 2 (not when recapturing layer 1) */}
             {captureStep === "layer2" && layer1Image && recaptureMode !== "layer1" && (
-              <div className="absolute top-3 left-3 w-24 h-18 rounded-md overflow-hidden border-2 border-primary shadow-lg">
+              <div className="absolute top-3 left-3 w-20 h-14 rounded-md overflow-hidden border-2 border-primary shadow-lg z-10">
                 <img 
                   src={layer1Image} 
                   alt="Layer 1 captured" 
@@ -372,8 +372,8 @@ const InspectionView = () => {
         </div>
       </div>
       
-      {/* Right side - Analysis status, prompt box, and captured images */}
-      <div className="w-full md:w-80 space-y-4 flex flex-col">
+      {/* Right side - Analysis status and voice commands */}
+      <div className="w-full md:w-56 shrink-0 space-y-4 flex flex-col">
         <AnalysisStatus 
           status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
           capturedImage={layer2Image || layer1Image} 
@@ -429,25 +429,12 @@ const InspectionView = () => {
           )}
         </Card>
 
-        {/* Saving/Complete status prompt */}
-        {(captureStep === "saving" || captureStep === "complete") && (
-          <Card className={`p-4 ${captureStep === "complete" ? "bg-green-500/10 border-green-500/30" : "bg-primary/10 border-primary/30"}`}>
+        {/* Saving spinner */}
+        {captureStep === "saving" && (
+          <Card className="p-4 bg-primary/10 border-primary/30">
             <div className="flex items-center gap-3">
-              <div className={`p-2 rounded-full ${captureStep === "complete" ? "bg-green-500/20" : "bg-primary/20"}`}>
-                {captureStep === "complete" ? (
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                ) : (
-                  <Loader2 className="w-5 h-5 text-primary animate-spin" />
-                )}
-              </div>
-              <div className="flex-1">
-                <p className="font-medium text-foreground text-sm">{getPromptMessage()}</p>
-                {captureStep === "complete" && savedCase && (
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Patient: {savedCase.patient_name}
-                  </p>
-                )}
-              </div>
+              <Loader2 className="w-5 h-5 text-primary animate-spin" />
+              <p className="font-medium text-foreground text-sm">Saving case…</p>
             </div>
           </Card>
         )}
