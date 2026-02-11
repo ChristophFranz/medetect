@@ -11,7 +11,7 @@ interface CameraViewProps {
   onCameraReady?: (ready: boolean) => void;
 }
 
-const FIXED_IP_BASE = "http://192.168.1.10";
+const FIXED_IP_BASE = "http://192.168.0.10/";
 
 const MJPEG_CANDIDATES = [
   `${FIXED_IP_BASE}/mjpeg`,
