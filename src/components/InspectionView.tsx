@@ -63,13 +63,18 @@ const InspectionView = () => {
       setLayer1Image(imageData);
       setRecaptureMode(null);
       signalCaptured();
+      // After recapturing layer1, move to layer2 audio
+      hasPlayedReadyRef.current = false;
+      setTimeout(() => signalPosition("layer2"), 1500);
+      hasPlayedReadyRef.current = true;
       return;
     }
     
     if (recaptureMode === "layer2") {
       setLayer2Image(imageData);
       setRecaptureMode(null);
-      signalCaptured();
+      signalInspectionComplete();
+      saveCase(layer1Image!, imageData);
       return;
     }
     
@@ -77,6 +82,9 @@ const InspectionView = () => {
       setLayer1Image(imageData);
       setCaptureStep("layer2");
       signalCaptured();
+      // Move to layer2 audio after a short pause
+      hasPlayedReadyRef.current = true;
+      setTimeout(() => signalPosition("layer2"), 1500);
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
       signalInspectionComplete();
