@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { Camera, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
 import { Card } from "./ui/card";
 import { useVoiceCommand } from "@/hooks/use-voice-command";
+import { useAudioCues } from "@/hooks/use-audio-cues";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
@@ -28,6 +29,8 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
+  const { signalReady, signalCapturedThenReady, signalCaptured, cancelPending } = useAudioCues();
+  const hasPlayedReadyRef = useRef(false);
 
   const handleCameraReady = useCallback((ready: boolean) => {
     setIsCameraReady(ready);
@@ -35,26 +38,52 @@ const InspectionView = () => {
 
   const [recaptureMode, setRecaptureMode] = useState<"layer1" | "layer2" | null>(null);
 
+  // Play "ready" sound when camera becomes active and ready
+  const showCamera = captureStep === "layer1" || captureStep === "layer2" || recaptureMode !== null;
+
+  useEffect(() => {
+    if (isCameraReady && showCamera) {
+      if (!hasPlayedReadyRef.current) {
+        signalReady();
+        hasPlayedReadyRef.current = true;
+      }
+    } else {
+      hasPlayedReadyRef.current = false;
+    }
+  }, [isCameraReady, showCamera, signalReady]);
+
+  // Cleanup pending timers on unmount
+  useEffect(() => cancelPending, [cancelPending]);
+
   const handleImageCapture = (imageData: string) => {
     setIsCapturing(false);
     
     if (recaptureMode === "layer1") {
       setLayer1Image(imageData);
       setRecaptureMode(null);
+      // Play captured sound, then ready sound after 5s
+      signalCapturedThenReady(5);
+      hasPlayedReadyRef.current = true; // prevent double ready sound
       return;
     }
     
     if (recaptureMode === "layer2") {
       setLayer2Image(imageData);
       setRecaptureMode(null);
+      signalCapturedThenReady(5);
+      hasPlayedReadyRef.current = true;
       return;
     }
     
     if (captureStep === "layer1") {
       setLayer1Image(imageData);
       setCaptureStep("layer2");
+      // Captured layer 1 → play captured sound, then ready sound after 5s for layer 2
+      signalCapturedThenReady(5);
+      hasPlayedReadyRef.current = true;
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
+      signalCaptured(); // just captured sound, no countdown since we're saving
       // Will trigger save via the saveCase function
       saveCase(layer1Image!, imageData);
     }
@@ -115,8 +144,7 @@ const InspectionView = () => {
     "capture": handleCapture,
   }), [handleCapture]);
 
-  // Voice command support
-  const showCamera = captureStep === "layer1" || captureStep === "layer2" || recaptureMode !== null;
+  // Voice command support (showCamera defined above)
   
   const { isListening, isSupported, transcript, isCommandMatch } = useVoiceCommand({
     commands: voiceCommands,
@@ -151,7 +179,7 @@ const InspectionView = () => {
     return null;
   };
 
-  // showCamera already defined above with voice commands
+  
 
   return (
     <div className="flex flex-col md:flex-row gap-6 animate-fade-in">
