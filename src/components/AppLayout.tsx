@@ -43,7 +43,7 @@ const AppLayout = ({
         <div className="p-6 md:p-8 flex-1 overflow-auto flex flex-col">
           {children}
         </div>
-        {showFooter && <AppFooter userName={userName} />}
+        <AppFooter userName={userName} />
       </div>
     </div>
   );
