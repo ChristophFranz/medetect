@@ -74,7 +74,7 @@ const Selection = () => {
       userTags={userTags}
       onLogout={handleLogout}
     >
-      <div className="flex flex-col items-center justify-center gap-8 animate-fade-in">
+      <div className="flex flex-col items-center justify-center gap-8 animate-fade-in flex-1">
         <div className="text-center">
           <h1 className="text-2xl font-semibold text-foreground mb-2">
             Welcome, {userName}

@@ -192,7 +192,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   };
 
   return (
-    <div className="flex h-full animate-fade-in">
+    <div className="flex h-full flex-1 animate-fade-in">
       {/* Collapsible Sidebar */}
       <div
         className={`relative flex transition-all duration-300 ease-in-out ${
@@ -234,7 +234,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
 
       {/* Main Table Area */}
       <div className="flex-1 ml-4 flex flex-col">
-        <div className="bg-card border border-border rounded-lg overflow-hidden flex flex-col" style={{ maxHeight: '520px' }}>
+        <div className="bg-card border border-border rounded-lg overflow-hidden flex flex-col flex-1">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />

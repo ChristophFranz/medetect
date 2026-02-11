@@ -58,7 +58,7 @@ const Login = () => {
 
   return (
     <AppLayout>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8 animate-fade-in">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8 animate-fade-in flex-1">
         <LogoCard showNfcInput={!user && !loading} />
         {loading && <p className="text-muted-foreground">Looking up user...</p>}
         {notFound && (
