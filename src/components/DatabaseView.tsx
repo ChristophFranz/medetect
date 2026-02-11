@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronRight, ChevronLeft, Eye, Download, Mail, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
@@ -14,6 +14,16 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DatabaseFilters from "./DatabaseFilters";
 import CaseDetailDialog from "./CaseDetailDialog";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from "./ui/pagination";
+import { ScrollArea } from "./ui/scroll-area";
 
 interface InspectionCase {
   id: string;
@@ -33,6 +43,8 @@ interface DatabaseViewProps {
   userTags: UserTag[];
 }
 
+const ITEMS_PER_PAGE = 10;
+
 const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [cases, setCases] = useState<InspectionCase[]>([]);
@@ -43,12 +55,24 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [selectedCase, setSelectedCase] = useState<InspectionCase | null>(null);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
   const [downloadingCaseId, setDownloadingCaseId] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
 
   const canAccessToolsClassification = userTags.includes("administrator") || userTags.includes("medetect_team");
+
+  const totalPages = Math.max(1, Math.ceil(cases.length / ITEMS_PER_PAGE));
+  const paginatedCases = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return cases.slice(start, start + ITEMS_PER_PAGE);
+  }, [cases, currentPage]);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedUserId, selectedDate]);
 
   const fetchCases = useCallback(async () => {
     setLoading(true);
@@ -209,8 +233,8 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
       </div>
 
       {/* Main Table Area */}
-      <div className="flex-1 ml-4">
-        <div className="bg-card border border-border rounded-lg overflow-hidden">
+      <div className="flex-1 ml-4 flex flex-col">
+        <div className="bg-card border border-border rounded-lg overflow-hidden flex flex-col" style={{ maxHeight: '520px' }}>
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
@@ -221,67 +245,110 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
               <p className="text-xs mt-1">Cases will appear here after completing inspections</p>
             </div>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-muted/50">
-                  <TableHead className="w-16 text-center">No.</TableHead>
-                  <TableHead>Case No. (Patient)</TableHead>
-                  <TableHead className="w-32 text-center">Date</TableHead>
-                  <TableHead className="w-28 text-center">Time</TableHead>
-                  <TableHead className="w-28 text-center">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {cases.map((caseItem, index) => (
-                  <TableRow key={caseItem.id} className="hover:bg-muted/30">
-                    <TableCell className="text-center font-medium">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell>
-                      Case {caseItem.case_number} ({caseItem.patient_name})
-                    </TableCell>
-                    <TableCell className="text-center">{formatDate(caseItem.created_at)}</TableCell>
-                    <TableCell className="text-center">{formatTime(caseItem.created_at)}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center justify-center gap-1">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7"
-                          title="View Case"
-                          onClick={() => handleViewCase(caseItem)}
-                        >
-                          <Eye className="w-4 h-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7"
-                          title="Download Case"
-                          onClick={() => handleDownloadCase(caseItem)}
-                          disabled={downloadingCaseId === caseItem.id}
-                        >
-                          {downloadingCaseId === caseItem.id ? (
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                          ) : (
-                            <Download className="w-4 h-4" />
-                          )}
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-7 w-7"
-                          title="Email Case"
-                          onClick={() => handleEmailCase(caseItem)}
-                        >
-                          <Mail className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <>
+              <ScrollArea className="flex-1">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-muted/50">
+                      <TableHead className="w-16 text-center">No.</TableHead>
+                      <TableHead>Case No. (Patient)</TableHead>
+                      <TableHead className="w-32 text-center">Date</TableHead>
+                      <TableHead className="w-28 text-center">Time</TableHead>
+                      <TableHead className="w-28 text-center">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {paginatedCases.map((caseItem, index) => (
+                      <TableRow key={caseItem.id} className="hover:bg-muted/30">
+                        <TableCell className="text-center font-medium">
+                          {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
+                        </TableCell>
+                        <TableCell>
+                          Case {caseItem.case_number} ({caseItem.patient_name})
+                        </TableCell>
+                        <TableCell className="text-center">{formatDate(caseItem.created_at)}</TableCell>
+                        <TableCell className="text-center">{formatTime(caseItem.created_at)}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center justify-center gap-1">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                              title="View Case"
+                              onClick={() => handleViewCase(caseItem)}
+                            >
+                              <Eye className="w-4 h-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                              title="Download Case"
+                              onClick={() => handleDownloadCase(caseItem)}
+                              disabled={downloadingCaseId === caseItem.id}
+                            >
+                              {downloadingCaseId === caseItem.id ? (
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                              ) : (
+                                <Download className="w-4 h-4" />
+                              )}
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-7 w-7"
+                              title="Email Case"
+                              onClick={() => handleEmailCase(caseItem)}
+                            >
+                              <Mail className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </ScrollArea>
+              {totalPages > 1 && (
+                <div className="border-t border-border px-4 py-2 flex items-center justify-between text-xs text-muted-foreground">
+                  <span>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, cases.length)} of {cases.length}</span>
+                  <Pagination className="mx-0 w-auto">
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious
+                          onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                          className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        />
+                      </PaginationItem>
+                      {Array.from({ length: totalPages }, (_, i) => i + 1)
+                        .filter(page => page === 1 || page === totalPages || Math.abs(page - currentPage) <= 1)
+                        .map((page, idx, arr) => (
+                          <span key={page} className="flex items-center">
+                            {idx > 0 && arr[idx - 1] !== page - 1 && (
+                              <PaginationItem><PaginationEllipsis /></PaginationItem>
+                            )}
+                            <PaginationItem>
+                              <PaginationLink
+                                isActive={page === currentPage}
+                                onClick={() => setCurrentPage(page)}
+                                className="cursor-pointer"
+                              >
+                                {page}
+                              </PaginationLink>
+                            </PaginationItem>
+                          </span>
+                        ))}
+                      <PaginationItem>
+                        <PaginationNext
+                          onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                          className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
