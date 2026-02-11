@@ -30,10 +30,18 @@ const InspectionView = () => {
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
   const startListeningRef = useRef<(() => void) | null>(null);
+  const stopListeningRef = useRef<(() => void) | null>(null);
+  const [micActive, setMicActive] = useState(false);
   const { signalPosition, signalCaptured, signalInspectionComplete, cancelPending } = useAudioCues({
     onReadyToCapture: () => {
-      // Restart speech recognition after TTS finishes
+      // Turn mic ON after "Ready to capture image" TTS finishes
+      setMicActive(true);
       startListeningRef.current?.();
+    },
+    onCapturedDone: () => {
+      // Turn mic OFF after "Image captured" TTS finishes
+      setMicActive(false);
+      stopListeningRef.current?.();
     },
   });
   const hasPlayedReadyRef = useRef(false);
@@ -171,18 +179,19 @@ const InspectionView = () => {
     "cancel": cancelRecapture,
   }), [handleCapture, handleRecaptureTop, handleRecaptureSecond, handleReset, cancelRecapture]);
 
-  // Voice command support - enabled whenever camera is ready or in complete state
-  const voiceEnabled = (isCameraReady && showCamera) || captureStep === "complete";
+  // Voice command support - controlled by audio cue lifecycle
+  const voiceEnabled = micActive;
   
-  const { isListening, isSupported, transcript, isCommandMatch, startListening } = useVoiceCommand({
+  const { isListening, isSupported, transcript, isCommandMatch, startListening, stopListening } = useVoiceCommand({
     commands: voiceCommands,
     enabled: voiceEnabled,
   });
 
-  // Keep ref in sync so audio cues can restart recognition
+  // Keep refs in sync so audio cues can control recognition
   useEffect(() => {
     startListeningRef.current = startListening;
-  }, [startListening]);
+    stopListeningRef.current = stopListening;
+  }, [startListening, stopListening]);
 
 
   const getPromptMessage = () => {
