@@ -20,8 +20,9 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
   
   // Camera source state
   const [cameraSource, setCameraSource] = useState<CameraSource>("webcam");
-  const [ipCameraUrl, setIpCameraUrl] = useState("http://192.168.0.10/video");
+  const [ipCameraUrl, setIpCameraUrl] = useState("http://192.168.0.10");
   const [ipCameraConnected, setIpCameraConnected] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     const isReady = cameraSource === "webcam" ? hasCamera : ipCameraConnected;
@@ -64,15 +65,23 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
   const handleIpCameraConnect = () => {
     setIpCameraConnected(false);
     setError(null);
-    // The img onLoad/onError will handle the connection status
+    // Force iframe reload by briefly clearing and resetting
+    if (iframeRef.current) {
+      iframeRef.current.src = "";
+      setTimeout(() => {
+        if (iframeRef.current) {
+          iframeRef.current.src = ipCameraUrl;
+        }
+      }, 100);
+    }
   };
 
-  const handleIpCameraLoad = () => {
+  const handleIframeLoad = () => {
     setIpCameraConnected(true);
     setError(null);
   };
 
-  const handleIpCameraError = () => {
+  const handleIframeError = () => {
     setIpCameraConnected(false);
     setError("Failed to connect to IP camera. Check URL and network connection.");
   };
@@ -93,18 +102,11 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
         const imageData = canvas.toDataURL("image/jpeg");
         onImageCapture?.(imageData);
       }
-    } else if (cameraSource === "ip" && imgRef.current && canvasRef.current && ipCameraConnected) {
-      const canvas = canvasRef.current;
-      const img = imgRef.current;
-      const ctx = canvas.getContext("2d");
-      
-      if (ctx) {
-        canvas.width = img.naturalWidth || 640;
-        canvas.height = img.naturalHeight || 480;
-        ctx.drawImage(img, 0, 0);
-        const imageData = canvas.toDataURL("image/jpeg");
-        onImageCapture?.(imageData);
-      }
+    } else if (cameraSource === "ip" && ipCameraConnected) {
+      // Cannot capture frames from cross-origin iframe
+      // Notify user that capture is not supported for IP camera iframe mode
+      console.warn("Frame capture is not supported for IP camera iframe mode");
+      setError("Frame capture is not available for IP camera mode. Use webcam for capturing.");
     }
   }, [isCapturing, hasCamera, ipCameraConnected, cameraSource, onImageCapture]);
 
@@ -175,13 +177,14 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
               className="w-full h-full object-cover"
             />
           ) : (
-            <img
-              ref={imgRef}
+            <iframe
+              ref={iframeRef}
               src={ipCameraUrl}
-              alt="IP Camera Stream"
-              onLoad={handleIpCameraLoad}
-              onError={handleIpCameraError}
-              className="w-full h-full object-cover"
+              title="IP Camera Stream"
+              onLoad={handleIframeLoad}
+              onError={handleIframeError}
+              className="w-full h-full border-0"
+              allow="camera; microphone"
             />
           )}
           <canvas ref={canvasRef} className="hidden" />
