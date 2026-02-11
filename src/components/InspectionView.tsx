@@ -386,7 +386,7 @@ const InspectionView = () => {
               </p>
               <p className="text-xs text-muted-foreground mt-0.5">
                 {isListening 
-                  ? "Say: capture, recapture top, new inspection…" 
+                  ? "Listening for commands…" 
                   : !isSupported 
                     ? "Use Chrome for voice commands"
                     : voiceEnabled 
@@ -396,6 +396,17 @@ const InspectionView = () => {
               </p>
             </div>
           </div>
+          {isListening && (
+            <div className="mt-3 pt-3 border-t border-border/50 space-y-1.5">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Say:</p>
+              {["Capture", "Recapture top", "Recapture second", "New inspection"].map((cmd) => (
+                <div key={cmd} className="flex items-center gap-2 text-sm text-foreground/80">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                  <span>"{cmd}"</span>
+                </div>
+              ))}
+            </div>
+          )}
         </Card>
 
         {/* Saving/Complete status prompt */}
