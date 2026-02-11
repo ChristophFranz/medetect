@@ -128,37 +128,51 @@ const InspectionView = () => {
     }
   };
 
-  const handleRecapture = (layer: "layer1" | "layer2") => {
+  const handleRecapture = useCallback((layer: "layer1" | "layer2") => {
     setRecaptureMode(layer);
-  };
+  }, []);
 
-  const cancelRecapture = () => {
+  const cancelRecapture = useCallback(() => {
     setRecaptureMode(null);
-  };
+  }, []);
 
   const handleCapture = useCallback(() => {
     if (isCameraReady && showCamera) {
       setIsCapturing(true);
     }
-  }, [isCameraReady]);
+  }, [isCameraReady, showCamera]);
+
+  const handleReset = useCallback(() => {
+    setLayer1Image(null);
+    setLayer2Image(null);
+    setCaptureStep("layer1");
+  }, []);
+
+  const handleRecaptureTop = useCallback(() => {
+    if (layer1Image) handleRecapture("layer1");
+  }, [layer1Image, handleRecapture]);
+
+  const handleRecaptureSecond = useCallback(() => {
+    if (layer2Image) handleRecapture("layer2");
+  }, [layer2Image, handleRecapture]);
 
   // Memoize commands to prevent recreation on every render
   const voiceCommands = useMemo(() => ({
     "capture": handleCapture,
-  }), [handleCapture]);
+    "recapture top": handleRecaptureTop,
+    "recapture second": handleRecaptureSecond,
+    "new inspection": handleReset,
+    "cancel": cancelRecapture,
+  }), [handleCapture, handleRecaptureTop, handleRecaptureSecond, handleReset, cancelRecapture]);
 
-  // Voice command support (showCamera defined above)
+  // Voice command support - enabled whenever camera is ready or in complete state
+  const voiceEnabled = (isCameraReady && showCamera) || captureStep === "complete";
   
   const { isListening, isSupported, transcript, isCommandMatch } = useVoiceCommand({
     commands: voiceCommands,
-    enabled: isCameraReady && showCamera,
+    enabled: voiceEnabled,
   });
 
-  const handleReset = () => {
-    setLayer1Image(null);
-    setLayer2Image(null);
-    setCaptureStep("layer1");
-  };
 
   const getPromptMessage = () => {
     switch (captureStep) {
@@ -258,7 +272,7 @@ const InspectionView = () => {
                   {isListening ? (
                     <>
                       <Mic className="w-3.5 h-3.5 animate-pulse" />
-                      Say "Capture"
+                      Voice active
                     </>
                   ) : (
                     <>
