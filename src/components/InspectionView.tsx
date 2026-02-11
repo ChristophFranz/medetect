@@ -394,32 +394,43 @@ const InspectionView = () => {
           </Card>
         )}
 
-        {/* Voice command status */}
-        {isSupported && voiceEnabled && (
-          <Card className={`p-4 transition-colors ${
-            isListening 
-              ? "bg-green-500/10 border-green-500/40 ring-1 ring-green-400/30" 
+        {/* Voice command status - always visible */}
+        <Card className={`p-4 transition-colors ${
+          isListening 
+            ? "bg-green-500/10 border-green-500/40 ring-1 ring-green-400/30" 
+            : !isSupported
+              ? "bg-destructive/5 border-destructive/30"
               : "bg-muted/50 border-border"
-          }`}>
-            <div className="flex items-center gap-3">
-              <div className={`p-2 rounded-full ${isListening ? "bg-green-500/20" : "bg-muted"}`}>
-                {isListening ? (
-                  <Mic className="w-5 h-5 text-green-500 animate-pulse" />
-                ) : (
-                  <MicOff className="w-5 h-5 text-muted-foreground" />
-                )}
-              </div>
-              <div className="flex-1">
-                <p className={`font-medium text-sm ${isListening ? "text-green-600 dark:text-green-400" : "text-muted-foreground"}`}>
-                  {isListening ? "Voice Commands Active" : "Voice Commands Off"}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {isListening ? "Say a command: capture, recapture…" : "Microphone not available"}
-                </p>
-              </div>
+        }`}>
+          <div className="flex items-center gap-3">
+            <div className={`p-2.5 rounded-full ${
+              isListening ? "bg-green-500/20" : !isSupported ? "bg-destructive/10" : "bg-muted"
+            }`}>
+              {isListening ? (
+                <Mic className="w-6 h-6 text-green-500 animate-pulse" />
+              ) : (
+                <MicOff className="w-6 h-6 text-muted-foreground" />
+              )}
             </div>
-          </Card>
-        )}
+            <div className="flex-1">
+              <p className={`font-semibold text-sm ${
+                isListening ? "text-green-600 dark:text-green-400" : "text-muted-foreground"
+              }`}>
+                {isListening ? "🎙️ Voice Active" : !isSupported ? "🎙️ Voice Unavailable" : "🎙️ Voice Inactive"}
+              </p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                {isListening 
+                  ? "Say: capture, recapture top, new inspection…" 
+                  : !isSupported 
+                    ? "Use Chrome for voice commands"
+                    : voiceEnabled 
+                      ? "Waiting for microphone…" 
+                      : "Activate camera to enable voice"
+                }
+              </p>
+            </div>
+          </div>
+        </Card>
 
         {/* Saving/Complete status prompt */}
         {(captureStep === "saving" || captureStep === "complete") && (
