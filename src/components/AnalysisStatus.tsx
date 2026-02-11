@@ -7,7 +7,7 @@ interface AnalysisStatusProps {
 
 const AnalysisStatus = ({ status, capturedImage }: AnalysisStatusProps) => {
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-card rounded-lg border border-border min-h-[200px]">
+    <div className="flex flex-col items-center justify-center p-6 bg-card rounded-lg border border-border flex-1 min-h-[160px]">
       {status === "live" && (
         <div className="text-center animate-fade-in">
           <Video className="w-8 h-8 text-primary mx-auto mb-2" />

@@ -219,11 +219,11 @@ const InspectionView = () => {
   
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 animate-fade-in">
-      <div className="flex-1 space-y-4">
+    <div className="flex flex-col md:flex-row gap-6 animate-fade-in flex-1 min-h-0">
+      <div className="flex-1 flex flex-col space-y-4 min-h-0">
         {/* Camera or captured image display */}
         {showCamera ? (
-          <div className="relative">
+          <div className="relative flex-1 min-h-0">
             <CameraView 
               onImageCapture={handleImageCapture}
               isCapturing={isCapturing}
@@ -305,7 +305,7 @@ const InspectionView = () => {
             )}
           </div>
         ) : (
-          <div className="relative w-full aspect-video bg-muted rounded-lg overflow-hidden border border-border">
+          <div className="relative w-full flex-1 bg-muted rounded-lg overflow-hidden border border-border">
             <div className="grid grid-cols-2 h-full">
               {layer1Image && (
                 <div className="relative border-r border-border group">
@@ -373,7 +373,7 @@ const InspectionView = () => {
       </div>
       
       {/* Right side - Analysis status, prompt box, and captured images */}
-      <div className="w-full md:w-64 space-y-4">
+      <div className="w-full md:w-80 space-y-4 flex flex-col">
         <AnalysisStatus 
           status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
           capturedImage={layer2Image || layer1Image} 

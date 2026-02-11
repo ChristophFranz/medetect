@@ -117,7 +117,7 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
   const ipSrcWithBuster = `${FIXED_IP_URL}${FIXED_IP_URL.includes("?") ? "&" : "?"}t=${reloadKey}`;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col h-full">
       {/* Camera source toggle */}
       <div className="flex gap-2">
         <Button
@@ -160,11 +160,11 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
 
       {/* Camera view */}
       {error ? (
-        <div className="w-full h-64 bg-muted rounded-lg flex items-center justify-center border border-border">
+        <div className="w-full flex-1 min-h-[200px] bg-muted rounded-lg flex items-center justify-center border border-border">
           <p className="text-muted-foreground text-sm text-center px-4">{error}</p>
         </div>
       ) : (
-        <div className="relative w-full aspect-video bg-foreground/90 rounded-lg overflow-hidden border border-border">
+        <div className="relative w-full flex-1 min-h-[200px] bg-foreground/90 rounded-lg overflow-hidden border border-border">
           {cameraSource === "webcam" ? (
             <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
           ) : (
