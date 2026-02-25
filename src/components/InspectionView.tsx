@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
 import { Button } from "./ui/button";
-import { Camera, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
+import { ImagePlus, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
 import { Card } from "./ui/card";
 import { useVoiceCommand } from "@/hooks/use-voice-command";
 import { useAudioCues } from "@/hooks/use-audio-cues";
@@ -355,7 +355,7 @@ const InspectionView = () => {
         <div className="flex gap-2">
           {showCamera && isCameraReady && (
             <Button onClick={handleCapture} className="flex-1" disabled={isCapturing}>
-              <Camera className="w-4 h-4 mr-2" />
+              <ImagePlus className="w-4 h-4 mr-2" />
               {recaptureMode 
                 ? `Recapture ${recaptureMode === "layer1" ? "Top Layer" : "2nd Layer"}`
                 : captureStep === "layer1" 

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
-import { Camera, Globe, RefreshCw, ExternalLink } from "lucide-react";
+import { ImagePlus, Globe, RefreshCw, ExternalLink } from "lucide-react";
 
-type CameraSource = "webcam" | "ip";
+type CameraSource = "upload" | "ip";
 
 interface CameraViewProps {
   onImageCapture?: (imageData: string) => void;
@@ -13,51 +13,19 @@ interface CameraViewProps {
 const FIXED_IP_URL = "http://192.168.0.10/?page-id=0";
 
 const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: CameraViewProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [hasCamera, setHasCamera] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [cameraSource, setCameraSource] = useState<CameraSource>("webcam");
+  const [cameraSource, setCameraSource] = useState<CameraSource>("upload");
   const [ipConnected, setIpConnected] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    const isReady = cameraSource === "webcam" ? hasCamera : ipConnected;
+    const isReady = cameraSource === "upload" ? !!uploadedImage : ipConnected;
     onCameraReady?.(isReady);
-  }, [hasCamera, ipConnected, cameraSource, onCameraReady]);
-
-  // Webcam setup
-  useEffect(() => {
-    if (cameraSource !== "webcam") return;
-
-    const startCamera = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "environment" },
-        });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          setHasCamera(true);
-          setError(null);
-        }
-      } catch (err) {
-        console.error("Camera access denied:", err);
-        setError("Camera access denied or not available");
-        setHasCamera(false);
-      }
-    };
-
-    startCamera();
-
-    return () => {
-      if (videoRef.current?.srcObject) {
-        const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
-        tracks.forEach((track) => track.stop());
-      }
-    };
-  }, [cameraSource]);
+  }, [uploadedImage, ipConnected, cameraSource, onCameraReady]);
 
   // IP camera setup
   useEffect(() => {
@@ -84,35 +52,44 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
   };
 
   const switchSource = (source: CameraSource) => {
-    if (cameraSource === "webcam" && videoRef.current?.srcObject) {
-      const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
-      tracks.forEach((track) => track.stop());
-    }
     setCameraSource(source);
     setError(null);
-    setHasCamera(false);
+    setUploadedImage(null);
     setIpConnected(false);
   };
 
-  // Capture handling (webcam only)
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      setUploadedImage(result);
+      setError(null);
+    };
+    reader.onerror = () => {
+      setError("Failed to read the selected image.");
+    };
+    reader.readAsDataURL(file);
+    // Reset input so the same file can be re-selected
+    e.target.value = "";
+  };
+
+  const openFilePicker = () => {
+    fileInputRef.current?.click();
+  };
+
+  // Capture handling
   useEffect(() => {
     if (!isCapturing) return;
 
-    if (cameraSource === "webcam" && videoRef.current && canvasRef.current && hasCamera) {
-      const canvas = canvasRef.current;
-      const video = videoRef.current;
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        ctx.drawImage(video, 0, 0);
-        const imageData = canvas.toDataURL("image/jpeg");
-        onImageCapture?.(imageData);
-      }
+    if (cameraSource === "upload" && uploadedImage) {
+      onImageCapture?.(uploadedImage);
     } else if (cameraSource === "ip") {
       console.warn("IP camera capture not supported without a same-origin proxy/snapshot endpoint.");
     }
-  }, [isCapturing, hasCamera, cameraSource, onImageCapture]);
+  }, [isCapturing, uploadedImage, cameraSource, onImageCapture]);
 
   const ipSrcWithBuster = `${FIXED_IP_URL}${FIXED_IP_URL.includes("?") ? "&" : "?"}t=${reloadKey}`;
 
@@ -121,13 +98,13 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
       {/* Camera source toggle */}
       <div className="flex gap-2">
         <Button
-          variant={cameraSource === "webcam" ? "default" : "outline"}
+          variant={cameraSource === "upload" ? "default" : "outline"}
           size="sm"
-          onClick={() => switchSource("webcam")}
+          onClick={() => switchSource("upload")}
           className="flex-1"
         >
-          <Camera className="w-4 h-4 mr-2" />
-          Webcam
+          <ImagePlus className="w-4 h-4 mr-2" />
+          Upload Image
         </Button>
         <Button
           variant={cameraSource === "ip" ? "default" : "outline"}
@@ -139,6 +116,15 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
           IP Camera
         </Button>
       </div>
+
+      {/* Hidden file input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        onChange={handleFileSelect}
+        className="hidden"
+      />
 
       {/* IP controls */}
       {cameraSource === "ip" && (
@@ -158,15 +144,37 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
         </div>
       )}
 
-      {/* Camera view */}
+      {/* Camera/Upload view */}
       {error ? (
         <div className="w-full flex-1 min-h-[200px] bg-muted rounded-lg flex items-center justify-center border border-border">
           <p className="text-muted-foreground text-sm text-center px-4">{error}</p>
         </div>
       ) : (
         <div className="relative w-full flex-1 min-h-[200px] bg-foreground/90 rounded-lg overflow-hidden border border-border">
-          {cameraSource === "webcam" ? (
-            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+          {cameraSource === "upload" ? (
+            uploadedImage ? (
+              <div className="relative w-full h-full">
+                <img src={uploadedImage} alt="Uploaded" className="w-full h-full object-cover" />
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={openFilePicker}
+                  className="absolute bottom-3 right-3 shadow-lg"
+                >
+                  <ImagePlus className="w-4 h-4 mr-2" />
+                  Change
+                </Button>
+              </div>
+            ) : (
+              <div
+                onClick={openFilePicker}
+                className="w-full h-full flex flex-col items-center justify-center cursor-pointer hover:bg-muted/20 transition-colors"
+              >
+                <ImagePlus className="w-12 h-12 text-muted-foreground/60 mb-3" />
+                <p className="text-muted-foreground text-sm font-medium">Click to choose an image</p>
+                <p className="text-muted-foreground/60 text-xs mt-1">JPG, PNG, or other image formats</p>
+              </div>
+            )
           ) : (
             <iframe
               ref={iframeRef}
@@ -180,14 +188,10 @@ const CameraView = ({ onImageCapture, isCapturing = false, onCameraReady }: Came
             />
           )}
 
-          <canvas ref={canvasRef} className="hidden" />
-
-          {/* Loading overlay */}
-          {((cameraSource === "webcam" && !hasCamera) || (cameraSource === "ip" && !ipConnected)) && !error && (
+          {/* Loading overlay for IP */}
+          {cameraSource === "ip" && !ipConnected && !error && (
             <div className="absolute inset-0 flex items-center justify-center bg-muted">
-              <p className="text-muted-foreground">
-                {cameraSource === "webcam" ? "Loading camera..." : "Connecting to IP camera..."}
-              </p>
+              <p className="text-muted-foreground">Connecting to IP camera...</p>
             </div>
           )}
         </div>
