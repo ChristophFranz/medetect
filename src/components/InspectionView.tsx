@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
+import AnalysisResults, { ToolResult } from "./AnalysisResults";
 import { Button } from "./ui/button";
 import { ImagePlus, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
 import { Card } from "./ui/card";
@@ -9,6 +10,8 @@ import { useVoiceCommand } from "@/hooks/use-voice-command";
 import { useAudioCues } from "@/hooks/use-audio-cues";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+
+const PYTHON_API_URL = "http://localhost:5000/analyze";
 
 type CaptureStep = "layer1" | "layer2" | "saving" | "complete";
 
@@ -29,6 +32,10 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
+  const [layer1Results, setLayer1Results] = useState<ToolResult[] | null>(null);
+  const [layer2Results, setLayer2Results] = useState<ToolResult[] | null>(null);
+  const [analyzingLayer, setAnalyzingLayer] = useState<"layer1" | "layer2" | null>(null);
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
   const startListeningRef = useRef<(() => void) | null>(null);
   const stopListeningRef = useRef<(() => void) | null>(null);
   const [micActive, setMicActive] = useState(false);
@@ -49,6 +56,34 @@ const InspectionView = () => {
   const handleCameraReady = useCallback((ready: boolean) => {
     setIsCameraReady(ready);
   }, []);
+
+  const analyzeImage = async (imageData: string, layer: "layer1" | "layer2") => {
+    setAnalyzingLayer(layer);
+    setAnalysisError(null);
+    try {
+      const response = await fetch(PYTHON_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: imageData, layer }),
+      });
+      if (!response.ok) throw new Error(`Server returned ${response.status}`);
+      const data = await response.json();
+      const tools: ToolResult[] = data.tools || [];
+      if (layer === "layer1") setLayer1Results(tools);
+      else setLayer2Results(tools);
+    } catch (err) {
+      console.error("Analysis error:", err);
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      setAnalysisError(msg);
+      toast({
+        title: "Analysis failed",
+        description: `Could not reach Python API. ${msg}`,
+        variant: "destructive",
+      });
+    } finally {
+      setAnalyzingLayer(null);
+    }
+  };
 
   const [recaptureMode, setRecaptureMode] = useState<"layer1" | "layer2" | null>(null);
 
@@ -75,9 +110,10 @@ const InspectionView = () => {
     
     if (recaptureMode === "layer1") {
       setLayer1Image(imageData);
+      setLayer1Results(null);
       setRecaptureMode(null);
       signalCaptured();
-      // After recapturing layer1, move to layer2 audio
+      analyzeImage(imageData, "layer1");
       hasPlayedReadyRef.current = false;
       setTimeout(() => signalPosition("layer2"), 1500);
       hasPlayedReadyRef.current = true;
@@ -86,22 +122,27 @@ const InspectionView = () => {
     
     if (recaptureMode === "layer2") {
       setLayer2Image(imageData);
+      setLayer2Results(null);
       setRecaptureMode(null);
       signalInspectionComplete();
+      analyzeImage(imageData, "layer2");
       saveCase(layer1Image!, imageData);
       return;
     }
     
     if (captureStep === "layer1") {
       setLayer1Image(imageData);
+      setLayer1Results(null);
       setCaptureStep("layer2");
       signalCaptured();
-      // Move to layer2 audio after a short pause
+      analyzeImage(imageData, "layer1");
       hasPlayedReadyRef.current = true;
       setTimeout(() => signalPosition("layer2"), 1500);
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
+      setLayer2Results(null);
       signalInspectionComplete();
+      analyzeImage(imageData, "layer2");
       saveCase(layer1Image!, imageData);
     }
   };
@@ -159,6 +200,9 @@ const InspectionView = () => {
   const handleReset = useCallback(() => {
     setLayer1Image(null);
     setLayer2Image(null);
+    setLayer1Results(null);
+    setLayer2Results(null);
+    setAnalysisError(null);
     setCaptureStep("layer1");
   }, []);
 
@@ -372,14 +416,26 @@ const InspectionView = () => {
         </div>
       </div>
       
-      {/* Right side - Analysis status and voice commands */}
-      <div className="w-full md:w-56 shrink-0 space-y-4 flex flex-col">
+      {/* Right side - Analysis status, results, and voice commands */}
+      <div className="w-full md:w-64 shrink-0 space-y-3 flex flex-col overflow-y-auto">
         <AnalysisStatus 
           status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
           capturedImage={layer2Image || layer1Image} 
         />
 
-
+        {/* Analysis results */}
+        <AnalysisResults
+          results={layer1Results}
+          isAnalyzing={analyzingLayer === "layer1"}
+          error={analyzingLayer === "layer1" ? analysisError : null}
+          layer="layer1"
+        />
+        <AnalysisResults
+          results={layer2Results}
+          isAnalyzing={analyzingLayer === "layer2"}
+          error={analyzingLayer === "layer2" ? analysisError : null}
+          layer="layer2"
+        />
         {/* Voice command status - always visible */}
         <Card className={`p-4 transition-colors ${
           isListening 
