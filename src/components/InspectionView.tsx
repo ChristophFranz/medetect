@@ -33,6 +33,7 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
+  const savedCaseIdRef = useRef<string | null>(null);
   const [layer1Report, setLayer1Report] = useState<AnalysisReport | null>(null);
   const [layer2Report, setLayer2Report] = useState<AnalysisReport | null>(null);
   const [analyzingLayer, setAnalyzingLayer] = useState<"layer1" | "layer2" | null>(null);
