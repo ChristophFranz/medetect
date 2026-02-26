@@ -5,7 +5,7 @@ import { Loader2, AlertTriangle, CheckCircle2, Package } from "lucide-react";
 export interface ToolResult {
   name: string;
   count: number;
-  classification: "defective" | "nondefective";
+  status: string;
 }
 
 interface AnalysisResultsProps {
