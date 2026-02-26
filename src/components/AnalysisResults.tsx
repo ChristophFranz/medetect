@@ -44,7 +44,8 @@ const AnalysisResults = ({ results, isAnalyzing, error, layer }: AnalysisResults
 
   if (!results || results.length === 0) return null;
 
-  const defectiveCount = results.filter(t => t.classification === "defective").length;
+  const isDefective = (status: string) => status.toLowerCase().includes("defective") && !status.toLowerCase().includes("non");
+  const defectiveCount = results.filter(t => isDefective(t.status)).length;
 
   return (
     <Card className="p-4 space-y-3">
