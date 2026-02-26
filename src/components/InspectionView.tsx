@@ -16,6 +16,7 @@ const PYTHON_API_URL = "http://localhost:5000/analyze";
 type CaptureStep = "layer1" | "layer2" | "saving" | "complete";
 
 interface SavedCase {
+  id: string;
   case_number: number;
   patient_name: string;
   folder_path: string;
@@ -32,6 +33,7 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
+  const savedCaseIdRef = useRef<string | null>(null);
   const [layer1Report, setLayer1Report] = useState<AnalysisReport | null>(null);
   const [layer2Report, setLayer2Report] = useState<AnalysisReport | null>(null);
   const [analyzingLayer, setAnalyzingLayer] = useState<"layer1" | "layer2" | null>(null);
@@ -57,6 +59,16 @@ const InspectionView = () => {
     setIsCameraReady(ready);
   }, []);
 
+  const saveReportToBackend = async (caseId: string, layer: "layer1" | "layer2", report: AnalysisReport) => {
+    try {
+      await supabase.functions.invoke('update-case-report', {
+        body: { case_id: caseId, layer, report }
+      });
+    } catch (err) {
+      console.error(`Failed to save ${layer} report:`, err);
+    }
+  };
+
   const analyzeImage = async (imageData: string, layer: "layer1" | "layer2") => {
     setAnalyzingLayer(layer);
     setAnalysisError(null);
@@ -71,6 +83,12 @@ const InspectionView = () => {
       const report: AnalysisReport = { overall: data.overall || "", tools: data.tools || [] };
       if (layer === "layer1") setLayer1Report(report);
       else setLayer2Report(report);
+
+      // Save report to backend if case already saved
+      const caseId = savedCaseIdRef.current;
+      if (caseId) {
+        saveReportToBackend(caseId, layer, report);
+      }
     } catch (err) {
       console.error("Analysis error:", err);
       const msg = err instanceof Error ? err.message : "Unknown error";
@@ -164,6 +182,8 @@ const InspectionView = () => {
         throw new Error(error?.message || data?.error || "Failed to save case");
       }
 
+      const caseId = data.case.id;
+      savedCaseIdRef.current = caseId;
       setSavedCase(data.case);
       setCaptureStep("complete");
       
@@ -171,6 +191,14 @@ const InspectionView = () => {
         title: `Case ${String(data.case.case_number).padStart(2, "0")} saved`,
         description: `Patient: ${data.case.patient_name}`,
       });
+
+      // Save any reports that completed before the case was saved
+      if (layer1Report) {
+        saveReportToBackend(caseId, "layer1", layer1Report);
+      }
+      if (layer2Report) {
+        saveReportToBackend(caseId, "layer2", layer2Report);
+      }
     } catch (err) {
       console.error("Save case error:", err);
       toast({
@@ -203,6 +231,8 @@ const InspectionView = () => {
     setLayer1Report(null);
     setLayer2Report(null);
     setAnalysisError(null);
+    setSavedCase(null);
+    savedCaseIdRef.current = null;
     setCaptureStep("layer1");
   }, []);
 

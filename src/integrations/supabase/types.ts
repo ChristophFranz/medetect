@@ -21,7 +21,9 @@ export type Database = {
           folder_path: string
           id: string
           layer1_image_path: string | null
+          layer1_report: Json | null
           layer2_image_path: string | null
+          layer2_report: Json | null
           patient_name: string
           updated_at: string
           user_id: string
@@ -33,7 +35,9 @@ export type Database = {
           folder_path: string
           id?: string
           layer1_image_path?: string | null
+          layer1_report?: Json | null
           layer2_image_path?: string | null
+          layer2_report?: Json | null
           patient_name: string
           updated_at?: string
           user_id: string
@@ -45,7 +49,9 @@ export type Database = {
           folder_path?: string
           id?: string
           layer1_image_path?: string | null
+          layer1_report?: Json | null
           layer2_image_path?: string | null
+          layer2_report?: Json | null
           patient_name?: string
           updated_at?: string
           user_id?: string
