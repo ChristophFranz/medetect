@@ -110,7 +110,7 @@ const InspectionView = () => {
     
     if (recaptureMode === "layer1") {
       setLayer1Image(imageData);
-      setLayer1Results(null);
+      setLayer1Report(null);
       setRecaptureMode(null);
       signalCaptured();
       analyzeImage(imageData, "layer1");
