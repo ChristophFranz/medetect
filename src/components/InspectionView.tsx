@@ -140,7 +140,7 @@ const InspectionView = () => {
       setTimeout(() => signalPosition("layer2"), 1500);
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
-      setLayer2Results(null);
+      setLayer2Report(null);
       signalInspectionComplete();
       analyzeImage(imageData, "layer2");
       saveCase(layer1Image!, imageData);
