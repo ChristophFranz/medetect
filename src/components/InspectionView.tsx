@@ -182,6 +182,8 @@ const InspectionView = () => {
         throw new Error(error?.message || data?.error || "Failed to save case");
       }
 
+      const caseId = data.case.id;
+      savedCaseIdRef.current = caseId;
       setSavedCase(data.case);
       setCaptureStep("complete");
       
@@ -189,6 +191,14 @@ const InspectionView = () => {
         title: `Case ${String(data.case.case_number).padStart(2, "0")} saved`,
         description: `Patient: ${data.case.patient_name}`,
       });
+
+      // Save any reports that completed before the case was saved
+      if (layer1Report) {
+        saveReportToBackend(caseId, "layer1", layer1Report);
+      }
+      if (layer2Report) {
+        saveReportToBackend(caseId, "layer2", layer2Report);
+      }
     } catch (err) {
       console.error("Save case error:", err);
       toast({
