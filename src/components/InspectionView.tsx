@@ -16,6 +16,7 @@ const PYTHON_API_URL = "http://localhost:5000/analyze";
 type CaptureStep = "layer1" | "layer2" | "saving" | "complete";
 
 interface SavedCase {
+  id: string;
   case_number: number;
   patient_name: string;
   folder_path: string;
