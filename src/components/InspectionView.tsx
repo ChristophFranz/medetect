@@ -132,7 +132,7 @@ const InspectionView = () => {
     
     if (captureStep === "layer1") {
       setLayer1Image(imageData);
-      setLayer1Results(null);
+      setLayer1Report(null);
       setCaptureStep("layer2");
       signalCaptured();
       analyzeImage(imageData, "layer1");
