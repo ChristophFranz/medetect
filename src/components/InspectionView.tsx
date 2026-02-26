@@ -425,13 +425,13 @@ const InspectionView = () => {
 
         {/* Analysis results */}
         <AnalysisResults
-          results={layer1Results}
+          report={layer1Report}
           isAnalyzing={analyzingLayer === "layer1"}
           error={analyzingLayer === "layer1" ? analysisError : null}
           layer="layer1"
         />
         <AnalysisResults
-          results={layer2Results}
+          report={layer2Report}
           isAnalyzing={analyzingLayer === "layer2"}
           error={analyzingLayer === "layer2" ? analysisError : null}
           layer="layer2"
