@@ -200,8 +200,8 @@ const InspectionView = () => {
   const handleReset = useCallback(() => {
     setLayer1Image(null);
     setLayer2Image(null);
-    setLayer1Results(null);
-    setLayer2Results(null);
+    setLayer1Report(null);
+    setLayer2Report(null);
     setAnalysisError(null);
     setCaptureStep("layer1");
   }, []);
