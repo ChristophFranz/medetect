@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronRight, ChevronLeft, Eye, Download, Mail, Loader2 } from "lucide-react";
+import JSZip from "jszip";
 import { Button } from "./ui/button";
 import {
   Table,
@@ -141,42 +142,83 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
     setDownloadingCaseId(caseItem.id);
     
     try {
-      const downloadImage = async (imagePath: string | null, filename: string) => {
+      const zip = new JSZip();
+      const caseFolder = zip.folder(`case-${String(caseItem.case_number).padStart(2, "0")}-${caseItem.patient_name}`)!;
+
+      // Download images and add to zip
+      const downloadAndAdd = async (imagePath: string | null, filename: string) => {
         if (!imagePath) return;
-        
-        const { data } = supabase.storage
-          .from('case-images')
-          .getPublicUrl(imagePath);
-        
+        const { data } = supabase.storage.from('case-images').getPublicUrl(imagePath);
         const response = await fetch(data.publicUrl);
         const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        caseFolder.file(filename, blob);
       };
 
-      if (caseItem.layer1_image_path) {
-        await downloadImage(caseItem.layer1_image_path, `case-${caseItem.case_number}-layer1.jpg`);
+      await Promise.all([
+        downloadAndAdd(caseItem.layer1_image_path, `layer1.jpg`),
+        downloadAndAdd(caseItem.layer2_image_path, `layer2.jpg`),
+      ]);
+
+      // Fetch reports from database
+      const { data: caseData } = await supabase.functions.invoke('get-inspection-cases', {
+        body: { search_query: '', filter_type: null, filter_value: null }
+      });
+      const fullCase = caseData?.cases?.find((c: any) => c.id === caseItem.id);
+
+      // Fetch full case with reports directly
+      const { data: reportData } = await supabase
+        .from('inspection_cases')
+        .select('layer1_report, layer2_report')
+        .eq('id', caseItem.id)
+        .single();
+
+      const addReport = (report: any, layerName: string) => {
+        if (!report || !report.tools || report.tools.length === 0) return;
+        const reportsFolder = caseFolder.folder(`${layerName}_report`)!;
+        
+        // Overall summary
+        let summary = `${layerName.toUpperCase()} REPORT\n`;
+        summary += `========================\n\n`;
+        summary += `Overall: ${report.overall || 'N/A'}\n\n`;
+        summary += `Tools detected: ${report.tools.length}\n\n`;
+        
+        report.tools.forEach((tool: any, i: number) => {
+          summary += `--- Tool ${i + 1} ---\n`;
+          summary += `Name: ${tool.name || 'Unknown'}\n`;
+          summary += `Status: ${tool.status || 'N/A'}\n`;
+          if (tool.confidence) summary += `Confidence: ${tool.confidence}\n`;
+          if (tool.notes) summary += `Notes: ${tool.notes}\n`;
+          summary += `\n`;
+        });
+
+        reportsFolder.file(`report.txt`, summary);
+      };
+
+      if (reportData) {
+        addReport(reportData.layer1_report, 'layer1');
+        addReport(reportData.layer2_report, 'layer2');
       }
-      
-      if (caseItem.layer2_image_path) {
-        await downloadImage(caseItem.layer2_image_path, `case-${caseItem.case_number}-layer2.jpg`);
-      }
+
+      // Generate and download zip
+      const blob = await zip.generateAsync({ type: "blob" });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `case-${String(caseItem.case_number).padStart(2, "0")}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
 
       toast({
         title: "Download Complete",
-        description: `Case ${caseItem.case_number} images downloaded successfully.`,
+        description: `Case ${caseItem.case_number} downloaded as ZIP.`,
       });
     } catch (error) {
       console.error('Error downloading case:', error);
       toast({
         title: "Download Failed",
-        description: "Failed to download case images.",
+        description: "Failed to download case.",
         variant: "destructive",
       });
     } finally {
