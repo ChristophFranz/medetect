@@ -68,9 +68,9 @@ const InspectionView = () => {
       });
       if (!response.ok) throw new Error(`Server returned ${response.status}`);
       const data = await response.json();
-      const tools: ToolResult[] = data.tools || [];
-      if (layer === "layer1") setLayer1Results(tools);
-      else setLayer2Results(tools);
+      const report: AnalysisReport = { overall: data.overall || "", tools: data.tools || [] };
+      if (layer === "layer1") setLayer1Report(report);
+      else setLayer2Report(report);
     } catch (err) {
       console.error("Analysis error:", err);
       const msg = err instanceof Error ? err.message : "Unknown error";
