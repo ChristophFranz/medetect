@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
-import AnalysisResults, { ToolResult } from "./AnalysisResults";
+import AnalysisResults, { AnalysisReport } from "./AnalysisResults";
 import { Button } from "./ui/button";
 import { ImagePlus, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
 import { Card } from "./ui/card";
@@ -32,8 +32,8 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
-  const [layer1Results, setLayer1Results] = useState<ToolResult[] | null>(null);
-  const [layer2Results, setLayer2Results] = useState<ToolResult[] | null>(null);
+  const [layer1Report, setLayer1Report] = useState<AnalysisReport | null>(null);
+  const [layer2Report, setLayer2Report] = useState<AnalysisReport | null>(null);
   const [analyzingLayer, setAnalyzingLayer] = useState<"layer1" | "layer2" | null>(null);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const startListeningRef = useRef<(() => void) | null>(null);
@@ -68,9 +68,9 @@ const InspectionView = () => {
       });
       if (!response.ok) throw new Error(`Server returned ${response.status}`);
       const data = await response.json();
-      const tools: ToolResult[] = data.tools || [];
-      if (layer === "layer1") setLayer1Results(tools);
-      else setLayer2Results(tools);
+      const report: AnalysisReport = { overall: data.overall || "", tools: data.tools || [] };
+      if (layer === "layer1") setLayer1Report(report);
+      else setLayer2Report(report);
     } catch (err) {
       console.error("Analysis error:", err);
       const msg = err instanceof Error ? err.message : "Unknown error";
@@ -110,7 +110,7 @@ const InspectionView = () => {
     
     if (recaptureMode === "layer1") {
       setLayer1Image(imageData);
-      setLayer1Results(null);
+      setLayer1Report(null);
       setRecaptureMode(null);
       signalCaptured();
       analyzeImage(imageData, "layer1");
@@ -122,7 +122,7 @@ const InspectionView = () => {
     
     if (recaptureMode === "layer2") {
       setLayer2Image(imageData);
-      setLayer2Results(null);
+      setLayer2Report(null);
       setRecaptureMode(null);
       signalInspectionComplete();
       analyzeImage(imageData, "layer2");
@@ -132,7 +132,7 @@ const InspectionView = () => {
     
     if (captureStep === "layer1") {
       setLayer1Image(imageData);
-      setLayer1Results(null);
+      setLayer1Report(null);
       setCaptureStep("layer2");
       signalCaptured();
       analyzeImage(imageData, "layer1");
@@ -140,7 +140,7 @@ const InspectionView = () => {
       setTimeout(() => signalPosition("layer2"), 1500);
     } else if (captureStep === "layer2") {
       setLayer2Image(imageData);
-      setLayer2Results(null);
+      setLayer2Report(null);
       signalInspectionComplete();
       analyzeImage(imageData, "layer2");
       saveCase(layer1Image!, imageData);
@@ -200,8 +200,8 @@ const InspectionView = () => {
   const handleReset = useCallback(() => {
     setLayer1Image(null);
     setLayer2Image(null);
-    setLayer1Results(null);
-    setLayer2Results(null);
+    setLayer1Report(null);
+    setLayer2Report(null);
     setAnalysisError(null);
     setCaptureStep("layer1");
   }, []);
@@ -425,13 +425,13 @@ const InspectionView = () => {
 
         {/* Analysis results */}
         <AnalysisResults
-          results={layer1Results}
+          report={layer1Report}
           isAnalyzing={analyzingLayer === "layer1"}
           error={analyzingLayer === "layer1" ? analysisError : null}
           layer="layer1"
         />
         <AnalysisResults
-          results={layer2Results}
+          report={layer2Report}
           isAnalyzing={analyzingLayer === "layer2"}
           error={analyzingLayer === "layer2" ? analysisError : null}
           layer="layer2"
