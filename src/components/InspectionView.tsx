@@ -59,6 +59,16 @@ const InspectionView = () => {
     setIsCameraReady(ready);
   }, []);
 
+  const saveReportToBackend = async (caseId: string, layer: "layer1" | "layer2", report: AnalysisReport) => {
+    try {
+      await supabase.functions.invoke('update-case-report', {
+        body: { case_id: caseId, layer, report }
+      });
+    } catch (err) {
+      console.error(`Failed to save ${layer} report:`, err);
+    }
+  };
+
   const analyzeImage = async (imageData: string, layer: "layer1" | "layer2") => {
     setAnalyzingLayer(layer);
     setAnalysisError(null);
@@ -73,6 +83,12 @@ const InspectionView = () => {
       const report: AnalysisReport = { overall: data.overall || "", tools: data.tools || [] };
       if (layer === "layer1") setLayer1Report(report);
       else setLayer2Report(report);
+
+      // Save report to backend if case already saved
+      const caseId = savedCaseIdRef.current;
+      if (caseId) {
+        saveReportToBackend(caseId, layer, report);
+      }
     } catch (err) {
       console.error("Analysis error:", err);
       const msg = err instanceof Error ? err.message : "Unknown error";
