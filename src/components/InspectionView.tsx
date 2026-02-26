@@ -231,6 +231,8 @@ const InspectionView = () => {
     setLayer1Report(null);
     setLayer2Report(null);
     setAnalysisError(null);
+    setSavedCase(null);
+    savedCaseIdRef.current = null;
     setCaptureStep("layer1");
   }, []);
 
