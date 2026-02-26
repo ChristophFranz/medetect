@@ -5,7 +5,7 @@ import { Loader2, AlertTriangle, CheckCircle2, Package } from "lucide-react";
 export interface ToolResult {
   name: string;
   count: number;
-  classification: "defective" | "nondefective";
+  status: string;
 }
 
 interface AnalysisResultsProps {
@@ -44,7 +44,8 @@ const AnalysisResults = ({ results, isAnalyzing, error, layer }: AnalysisResults
 
   if (!results || results.length === 0) return null;
 
-  const defectiveCount = results.filter(t => t.classification === "defective").length;
+  const isDefective = (status: string) => status.toLowerCase().includes("defective") && !status.toLowerCase().includes("non");
+  const defectiveCount = results.filter(t => isDefective(t.status)).length;
 
   return (
     <Card className="p-4 space-y-3">
@@ -64,7 +65,7 @@ const AnalysisResults = ({ results, isAnalyzing, error, layer }: AnalysisResults
               <span className="text-foreground truncate">{tool.name}</span>
               <span className="text-muted-foreground text-xs">×{tool.count}</span>
             </div>
-            {tool.classification === "defective" ? (
+            {isDefective(tool.status) ? (
               <div className="flex items-center gap-1 text-destructive shrink-0">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span className="text-xs font-medium">Defective</span>
