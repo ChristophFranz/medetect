@@ -32,8 +32,8 @@ const InspectionView = () => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [savedCase, setSavedCase] = useState<SavedCase | null>(null);
-  const [layer1Results, setLayer1Results] = useState<ToolResult[] | null>(null);
-  const [layer2Results, setLayer2Results] = useState<ToolResult[] | null>(null);
+  const [layer1Report, setLayer1Report] = useState<AnalysisReport | null>(null);
+  const [layer2Report, setLayer2Report] = useState<AnalysisReport | null>(null);
   const [analyzingLayer, setAnalyzingLayer] = useState<"layer1" | "layer2" | null>(null);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const startListeningRef = useRef<(() => void) | null>(null);
