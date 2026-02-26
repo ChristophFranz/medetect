@@ -2,3 +2,6 @@ project_id = "kiepkxuhydgqnbotgkpe"
 
 [functions.save-inspection-case]
 verify_jwt = false
+
+[functions.update-case-report]
+verify_jwt = false
