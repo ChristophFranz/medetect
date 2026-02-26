@@ -65,7 +65,7 @@ const AnalysisResults = ({ results, isAnalyzing, error, layer }: AnalysisResults
               <span className="text-foreground truncate">{tool.name}</span>
               <span className="text-muted-foreground text-xs">×{tool.count}</span>
             </div>
-            {tool.classification === "defective" ? (
+            {isDefective(tool.status) ? (
               <div className="flex items-center gap-1 text-destructive shrink-0">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span className="text-xs font-medium">Defective</span>
