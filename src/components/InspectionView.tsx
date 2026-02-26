@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import CameraView from "./CameraView";
 import AnalysisStatus from "./AnalysisStatus";
-import AnalysisResults, { ToolResult } from "./AnalysisResults";
+import AnalysisResults, { AnalysisReport } from "./AnalysisResults";
 import { Button } from "./ui/button";
 import { ImagePlus, Layers, CheckCircle2, RotateCcw, X, Mic, MicOff, Loader2 } from "lucide-react";
 import { Card } from "./ui/card";
