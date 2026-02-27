@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Loader2, AlertTriangle, CheckCircle2, Package, ClipboardList } from "lucide-react";
@@ -10,26 +9,28 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "./ui/dialog";
 import { AspectRatio } from "./ui/aspect-ratio";
+import ToolReviewDialog from "./ToolReviewDialog";
+import { useState } from "react";
 
 export interface ToolResult {
   name: string;
   count: number;
   status: string;
-  image?: string; // base64 individual tool image
+  image?: string;
+  status_override?: {
+    original_status: string;
+    new_status: string;
+    primary_user: { id: string; name: string };
+    second_user: { id: string; name: string };
+    overridden_at: string;
+  };
 }
 
 export interface AnalysisReport {
   overall: string;
   tools: ToolResult[];
-  annotated_image?: string; // base64 annotated toolbox image
+  annotated_image?: string;
 }
 
 interface AnalysisResultsProps {
@@ -37,12 +38,25 @@ interface AnalysisResultsProps {
   isAnalyzing: boolean;
   error: string | null;
   layer: "layer1" | "layer2";
+  caseId?: string | null;
+  userId?: string;
+  userName?: string;
+  onReportUpdated?: (layer: "layer1" | "layer2", updatedReport: AnalysisReport) => void;
 }
 
 const isDefective = (status: string) =>
   status.toLowerCase().includes("defective") && !status.toLowerCase().includes("non");
 
-const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsProps) => {
+const AnalysisResults = ({
+  report,
+  isAnalyzing,
+  error,
+  layer,
+  caseId,
+  userId,
+  userName,
+  onReportUpdated,
+}: AnalysisResultsProps) => {
   const layerLabel = layer === "layer1" ? "Top Layer" : "2nd Layer";
   const [selectedTool, setSelectedTool] = useState<ToolResult | null>(null);
 
@@ -77,10 +91,41 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
   const defectiveCount = report.tools.filter(t => isDefective(t.status)).length;
   const overallOk = report.overall?.toLowerCase().includes("all present");
 
+  const handleStatusUpdated = (toolName: string, newStatus: string, secondUserId: string, secondUserName: string) => {
+    if (!report || !onReportUpdated) return;
+
+    const updatedTools = report.tools.map(t => {
+      if (t.name.toLowerCase() === toolName.toLowerCase()) {
+        return {
+          ...t,
+          status: newStatus,
+          status_override: {
+            original_status: t.status,
+            new_status: newStatus,
+            primary_user: { id: userId || "", name: userName || "" },
+            second_user: { id: secondUserId, name: secondUserName },
+            overridden_at: new Date().toISOString(),
+          },
+        };
+      }
+      return t;
+    });
+
+    const hasDefective = updatedTools.some(t => isDefective(t.status));
+    const updatedReport: AnalysisReport = {
+      ...report,
+      tools: updatedTools,
+      overall: hasDefective
+        ? "Issue detected – some tools are defective"
+        : "All present and non-defective",
+    };
+
+    onReportUpdated(layer, updatedReport);
+  };
+
   return (
     <>
       <Card className="p-4 space-y-3">
-        {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ClipboardList className="w-4 h-4 text-primary" />
@@ -91,7 +136,6 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
           </Badge>
         </div>
 
-        {/* Overall status */}
         <div className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium ${
           overallOk
             ? "bg-green-500/10 text-green-700 dark:text-green-400"
@@ -105,7 +149,6 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
           {report.overall}
         </div>
 
-        {/* Annotated toolbox image */}
         {report.annotated_image && (
           <div className="rounded-md border border-border overflow-hidden">
             <AspectRatio ratio={16 / 9}>
@@ -118,7 +161,6 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
           </div>
         )}
 
-        {/* Tools table */}
         <div className="rounded-md border border-border overflow-hidden">
           <Table>
             <TableHeader>
@@ -131,51 +173,43 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
             <TableBody>
               {report.tools.map((tool, i) => {
                 const defective = isDefective(tool.status);
-                const hasImage = !!tool.image;
                 return (
                   <TableRow key={i} className={defective ? "bg-destructive/5" : ""}>
                     <TableCell className="py-2 text-sm">
                       <div className="flex items-center gap-2">
                         <Package className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                         <span className="text-foreground">{tool.name}</span>
+                        {tool.status_override && (
+                          <Badge variant="outline" className="text-[10px] px-1 py-0">
+                            Overridden
+                          </Badge>
+                        )}
                       </div>
                     </TableCell>
                     <TableCell className="py-2 text-sm text-center text-muted-foreground">
                       {tool.count}
                     </TableCell>
                     <TableCell className="py-2 text-sm text-right">
-                      {hasImage ? (
-                        <button
-                          onClick={() => setSelectedTool(tool)}
-                          className={`inline-flex items-center gap-1 font-medium underline-offset-2 hover:underline cursor-pointer transition-colors ${
-                            defective
-                              ? "text-destructive hover:text-destructive/80"
-                              : "text-green-600 dark:text-green-400 hover:text-green-500"
-                          }`}
-                        >
-                          {defective ? (
-                            <>
-                              <AlertTriangle className="w-3.5 h-3.5" />
-                              Defective
-                            </>
-                          ) : (
-                            <>
-                              <CheckCircle2 className="w-3.5 h-3.5" />
-                              OK
-                            </>
-                          )}
-                        </button>
-                      ) : defective ? (
-                        <span className="inline-flex items-center gap-1 text-destructive font-medium">
-                          <AlertTriangle className="w-3.5 h-3.5" />
-                          Defective
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          OK
-                        </span>
-                      )}
+                      <button
+                        onClick={() => setSelectedTool(tool)}
+                        className={`inline-flex items-center gap-1 font-medium underline-offset-2 hover:underline cursor-pointer transition-colors ${
+                          defective
+                            ? "text-destructive hover:text-destructive/80"
+                            : "text-green-600 dark:text-green-400 hover:text-green-500"
+                        }`}
+                      >
+                        {defective ? (
+                          <>
+                            <AlertTriangle className="w-3.5 h-3.5" />
+                            Defective
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            OK
+                          </>
+                        )}
+                      </button>
                     </TableCell>
                   </TableRow>
                 );
@@ -185,33 +219,16 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
         </div>
       </Card>
 
-      {/* Tool image dialog */}
-      <Dialog open={!!selectedTool} onOpenChange={(open) => !open && setSelectedTool(null)}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              {selectedTool && isDefective(selectedTool.status) ? (
-                <AlertTriangle className="w-5 h-5 text-destructive" />
-              ) : (
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
-              )}
-              {selectedTool?.name}
-            </DialogTitle>
-            <DialogDescription>
-              Status: {selectedTool && isDefective(selectedTool.status) ? "Defective" : "Non-defective"} · Qty: {selectedTool?.count}
-            </DialogDescription>
-          </DialogHeader>
-          {selectedTool?.image && (
-            <div className="rounded-md overflow-hidden border border-border">
-              <img
-                src={selectedTool.image}
-                alt={`${selectedTool.name} detail`}
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <ToolReviewDialog
+        tool={selectedTool}
+        open={!!selectedTool}
+        onOpenChange={(open) => !open && setSelectedTool(null)}
+        caseId={caseId || null}
+        layer={layer}
+        primaryUserId={userId || ""}
+        primaryUserName={userName || ""}
+        onStatusUpdated={handleStatusUpdated}
+      />
     </>
   );
 };

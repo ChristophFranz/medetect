@@ -468,12 +468,20 @@ const InspectionView = () => {
           isAnalyzing={analyzingLayer === "layer1"}
           error={analyzingLayer === "layer1" ? analysisError : null}
           layer="layer1"
+          caseId={savedCaseIdRef.current}
+          userId={userId}
+          userName={userName}
+          onReportUpdated={(_, updated) => setLayer1Report(updated)}
         />
         <AnalysisResults
           report={layer2Report}
           isAnalyzing={analyzingLayer === "layer2"}
           error={analyzingLayer === "layer2" ? analysisError : null}
           layer="layer2"
+          caseId={savedCaseIdRef.current}
+          userId={userId}
+          userName={userName}
+          onReportUpdated={(_, updated) => setLayer2Report(updated)}
         />
         {/* Voice command status - always visible */}
         <Card className={`p-4 transition-colors ${
