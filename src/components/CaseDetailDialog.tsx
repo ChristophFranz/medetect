@@ -17,11 +17,13 @@ import {
   TableRow,
 } from "./ui/table";
 import { supabase } from "@/integrations/supabase/client";
+import ToolReviewDialog from "./ToolReviewDialog";
 
 interface ToolResult {
   name: string;
   count: number;
   status: string;
+  image?: string;
   status_override?: {
     original_status: string;
     new_status: string;
@@ -40,6 +42,8 @@ interface LayerReport {
 interface CaseDetailDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  currentUserId: string;
+  currentUserName: string;
   caseData: {
     id: string;
     case_number: number;
@@ -52,6 +56,7 @@ interface CaseDetailDialogProps {
     layer2_report?: any;
     created_at: string;
   } | null;
+  onCaseUpdated?: () => void;
 }
 
 const isDefective = (status: string) =>
@@ -60,7 +65,20 @@ const isDefective = (status: string) =>
 const isMissing = (tool: ToolResult) =>
   tool.count === 0 || tool.status.toLowerCase().includes("missing");
 
-const LayerReportView = ({ report, label }: { report: LayerReport | null; label: string }) => {
+interface LayerReportViewProps {
+  report: LayerReport | null;
+  label: string;
+  layer: "layer1" | "layer2";
+  caseId: string;
+  currentUserId: string;
+  currentUserName: string;
+  onStatusUpdated: () => void;
+}
+
+const LayerReportView = ({ report, label, layer, caseId, currentUserId, currentUserName, onStatusUpdated }: LayerReportViewProps) => {
+  const [selectedTool, setSelectedTool] = useState<ToolResult | null>(null);
+  const [reviewOpen, setReviewOpen] = useState(false);
+
   if (!report || !report.tools || report.tools.length === 0) {
     return (
       <div className="border border-border rounded-md p-3 text-center text-xs text-muted-foreground bg-muted/20">
@@ -71,6 +89,15 @@ const LayerReportView = ({ report, label }: { report: LayerReport | null; label:
 
   const defectiveCount = report.tools.filter(t => isDefective(t.status) || isMissing(t)).length;
   const overallOk = report.overall?.toLowerCase().includes("all present") && !report.tools.some(t => isMissing(t));
+
+  const handleToolClick = (tool: ToolResult) => {
+    setSelectedTool(tool);
+    setReviewOpen(true);
+  };
+
+  const handleStatusUpdated = () => {
+    onStatusUpdated();
+  };
 
   return (
     <div className="space-y-2">
@@ -102,7 +129,11 @@ const LayerReportView = ({ report, label }: { report: LayerReport | null; label:
               const defective = isDefective(tool.status);
               const missing = isMissing(tool);
               return (
-                <TableRow key={i} className={defective || missing ? "bg-destructive/5" : ""}>
+                <TableRow
+                  key={i}
+                  className={`cursor-pointer transition-colors ${defective || missing ? "bg-destructive/5 hover:bg-destructive/10" : "hover:bg-muted/50"}`}
+                  onClick={() => handleToolClick(tool)}
+                >
                   <TableCell className="py-1.5 text-xs">
                     <div className="flex items-center gap-1.5">
                       <Package className="w-3 h-3 text-muted-foreground shrink-0" />
@@ -132,18 +163,34 @@ const LayerReportView = ({ report, label }: { report: LayerReport | null; label:
           </TableBody>
         </Table>
       </div>
+
+      <ToolReviewDialog
+        tool={selectedTool}
+        open={reviewOpen}
+        onOpenChange={setReviewOpen}
+        caseId={caseId}
+        layer={layer}
+        primaryUserId={currentUserId}
+        primaryUserName={currentUserName}
+        onStatusUpdated={handleStatusUpdated}
+      />
     </div>
   );
 };
 
-const CaseDetailDialog = ({ open, onOpenChange, caseData }: CaseDetailDialogProps) => {
+const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, currentUserName, onCaseUpdated }: CaseDetailDialogProps) => {
   const [layer1Url, setLayer1Url] = useState<string | null>(null);
   const [layer2Url, setLayer2Url] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [liveReports, setLiveReports] = useState<{ layer1: LayerReport | null; layer2: LayerReport | null }>({ layer1: null, layer2: null });
 
   useEffect(() => {
     if (open && caseData) {
       loadImages();
+      setLiveReports({
+        layer1: caseData.layer1_report as LayerReport | null,
+        layer2: caseData.layer2_report as LayerReport | null,
+      });
     }
   }, [open, caseData]);
 
@@ -185,6 +232,25 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData }: CaseDetailDialogProp
     }
   };
 
+  const refreshReports = async () => {
+    if (!caseData) return;
+    try {
+      const { data } = await supabase.functions.invoke('get-inspection-cases', {
+        body: { search_query: '', filter_type: null, filter_value: null }
+      });
+      const updated = data?.cases?.find((c: any) => c.id === caseData.id);
+      if (updated) {
+        setLiveReports({
+          layer1: updated.layer1_report as LayerReport | null,
+          layer2: updated.layer2_report as LayerReport | null,
+        });
+      }
+      onCaseUpdated?.();
+    } catch (err) {
+      console.error('Error refreshing reports:', err);
+    }
+  };
+
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleString('en-GB', {
@@ -194,9 +260,6 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData }: CaseDetailDialogProp
   };
 
   if (!caseData) return null;
-
-  const layer1Report = caseData.layer1_report as LayerReport | null;
-  const layer2Report = caseData.layer2_report as LayerReport | null;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -226,6 +289,8 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData }: CaseDetailDialogProp
             </div>
           </div>
 
+          <p className="text-xs text-muted-foreground italic">Click on any tool row to review or change its status.</p>
+
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
@@ -249,7 +314,15 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData }: CaseDetailDialogProp
                 ) : (
                   <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20">No image available</div>
                 )}
-                <LayerReportView report={layer1Report} label="Layer 1" />
+                <LayerReportView
+                  report={liveReports.layer1}
+                  label="Layer 1"
+                  layer="layer1"
+                  caseId={caseData.id}
+                  currentUserId={currentUserId}
+                  currentUserName={currentUserName}
+                  onStatusUpdated={refreshReports}
+                />
               </div>
 
               {/* Layer 2 */}
@@ -269,7 +342,15 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData }: CaseDetailDialogProp
                 ) : (
                   <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20">No image available</div>
                 )}
-                <LayerReportView report={layer2Report} label="Layer 2" />
+                <LayerReportView
+                  report={liveReports.layer2}
+                  label="Layer 2"
+                  layer="layer2"
+                  caseId={caseData.id}
+                  currentUserId={currentUserId}
+                  currentUserName={currentUserName}
+                  onStatusUpdated={refreshReports}
+                />
               </div>
             </div>
           )}
