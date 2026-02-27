@@ -38,10 +38,7 @@ const LogoCard = ({ showNfcInput = false }: LogoCardProps) => {
 
   return (
     <div className="flex flex-col items-center gap-8 p-12 bg-card rounded-lg border border-border shadow-sm animate-slide-up flex-1 justify-center min-w-[280px]">
-      <div className="flex flex-col items-center justify-center w-48 h-36 border-2 border-dashed border-muted-foreground/30 rounded-md">
-        <span className="text-2xl font-semibold text-foreground">MEDetect</span>
-        <span className="text-base text-muted-foreground">Logo</span>
-      </div>
+      <img src={medetectLogo} alt="MEDetect Logo" className="w-48 h-auto object-contain" />
       
       {showNfcInput && (
         <div className="flex flex-col items-center gap-3">
