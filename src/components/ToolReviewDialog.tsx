@@ -59,6 +59,7 @@ const ToolReviewDialog = ({
     setNfcError(null);
     setWantsChange(false);
     setNfcLoading(false);
+    setConfirmedUser(null);
     onOpenChange(false);
   };
 
