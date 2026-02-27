@@ -60,6 +60,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [selectedCase, setSelectedCase] = useState<InspectionCase | null>(null);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
   const [downloadingCaseId, setDownloadingCaseId] = useState<string | null>(null);
+  const [showModifiedOnly, setShowModifiedOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   
   const navigate = useNavigate();
