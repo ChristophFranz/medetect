@@ -136,8 +136,10 @@ const AnalysisResults = ({
             <ClipboardList className="w-4 h-4 text-primary" />
             <p className="font-semibold text-sm text-foreground">{layerLabel} Report</p>
           </div>
-          <Badge variant={defectiveCount > 0 ? "destructive" : "secondary"} className="text-xs">
-            {defectiveCount > 0 ? `${defectiveCount} defective` : "All OK"}
+          <Badge variant={issueCount > 0 ? "destructive" : "secondary"} className="text-xs">
+            {issueCount > 0
+              ? [defectiveOnly > 0 && `${defectiveOnly} defective`, missingOnly > 0 && `${missingOnly} missing`].filter(Boolean).join(", ")
+              : "All OK"}
           </Badge>
         </div>
 
