@@ -373,7 +373,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
               </ScrollArea>
               {totalPages > 1 && (
                 <div className="border-t border-border px-4 py-2 flex items-center justify-between text-xs text-muted-foreground">
-                  <span>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, cases.length)} of {cases.length}</span>
+                  <span>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredCases.length)} of {filteredCases.length}</span>
                   <Pagination className="mx-0 w-auto">
                     <PaginationContent>
                       <PaginationItem>
