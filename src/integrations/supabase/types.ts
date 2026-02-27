@@ -17,6 +17,7 @@ export type Database = {
       inspection_cases: {
         Row: {
           case_number: number
+          confirmed_by_users: string[] | null
           created_at: string
           folder_path: string
           id: string
@@ -31,6 +32,7 @@ export type Database = {
         }
         Insert: {
           case_number?: number
+          confirmed_by_users?: string[] | null
           created_at?: string
           folder_path: string
           id?: string
@@ -45,6 +47,7 @@ export type Database = {
         }
         Update: {
           case_number?: number
+          confirmed_by_users?: string[] | null
           created_at?: string
           folder_path?: string
           id?: string
