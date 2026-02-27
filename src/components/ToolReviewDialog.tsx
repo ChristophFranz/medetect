@@ -95,10 +95,23 @@ const ToolReviewDialog = ({
         return;
       }
 
-      setStep("saving");
+      // Show the confirmed user before saving
+      setConfirmedUser({ id: secondUser.id, name: secondUser.name });
+      setStep("confirm_user");
+      setNfcLoading(false);
+    } catch (err) {
+      console.error("NFC lookup error:", err);
+      setNfcError("Failed to look up user. Please try again.");
+      setNfcLoading(false);
+    }
+  };
 
-      // Save override via edge function
-      const { error: saveError } = await supabase.functions.invoke("save-status-override", {
+  const handleConfirmSave = async () => {
+    if (!confirmedUser || !tool) return;
+    setStep("saving");
+
+    try {
+      const { data, error: saveError } = await supabase.functions.invoke("save-status-override", {
         body: {
           case_id: caseId,
           layer,
@@ -106,29 +119,27 @@ const ToolReviewDialog = ({
           new_status: newStatus,
           primary_user_id: primaryUserId,
           primary_user_name: primaryUserName,
-          second_user_id: secondUser.id,
-          second_user_name: secondUser.name,
+          second_user_id: confirmedUser.id,
+          second_user_name: confirmedUser.name,
         },
       });
 
       if (saveError) {
-        throw new Error("Failed to save override");
+        throw new Error(saveError.message || "Failed to save override");
       }
 
-      onStatusUpdated(tool.name, newStatus, secondUser.id, secondUser.name);
+      onStatusUpdated(tool.name, newStatus, confirmedUser.id, confirmedUser.name);
 
       toast({
         title: "Status updated",
-        description: `${tool.name} changed to ${newStatus}. Confirmed by ${secondUser.name}.`,
+        description: `${tool.name} changed to ${newStatus}. Confirmed by ${confirmedUser.name}.`,
       });
 
       handleClose();
     } catch (err) {
-      console.error("NFC confirm error:", err);
+      console.error("Save override error:", err);
       setNfcError("Failed to save status change. Please try again.");
-      setStep("nfc_confirm");
-    } finally {
-      setNfcLoading(false);
+      setStep("confirm_user");
     }
   };
 
