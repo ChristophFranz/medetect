@@ -29,7 +29,7 @@ interface ToolReviewDialogProps {
 const isDefective = (status: string) =>
   status.toLowerCase().includes("defective") && !status.toLowerCase().includes("non");
 
-type ReviewStep = "review" | "nfc_confirm" | "saving";
+type ReviewStep = "review" | "nfc_confirm" | "confirm_user" | "saving";
 
 const ToolReviewDialog = ({
   tool,
@@ -46,6 +46,7 @@ const ToolReviewDialog = ({
   const [nfcLoading, setNfcLoading] = useState(false);
   const [nfcError, setNfcError] = useState<string | null>(null);
   const [wantsChange, setWantsChange] = useState(false);
+  const [confirmedUser, setConfirmedUser] = useState<{ id: string; name: string } | null>(null);
 
   if (!tool) return null;
 
@@ -58,6 +59,7 @@ const ToolReviewDialog = ({
     setNfcError(null);
     setWantsChange(false);
     setNfcLoading(false);
+    setConfirmedUser(null);
     onOpenChange(false);
   };
 
@@ -93,10 +95,23 @@ const ToolReviewDialog = ({
         return;
       }
 
-      setStep("saving");
+      // Show the confirmed user before saving
+      setConfirmedUser({ id: secondUser.id, name: secondUser.name });
+      setStep("confirm_user");
+      setNfcLoading(false);
+    } catch (err) {
+      console.error("NFC lookup error:", err);
+      setNfcError("Failed to look up user. Please try again.");
+      setNfcLoading(false);
+    }
+  };
 
-      // Save override via edge function
-      const { error: saveError } = await supabase.functions.invoke("save-status-override", {
+  const handleConfirmSave = async () => {
+    if (!confirmedUser || !tool) return;
+    setStep("saving");
+
+    try {
+      const { data, error: saveError } = await supabase.functions.invoke("save-status-override", {
         body: {
           case_id: caseId,
           layer,
@@ -104,29 +119,27 @@ const ToolReviewDialog = ({
           new_status: newStatus,
           primary_user_id: primaryUserId,
           primary_user_name: primaryUserName,
-          second_user_id: secondUser.id,
-          second_user_name: secondUser.name,
+          second_user_id: confirmedUser.id,
+          second_user_name: confirmedUser.name,
         },
       });
 
       if (saveError) {
-        throw new Error("Failed to save override");
+        throw new Error(saveError.message || "Failed to save override");
       }
 
-      onStatusUpdated(tool.name, newStatus, secondUser.id, secondUser.name);
+      onStatusUpdated(tool.name, newStatus, confirmedUser.id, confirmedUser.name);
 
       toast({
         title: "Status updated",
-        description: `${tool.name} changed to ${newStatus}. Confirmed by ${secondUser.name}.`,
+        description: `${tool.name} changed to ${newStatus}. Confirmed by ${confirmedUser.name}.`,
       });
 
       handleClose();
     } catch (err) {
-      console.error("NFC confirm error:", err);
+      console.error("Save override error:", err);
       setNfcError("Failed to save status change. Please try again.");
-      setStep("nfc_confirm");
-    } finally {
-      setNfcLoading(false);
+      setStep("confirm_user");
     }
   };
 
@@ -149,11 +162,11 @@ const ToolReviewDialog = ({
 
         {/* Tool image */}
         {tool.image && (
-          <div className="rounded-md overflow-hidden border border-border">
+          <div className="rounded-md overflow-hidden border border-border max-h-48">
             <img
               src={tool.image}
               alt={`${tool.name} detail`}
-              className="w-full h-auto object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
         )}
@@ -209,6 +222,42 @@ const ToolReviewDialog = ({
             {nfcError && (
               <p className="text-xs text-destructive">{nfcError}</p>
             )}
+          </div>
+        )}
+
+        {/* Step: Confirm User */}
+        {step === "confirm_user" && confirmedUser && (
+          <div className="space-y-3 pt-2 border-t border-border">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <UserCheck className="w-4 h-4 text-primary" />
+              Second user identified
+            </div>
+            <div className="flex items-center gap-3 p-3 rounded-md bg-muted/50 border border-border">
+              <div className="p-2 rounded-full bg-primary/10">
+                <UserCheck className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-semibold text-sm text-foreground">{confirmedUser.name}</p>
+                <p className="text-xs text-muted-foreground">Confirming user</p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              <strong>{confirmedUser.name}</strong> will confirm changing{" "}
+              <strong>{tool?.name}</strong> from{" "}
+              <strong>{defective ? "Defective" : "Non-defective"}</strong> to{" "}
+              <strong>{newStatus}</strong>.
+            </p>
+            {nfcError && (
+              <p className="text-xs text-destructive">{nfcError}</p>
+            )}
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => { setStep("nfc_confirm"); setConfirmedUser(null); setNfcInput(""); }} className="flex-1">
+                Cancel
+              </Button>
+              <Button onClick={handleConfirmSave} className="flex-1">
+                Confirm & Save
+              </Button>
+            </div>
           </div>
         )}
 

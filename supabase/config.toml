@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.update-case-report]
 verify_jwt = false
+
+[functions.save-status-override]
+verify_jwt = false
