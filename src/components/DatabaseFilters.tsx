@@ -32,6 +32,8 @@ interface DatabaseFiltersProps {
   onUserChange: (userId: string | null) => void;
   selectedDate: Date | undefined;
   onDateChange: (date: Date | undefined) => void;
+  showModifiedOnly: boolean;
+  onModifiedChange: (value: boolean) => void;
   canAccessToolsClassification: boolean;
   onToolsClassificationClick: () => void;
 }
