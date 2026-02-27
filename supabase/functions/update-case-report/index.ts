@@ -50,16 +50,89 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Strip base64 images from the report before saving to DB (keep it lightweight)
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const casePrefix = `cases/${case_id}/${layer}`;
+
+    // 1. Save the annotated toolbox image to case-images bucket
+    let annotatedImagePath: string | null = null;
+    if (report.annotated_image) {
+      try {
+        const { bytes, contentType } = base64ToBytes(report.annotated_image);
+        const ext = contentType.includes("png") ? "png" : "jpg";
+        const filePath = `${casePrefix}/annotated_${timestamp}.${ext}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from("case-images")
+          .upload(filePath, bytes, { contentType, upsert: true });
+
+        if (uploadError) {
+          console.error("Failed to upload annotated image:", uploadError);
+        } else {
+          annotatedImagePath = filePath;
+        }
+      } catch (imgErr) {
+        console.error("Error processing annotated image:", imgErr);
+      }
+    }
+
+    // 2. Save individual tool crop images to both case-images (for case viewing) and tool-images (for classification)
+    const toolImageResults: string[] = [];
+    const toolsWithPaths = [];
+
+    for (const tool of (report.tools || [])) {
+      let toolImagePath: string | null = null;
+
+      if (tool.image && tool.name) {
+        try {
+          const { bytes, contentType } = base64ToBytes(tool.image);
+          const ext = contentType.includes("png") ? "png" : "jpg";
+          const safeName = tool.name.toLowerCase().replace(/\s+/g, "-");
+
+          // Save to case-images for case-level viewing
+          const caseFilePath = `${casePrefix}/tool_${safeName}_${timestamp}.${ext}`;
+          const { error: caseUploadErr } = await supabase.storage
+            .from("case-images")
+            .upload(caseFilePath, bytes, { contentType, upsert: true });
+
+          if (caseUploadErr) {
+            console.error(`Failed to upload case tool image for ${tool.name}:`, caseUploadErr);
+          } else {
+            toolImagePath = caseFilePath;
+          }
+
+          // Also save to tool-images for classification database
+          const folderName = toolFolderMap[tool.name.toLowerCase()];
+          if (folderName) {
+            const classFilePath = `${folderName}/case-${case_id.slice(0, 8)}_${layer}_${timestamp}.${ext}`;
+            const { error: classUploadErr } = await supabase.storage
+              .from("tool-images")
+              .upload(classFilePath, bytes, { contentType, upsert: true });
+
+            if (classUploadErr) {
+              console.error(`Failed to upload classification image for ${tool.name}:`, classUploadErr);
+            } else {
+              toolImageResults.push(classFilePath);
+            }
+          }
+        } catch (imgErr) {
+          console.error(`Error processing image for ${tool.name}:`, imgErr);
+        }
+      }
+
+      // Store the path (not base64) in the report
+      toolsWithPaths.push({
+        name: tool.name,
+        count: tool.count,
+        status: tool.status,
+        image_path: toolImagePath,
+      });
+    }
+
+    // 3. Build lightweight report with storage paths instead of base64
     const reportForDb = {
-      ...report,
-      annotated_image: undefined,
-      tools: (report.tools || []).map((t: any) => ({
-        name: t.name,
-        count: t.count,
-        status: t.status,
-        // Don't store base64 in jsonb
-      })),
+      overall: report.overall,
+      annotated_image_path: annotatedImagePath,
+      tools: toolsWithPaths,
     };
 
     const updateField = layer === "layer1" ? "layer1_report" : "layer2_report";
@@ -77,45 +150,8 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Save individual tool images to tool-images bucket
-    const toolImageResults: string[] = [];
-    const tools = report.tools || [];
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-
-    for (const tool of tools) {
-      if (!tool.image || !tool.name) continue;
-
-      const folderName = toolFolderMap[tool.name.toLowerCase()];
-      if (!folderName) {
-        console.warn(`Unknown tool name: ${tool.name}, skipping image save`);
-        continue;
-      }
-
-      try {
-        const { bytes, contentType } = base64ToBytes(tool.image);
-        const ext = contentType.includes("png") ? "png" : "jpg";
-        const fileName = `case-${case_id.slice(0, 8)}_${layer}_${timestamp}.${ext}`;
-        const filePath = `${folderName}/${fileName}`;
-
-        const { error: uploadError } = await supabase.storage
-          .from("tool-images")
-          .upload(filePath, bytes, {
-            contentType,
-            upsert: true,
-          });
-
-        if (uploadError) {
-          console.error(`Failed to upload tool image for ${tool.name}:`, uploadError);
-        } else {
-          toolImageResults.push(filePath);
-        }
-      } catch (imgErr) {
-        console.error(`Error processing image for ${tool.name}:`, imgErr);
-      }
-    }
-
     return new Response(
-      JSON.stringify({ success: true, tool_images_saved: toolImageResults }),
+      JSON.stringify({ success: true, tool_images_saved: toolImageResults, annotated_image_saved: !!annotatedImagePath }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {

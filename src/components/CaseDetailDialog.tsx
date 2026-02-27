@@ -24,6 +24,7 @@ interface ToolResult {
   count: number;
   status: string;
   image?: string;
+  image_path?: string;
   status_override?: {
     original_status: string;
     new_status: string;
@@ -37,7 +38,14 @@ interface LayerReport {
   overall: string;
   tools: ToolResult[];
   annotated_image?: string;
+  annotated_image_path?: string;
 }
+
+const getStorageUrl = (path: string | undefined | null, bucket: string = 'case-images'): string | null => {
+  if (!path) return null;
+  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
+  return data.publicUrl;
+};
 
 interface CaseDetailDialogProps {
   open: boolean;
@@ -136,8 +144,8 @@ const LayerReportView = ({ report, label, layer, caseId, currentUserId, currentU
                 >
                   <TableCell className="py-1.5 text-xs">
                     <div className="flex items-center gap-2">
-                      {tool.image ? (
-                        <img src={tool.image} alt={tool.name} className="w-8 h-8 rounded border border-border object-cover shrink-0" />
+                      {(tool.image || tool.image_path) ? (
+                        <img src={tool.image || getStorageUrl(tool.image_path) || ''} alt={tool.name} className="w-8 h-8 rounded border border-border object-cover shrink-0" />
                       ) : (
                         <Package className="w-3 h-3 text-muted-foreground shrink-0" />
                       )}
@@ -324,13 +332,16 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
                   </div>
                   <div className="space-y-1">
                     <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Annotated Analysis</p>
-                    {liveReports.layer1?.annotated_image ? (
-                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
-                        <img src={liveReports.layer1.annotated_image} alt="Layer 1 Annotated" className="w-full h-auto object-contain max-h-64" />
-                      </div>
-                    ) : (
-                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
-                    )}
+                    {(() => {
+                      const annotatedSrc = liveReports.layer1?.annotated_image || getStorageUrl(liveReports.layer1?.annotated_image_path);
+                      return annotatedSrc ? (
+                        <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                          <img src={annotatedSrc} alt="Layer 1 Annotated" className="w-full h-auto object-contain max-h-64" />
+                        </div>
+                      ) : (
+                        <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
+                      );
+                    })()}
                   </div>
                 </div>
                 <LayerReportView
@@ -367,13 +378,16 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
                   </div>
                   <div className="space-y-1">
                     <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Annotated Analysis</p>
-                    {liveReports.layer2?.annotated_image ? (
-                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
-                        <img src={liveReports.layer2.annotated_image} alt="Layer 2 Annotated" className="w-full h-auto object-contain max-h-64" />
-                      </div>
-                    ) : (
-                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
-                    )}
+                    {(() => {
+                      const annotatedSrc = liveReports.layer2?.annotated_image || getStorageUrl(liveReports.layer2?.annotated_image_path);
+                      return annotatedSrc ? (
+                        <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                          <img src={annotatedSrc} alt="Layer 2 Annotated" className="w-full h-auto object-contain max-h-64" />
+                        </div>
+                      ) : (
+                        <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
+                      );
+                    })()}
                   </div>
                 </div>
                 <LayerReportView
