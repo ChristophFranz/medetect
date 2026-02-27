@@ -83,6 +83,7 @@ const DatabaseFilters = ({
     onSearchChange("");
     onUserChange(null);
     onDateChange(undefined);
+    onModifiedChange(false);
   };
 
   const hasActiveFilters = searchQuery || selectedUserId || selectedDate;
