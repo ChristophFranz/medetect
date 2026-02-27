@@ -296,7 +296,7 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
               <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-8">
               {/* Layer 1 */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -307,13 +307,28 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
                     </Button>
                   )}
                 </div>
-                {layer1Url ? (
-                  <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
-                    <img src={layer1Url} alt="Layer 1" className="w-full h-auto object-contain max-h-80" />
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Raw Image</p>
+                    {layer1Url ? (
+                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                        <img src={layer1Url} alt="Layer 1 Raw" className="w-full h-auto object-contain max-h-64" />
+                      </div>
+                    ) : (
+                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No image</div>
+                    )}
                   </div>
-                ) : (
-                  <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20">No image available</div>
-                )}
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Annotated Analysis</p>
+                    {liveReports.layer1?.annotated_image ? (
+                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                        <img src={liveReports.layer1.annotated_image} alt="Layer 1 Annotated" className="w-full h-auto object-contain max-h-64" />
+                      </div>
+                    ) : (
+                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
+                    )}
+                  </div>
+                </div>
                 <LayerReportView
                   report={liveReports.layer1}
                   label="Layer 1"
@@ -335,13 +350,28 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
                     </Button>
                   )}
                 </div>
-                {layer2Url ? (
-                  <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
-                    <img src={layer2Url} alt="Layer 2" className="w-full h-auto object-contain max-h-80" />
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Raw Image</p>
+                    {layer2Url ? (
+                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                        <img src={layer2Url} alt="Layer 2 Raw" className="w-full h-auto object-contain max-h-64" />
+                      </div>
+                    ) : (
+                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No image</div>
+                    )}
                   </div>
-                ) : (
-                  <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20">No image available</div>
-                )}
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Annotated Analysis</p>
+                    {liveReports.layer2?.annotated_image ? (
+                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                        <img src={liveReports.layer2.annotated_image} alt="Layer 2 Annotated" className="w-full h-auto object-contain max-h-64" />
+                      </div>
+                    ) : (
+                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
+                    )}
+                  </div>
+                </div>
                 <LayerReportView
                   report={liveReports.layer2}
                   label="Layer 2"
