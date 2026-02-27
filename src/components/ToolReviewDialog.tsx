@@ -149,11 +149,11 @@ const ToolReviewDialog = ({
 
         {/* Tool image */}
         {tool.image && (
-          <div className="rounded-md overflow-hidden border border-border">
+          <div className="rounded-md overflow-hidden border border-border max-h-48">
             <img
               src={tool.image}
               alt={`${tool.name} detail`}
-              className="w-full h-auto object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
         )}

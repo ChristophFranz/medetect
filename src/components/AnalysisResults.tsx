@@ -176,8 +176,9 @@ const AnalysisResults = ({
             <TableBody>
               {report.tools.map((tool, i) => {
                 const defective = isDefective(tool.status);
+                const missing = isMissing(tool);
                 return (
-                  <TableRow key={i} className={defective ? "bg-destructive/5" : ""}>
+                  <TableRow key={i} className={defective || missing ? "bg-destructive/5" : ""}>
                     <TableCell className="py-2 text-sm">
                       <div className="flex items-center gap-2">
                         <Package className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
@@ -196,12 +197,17 @@ const AnalysisResults = ({
                       <button
                         onClick={() => setSelectedTool(tool)}
                         className={`inline-flex items-center gap-1 font-medium underline-offset-2 hover:underline cursor-pointer transition-colors ${
-                          defective
+                          defective || missing
                             ? "text-destructive hover:text-destructive/80"
                             : "text-green-600 dark:text-green-400 hover:text-green-500"
                         }`}
                       >
-                        {defective ? (
+                        {missing ? (
+                          <>
+                            <AlertTriangle className="w-3.5 h-3.5" />
+                            Missing
+                          </>
+                        ) : defective ? (
                           <>
                             <AlertTriangle className="w-3.5 h-3.5" />
                             Defective
