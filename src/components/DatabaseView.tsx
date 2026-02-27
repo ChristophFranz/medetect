@@ -38,6 +38,7 @@ interface InspectionCase {
   layer2_image_path: string | null;
   layer1_report?: any;
   layer2_report?: any;
+  confirmed_by_users?: string[] | null;
   created_at: string;
 }
 
