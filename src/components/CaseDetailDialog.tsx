@@ -378,13 +378,16 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
                   </div>
                   <div className="space-y-1">
                     <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">Annotated Analysis</p>
-                    {liveReports.layer2?.annotated_image ? (
-                      <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
-                        <img src={liveReports.layer2.annotated_image} alt="Layer 2 Annotated" className="w-full h-auto object-contain max-h-64" />
-                      </div>
-                    ) : (
-                      <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
-                    )}
+                    {(() => {
+                      const annotatedSrc = liveReports.layer2?.annotated_image || getStorageUrl(liveReports.layer2?.annotated_image_path);
+                      return annotatedSrc ? (
+                        <div className="border border-border rounded-lg overflow-hidden bg-muted/20">
+                          <img src={annotatedSrc} alt="Layer 2 Annotated" className="w-full h-auto object-contain max-h-64" />
+                        </div>
+                      ) : (
+                        <div className="border border-border rounded-lg p-8 text-center text-muted-foreground bg-muted/20 text-xs">No annotated image</div>
+                      );
+                    })()}
                   </div>
                 </div>
                 <LayerReportView
