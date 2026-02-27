@@ -91,7 +91,9 @@ const AnalysisResults = ({
 
   if (!report || !report.tools || report.tools.length === 0) return null;
 
-  const defectiveCount = report.tools.filter(t => isDefective(t.status) || isMissing(t)).length;
+  const defectiveOnly = report.tools.filter(t => isDefective(t.status) && !isMissing(t)).length;
+  const missingOnly = report.tools.filter(t => isMissing(t)).length;
+  const issueCount = defectiveOnly + missingOnly;
   const overallOk = report.overall?.toLowerCase().includes("all present") && !report.tools.some(t => isMissing(t));
 
   const handleStatusUpdated = (toolName: string, newStatus: string, secondUserId: string, secondUserName: string) => {
@@ -134,8 +136,10 @@ const AnalysisResults = ({
             <ClipboardList className="w-4 h-4 text-primary" />
             <p className="font-semibold text-sm text-foreground">{layerLabel} Report</p>
           </div>
-          <Badge variant={defectiveCount > 0 ? "destructive" : "secondary"} className="text-xs">
-            {defectiveCount > 0 ? `${defectiveCount} defective` : "All OK"}
+          <Badge variant={issueCount > 0 ? "destructive" : "secondary"} className="text-xs">
+            {issueCount > 0
+              ? [defectiveOnly > 0 && `${defectiveOnly} defective`, missingOnly > 0 && `${missingOnly} missing`].filter(Boolean).join(", ")
+              : "All OK"}
           </Badge>
         </div>
 
