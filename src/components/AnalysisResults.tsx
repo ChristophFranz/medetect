@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Loader2, AlertTriangle, CheckCircle2, Package, ClipboardList } from "lucide-react";
@@ -9,16 +10,26 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "./ui/dialog";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 export interface ToolResult {
   name: string;
   count: number;
   status: string;
+  image?: string; // base64 individual tool image
 }
 
 export interface AnalysisReport {
   overall: string;
   tools: ToolResult[];
+  annotated_image?: string; // base64 annotated toolbox image
 }
 
 interface AnalysisResultsProps {
@@ -33,6 +44,7 @@ const isDefective = (status: string) =>
 
 const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsProps) => {
   const layerLabel = layer === "layer1" ? "Top Layer" : "2nd Layer";
+  const [selectedTool, setSelectedTool] = useState<ToolResult | null>(null);
 
   if (isAnalyzing) {
     return (
@@ -66,76 +78,141 @@ const AnalysisResults = ({ report, isAnalyzing, error, layer }: AnalysisResultsP
   const overallOk = report.overall?.toLowerCase().includes("all present");
 
   return (
-    <Card className="p-4 space-y-3">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <ClipboardList className="w-4 h-4 text-primary" />
-          <p className="font-semibold text-sm text-foreground">{layerLabel} Report</p>
+    <>
+      <Card className="p-4 space-y-3">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <ClipboardList className="w-4 h-4 text-primary" />
+            <p className="font-semibold text-sm text-foreground">{layerLabel} Report</p>
+          </div>
+          <Badge variant={defectiveCount > 0 ? "destructive" : "secondary"} className="text-xs">
+            {defectiveCount > 0 ? `${defectiveCount} defective` : "All OK"}
+          </Badge>
         </div>
-        <Badge variant={defectiveCount > 0 ? "destructive" : "secondary"} className="text-xs">
-          {defectiveCount > 0 ? `${defectiveCount} defective` : "All OK"}
-        </Badge>
-      </div>
 
-      {/* Overall status */}
-      <div className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium ${
-        overallOk
-          ? "bg-green-500/10 text-green-700 dark:text-green-400"
-          : "bg-destructive/10 text-destructive"
-      }`}>
-        {overallOk ? (
-          <CheckCircle2 className="w-4 h-4 shrink-0" />
-        ) : (
-          <AlertTriangle className="w-4 h-4 shrink-0" />
+        {/* Overall status */}
+        <div className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium ${
+          overallOk
+            ? "bg-green-500/10 text-green-700 dark:text-green-400"
+            : "bg-destructive/10 text-destructive"
+        }`}>
+          {overallOk ? (
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+          ) : (
+            <AlertTriangle className="w-4 h-4 shrink-0" />
+          )}
+          {report.overall}
+        </div>
+
+        {/* Annotated toolbox image */}
+        {report.annotated_image && (
+          <div className="rounded-md border border-border overflow-hidden">
+            <AspectRatio ratio={16 / 9}>
+              <img
+                src={report.annotated_image}
+                alt={`${layerLabel} annotated`}
+                className="w-full h-full object-cover"
+              />
+            </AspectRatio>
+          </div>
         )}
-        {report.overall}
-      </div>
 
-      {/* Tools table */}
-      <div className="rounded-md border border-border overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-muted/50">
-              <TableHead className="text-xs font-semibold h-8">Tool</TableHead>
-              <TableHead className="text-xs font-semibold h-8 text-center w-12">Qty</TableHead>
-              <TableHead className="text-xs font-semibold h-8 text-right">Status</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {report.tools.map((tool, i) => {
-              const defective = isDefective(tool.status);
-              return (
-                <TableRow key={i} className={defective ? "bg-destructive/5" : ""}>
-                  <TableCell className="py-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <Package className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                      <span className="text-foreground">{tool.name}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell className="py-2 text-sm text-center text-muted-foreground">
-                    {tool.count}
-                  </TableCell>
-                  <TableCell className="py-2 text-sm text-right">
-                    {defective ? (
-                      <span className="inline-flex items-center gap-1 text-destructive font-medium">
-                        <AlertTriangle className="w-3.5 h-3.5" />
-                        Defective
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400 font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
-                        OK
-                      </span>
-                    )}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </div>
-    </Card>
+        {/* Tools table */}
+        <div className="rounded-md border border-border overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-muted/50">
+                <TableHead className="text-xs font-semibold h-8">Tool</TableHead>
+                <TableHead className="text-xs font-semibold h-8 text-center w-12">Qty</TableHead>
+                <TableHead className="text-xs font-semibold h-8 text-right">Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {report.tools.map((tool, i) => {
+                const defective = isDefective(tool.status);
+                const hasImage = !!tool.image;
+                return (
+                  <TableRow key={i} className={defective ? "bg-destructive/5" : ""}>
+                    <TableCell className="py-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        <Package className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                        <span className="text-foreground">{tool.name}</span>
+                      </div>
+                    </TableCell>
+                    <TableCell className="py-2 text-sm text-center text-muted-foreground">
+                      {tool.count}
+                    </TableCell>
+                    <TableCell className="py-2 text-sm text-right">
+                      {hasImage ? (
+                        <button
+                          onClick={() => setSelectedTool(tool)}
+                          className={`inline-flex items-center gap-1 font-medium underline-offset-2 hover:underline cursor-pointer transition-colors ${
+                            defective
+                              ? "text-destructive hover:text-destructive/80"
+                              : "text-green-600 dark:text-green-400 hover:text-green-500"
+                          }`}
+                        >
+                          {defective ? (
+                            <>
+                              <AlertTriangle className="w-3.5 h-3.5" />
+                              Defective
+                            </>
+                          ) : (
+                            <>
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              OK
+                            </>
+                          )}
+                        </button>
+                      ) : defective ? (
+                        <span className="inline-flex items-center gap-1 text-destructive font-medium">
+                          <AlertTriangle className="w-3.5 h-3.5" />
+                          Defective
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400 font-medium">
+                          <CheckCircle2 className="w-3.5 h-3.5" />
+                          OK
+                        </span>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
+      </Card>
+
+      {/* Tool image dialog */}
+      <Dialog open={!!selectedTool} onOpenChange={(open) => !open && setSelectedTool(null)}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              {selectedTool && isDefective(selectedTool.status) ? (
+                <AlertTriangle className="w-5 h-5 text-destructive" />
+              ) : (
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              )}
+              {selectedTool?.name}
+            </DialogTitle>
+            <DialogDescription>
+              Status: {selectedTool && isDefective(selectedTool.status) ? "Defective" : "Non-defective"} · Qty: {selectedTool?.count}
+            </DialogDescription>
+          </DialogHeader>
+          {selectedTool?.image && (
+            <div className="rounded-md overflow-hidden border border-border">
+              <img
+                src={selectedTool.image}
+                alt={`${selectedTool.name} detail`}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
