@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ChevronRight, ChevronLeft, Eye, Download, Mail, Loader2 } from "lucide-react";
+import { ChevronRight, ChevronLeft, Eye, Download, Mail, Loader2, Pencil } from "lucide-react";
 import JSZip from "jszip";
 import { Button } from "./ui/button";
 import {
@@ -14,6 +14,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DatabaseFilters from "./DatabaseFilters";
+import { Badge } from "./ui/badge";
 import CaseDetailDialog from "./CaseDetailDialog";
 import {
   Pagination,
@@ -37,6 +38,7 @@ interface InspectionCase {
   layer2_image_path: string | null;
   layer1_report?: any;
   layer2_report?: any;
+  confirmed_by_users?: string[] | null;
   created_at: string;
 }
 
@@ -308,7 +310,15 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
                           {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
                         </TableCell>
                         <TableCell>
-                          Case {caseItem.case_number} ({caseItem.patient_name})
+                          <div className="flex items-center gap-2">
+                            {caseItem.confirmed_by_users && caseItem.confirmed_by_users.length > 0 && (
+                              <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-amber-500/50 text-amber-500 gap-1">
+                                <Pencil className="w-3 h-3" />
+                                Modified
+                              </Badge>
+                            )}
+                            <span>Case {caseItem.case_number} ({caseItem.patient_name})</span>
+                          </div>
                         </TableCell>
                         <TableCell className="text-center">{formatDate(caseItem.created_at)}</TableCell>
                         <TableCell className="text-center">{formatTime(caseItem.created_at)}</TableCell>
