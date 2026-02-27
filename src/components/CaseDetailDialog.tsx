@@ -312,7 +312,7 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
               {/* Layer 1 */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-medium">Layer 1 - Pre-Operation</h4>
+                  <h4 className="font-medium">Layer 1 – Top Layer</h4>
                   {caseData.layer1_image_path && (
                     <Button variant="ghost" size="sm" onClick={() => handleDownloadImage(caseData.layer1_image_path, `case-${caseData.case_number}-layer1.jpg`)}>
                       <Download className="w-4 h-4 mr-1" /> Download
