@@ -24,6 +24,7 @@ interface ToolResult {
   count: number;
   status: string;
   image?: string;
+  image_path?: string;
   status_override?: {
     original_status: string;
     new_status: string;
@@ -37,7 +38,14 @@ interface LayerReport {
   overall: string;
   tools: ToolResult[];
   annotated_image?: string;
+  annotated_image_path?: string;
 }
+
+const getStorageUrl = (path: string | undefined | null, bucket: string = 'case-images'): string | null => {
+  if (!path) return null;
+  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
+  return data.publicUrl;
+};
 
 interface CaseDetailDialogProps {
   open: boolean;
