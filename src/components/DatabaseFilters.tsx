@@ -86,7 +86,7 @@ const DatabaseFilters = ({
     onModifiedChange(false);
   };
 
-  const hasActiveFilters = searchQuery || selectedUserId || selectedDate;
+  const hasActiveFilters = searchQuery || selectedUserId || selectedDate || showModifiedOnly;
 
   return (
     <div className="space-y-4">
