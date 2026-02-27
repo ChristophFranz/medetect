@@ -265,6 +265,8 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
               onUserChange={setSelectedUserId}
               selectedDate={selectedDate}
               onDateChange={setSelectedDate}
+              showModifiedOnly={showModifiedOnly}
+              onModifiedChange={setShowModifiedOnly}
               canAccessToolsClassification={canAccessToolsClassification}
               onToolsClassificationClick={handleToolsClassificationClick}
             />
