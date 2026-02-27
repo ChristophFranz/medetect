@@ -95,7 +95,7 @@ const LayerReportView = ({ report, label, layer, caseId, currentUserId, currentU
     setReviewOpen(true);
   };
 
-  const handleStatusUpdated = () => {
+  const handleStatusUpdated = (_toolName: string, _newStatus: string, _secondUserId: string, _secondUserName: string) => {
     onStatusUpdated();
   };
 
