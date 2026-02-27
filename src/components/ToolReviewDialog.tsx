@@ -225,6 +225,42 @@ const ToolReviewDialog = ({
           </div>
         )}
 
+        {/* Step: Confirm User */}
+        {step === "confirm_user" && confirmedUser && (
+          <div className="space-y-3 pt-2 border-t border-border">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <UserCheck className="w-4 h-4 text-primary" />
+              Second user identified
+            </div>
+            <div className="flex items-center gap-3 p-3 rounded-md bg-muted/50 border border-border">
+              <div className="p-2 rounded-full bg-primary/10">
+                <UserCheck className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-semibold text-sm text-foreground">{confirmedUser.name}</p>
+                <p className="text-xs text-muted-foreground">Confirming user</p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              <strong>{confirmedUser.name}</strong> will confirm changing{" "}
+              <strong>{tool?.name}</strong> from{" "}
+              <strong>{defective ? "Defective" : "Non-defective"}</strong> to{" "}
+              <strong>{newStatus}</strong>.
+            </p>
+            {nfcError && (
+              <p className="text-xs text-destructive">{nfcError}</p>
+            )}
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => { setStep("nfc_confirm"); setConfirmedUser(null); setNfcInput(""); }} className="flex-1">
+                Cancel
+              </Button>
+              <Button onClick={handleConfirmSave} className="flex-1">
+                Confirm & Save
+              </Button>
+            </div>
+          </div>
+        )}
+
         {/* Step: Saving */}
         {step === "saving" && (
           <div className="flex items-center gap-3 py-4">
