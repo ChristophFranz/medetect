@@ -119,10 +119,25 @@ Deno.serve(async (req) => {
       ? "Issue detected – some tools are defective"
       : "All present and non-defective";
 
-    // Save updated report
+    // Fetch current confirmed_by_users to append
+    const { data: caseRow } = await supabase
+      .from("inspection_cases")
+      .select("confirmed_by_users")
+      .eq("id", case_id)
+      .maybeSingle();
+
+    const existingUsers: string[] = (caseRow as any)?.confirmed_by_users || [];
+    const updatedConfirmedUsers = existingUsers.includes(second_user_name)
+      ? existingUsers
+      : [...existingUsers, second_user_name];
+
+    // Save updated report and confirmed_by_users
     const { error: updateError } = await supabase
       .from("inspection_cases")
-      .update({ [reportField]: report })
+      .update({
+        [reportField]: report,
+        confirmed_by_users: updatedConfirmedUsers,
+      })
       .eq("id", case_id);
 
     if (updateError) {
