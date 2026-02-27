@@ -144,8 +144,8 @@ const LayerReportView = ({ report, label, layer, caseId, currentUserId, currentU
                 >
                   <TableCell className="py-1.5 text-xs">
                     <div className="flex items-center gap-2">
-                      {tool.image ? (
-                        <img src={tool.image} alt={tool.name} className="w-8 h-8 rounded border border-border object-cover shrink-0" />
+                      {(tool.image || tool.image_path) ? (
+                        <img src={tool.image || getStorageUrl(tool.image_path) || ''} alt={tool.name} className="w-8 h-8 rounded border border-border object-cover shrink-0" />
                       ) : (
                         <Package className="w-3 h-3 text-muted-foreground shrink-0" />
                       )}
