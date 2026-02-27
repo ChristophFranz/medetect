@@ -395,7 +395,7 @@ const InspectionView = () => {
                   <img 
                     src={layer1Report?.annotated_image || layer1Image} 
                     alt="Layer 1 capture" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain bg-black"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
                     {layer1Report?.annotated_image ? "Top Layer (Analysed)" : "Top Layer"}
