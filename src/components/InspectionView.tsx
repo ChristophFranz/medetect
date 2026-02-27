@@ -413,12 +413,12 @@ const InspectionView = () => {
               {layer2Image && (
                 <div className="relative group">
                   <img 
-                    src={layer2Image} 
+                    src={layer2Report?.annotated_image || layer2Image} 
                     alt="Layer 2 capture" 
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
-                    2nd Layer
+                    {layer2Report?.annotated_image ? "2nd Layer (Analysed)" : "2nd Layer"}
                   </div>
                   {captureStep !== "complete" && (
                     <button 
