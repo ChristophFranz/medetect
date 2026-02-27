@@ -207,13 +207,12 @@ const InspectionView = () => {
         description: `Patient: ${data.case.patient_name}`,
       });
 
-      // Save any reports that completed before the case was saved
-      if (layer1Report) {
-        saveReportToBackend(caseId, "layer1", layer1Report);
+      // Save any reports that were queued while waiting for case ID
+      const pending = pendingReportsRef.current;
+      for (const [layer, report] of pending.entries()) {
+        saveReportToBackend(caseId, layer as "layer1" | "layer2", report);
       }
-      if (layer2Report) {
-        saveReportToBackend(caseId, "layer2", layer2Report);
-      }
+      pending.clear();
     } catch (err) {
       console.error("Save case error:", err);
       toast({
