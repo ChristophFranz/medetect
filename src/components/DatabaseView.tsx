@@ -83,7 +83,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   // Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, selectedUserId, selectedDate]);
+  }, [searchQuery, selectedUserId, selectedDate, showModifiedOnly]);
 
   const fetchCases = useCallback(async () => {
     setLoading(true);
