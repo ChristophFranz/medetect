@@ -156,6 +156,21 @@ const DatabaseFilters = ({
         </Popover>
       </div>
 
+      {/* Modified Filter */}
+      <div className="space-y-2">
+        <p className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+          <Pencil className="w-3 h-3" /> Modified
+        </p>
+        <Button
+          variant={showModifiedOnly ? "default" : "outline"}
+          size="sm"
+          className="w-full text-xs h-8"
+          onClick={() => onModifiedChange(!showModifiedOnly)}
+        >
+          {showModifiedOnly ? "Showing Modified" : "Show Modified Only"}
+        </Button>
+      </div>
+
       {/* Clear Filters */}
       {hasActiveFilters && (
         <Button
