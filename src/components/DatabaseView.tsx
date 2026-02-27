@@ -69,11 +69,16 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
 
   const canAccessToolsClassification = userTags.includes("administrator") || userTags.includes("medetect_team");
 
-  const totalPages = Math.max(1, Math.ceil(cases.length / ITEMS_PER_PAGE));
+  const filteredCases = useMemo(() => {
+    if (!showModifiedOnly) return cases;
+    return cases.filter(c => c.confirmed_by_users && c.confirmed_by_users.length > 0);
+  }, [cases, showModifiedOnly]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredCases.length / ITEMS_PER_PAGE));
   const paginatedCases = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    return cases.slice(start, start + ITEMS_PER_PAGE);
-  }, [cases, currentPage]);
+    return filteredCases.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredCases, currentPage]);
 
   // Reset to page 1 when filters change
   useEffect(() => {
