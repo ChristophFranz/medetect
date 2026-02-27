@@ -29,7 +29,7 @@ interface ToolReviewDialogProps {
 const isDefective = (status: string) =>
   status.toLowerCase().includes("defective") && !status.toLowerCase().includes("non");
 
-type ReviewStep = "review" | "nfc_confirm" | "saving";
+type ReviewStep = "review" | "nfc_confirm" | "confirm_user" | "saving";
 
 const ToolReviewDialog = ({
   tool,
