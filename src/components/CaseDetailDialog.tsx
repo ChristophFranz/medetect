@@ -267,7 +267,7 @@ const CaseDetailDialog = ({ open, onOpenChange, caseData, currentUserId, current
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Case {caseData.case_number} - {caseData.patient_name}</DialogTitle>
         </DialogHeader>
