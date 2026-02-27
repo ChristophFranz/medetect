@@ -59,6 +59,9 @@ const InspectionView = () => {
     setIsCameraReady(ready);
   }, []);
 
+  // Track pending reports that need saving once case ID is available
+  const pendingReportsRef = useRef<Map<string, AnalysisReport>>(new Map());
+
   const saveReportToBackend = async (caseId: string, layer: "layer1" | "layer2", report: AnalysisReport) => {
     try {
       await supabase.functions.invoke('update-case-report', {
@@ -93,10 +96,13 @@ const InspectionView = () => {
       if (layer === "layer1") setLayer1Report(report);
       else setLayer2Report(report);
 
-      // Save report to backend if case already saved
+      // Save report to backend if case already saved, otherwise queue it
       const caseId = savedCaseIdRef.current;
       if (caseId) {
         saveReportToBackend(caseId, layer, report);
+      } else {
+        // Queue this report to be saved once the case ID is available
+        pendingReportsRef.current.set(layer, report);
       }
     } catch (err) {
       console.error("Analysis error:", err);
@@ -201,13 +207,12 @@ const InspectionView = () => {
         description: `Patient: ${data.case.patient_name}`,
       });
 
-      // Save any reports that completed before the case was saved
-      if (layer1Report) {
-        saveReportToBackend(caseId, "layer1", layer1Report);
+      // Save any reports that were queued while waiting for case ID
+      const pending = pendingReportsRef.current;
+      for (const [layer, report] of pending.entries()) {
+        saveReportToBackend(caseId, layer as "layer1" | "layer2", report);
       }
-      if (layer2Report) {
-        saveReportToBackend(caseId, "layer2", layer2Report);
-      }
+      pending.clear();
     } catch (err) {
       console.error("Save case error:", err);
       toast({
