@@ -319,10 +319,10 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
                         <TableCell>
                           <div className="flex items-center gap-2">
                             {caseItem.confirmed_by_users && caseItem.confirmed_by_users.length > 0 && (
-                              <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-amber-500/50 text-amber-500 gap-1">
-                                <Pencil className="w-3 h-3" />
-                                Modified
-                              </Badge>
+                              <span className="relative flex h-2.5 w-2.5 shrink-0" title="Modified">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
+                              </span>
                             )}
                             <span>Case {caseItem.case_number} ({caseItem.patient_name})</span>
                           </div>
