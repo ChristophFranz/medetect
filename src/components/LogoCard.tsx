@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import medetectLogo from "@/assets/medetect-logo.png";
 
 interface LogoCardProps {
   showNfcInput?: boolean;
