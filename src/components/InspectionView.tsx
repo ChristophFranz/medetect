@@ -80,7 +80,16 @@ const InspectionView = () => {
       });
       if (!response.ok) throw new Error(`Server returned ${response.status}`);
       const data = await response.json();
-      const report: AnalysisReport = { overall: data.overall || "", tools: data.tools || [] };
+      const report: AnalysisReport = {
+        overall: data.overall || "",
+        tools: (data.tools || []).map((t: any) => ({
+          name: t.name,
+          count: t.count,
+          status: t.status,
+          image: t.image || undefined,
+        })),
+        annotated_image: data.annotated_image || undefined,
+      };
       if (layer === "layer1") setLayer1Report(report);
       else setLayer2Report(report);
 
