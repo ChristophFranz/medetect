@@ -10,6 +10,7 @@ const toolFolderMap: Record<string, string> = {
   "forceps macpherson": "forceps-macpherson",
   "forceps utrata": "forceps-utrata",
   "hook sinskey": "hook-sinskey",
+  "hook sinskey tip": "hook-sinskey",
 };
 
 function base64ToBytes(base64: string): { bytes: Uint8Array; contentType: string } {
