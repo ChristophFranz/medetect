@@ -91,7 +91,7 @@ const AnalysisResults = ({
 
   if (!report || !report.tools || report.tools.length === 0) return null;
 
-  const defectiveCount = report.tools.filter(t => isDefective(t.status)).length;
+  const defectiveCount = report.tools.filter(t => isDefective(t.status) || isMissing(t)).length;
   const overallOk = report.overall?.toLowerCase().includes("all present") && !report.tools.some(t => isMissing(t));
 
   const handleStatusUpdated = (toolName: string, newStatus: string, secondUserId: string, secondUserName: string) => {
