@@ -35,6 +35,8 @@ interface InspectionCase {
   folder_path: string;
   layer1_image_path: string | null;
   layer2_image_path: string | null;
+  layer1_report?: any;
+  layer2_report?: any;
   created_at: string;
 }
 
