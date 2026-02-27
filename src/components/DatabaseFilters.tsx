@@ -47,6 +47,8 @@ const DatabaseFilters = ({
   onDateChange,
   canAccessToolsClassification,
   onToolsClassificationClick,
+  showModifiedOnly,
+  onModifiedChange,
 }: DatabaseFiltersProps) => {
   const [users, setUsers] = useState<InspectionUser[]>([]);
   const [loadingUsers, setLoadingUsers] = useState(false);
