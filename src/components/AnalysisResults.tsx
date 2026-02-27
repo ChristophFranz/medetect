@@ -47,6 +47,9 @@ interface AnalysisResultsProps {
 const isDefective = (status: string) =>
   status.toLowerCase().includes("defective") && !status.toLowerCase().includes("non");
 
+const isMissing = (tool: ToolResult) =>
+  tool.count === 0 || tool.status.toLowerCase().includes("missing");
+
 const AnalysisResults = ({
   report,
   isAnalyzing,
