@@ -457,10 +457,12 @@ const InspectionView = () => {
       
       {/* Right side - Analysis status, results, and voice commands */}
       <div className="w-full md:w-64 shrink-0 space-y-3 flex flex-col overflow-y-auto">
-        <AnalysisStatus 
-          status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
-          capturedImage={layer2Image || layer1Image} 
-        />
+        {captureStep !== "complete" && (
+          <AnalysisStatus 
+            status={captureStep === "layer1" || captureStep === "layer2" ? "live" : captureStep} 
+            capturedImage={layer2Image || layer1Image} 
+          />
+        )}
 
         {/* Analysis results */}
         <AnalysisResults
@@ -483,54 +485,57 @@ const InspectionView = () => {
           userName={userName}
           onReportUpdated={(_, updated) => setLayer2Report(updated)}
         />
-        {/* Voice command status - always visible */}
-        <Card className={`p-4 transition-colors ${
-          isListening 
-            ? "bg-green-500/10 border-green-500/40 ring-1 ring-green-400/30" 
-            : !isSupported
-              ? "bg-destructive/5 border-destructive/30"
-              : "bg-muted/50 border-border"
-        }`}>
-          <div className="flex items-center gap-3">
-            <div className={`p-2.5 rounded-full ${
-              isListening ? "bg-green-500/20" : !isSupported ? "bg-destructive/10" : "bg-muted"
-            }`}>
-              {isListening ? (
-                <Mic className="w-6 h-6 text-green-500 animate-pulse" />
-              ) : (
-                <MicOff className="w-6 h-6 text-muted-foreground" />
-              )}
-            </div>
-            <div className="flex-1">
-              <p className={`font-semibold text-sm ${
-                isListening ? "text-green-600 dark:text-green-400" : "text-muted-foreground"
+
+        {/* Voice command status - hidden once complete */}
+        {captureStep !== "complete" && (
+          <Card className={`p-4 transition-colors ${
+            isListening 
+              ? "bg-green-500/10 border-green-500/40 ring-1 ring-green-400/30" 
+              : !isSupported
+                ? "bg-destructive/5 border-destructive/30"
+                : "bg-muted/50 border-border"
+          }`}>
+            <div className="flex items-center gap-3">
+              <div className={`p-2.5 rounded-full ${
+                isListening ? "bg-green-500/20" : !isSupported ? "bg-destructive/10" : "bg-muted"
               }`}>
-                {isListening ? "🎙️ Microphone Active" : !isSupported ? "🎙️ Microphone Unavailable" : "🎙️ Microphone Inactive"}
-              </p>
-              <p className="text-xs text-muted-foreground mt-0.5">
-                {isListening 
-                  ? "Listening for commands…" 
-                  : !isSupported 
-                    ? "Use Chrome for voice commands"
-                    : voiceEnabled 
-                      ? "Waiting for microphone…" 
-                      : "Activate camera to enable voice"
-                }
-              </p>
+                {isListening ? (
+                  <Mic className="w-6 h-6 text-green-500 animate-pulse" />
+                ) : (
+                  <MicOff className="w-6 h-6 text-muted-foreground" />
+                )}
+              </div>
+              <div className="flex-1">
+                <p className={`font-semibold text-sm ${
+                  isListening ? "text-green-600 dark:text-green-400" : "text-muted-foreground"
+                }`}>
+                  {isListening ? "🎙️ Microphone Active" : !isSupported ? "🎙️ Microphone Unavailable" : "🎙️ Microphone Inactive"}
+                </p>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  {isListening 
+                    ? "Listening for commands…" 
+                    : !isSupported 
+                      ? "Use Chrome for voice commands"
+                      : voiceEnabled 
+                        ? "Waiting for microphone…" 
+                        : "Activate camera to enable voice"
+                  }
+                </p>
+              </div>
             </div>
-          </div>
-          {isListening && (
-            <div className="mt-3 pt-3 border-t border-border/50 space-y-1.5">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Say:</p>
-              {["Capture", "Recap top", "Recap second", "New inspection"].map((cmd) => (
-                <div key={cmd} className="flex items-center gap-2 text-sm text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
-                  <span>"{cmd}"</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </Card>
+            {isListening && (
+              <div className="mt-3 pt-3 border-t border-border/50 space-y-1.5">
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Say:</p>
+                {["Capture", "Recap top", "Recap second", "New inspection"].map((cmd) => (
+                  <div key={cmd} className="flex items-center gap-2 text-sm text-foreground/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                    <span>"{cmd}"</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card>
+        )}
 
         {/* Saving spinner */}
         {captureStep === "saving" && (
