@@ -46,6 +46,7 @@ const ToolReviewDialog = ({
   const [nfcLoading, setNfcLoading] = useState(false);
   const [nfcError, setNfcError] = useState<string | null>(null);
   const [wantsChange, setWantsChange] = useState(false);
+  const [confirmedUser, setConfirmedUser] = useState<{ id: string; name: string } | null>(null);
 
   if (!tool) return null;
 
