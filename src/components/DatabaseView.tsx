@@ -419,6 +419,9 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
         open={detailDialogOpen}
         onOpenChange={setDetailDialogOpen}
         caseData={selectedCase}
+        currentUserId={searchParams.get("user") || ""}
+        currentUserName={searchParams.get("name") || ""}
+        onCaseUpdated={fetchCases}
       />
     </div>
   );
