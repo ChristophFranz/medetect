@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, User, Calendar, Wrench, X } from "lucide-react";
+import { Search, User, Calendar, Wrench, X, Pencil } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import {
@@ -32,6 +32,8 @@ interface DatabaseFiltersProps {
   onUserChange: (userId: string | null) => void;
   selectedDate: Date | undefined;
   onDateChange: (date: Date | undefined) => void;
+  showModifiedOnly: boolean;
+  onModifiedChange: (value: boolean) => void;
   canAccessToolsClassification: boolean;
   onToolsClassificationClick: () => void;
 }
@@ -45,6 +47,8 @@ const DatabaseFilters = ({
   onDateChange,
   canAccessToolsClassification,
   onToolsClassificationClick,
+  showModifiedOnly,
+  onModifiedChange,
 }: DatabaseFiltersProps) => {
   const [users, setUsers] = useState<InspectionUser[]>([]);
   const [loadingUsers, setLoadingUsers] = useState(false);
@@ -79,9 +83,10 @@ const DatabaseFilters = ({
     onSearchChange("");
     onUserChange(null);
     onDateChange(undefined);
+    onModifiedChange(false);
   };
 
-  const hasActiveFilters = searchQuery || selectedUserId || selectedDate;
+  const hasActiveFilters = searchQuery || selectedUserId || selectedDate || showModifiedOnly;
 
   return (
     <div className="space-y-4">
@@ -149,6 +154,21 @@ const DatabaseFilters = ({
             />
           </PopoverContent>
         </Popover>
+      </div>
+
+      {/* Modified Filter */}
+      <div className="space-y-2">
+        <p className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+          <Pencil className="w-3 h-3" /> Modified
+        </p>
+        <Button
+          variant={showModifiedOnly ? "default" : "outline"}
+          size="sm"
+          className="w-full text-xs h-8"
+          onClick={() => onModifiedChange(!showModifiedOnly)}
+        >
+          {showModifiedOnly ? "Showing Modified" : "Show Modified Only"}
+        </Button>
       </div>
 
       {/* Clear Filters */}

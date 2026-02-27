@@ -60,6 +60,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
   const [selectedCase, setSelectedCase] = useState<InspectionCase | null>(null);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
   const [downloadingCaseId, setDownloadingCaseId] = useState<string | null>(null);
+  const [showModifiedOnly, setShowModifiedOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   
   const navigate = useNavigate();
@@ -68,16 +69,21 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
 
   const canAccessToolsClassification = userTags.includes("administrator") || userTags.includes("medetect_team");
 
-  const totalPages = Math.max(1, Math.ceil(cases.length / ITEMS_PER_PAGE));
+  const filteredCases = useMemo(() => {
+    if (!showModifiedOnly) return cases;
+    return cases.filter(c => c.confirmed_by_users && c.confirmed_by_users.length > 0);
+  }, [cases, showModifiedOnly]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredCases.length / ITEMS_PER_PAGE));
   const paginatedCases = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    return cases.slice(start, start + ITEMS_PER_PAGE);
-  }, [cases, currentPage]);
+    return filteredCases.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredCases, currentPage]);
 
   // Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, selectedUserId, selectedDate]);
+  }, [searchQuery, selectedUserId, selectedDate, showModifiedOnly]);
 
   const fetchCases = useCallback(async () => {
     setLoading(true);
@@ -259,6 +265,8 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
               onUserChange={setSelectedUserId}
               selectedDate={selectedDate}
               onDateChange={setSelectedDate}
+              showModifiedOnly={showModifiedOnly}
+              onModifiedChange={setShowModifiedOnly}
               canAccessToolsClassification={canAccessToolsClassification}
               onToolsClassificationClick={handleToolsClassificationClick}
             />
@@ -365,7 +373,7 @@ const DatabaseView = ({ userTags }: DatabaseViewProps) => {
               </ScrollArea>
               {totalPages > 1 && (
                 <div className="border-t border-border px-4 py-2 flex items-center justify-between text-xs text-muted-foreground">
-                  <span>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, cases.length)} of {cases.length}</span>
+                  <span>Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredCases.length)} of {filteredCases.length}</span>
                   <Pagination className="mx-0 w-auto">
                     <PaginationContent>
                       <PaginationItem>
