@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-23T15:22:37+00:00",
+  "status": "confirmatory_awaiting_human_review",
+  "evaluation_level": "connected_tray_yolo_to_endpoint_crop_to_defect_model",
+  "cohort_note": "Previously exposed 16 redesigned-tray captures containing 24 expected tools; not an untouched external test.",
+  "evaluation_design": {
+    "test_tray_images": 16,
+    "expected_hook_instances": 24,
+    "defective_instances": 16,
+    "healthy_instances": 8,
+    "paired_downstream_comparison": true
+  },
+  "frozen_policy": {
+    "tray_checkpoint": "ml/runs/new_tray_v4/tray_yolo/fine_tuned/weights/best.pt",
+    "tray_checkpoint_sha256": "065d379f1f5da9637a883bff07da67bb8a95ae07abbfdce06240c37c6c4e9592",
+    "tray_score_threshold": 0.9,
+    "tray_threshold_validation_metrics": {
+      "threshold": 0.9,
+      "tp": 36,
+      "fp": 1,
+      "fn": 5,
+      "precision": 0.972972972972973,
+      "recall": 0.8780487804878049,
+      "f1": 0.923076923076923
+    },
+    "tool_match_iou": 0.5,
+    "endpoint_checkpoint": "ml/runs/endpoint_selector/v1/best.pt",
+    "endpoint_review_margin": 0.03314980864524841,
+    "defect_thresholds": "ml/experiments/new_tray_v4_thresholds.json",
+    "localization_success_iou": 0.5
+  },
+  "tool_detection_common_to_all_models": {
+    "predictions": 22,
+    "matched": 20,
+    "false_positives": 2,
+    "missed": 4,
+    "precision": 0.9090909090909091,
+    "recall": 0.8333333333333334,
+    "mean_matched_iou": 0.8089418258531171,
+    "ap50": 0.995,
+    "map50_95": 0.617473379086548
+  },
+  "endpoint_selection_common_to_all_models": {
+    "evaluated": 20,
+    "correct": 20,
+    "accuracy": 1.0
+  },
+  "models": [
+    {
+      "model": "yolo_detection",
+      "classification_all_expected_instances": {
+        "accuracy": 0.875,
+        "precision": 0.9333333333333333,
+        "sensitivity": 0.875,
+        "specificity": 0.875,
+        "f1": 0.9032258064516129,
+        "pr_auc": 0.9541666666666666,
+        "roc_auc": 0.921875,
+        "confusion_matrix": {
+          "tn": 7,
+          "fp": 1,
+          "fn": 2,
+          "tp": 14
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.75,
+          1.0
+        ],
+        "precision": [
+          0.8125,
+          1.0
+        ],
+        "sensitivity": [
+          0.6875,
+          1.0
+        ],
+        "specificity": [
+          0.625,
+          1.0
+        ],
+        "f1": [
+          0.7857142857142857,
+          1.0
+        ],
+        "pr_auc": [
+          0.8958333333333333,
+          1.0
+        ],
+        "roc_auc": [
+          0.8125,
+          1.0
+        ]
+      },
+      "end_to_end": {
+        "decision_successes": 17,
+        "decision_success_rate": 0.7083333333333334,
+        "localized_successes": 14,
+        "localized_success_rate": 0.5833333333333334,
+        "defective_localized_successes": 11,
+        "defective_localized_success_rate": 0.6875,
+        "defective_mean_localization_iou": 0.5526511882490817,
+        "defective_mean_mask_dice": null,
+        "localization_type": "box"
+      },
+      "alarm_accounting": {
+        "false_alarms_on_expected_healthy_tools": 1,
+        "false_alarms_from_unmatched_tool_detections": 1,
+        "alarm_precision_including_unmatched_detections": 0.875
+      },
+      "review_rate": 0.25,
+      "latency": {
+        "median_tray_to_outputs_ms": 119.27881250085193,
+        "p95_tray_to_outputs_ms": 208.1433432558697
+      },
+      "instance_records": "ml/runs/new_tray_v4/connected_pipeline/yolo_detection/instance_records.jsonl",
+      "overlay_directory": "ml/runs/new_tray_v4/connected_pipeline/yolo_detection/overlays"
+    },
+    {
+      "model": "detr_detection",
+      "classification_all_expected_instances": {
+        "accuracy": 0.75,
+        "precision": 0.9166666666666666,
+        "sensitivity": 0.6875,
+        "specificity": 0.875,
+        "f1": 0.7857142857142857,
+        "pr_auc": 0.8786931818181818,
+        "roc_auc": 0.80078125,
+        "confusion_matrix": {
+          "tn": 7,
+          "fp": 1,
+          "fn": 5,
+          "tp": 11
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.5833333333333334,
+          0.9166666666666666
+        ],
+        "precision": [
+          0.7692307692307693,
+          1.0
+        ],
+        "sensitivity": [
+          0.4375,
+          0.875
+        ],
+        "specificity": [
+          0.625,
+          1.0
+        ],
+        "f1": [
+          0.5925925925925926,
+          0.9333333333333333
+        ],
+        "pr_auc": [
+          0.7927083333333333,
+          0.9583333333333333
+        ],
+        "roc_auc": [
+          0.640625,
+          0.9375
+        ]
+      },
+      "end_to_end": {
+        "decision_successes": 14,
+        "decision_success_rate": 0.5833333333333334,
+        "localized_successes": 11,
+        "localized_success_rate": 0.4583333333333333,
+        "defective_localized_successes": 8,
+        "defective_localized_success_rate": 0.5,
+        "defective_mean_localization_iou": 0.42359186412721533,
+        "defective_mean_mask_dice": null,
+        "localization_type": "box"
+      },
+      "alarm_accounting": {
+        "false_alarms_on_expected_healthy_tools": 1,
+        "false_alarms_from_unmatched_tool_detections": 1,
+        "alarm_precision_including_unmatched_detections": 0.8461538461538461
+      },
+      "review_rate": 0.25,
+      "latency": {
+        "median_tray_to_outputs_ms": 160.63666700210888,
+        "p95_tray_to_outputs_ms": 313.7711570052488
+      },
+      "instance_records": "ml/runs/new_tray_v4/connected_pipeline/detr_detection/instance_records.jsonl",
+      "overlay_directory": "ml/runs/new_tray_v4/connected_pipeline/detr_detection/overlays"
+    },
+    {
+      "model": "detr_segmentation",
+      "classification_all_expected_instances": {
+        "accuracy": 0.8333333333333334,
+        "precision": 0.8333333333333334,
+        "sensitivity": 0.9375,
+        "specificity": 0.625,
+        "f1": 0.8823529411764706,
+        "pr_auc": 0.9577205882352942,
+        "roc_auc": 0.91015625,
+        "confusion_matrix": {
+          "tn": 5,
+          "fp": 3,
+          "fn": 1,
+          "tp": 15
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.7083333333333334,
+          0.9583333333333334
+        ],
+        "precision": [
+          0.7142857142857143,
+          0.9411764705882353
+        ],
+        "sensitivity": [
+          0.8125,
+          1.0
+        ],
+        "specificity": [
+          0.25,
+          0.875
+        ],
+        "f1": [
+          0.7777777777777778,
+          0.9696969696969697
+        ],
+        "pr_auc": [
+          0.9007784598214286,
+          1.0
+        ],
+        "roc_auc": [
+          0.78125,
+          1.0
+        ]
+      },
+      "end_to_end": {
+        "decision_successes": 16,
+        "decision_success_rate": 0.6666666666666666,
+        "localized_successes": 16,
+        "localized_success_rate": 0.6666666666666666,
+        "defective_localized_successes": 15,
+        "defective_localized_success_rate": 0.9375,
+        "defective_mean_localization_iou": 0.6942151551350024,
+        "defective_mean_mask_dice": 0.795505108055857,
+        "localization_type": "mask"
+      },
+      "alarm_accounting": {
+        "false_alarms_on_expected_healthy_tools": 3,
+        "false_alarms_from_unmatched_tool_detections": 2,
+        "alarm_precision_including_unmatched_detections": 0.75
+      },
+      "review_rate": 0.25,
+      "latency": {
+        "median_tray_to_outputs_ms": 292.0807290029188,
+        "p95_tray_to_outputs_ms": 561.7025720039237
+      },
+      "instance_records": "ml/runs/new_tray_v4/connected_pipeline/detr_segmentation/instance_records.jsonl",
+      "overlay_directory": "ml/runs/new_tray_v4/connected_pipeline/detr_segmentation/overlays"
+    },
+    {
+      "model": "mask_rcnn",
+      "classification_all_expected_instances": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0,
+        "f1": 1.0,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "confusion_matrix": {
+          "tn": 8,
+          "fp": 0,
+          "fn": 0,
+          "tp": 16
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          1.0,
+          1.0
+        ],
+        "precision": [
+          1.0,
+          1.0
+        ],
+        "sensitivity": [
+          1.0,
+          1.0
+        ],
+        "specificity": [
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0
+        ],
+        "pr_auc": [
+          1.0,
+          1.0
+        ],
+        "roc_auc": [
+          1.0,
+          1.0
+        ]
+      },
+      "end_to_end": {
+        "decision_successes": 20,
+        "decision_success_rate": 0.8333333333333334,
+        "localized_successes": 20,
+        "localized_success_rate": 0.8333333333333334,
+        "defective_localized_successes": 16,
+        "defective_localized_success_rate": 1.0,
+        "defective_mean_localization_iou": 0.7625893730217936,
+        "defective_mean_mask_dice": 0.8629364076992752,
+        "localization_type": "mask"
+      },
+      "alarm_accounting": {
+        "false_alarms_on_expected_healthy_tools": 0,
+        "false_alarms_from_unmatched_tool_detections": 1,
+        "alarm_precision_including_unmatched_detections": 0.9411764705882353
+      },
+      "review_rate": 0.25,
+      "latency": {
+        "median_tray_to_outputs_ms": 303.2336039977963,
+        "p95_tray_to_outputs_ms": 658.978353256316
+      },
+      "instance_records": "ml/runs/new_tray_v4/connected_pipeline/mask_rcnn/instance_records.jsonl",
+      "overlay_directory": "ml/runs/new_tray_v4/connected_pipeline/mask_rcnn/overlays"
+    }
+  ],
+  "tray_records": "ml/runs/new_tray_v4/connected_pipeline/tray_records.jsonl"
+}

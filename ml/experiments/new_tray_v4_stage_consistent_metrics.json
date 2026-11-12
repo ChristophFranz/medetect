@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "source_connected_results": "ml/experiments/new_tray_v4_connected_results.json",
+  "metric_policy": {
+    "conditional_stage": "evaluate model decisions only on the exact generated crops delivered by the connected pipeline",
+    "strict_pipeline": "require tool detection, correct endpoint, and correct defect decision; every missed expected tool is wrong",
+    "localized_pipeline": "strict pipeline success plus valid localization for defective tools",
+    "comparison_warning": "fixed reviewed-crop benchmark is a separate experiment and is not a monotonic upstream stage of this connected run"
+  },
+  "shared_upstream": {
+    "expected_tools": 24,
+    "detected_tools": 20,
+    "tool_detection_recall": 0.8333333333333334,
+    "defective_tools": 16,
+    "detected_defective_tools": 16,
+    "healthy_tools": 8,
+    "detected_healthy_tools": 4
+  },
+  "models": [
+    {
+      "model": "yolo_detection",
+      "conditional_on_delivered_generated_crops": {
+        "delivered_crops": 20,
+        "delivered_defective": 16,
+        "delivered_healthy": 4,
+        "correct": 17,
+        "accuracy": 0.85,
+        "defective_correct": 14,
+        "defective_recall": 0.875,
+        "false_negative_rate": 0.125,
+        "healthy_correct": 3,
+        "specificity": 0.75,
+        "median_endpoint_plus_model_latency_ms": 44.64345849919482,
+        "p95_endpoint_plus_model_latency_ms": 61.41445204775678
+      },
+      "strict_connected_pipeline": {
+        "expected_tools": 24,
+        "defective_tools": 16,
+        "healthy_tools": 8,
+        "strict_correct": 17,
+        "strict_accuracy": 0.7083333333333334,
+        "defective_correct": 14,
+        "defective_recall": 0.875,
+        "false_negative_rate": 0.125,
+        "localized_correct": 14,
+        "localized_success_rate": 0.5833333333333334,
+        "defective_localized": 11,
+        "defective_localized_recall": 0.6875
+      },
+      "per_tray_latency_ms": {
+        "median_tray_to_outputs_ms": 119.27881250085193,
+        "p95_tray_to_outputs_ms": 208.1433432558697
+      },
+      "strict_connected_subgroups": {
+        "one_tool": {
+          "expected_tools": 8,
+          "defective_tools": 8,
+          "healthy_tools": 0,
+          "strict_correct": 6,
+          "strict_accuracy": 0.75,
+          "defective_correct": 6,
+          "defective_recall": 0.75,
+          "false_negative_rate": 0.25,
+          "localized_correct": 4,
+          "localized_success_rate": 0.5,
+          "defective_localized": 4,
+          "defective_localized_recall": 0.5
+        },
+        "two_tool": {
+          "expected_tools": 16,
+          "defective_tools": 8,
+          "healthy_tools": 8,
+          "strict_correct": 11,
+          "strict_accuracy": 0.6875,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 10,
+          "localized_success_rate": 0.625,
+          "defective_localized": 7,
+          "defective_localized_recall": 0.875
+        },
+        "dry": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 10,
+          "strict_accuracy": 0.8333333333333334,
+          "defective_correct": 7,
+          "defective_recall": 0.875,
+          "false_negative_rate": 0.125,
+          "localized_correct": 10,
+          "localized_success_rate": 0.8333333333333334,
+          "defective_localized": 7,
+          "defective_localized_recall": 0.875
+        },
+        "wet": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 7,
+          "strict_accuracy": 0.5833333333333334,
+          "defective_correct": 7,
+          "defective_recall": 0.875,
+          "false_negative_rate": 0.125,
+          "localized_correct": 4,
+          "localized_success_rate": 0.3333333333333333,
+          "defective_localized": 4,
+          "defective_localized_recall": 0.5
+        }
+      }
+    },
+    {
+      "model": "detr_detection",
+      "conditional_on_delivered_generated_crops": {
+        "delivered_crops": 20,
+        "delivered_defective": 16,
+        "delivered_healthy": 4,
+        "correct": 14,
+        "accuracy": 0.7,
+        "defective_correct": 11,
+        "defective_recall": 0.6875,
+        "false_negative_rate": 0.3125,
+        "healthy_correct": 3,
+        "specificity": 0.75,
+        "median_endpoint_plus_model_latency_ms": 83.07868800329743,
+        "p95_endpoint_plus_model_latency_ms": 111.83716700616075
+      },
+      "strict_connected_pipeline": {
+        "expected_tools": 24,
+        "defective_tools": 16,
+        "healthy_tools": 8,
+        "strict_correct": 14,
+        "strict_accuracy": 0.5833333333333334,
+        "defective_correct": 11,
+        "defective_recall": 0.6875,
+        "false_negative_rate": 0.3125,
+        "localized_correct": 11,
+        "localized_success_rate": 0.4583333333333333,
+        "defective_localized": 8,
+        "defective_localized_recall": 0.5
+      },
+      "per_tray_latency_ms": {
+        "median_tray_to_outputs_ms": 160.63666700210888,
+        "p95_tray_to_outputs_ms": 313.7711570052488
+      },
+      "strict_connected_subgroups": {
+        "one_tool": {
+          "expected_tools": 8,
+          "defective_tools": 8,
+          "healthy_tools": 0,
+          "strict_correct": 3,
+          "strict_accuracy": 0.375,
+          "defective_correct": 3,
+          "defective_recall": 0.375,
+          "false_negative_rate": 0.625,
+          "localized_correct": 1,
+          "localized_success_rate": 0.125,
+          "defective_localized": 1,
+          "defective_localized_recall": 0.125
+        },
+        "two_tool": {
+          "expected_tools": 16,
+          "defective_tools": 8,
+          "healthy_tools": 8,
+          "strict_correct": 11,
+          "strict_accuracy": 0.6875,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 10,
+          "localized_success_rate": 0.625,
+          "defective_localized": 7,
+          "defective_localized_recall": 0.875
+        },
+        "dry": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 8,
+          "strict_accuracy": 0.6666666666666666,
+          "defective_correct": 5,
+          "defective_recall": 0.625,
+          "false_negative_rate": 0.375,
+          "localized_correct": 7,
+          "localized_success_rate": 0.5833333333333334,
+          "defective_localized": 4,
+          "defective_localized_recall": 0.5
+        },
+        "wet": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 6,
+          "strict_accuracy": 0.5,
+          "defective_correct": 6,
+          "defective_recall": 0.75,
+          "false_negative_rate": 0.25,
+          "localized_correct": 4,
+          "localized_success_rate": 0.3333333333333333,
+          "defective_localized": 4,
+          "defective_localized_recall": 0.5
+        }
+      }
+    },
+    {
+      "model": "detr_segmentation",
+      "conditional_on_delivered_generated_crops": {
+        "delivered_crops": 20,
+        "delivered_defective": 16,
+        "delivered_healthy": 4,
+        "correct": 16,
+        "accuracy": 0.8,
+        "defective_correct": 15,
+        "defective_recall": 0.9375,
+        "false_negative_rate": 0.0625,
+        "healthy_correct": 1,
+        "specificity": 0.25,
+        "median_endpoint_plus_model_latency_ms": 208.44981200571056,
+        "p95_endpoint_plus_model_latency_ms": 252.07977440077244
+      },
+      "strict_connected_pipeline": {
+        "expected_tools": 24,
+        "defective_tools": 16,
+        "healthy_tools": 8,
+        "strict_correct": 16,
+        "strict_accuracy": 0.6666666666666666,
+        "defective_correct": 15,
+        "defective_recall": 0.9375,
+        "false_negative_rate": 0.0625,
+        "localized_correct": 16,
+        "localized_success_rate": 0.6666666666666666,
+        "defective_localized": 15,
+        "defective_localized_recall": 0.9375
+      },
+      "per_tray_latency_ms": {
+        "median_tray_to_outputs_ms": 292.0807290029188,
+        "p95_tray_to_outputs_ms": 561.7025720039237
+      },
+      "strict_connected_subgroups": {
+        "one_tool": {
+          "expected_tools": 8,
+          "defective_tools": 8,
+          "healthy_tools": 0,
+          "strict_correct": 7,
+          "strict_accuracy": 0.875,
+          "defective_correct": 7,
+          "defective_recall": 0.875,
+          "false_negative_rate": 0.125,
+          "localized_correct": 7,
+          "localized_success_rate": 0.875,
+          "defective_localized": 7,
+          "defective_localized_recall": 0.875
+        },
+        "two_tool": {
+          "expected_tools": 16,
+          "defective_tools": 8,
+          "healthy_tools": 8,
+          "strict_correct": 9,
+          "strict_accuracy": 0.5625,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 9,
+          "localized_success_rate": 0.5625,
+          "defective_localized": 8,
+          "defective_localized_recall": 1.0
+        },
+        "dry": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 9,
+          "strict_accuracy": 0.75,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 9,
+          "localized_success_rate": 0.75,
+          "defective_localized": 8,
+          "defective_localized_recall": 1.0
+        },
+        "wet": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 7,
+          "strict_accuracy": 0.5833333333333334,
+          "defective_correct": 7,
+          "defective_recall": 0.875,
+          "false_negative_rate": 0.125,
+          "localized_correct": 7,
+          "localized_success_rate": 0.5833333333333334,
+          "defective_localized": 7,
+          "defective_localized_recall": 0.875
+        }
+      }
+    },
+    {
+      "model": "mask_rcnn",
+      "conditional_on_delivered_generated_crops": {
+        "delivered_crops": 20,
+        "delivered_defective": 16,
+        "delivered_healthy": 4,
+        "correct": 20,
+        "accuracy": 1.0,
+        "defective_correct": 16,
+        "defective_recall": 1.0,
+        "false_negative_rate": 0.0,
+        "healthy_correct": 4,
+        "specificity": 1.0,
+        "median_endpoint_plus_model_latency_ms": 221.17772950150538,
+        "p95_endpoint_plus_model_latency_ms": 321.5478907037325
+      },
+      "strict_connected_pipeline": {
+        "expected_tools": 24,
+        "defective_tools": 16,
+        "healthy_tools": 8,
+        "strict_correct": 20,
+        "strict_accuracy": 0.8333333333333334,
+        "defective_correct": 16,
+        "defective_recall": 1.0,
+        "false_negative_rate": 0.0,
+        "localized_correct": 20,
+        "localized_success_rate": 0.8333333333333334,
+        "defective_localized": 16,
+        "defective_localized_recall": 1.0
+      },
+      "per_tray_latency_ms": {
+        "median_tray_to_outputs_ms": 303.2336039977963,
+        "p95_tray_to_outputs_ms": 658.978353256316
+      },
+      "strict_connected_subgroups": {
+        "one_tool": {
+          "expected_tools": 8,
+          "defective_tools": 8,
+          "healthy_tools": 0,
+          "strict_correct": 8,
+          "strict_accuracy": 1.0,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 8,
+          "localized_success_rate": 1.0,
+          "defective_localized": 8,
+          "defective_localized_recall": 1.0
+        },
+        "two_tool": {
+          "expected_tools": 16,
+          "defective_tools": 8,
+          "healthy_tools": 8,
+          "strict_correct": 12,
+          "strict_accuracy": 0.75,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 12,
+          "localized_success_rate": 0.75,
+          "defective_localized": 8,
+          "defective_localized_recall": 1.0
+        },
+        "dry": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 12,
+          "strict_accuracy": 1.0,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 12,
+          "localized_success_rate": 1.0,
+          "defective_localized": 8,
+          "defective_localized_recall": 1.0
+        },
+        "wet": {
+          "expected_tools": 12,
+          "defective_tools": 8,
+          "healthy_tools": 4,
+          "strict_correct": 8,
+          "strict_accuracy": 0.6666666666666666,
+          "defective_correct": 8,
+          "defective_recall": 1.0,
+          "false_negative_rate": 0.0,
+          "localized_correct": 8,
+          "localized_success_rate": 0.6666666666666666,
+          "defective_localized": 8,
+          "defective_localized_recall": 1.0
+        }
+      }
+    }
+  ]
+}

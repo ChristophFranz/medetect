@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-22T16:51:28+00:00",
+  "status": "confirmatory_awaiting_human_review",
+  "evaluation_design": {
+    "cohort": "previously exposed redesigned-tray test captures",
+    "test_status": "confirmatory_not_untouched_external_test",
+    "test_tray_images": 16,
+    "expected_hook_instances": 24,
+    "defective_instances": 16,
+    "healthy_instances": 8,
+    "test_informed_tuning": false
+  },
+  "frozen_policy": {
+    "tray_checkpoint": "ml/runs/tray_yolo/combined_provisional_presentation_20e/weights/best.pt",
+    "tray_checkpoint_sha256": "4c2f2d0876bce9b364d3c7811590c412a16df612e1ccd0f1062eaf1381b5abb0",
+    "tray_score_threshold": 0.1,
+    "tool_match_iou": 0.5,
+    "endpoint_checkpoint": "ml/runs/endpoint_selector/v1/best.pt",
+    "endpoint_checkpoint_sha256": "79bd6dd9d77cefed55811854faed03b9671579b339eee68fe9072946896cc740",
+    "endpoint_review_margin": 0.03314980864524841,
+    "mask_checkpoint": "ml/runs/combined_reviewed_v3/mask_rcnn/best.pt",
+    "mask_checkpoint_sha256": "936fa7091d402fd4c6b9d61c4709479ce899c9a341461e89feed2c3b8717e422",
+    "mask_score_threshold": 0.6978445053100586,
+    "minimum_mask_area": 1,
+    "localization_success_iou": 0.5,
+    "hybrid_review_rule": "review tool misses, low endpoint margins, or Mask R-CNN/YOLO decision disagreement"
+  },
+  "tool_detection": {
+    "predictions": 29,
+    "matched": 22,
+    "false_positives": 7,
+    "missed": 2,
+    "precision": 0.7586206896551724,
+    "recall": 0.9166666666666666,
+    "mean_matched_iou": 0.6862316485887839,
+    "unmatched_prediction_downstream": {
+      "mask_rcnn_defect_alarms": 5,
+      "automatic_outputs": 5,
+      "automatic_defect_alarms": 4,
+      "review_outputs": 2
+    }
+  },
+  "endpoint_selection": {
+    "evaluated": 22,
+    "correct": 22,
+    "accuracy": 1.0,
+    "low_margin_review_count": 4
+  },
+  "mask_rcnn_classification_all_expected_instances": {
+    "accuracy": 0.9583333333333334,
+    "precision": 0.9411764705882353,
+    "sensitivity": 1.0,
+    "specificity": 0.875,
+    "f1": 0.9696969696969697,
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 7,
+      "fp": 1,
+      "fn": 0,
+      "tp": 16
+    }
+  },
+  "mask_rcnn_bootstrap_95_ci": {
+    "accuracy": [
+      0.875,
+      1.0
+    ],
+    "precision": [
+      0.8421052631578947,
+      1.0
+    ],
+    "sensitivity": [
+      1.0,
+      1.0
+    ],
+    "specificity": [
+      0.625,
+      1.0
+    ],
+    "f1": [
+      0.9142857142857143,
+      1.0
+    ],
+    "pr_auc": [
+      1.0,
+      1.0
+    ],
+    "roc_auc": [
+      1.0,
+      1.0
+    ]
+  },
+  "mask_rcnn_classification_detected_instances": {
+    "accuracy": 0.9545454545454546,
+    "precision": 0.9411764705882353,
+    "sensitivity": 1.0,
+    "specificity": 0.8333333333333334,
+    "f1": 0.9696969696969697,
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 5,
+      "fp": 1,
+      "fn": 0,
+      "tp": 16
+    }
+  },
+  "end_to_end": {
+    "decision_successes": 21,
+    "decision_success_rate": 0.875,
+    "localized_successes": 21,
+    "localized_success_rate": 0.875,
+    "defective_localized_successes": 16,
+    "defective_localized_success_rate": 1.0,
+    "defective_mean_full_tray_iou": 0.7226846957212933,
+    "defective_mean_full_tray_dice": 0.8366020161550746,
+    "defect_alarm_accounting": {
+      "correct_defect_alarms": 16,
+      "false_alarms_on_healthy_tools": 1,
+      "false_alarms_from_unmatched_tool_detections": 5,
+      "alarm_precision_including_unmatched_detections": 0.7272727272727273,
+      "false_defect_alarms_per_tray": 0.375
+    }
+  },
+  "hybrid_review_policy": {
+    "automatic_instances": 14,
+    "automatic_coverage": 0.5833333333333334,
+    "automatic_correct": 14,
+    "automatic_accuracy": 1.0,
+    "review_instances": 10,
+    "review_rate": 0.4166666666666667,
+    "model_disagreements": 5,
+    "low_endpoint_margins": 4,
+    "tool_misses": 2,
+    "review_outcomes_assumed": false,
+    "additional_false_tool_review_events": 2,
+    "additional_false_tool_automatic_outputs": 5,
+    "automatic_output_validity_including_false_tools": 0.7368421052631579,
+    "total_review_events": 12,
+    "review_events_per_tray": 0.75
+  },
+  "latency": {
+    "median_tray_to_outputs_ms": 3664.329958500275,
+    "p95_tray_to_outputs_ms": 5365.795229749892,
+    "note": "includes all predicted Hook crops and both Mask R-CNN and YOLO verifier"
+  },
+  "instance_records": "ml/runs/connected_pipeline_confirmatory/instance_records.jsonl",
+  "tray_records": "ml/runs/connected_pipeline_confirmatory/tray_records.jsonl",
+  "overlay_directory": "ml/runs/connected_pipeline_confirmatory/overlays",
+  "extra_prediction_records": "ml/runs/connected_pipeline_confirmatory/extra_prediction_records.jsonl"
+}

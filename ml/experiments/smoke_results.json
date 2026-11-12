@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "event": "milestone_4_smoke_tests",
+  "date": "2026-09-24",
+  "tool": "hook_sinskey",
+  "git_commit": "be1091a262250291ce9fd2ad8fd6e0d7cb71bf9b",
+  "dataset_version": "hook_sinskey_segmentation_v1",
+  "dataset_sha256": "771a2e13e818ac6c6d70a06c9b9973b5fd701a415373f0dc265b20e37c1eb74e",
+  "config": "ml/configs/models.yaml",
+  "config_sha256": "1d7258395e749b8e86f0dee1875eadda8d442d1408d3e43e508554372fc427f6",
+  "seed": 42,
+  "maximum_edge": 640,
+  "test_split_accessed": false,
+  "purpose": "mechanical validation only; not performance evidence",
+  "models": [
+    {
+      "schema_version": 1,
+      "event": "model_smoke_test",
+      "generated_at": "2026-09-24T11:08:48+00:00",
+      "model": "legacy_yolo",
+      "seed": 42,
+      "device": "mps",
+      "split": "train",
+      "test_split_accessed": false,
+      "subset_images": [
+        "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+        "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852"
+      ],
+      "subset_statuses": [
+        "defective",
+        "healthy"
+      ],
+      "epochs": 0,
+      "losses": [],
+      "inference_before": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": true,
+          "confidence": 0.6376274824142456,
+          "box_count": 4,
+          "mask_count": 0,
+          "latency_ms": 399.89329205127433
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": false,
+          "confidence": 0.0,
+          "box_count": 0,
+          "mask_count": 0,
+          "latency_ms": 38.65716699510813
+        }
+      ],
+      "inference_after": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": true,
+          "confidence": 0.6376274824142456,
+          "box_count": 4,
+          "mask_count": 0,
+          "latency_ms": 17.00933399843052
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": false,
+          "confidence": 0.0,
+          "box_count": 0,
+          "mask_count": 0,
+          "latency_ms": 13.800333021208644
+        }
+      ],
+      "backward_ok": "not_applicable",
+      "checkpoint_save_ok": true,
+      "checkpoint_reload_ok": true,
+      "checkpoint_sha256": "016d6b46669ca9d2888d9411e80107df7748192c6df3076c217a1f1230db963b",
+      "checkpoint_bytes": 6255786,
+      "checkpoint_path": "ml/artifacts/legacy/hook_sinskey/yolov8n_best.pt",
+      "status": "passed"
+    },
+    {
+      "schema_version": 1,
+      "event": "model_smoke_test",
+      "generated_at": "2026-09-24T11:09:09+00:00",
+      "model": "detr_detection",
+      "seed": 42,
+      "device": "mps",
+      "split": "train",
+      "test_split_accessed": false,
+      "subset_images": [
+        "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+        "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852"
+      ],
+      "subset_statuses": [
+        "defective",
+        "healthy"
+      ],
+      "epochs": 5,
+      "losses": [
+        4.449028491973877,
+        3.830566883087158,
+        2.681260585784912,
+        2.362039804458618,
+        3.0533385276794434
+      ],
+      "inference_before": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": true,
+          "confidence": 0.5580148696899414,
+          "box_count": 42,
+          "mask_count": 0,
+          "latency_ms": 925.301541981753
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": true,
+          "confidence": 0.5445429086685181,
+          "box_count": 13,
+          "mask_count": 0,
+          "latency_ms": 72.18795898370445
+        }
+      ],
+      "inference_after": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": true,
+          "confidence": 0.642956554889679,
+          "box_count": 90,
+          "mask_count": 0,
+          "latency_ms": 59.70400001388043
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": true,
+          "confidence": 0.5047191977500916,
+          "box_count": 3,
+          "mask_count": 0,
+          "latency_ms": 59.37683302909136
+        }
+      ],
+      "backward_ok": true,
+      "checkpoint_save_ok": true,
+      "checkpoint_reload_ok": true,
+      "checkpoint_sha256": "dfa2b305467fc8d03f7e86a1bf336b9890fefd1ef87e5a2c067aa21278868712",
+      "checkpoint_bytes": 166627171,
+      "checkpoint_path": "ml/runs/smoke/detr_detection/checkpoint.pt",
+      "status": "passed"
+    },
+    {
+      "schema_version": 1,
+      "event": "model_smoke_test",
+      "generated_at": "2026-09-24T11:11:33+00:00",
+      "model": "detr_segmentation",
+      "seed": 42,
+      "device": "mps",
+      "split": "train",
+      "test_split_accessed": false,
+      "subset_images": [
+        "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+        "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852"
+      ],
+      "subset_statuses": [
+        "defective",
+        "healthy"
+      ],
+      "epochs": 5,
+      "losses": [
+        6.051774501800537,
+        4.188115119934082,
+        5.613143444061279,
+        3.1727561950683594,
+        4.152164459228516
+      ],
+      "inference_before": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": false,
+          "confidence": 0.0,
+          "box_count": 0,
+          "mask_count": 0,
+          "latency_ms": 548.0874589993618
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": true,
+          "confidence": 0.573898,
+          "box_count": 1,
+          "mask_count": 1,
+          "latency_ms": 974.0712500060908
+        }
+      ],
+      "inference_after": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": true,
+          "confidence": 0.530824,
+          "box_count": 1,
+          "mask_count": 1,
+          "latency_ms": 467.55870897322893
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": true,
+          "confidence": 0.553747,
+          "box_count": 1,
+          "mask_count": 1,
+          "latency_ms": 177.26437497185543
+        }
+      ],
+      "backward_ok": true,
+      "checkpoint_save_ok": true,
+      "checkpoint_reload_ok": true,
+      "checkpoint_sha256": "2234b688494c8b1a6b0cb69c276b100656130a424506747e774554a7d88ac975",
+      "checkpoint_bytes": 171978115,
+      "checkpoint_path": "ml/runs/smoke/detr_segmentation/checkpoint.pt",
+      "status": "passed"
+    },
+    {
+      "schema_version": 1,
+      "event": "model_smoke_test",
+      "generated_at": "2026-09-24T11:12:08+00:00",
+      "model": "mask_rcnn",
+      "seed": 42,
+      "device": "mps",
+      "split": "train",
+      "test_split_accessed": false,
+      "subset_images": [
+        "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+        "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852"
+      ],
+      "subset_statuses": [
+        "defective",
+        "healthy"
+      ],
+      "epochs": 5,
+      "losses": [
+        2.64957594871521,
+        2.0543527603149414,
+        1.91429603099823,
+        1.7090747356414795,
+        1.481031060218811
+      ],
+      "inference_before": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": true,
+          "confidence": 0.5431995391845703,
+          "box_count": 4,
+          "mask_count": 4,
+          "latency_ms": 1038.344165950548
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": true,
+          "confidence": 0.5909586548805237,
+          "box_count": 4,
+          "mask_count": 4,
+          "latency_ms": 481.57770797843114
+        }
+      ],
+      "inference_after": [
+        {
+          "image_id": "train/6-4_20260214_164608379_png.rf.16ec1a8584a89fe84297ccf60a6905f7",
+          "defective": false,
+          "confidence": 0.0,
+          "box_count": 0,
+          "mask_count": 0,
+          "latency_ms": 489.35304197948426
+        },
+        {
+          "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+          "defective": false,
+          "confidence": 0.0,
+          "box_count": 0,
+          "mask_count": 0,
+          "latency_ms": 474.9049159581773
+        }
+      ],
+      "backward_ok": true,
+      "checkpoint_save_ok": true,
+      "checkpoint_reload_ok": true,
+      "checkpoint_sha256": "34444fd035d3d0bd50457d7a9927ce0a39f5f42fbfab59bf96f35e222c505352",
+      "checkpoint_bytes": 183914689,
+      "checkpoint_path": "ml/runs/smoke/mask_rcnn/checkpoint.pt",
+      "status": "passed"
+    }
+  ],
+  "status": "passed_awaiting_prediction_review"
+}

@@ -1,0 +1,22 @@
+model: /Users/christophcuan/Desktop/medetect-api/Whole toolbox/runs/detect/train/weights/best.pt
+data: ml/data/local/tray_detection/combined_provisional_v1/data.yaml
+project: ml/runs/tray_yolo
+name: combined_provisional_presentation_20e
+task: detect
+imgsz: 640
+epochs: 20
+patience: 8
+batch: 16
+device: cpu
+workers: 8
+seed: 42
+deterministic: true
+pretrained: true
+optimizer: auto
+close_mosaic: 10
+plots: true
+save: true
+val: true
+
+# New-tray labels are unreviewed candidates. This run is suitable for a
+# time-critical presentation, not an authoritative deployment comparison.

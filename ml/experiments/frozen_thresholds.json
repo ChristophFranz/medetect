@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "event": "validation_threshold_freeze",
+  "frozen_at": "2026-09-25T02:34:37+00:00",
+  "dataset_version": "hook_sinskey_segmentation_v1",
+  "dataset_sha256": "771a2e13e818ac6c6d70a06c9b9973b5fd701a415373f0dc265b20e37c1eb74e",
+  "selection_split": "valid",
+  "test_split_accessed": false,
+  "models": [
+    {
+      "model": "legacy_yolo",
+      "score_threshold": 0.1,
+      "minimum_mask_area": null,
+      "threshold_source": "inherited operating point; unchanged",
+      "checkpoint": "ml/artifacts/legacy/hook_sinskey/yolov8n_best.pt",
+      "checkpoint_sha256": "016d6b46669ca9d2888d9411e80107df7748192c6df3076c217a1f1230db963b"
+    },
+    {
+      "model": "detr_detection",
+      "score_threshold": 0.09881528466939926,
+      "minimum_mask_area": null,
+      "validation_metrics": {
+        "tp": 26,
+        "tn": 1,
+        "fp": 8,
+        "fn": 0,
+        "precision": 0.7647058823529411,
+        "sensitivity": 1.0,
+        "specificity": 0.1111111111111111,
+        "f1": 0.8666666666666666
+      },
+      "validation_images": 35,
+      "candidate_predictions": "ml/runs/benchmark/detr_detection/validation_candidates.jsonl",
+      "candidate_predictions_sha256": "c56bfd1df360647dd999764c8488ced1a9fe7e34aeb48aede6afc1c53a1df4d8",
+      "test_split_accessed": false,
+      "threshold_source": "validation-only grid search",
+      "training_summary": "ml/runs/benchmark/detr_detection/training_summary.json",
+      "training_summary_sha256": "ed8b09846d2615126f18405507409b6e25477bd1fc7b3c62a5e996607a8b2ab0",
+      "checkpoint": "ml/runs/benchmark/detr_detection/best.pt",
+      "checkpoint_sha256": "5924bf7b57fdf16d794f4bdb6493f97c68190f3bdcb063b6e3d69ca381755c35"
+    },
+    {
+      "model": "detr_segmentation",
+      "score_threshold": 0.0748167335987091,
+      "minimum_mask_area": 1,
+      "validation_metrics": {
+        "tp": 26,
+        "tn": 0,
+        "fp": 9,
+        "fn": 0,
+        "precision": 0.7428571428571429,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "f1": 0.8524590163934427
+      },
+      "validation_images": 35,
+      "candidate_predictions": "ml/runs/benchmark/detr_segmentation/validation_candidates.jsonl",
+      "candidate_predictions_sha256": "29dc4a942577083fe041889da668b4d0659bf57d86bfb815cd492e7ec9f28316",
+      "test_split_accessed": false,
+      "threshold_source": "validation-only grid search",
+      "training_summary": "ml/runs/benchmark/detr_segmentation/training_summary.json",
+      "training_summary_sha256": "f27ff768bc64008ffb39d6c2425a41353eb00e23194391e17733c23f9929786f",
+      "checkpoint": "ml/runs/benchmark/detr_segmentation/best.pt",
+      "checkpoint_sha256": "0d875fbe354a8e2a333fe41e15addebb90fc24b8c7d904230d55f89016396e17"
+    },
+    {
+      "model": "mask_rcnn",
+      "score_threshold": 0.2375008463859558,
+      "minimum_mask_area": 1,
+      "validation_metrics": {
+        "tp": 25,
+        "tn": 2,
+        "fp": 7,
+        "fn": 1,
+        "precision": 0.78125,
+        "sensitivity": 0.9615384615384616,
+        "specificity": 0.2222222222222222,
+        "f1": 0.8620689655172413
+      },
+      "validation_images": 35,
+      "candidate_predictions": "ml/runs/benchmark/mask_rcnn/validation_candidates.jsonl",
+      "candidate_predictions_sha256": "733183ff28dd1f9a7fac8965e9f031b81181bac551fe677e657b868a781302c5",
+      "test_split_accessed": false,
+      "threshold_source": "validation-only grid search",
+      "training_summary": "ml/runs/benchmark/mask_rcnn/training_summary.json",
+      "training_summary_sha256": "9f7a19509b0d5611ae147bc85416fabff9261b4bc149f684df5fbf74008781d0",
+      "checkpoint": "ml/runs/benchmark/mask_rcnn/best.pt",
+      "checkpoint_sha256": "a39ac6d715c1097a99165272f50b9cd35527f099f6bdbabd9ae17d3006a013e6"
+    }
+  ],
+  "status": "frozen_before_test"
+}

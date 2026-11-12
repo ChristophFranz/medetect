@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "reviewer": "Christoph",
+  "reviewed_on": "2026-10-20",
+  "reviewed_zip": "ml/cvat/new_tray_detection_reviewed.zip",
+  "reviewed_zip_sha256": "13d9841f2184a80a5535cac8bed4cc15301174a02de673e47c82fb1e0e09c63d",
+  "images": 151,
+  "boxes": 226,
+  "split_counts": {
+    "test_boxes": 24,
+    "test_images": 16,
+    "train_boxes": 161,
+    "train_images": 109,
+    "valid_boxes": 41,
+    "valid_images": 26
+  },
+  "box_count_mismatches": [],
+  "errors": [],
+  "warnings": [],
+  "normalized_coco": "ml/annotation/local/new_tray_detection_reviewed/annotations/instances_default.json",
+  "status": "validated"
+}

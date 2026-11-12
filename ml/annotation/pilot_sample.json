@@ -1,0 +1,498 @@
+{
+  "schema_version": 1,
+  "tool": "hook_sinskey",
+  "canonical_class": "defect",
+  "dataset_sha256": "aab031079814138d9f4137b007c3eeebcac3291e94ab7fbcfddfa5e2e2370ad2",
+  "seed": 42,
+  "excluded_splits": [
+    "test"
+  ],
+  "selection": {
+    "defective": "evenly_spaced_by_max_normalized_defect_box_area",
+    "healthy": "evenly_spaced_by_stable_image_id"
+  },
+  "quotas": {
+    "train": {
+      "defective": 10,
+      "healthy": 4
+    },
+    "valid": {
+      "defective": 4,
+      "healthy": 2
+    }
+  },
+  "available_counts": {
+    "train": {
+      "defective": 135,
+      "healthy": 46
+    },
+    "valid": {
+      "defective": 26,
+      "healthy": 9
+    }
+  },
+  "sample_size": 20,
+  "images": [
+    {
+      "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+      "split": "train",
+      "status": "healthy",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [],
+      "legacy_defect_instance_count": 0,
+      "legacy_healthy_box_count": 1,
+      "max_normalized_defect_box_area": 0.0,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_healthy",
+      "selection_rank": 0
+    },
+    {
+      "image_id": "train/6-3_20260213_151846453_png.rf.359c2840f9852bf40bf406b6283672c1",
+      "split": "train",
+      "status": "healthy",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-3_20260213_151846453_png.rf.359c2840f9852bf40bf406b6283672c1.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-3_20260213_151846453_png.rf.359c2840f9852bf40bf406b6283672c1.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [],
+      "legacy_defect_instance_count": 0,
+      "legacy_healthy_box_count": 1,
+      "max_normalized_defect_box_area": 0.0,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_healthy",
+      "selection_rank": 1
+    },
+    {
+      "image_id": "train/6-3_20260213_153537232_png.rf.f6efaa77593966042b65dc2632b77c06",
+      "split": "train",
+      "status": "healthy",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-3_20260213_153537232_png.rf.f6efaa77593966042b65dc2632b77c06.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-3_20260213_153537232_png.rf.f6efaa77593966042b65dc2632b77c06.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [],
+      "legacy_defect_instance_count": 0,
+      "legacy_healthy_box_count": 1,
+      "max_normalized_defect_box_area": 0.0,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_healthy",
+      "selection_rank": 2
+    },
+    {
+      "image_id": "train/6-3_20260213_153845340_png.rf.32a483609e656ba630dec419625a1b9c",
+      "split": "train",
+      "status": "healthy",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-3_20260213_153845340_png.rf.32a483609e656ba630dec419625a1b9c.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-3_20260213_153845340_png.rf.32a483609e656ba630dec419625a1b9c.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [],
+      "legacy_defect_instance_count": 0,
+      "legacy_healthy_box_count": 1,
+      "max_normalized_defect_box_area": 0.0,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_healthy",
+      "selection_rank": 3
+    },
+    {
+      "image_id": "train/6-4_20260214_164917365_png.rf.f9819d4acd263f647a340971e8351fbe",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_164917365_png.rf.f9819d4acd263f647a340971e8351fbe.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_164917365_png.rf.f9819d4acd263f647a340971e8351fbe.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          483.88,
+          352.705,
+          535.32,
+          456.375
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.0034545921434494193,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 0
+    },
+    {
+      "image_id": "train/6-4_20260214_165442542_png.rf.9eb0a590661a219a04c8e90e9a43a4c0",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_165442542_png.rf.9eb0a590661a219a04c8e90e9a43a4c0.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_165442542_png.rf.9eb0a590661a219a04c8e90e9a43a4c0.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          301.225,
+          466.63,
+          497.695,
+          554.05
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.011126274486940297,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 1
+    },
+    {
+      "image_id": "train/6-4_20260214_165806582_png.rf.be7d2543e197fc8f7b796fd2822233ca",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_165806582_png.rf.be7d2543e197fc8f7b796fd2822233ca.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_165806582_png.rf.be7d2543e197fc8f7b796fd2822233ca.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          752.56,
+          406.175,
+          892.14,
+          665.865
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.02348124624274461,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 4
+    },
+    {
+      "image_id": "train/6-4_20260214_165939327_png.rf.ec9c2c5d556382116b813dcfca6f9a8c",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_165939327_png.rf.ec9c2c5d556382116b813dcfca6f9a8c.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_165939327_png.rf.ec9c2c5d556382116b813dcfca6f9a8c.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          547.31,
+          635.625,
+          829.17,
+          741.895
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.019403802731135986,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 3
+    },
+    {
+      "image_id": "train/6-4_20260214_165955043_png.rf.72e13b65b8ff16903603970dd9143339",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_165955043_png.rf.72e13b65b8ff16903603970dd9143339.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_165955043_png.rf.72e13b65b8ff16903603970dd9143339.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          679.125,
+          656.635,
+          920.475,
+          877.245
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.03449174926150498,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 7
+    },
+    {
+      "image_id": "train/6-4_20260214_170203167_png.rf.27acdf1c20f3b1bcbc3cd2185b3ba7a7",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_170203167_png.rf.27acdf1c20f3b1bcbc3cd2185b3ba7a7.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_170203167_png.rf.27acdf1c20f3b1bcbc3cd2185b3ba7a7.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          865.815,
+          446.805,
+          1152.405,
+          667.495
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.040971928832400493,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 8
+    },
+    {
+      "image_id": "train/6-4_20260214_170520031_png.rf.da1d3b32937354519860b8496e5c1449",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_170520031_png.rf.da1d3b32937354519860b8496e5c1449.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_170520031_png.rf.da1d3b32937354519860b8496e5c1449.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          348.265,
+          336.675,
+          516.355,
+          594.445
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.028068355682524877,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 5
+    },
+    {
+      "image_id": "train/6-4_20260214_170740133_png.rf.1ebb8ee2589a9e125ac4222cf7cb8351",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_170740133_png.rf.1ebb8ee2589a9e125ac4222cf7cb8351.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_170740133_png.rf.1ebb8ee2589a9e125ac4222cf7cb8351.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          893.565,
+          355.04,
+          990.955,
+          604.08
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.015711809183250415,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 2
+    },
+    {
+      "image_id": "train/6-4_20260214_170817078_png.rf.11f60207499477763083e834c590a517",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_170817078_png.rf.11f60207499477763083e834c590a517.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_170817078_png.rf.11f60207499477763083e834c590a517.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          307.14,
+          151.425,
+          850.32,
+          418.815
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.09408744053171642,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 9
+    },
+    {
+      "image_id": "train/6-4_20260214_170951739_png.rf.4598458e9c970a0cac8324b77c5f4fe0",
+      "split": "train",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/train/images/6-4_20260214_170951739_png.rf.4598458e9c970a0cac8324b77c5f4fe0.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/train/labels/6-4_20260214_170951739_png.rf.4598458e9c970a0cac8324b77c5f4fe0.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          437.29,
+          194.19,
+          592.13,
+          498.95
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.030569184286898837,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "train_defective",
+      "selection_rank": 6
+    },
+    {
+      "image_id": "valid/6-3_20260213_151429752_png.rf.fd8426d556ffe68d8007660700eae4b4",
+      "split": "valid",
+      "status": "healthy",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/images/6-3_20260213_151429752_png.rf.fd8426d556ffe68d8007660700eae4b4.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/labels/6-3_20260213_151429752_png.rf.fd8426d556ffe68d8007660700eae4b4.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [],
+      "legacy_defect_instance_count": 0,
+      "legacy_healthy_box_count": 1,
+      "max_normalized_defect_box_area": 0.0,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "valid_healthy",
+      "selection_rank": 0
+    },
+    {
+      "image_id": "valid/6-3_20260213_153823026_png.rf.f6d7559e7d8582bfa4db0167808f286d",
+      "split": "valid",
+      "status": "healthy",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/images/6-3_20260213_153823026_png.rf.f6d7559e7d8582bfa4db0167808f286d.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/labels/6-3_20260213_153823026_png.rf.f6d7559e7d8582bfa4db0167808f286d.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [],
+      "legacy_defect_instance_count": 0,
+      "legacy_healthy_box_count": 1,
+      "max_normalized_defect_box_area": 0.0,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "valid_healthy",
+      "selection_rank": 1
+    },
+    {
+      "image_id": "valid/6-4_20260214_164622107_png.rf.9c386eb0775d9ff3942f4670a87ef577",
+      "split": "valid",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/images/6-4_20260214_164622107_png.rf.9c386eb0775d9ff3942f4670a87ef577.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/labels/6-4_20260214_164622107_png.rf.9c386eb0775d9ff3942f4670a87ef577.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          183.515,
+          85.75,
+          231.725,
+          204.95
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.003722683457711442,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "valid_defective",
+      "selection_rank": 0
+    },
+    {
+      "image_id": "valid/6-4_20260214_170243994_png.rf.2cdaaed13473e09ffbf2239a3ca25b7e",
+      "split": "valid",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/images/6-4_20260214_170243994_png.rf.2cdaaed13473e09ffbf2239a3ca25b7e.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/labels/6-4_20260214_170243994_png.rf.2cdaaed13473e09ffbf2239a3ca25b7e.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          770.675,
+          486.06,
+          944.925,
+          759.24
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.03083645250310945,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "valid_defective",
+      "selection_rank": 2
+    },
+    {
+      "image_id": "valid/6-4_20260214_170931400_png.rf.20c1ed9215c751249f24c8cbe05e9b7b",
+      "split": "valid",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/images/6-4_20260214_170931400_png.rf.20c1ed9215c751249f24c8cbe05e9b7b.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/labels/6-4_20260214_170931400_png.rf.20c1ed9215c751249f24c8cbe05e9b7b.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          311.79,
+          245.045,
+          649.55,
+          548.795
+        ]
+      ],
+      "legacy_defect_instance_count": 1,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.0664610541044776,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "valid_defective",
+      "selection_rank": 3
+    },
+    {
+      "image_id": "valid/6-4_20260214_171943253_png.rf.14a40784628376a23e6ad45ffd18862b",
+      "split": "valid",
+      "status": "defective",
+      "image_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/images/6-4_20260214_171943253_png.rf.14a40784628376a23e6ad45ffd18862b.jpg",
+      "label_path": "ml/data/local/hook_sinskey/yolov8_v4/valid/labels/6-4_20260214_171943253_png.rf.14a40784628376a23e6ad45ffd18862b.txt",
+      "width": 1440,
+      "height": 1072,
+      "legacy_defect_boxes_xyxy": [
+        [
+          597.145,
+          393.495,
+          695.235,
+          604.425
+        ],
+        [
+          1085.505,
+          434.84,
+          1179.275,
+          725.98
+        ]
+      ],
+      "legacy_defect_instance_count": 2,
+      "legacy_healthy_box_count": 0,
+      "max_normalized_defect_box_area": 0.017685140573175787,
+      "review_state": "candidate_unreviewed",
+      "ambiguity_flags": [],
+      "stratum": "valid_defective",
+      "selection_rank": 1
+    }
+  ],
+  "candidate_generation": {
+    "status": "complete",
+    "model_id": "facebook/sam2.1-hiera-tiny",
+    "model_revision": "de431c4043854a71d8101e17995dfe596bf101a5",
+    "device": "mps",
+    "candidate_mask_count": 15,
+    "summary": "ml/annotation/candidate_summary.json",
+    "local_package": "ml/annotation/local/hook_sinskey_pilot"
+  },
+  "review": {
+    "policy": "approved",
+    "all_sample_annotations": "approved",
+    "review_method": "visual_overlays",
+    "corrections_requested": 0,
+    "reviewer": "Christoph",
+    "reviewed_on": "2026-09-24"
+  }
+}

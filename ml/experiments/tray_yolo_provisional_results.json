@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-15T13:58:41+00:00",
+  "status": "provisional_unreviewed_new_tray_boxes",
+  "checkpoint": "ml/runs/tray_yolo/combined_provisional_presentation_20e/weights/best.pt",
+  "checkpoint_sha256": "4c2f2d0876bce9b364d3c7811590c412a16df612e1ccd0f1062eaf1381b5abb0",
+  "test_split_used_for_tuning": false,
+  "evaluations": [
+    {
+      "domain": "combined",
+      "precision": 0.8848057076788396,
+      "recall": 0.8112815547628558,
+      "map50": 0.9147904296937376,
+      "map50_95": 0.5401115209444921,
+      "map50_95_by_class": {
+        "chop phaco": 0.5713523768994164,
+        "forceps macpherson": 0.6572971611721612,
+        "forceps utrata": 0.6075552210211034,
+        "hook sinskey": 0.3242413246852872
+      },
+      "speed_ms_per_image": {
+        "preprocess": 0.43770040584994213,
+        "inference": 78.8155545486093,
+        "loss": 5.456829620968728e-05,
+        "postprocess": 0.20846230853792455
+      }
+    },
+    {
+      "domain": "inherited_tray",
+      "precision": 0.8882655013311659,
+      "recall": 0.8645698892675102,
+      "map50": 0.9469090810360488,
+      "map50_95": 0.578915124144407,
+      "map50_95_by_class": {
+        "chop phaco": 0.5626390242433006,
+        "forceps macpherson": 0.6683132215007216,
+        "forceps utrata": 0.6075720654289669,
+        "hook sinskey": 0.47713618540463887
+      },
+      "speed_ms_per_image": {
+        "preprocess": 0.2211089639996107,
+        "inference": 63.25760738512215,
+        "loss": 3.684544935822487e-05,
+        "postprocess": 0.23059295759034842
+      }
+    },
+    {
+      "domain": "redesigned_tray",
+      "precision": 0.6794521274769201,
+      "recall": 0.5833333333333334,
+      "map50": 0.6590318181551476,
+      "map50_95": 0.19327214639010049,
+      "map50_95_by_class": {
+        "chop phaco": 0.19327214639010049,
+        "forceps macpherson": 0.19327214639010049,
+        "forceps utrata": 0.19327214639010049,
+        "hook sinskey": 0.19327214639010049
+      },
+      "speed_ms_per_image": {
+        "preprocess": 0.21821356494911015,
+        "inference": 79.93035937397508,
+        "loss": 3.386958269402385e-05,
+        "postprocess": 0.19250781770097092
+      }
+    }
+  ]
+}

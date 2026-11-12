@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "event": "milestone_4_prediction_review",
+  "date": "2026-09-24",
+  "tool": "hook_sinskey",
+  "split": "valid",
+  "defective_images": 5,
+  "healthy_images": 5,
+  "models": [
+    {
+      "model": "legacy_yolo",
+      "checkpoint": "ml/artifacts/legacy/hook_sinskey/yolov8n_best.pt",
+      "checkpoint_sha256": "016d6b46669ca9d2888d9411e80107df7748192c6df3076c217a1f1230db963b",
+      "predictions": "ml/runs/prediction_review/legacy_yolo.jsonl",
+      "predictions_sha256": "36a9b199184f689e477cf008a2e85a9ba3fbdfd1d0ade1c7677e290b6dd1669b",
+      "images": 10
+    },
+    {
+      "model": "detr_detection",
+      "checkpoint": "ml/runs/smoke/detr_detection/checkpoint.pt",
+      "checkpoint_sha256": "dfa2b305467fc8d03f7e86a1bf336b9890fefd1ef87e5a2c067aa21278868712",
+      "predictions": "ml/runs/prediction_review/detr_detection.jsonl",
+      "predictions_sha256": "ce34e2299719a8b74d442eaef32d465f641200a6714029a5594b7176c0e49b52",
+      "images": 10
+    },
+    {
+      "model": "detr_segmentation",
+      "checkpoint": "ml/runs/smoke/detr_segmentation/checkpoint.pt",
+      "checkpoint_sha256": "2234b688494c8b1a6b0cb69c276b100656130a424506747e774554a7d88ac975",
+      "predictions": "ml/runs/prediction_review/detr_segmentation.jsonl",
+      "predictions_sha256": "c51db12509690984a744c28228e9f8db0da532a4d92c79831fc240484ce001ce",
+      "images": 10
+    },
+    {
+      "model": "mask_rcnn",
+      "checkpoint": "ml/runs/smoke/mask_rcnn/checkpoint.pt",
+      "checkpoint_sha256": "34444fd035d3d0bd50457d7a9927ce0a39f5f42fbfab59bf96f35e222c505352",
+      "predictions": "ml/runs/prediction_review/mask_rcnn.jsonl",
+      "predictions_sha256": "9adbcb5a8872fa6e339a9f78390b694cfee51d550a35d813558714fad625a87d",
+      "images": 10
+    }
+  ],
+  "test_split_accessed": false,
+  "purpose": "human review of mechanics; smoke checkpoints are not performance evidence",
+  "local_index": "ml/runs/prediction_review/index.html",
+  "reviewer": "Christoph",
+  "reviewed_on": "2026-09-24",
+  "review_status": "approved"
+}

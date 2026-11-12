@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "split": "valid",
+  "selection": "first five by stable COCO image ID for each status",
+  "seed": 42,
+  "test_split_accessed": false,
+  "images": [
+    {
+      "image_id": "valid/6-4_20260214_164622107_png.rf.9c386eb0775d9ff3942f4670a87ef577",
+      "status": "defective"
+    },
+    {
+      "image_id": "valid/6-4_20260214_164638843_png.rf.fa9b96ac31e68bc643a7a95392e75462",
+      "status": "defective"
+    },
+    {
+      "image_id": "valid/6-4_20260214_164729664_png.rf.77bb0e9575e676cf71c7b4b68aad17b0",
+      "status": "defective"
+    },
+    {
+      "image_id": "valid/6-4_20260214_164802242_png.rf.0bf70d54ff83d8e61d6fd5129779cce2",
+      "status": "defective"
+    },
+    {
+      "image_id": "valid/6-4_20260214_164935579_png.rf.b057944959af79d391a5a22b8f6c7237",
+      "status": "defective"
+    },
+    {
+      "image_id": "valid/6-3_20260213_151429752_png.rf.fd8426d556ffe68d8007660700eae4b4",
+      "status": "healthy"
+    },
+    {
+      "image_id": "valid/6-3_20260213_151602570_png.rf.5573f544a5f974cdf2c9452d76704b9f",
+      "status": "healthy"
+    },
+    {
+      "image_id": "valid/6-3_20260213_152940777_png.rf.68309e1bb0f6c66c01d8f33b33ff7ae3",
+      "status": "healthy"
+    },
+    {
+      "image_id": "valid/6-3_20260213_153006409_png.rf.d6a71fd5e959a029025b7ce0b39e6bca",
+      "status": "healthy"
+    },
+    {
+      "image_id": "valid/6-3_20260213_153132563_png.rf.40d6e934c1853b55a63f09e1c2cb4c50",
+      "status": "healthy"
+    }
+  ]
+}

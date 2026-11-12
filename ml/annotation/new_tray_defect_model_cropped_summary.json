@@ -1,0 +1,1687 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-10-21",
+  "tool": "hook_sinskey",
+  "dataset_sha256": "02e7ddb403bdec8f7e9258c8957432e171af3bb3c2f869264f420aa677603b76",
+  "sample_manifest": "ml/annotation/new_tray_model_cropped_manifest.json",
+  "model_id": "facebook/sam2.1-hiera-tiny",
+  "model_revision": "de431c4043854a71d8101e17995dfe596bf101a5",
+  "license": "Apache-2.0",
+  "device": "cpu",
+  "image_count": 226,
+  "defective_image_count": 154,
+  "healthy_image_count": 72,
+  "candidate_mask_count": 154,
+  "coco_sha256": "9181eab73500055579b1b0c10f255bfef19b97989d01c4c26cf305d505c57967",
+  "review_queue_sha256": "64fe81cf022c9b2bcbbe6eb94dd9b6108469260964bd49d141d0cc06c3df78be",
+  "cvat_zip": "ml/cvat/new_tray_defect_model_cropped_candidates.zip",
+  "cvat_zip_sha256": "e97e0e23727c9e332fb8ccc418a3fa93c2f448e26cf808c6a5cf80faf628ee8a",
+  "local_package": "ml/annotation/local/new_tray_defect_model_cropped_candidates",
+  "review_status": "pending",
+  "images": [
+    {
+      "image_id": "newtray_img_1522_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.333568
+      ]
+    },
+    {
+      "image_id": "newtray_img_1523_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.741257
+      ]
+    },
+    {
+      "image_id": "newtray_img_1524_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.775027
+      ]
+    },
+    {
+      "image_id": "newtray_img_1525_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.736578
+      ]
+    },
+    {
+      "image_id": "newtray_img_1526_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.801802
+      ]
+    },
+    {
+      "image_id": "newtray_img_1527_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.781696
+      ]
+    },
+    {
+      "image_id": "newtray_img_1528_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.70039
+      ]
+    },
+    {
+      "image_id": "newtray_img_1529_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.550973
+      ]
+    },
+    {
+      "image_id": "newtray_img_1530_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.516484
+      ]
+    },
+    {
+      "image_id": "newtray_img_1531_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.709515
+      ]
+    },
+    {
+      "image_id": "newtray_img_1532_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.341106
+      ]
+    },
+    {
+      "image_id": "newtray_img_1533_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.463385
+      ]
+    },
+    {
+      "image_id": "newtray_img_1534_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.811222
+      ]
+    },
+    {
+      "image_id": "newtray_img_1535_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.813177
+      ]
+    },
+    {
+      "image_id": "newtray_img_1536_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.651519
+      ]
+    },
+    {
+      "image_id": "newtray_img_1537_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.649155
+      ]
+    },
+    {
+      "image_id": "newtray_img_1538_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.480991
+      ]
+    },
+    {
+      "image_id": "newtray_img_1539_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.7135
+      ]
+    },
+    {
+      "image_id": "newtray_img_1540_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.652348
+      ]
+    },
+    {
+      "image_id": "newtray_img_1541_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.80446
+      ]
+    },
+    {
+      "image_id": "newtray_img_1542_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.725507
+      ]
+    },
+    {
+      "image_id": "newtray_img_1543_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.003807
+      ]
+    },
+    {
+      "image_id": "newtray_img_1544_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.631939
+      ]
+    },
+    {
+      "image_id": "newtray_img_1545_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.640727
+      ]
+    },
+    {
+      "image_id": "newtray_img_1546_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.669962
+      ]
+    },
+    {
+      "image_id": "newtray_img_1547_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.453638
+      ]
+    },
+    {
+      "image_id": "newtray_img_1548_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.68487
+      ]
+    },
+    {
+      "image_id": "newtray_img_1549_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.668097
+      ]
+    },
+    {
+      "image_id": "newtray_img_1551_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.07813
+      ]
+    },
+    {
+      "image_id": "newtray_img_1552_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.832569
+      ]
+    },
+    {
+      "image_id": "newtray_img_1553_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.023434
+      ]
+    },
+    {
+      "image_id": "newtray_img_1554_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.014218
+      ]
+    },
+    {
+      "image_id": "newtray_img_1555_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.664399
+      ]
+    },
+    {
+      "image_id": "newtray_img_1667_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.492618
+      ]
+    },
+    {
+      "image_id": "newtray_img_1667_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1668_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.621145
+      ]
+    },
+    {
+      "image_id": "newtray_img_1668_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1670_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.590879
+      ]
+    },
+    {
+      "image_id": "newtray_img_1670_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1516_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1517_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1519_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1520_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1521_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1603_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.689977
+      ]
+    },
+    {
+      "image_id": "newtray_img_1604_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.647378
+      ]
+    },
+    {
+      "image_id": "newtray_img_1605_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.640993
+      ]
+    },
+    {
+      "image_id": "newtray_img_1606_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.777645
+      ]
+    },
+    {
+      "image_id": "newtray_img_1607_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.791661
+      ]
+    },
+    {
+      "image_id": "newtray_img_1608_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.835295
+      ]
+    },
+    {
+      "image_id": "newtray_img_1609_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.514707
+      ]
+    },
+    {
+      "image_id": "newtray_img_1610_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.224802
+      ]
+    },
+    {
+      "image_id": "newtray_img_1611_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.673848
+      ]
+    },
+    {
+      "image_id": "newtray_img_1612_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.784563
+      ]
+    },
+    {
+      "image_id": "newtray_img_1613_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.752892
+      ]
+    },
+    {
+      "image_id": "newtray_img_1614_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.875351
+      ]
+    },
+    {
+      "image_id": "newtray_img_1615_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.731634
+      ]
+    },
+    {
+      "image_id": "newtray_img_1616_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.578039
+      ]
+    },
+    {
+      "image_id": "newtray_img_1617_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.780503
+      ]
+    },
+    {
+      "image_id": "newtray_img_1618_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.700325
+      ]
+    },
+    {
+      "image_id": "newtray_img_1619_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.534818
+      ]
+    },
+    {
+      "image_id": "newtray_img_1620_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.39163
+      ]
+    },
+    {
+      "image_id": "newtray_img_1621_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.683957
+      ]
+    },
+    {
+      "image_id": "newtray_img_1622_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.756261
+      ]
+    },
+    {
+      "image_id": "newtray_img_1623_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.707115
+      ]
+    },
+    {
+      "image_id": "newtray_img_1624_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.788906
+      ]
+    },
+    {
+      "image_id": "newtray_img_1625_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.663637
+      ]
+    },
+    {
+      "image_id": "newtray_img_1626_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.737217
+      ]
+    },
+    {
+      "image_id": "newtray_img_1627_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.615763
+      ]
+    },
+    {
+      "image_id": "newtray_img_1628_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.299098
+      ]
+    },
+    {
+      "image_id": "newtray_img_1629_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.520143
+      ]
+    },
+    {
+      "image_id": "newtray_img_1630_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.599254
+      ]
+    },
+    {
+      "image_id": "newtray_img_1631_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.808248
+      ]
+    },
+    {
+      "image_id": "newtray_img_1632_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.640189
+      ]
+    },
+    {
+      "image_id": "newtray_img_1633_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.604153
+      ]
+    },
+    {
+      "image_id": "newtray_img_1634_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.675141
+      ]
+    },
+    {
+      "image_id": "newtray_img_1597_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1598_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1599_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1600_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1601_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1602_tool1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1590_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.537121
+      ]
+    },
+    {
+      "image_id": "newtray_img_1590_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.719971
+      ]
+    },
+    {
+      "image_id": "newtray_img_1591_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.822748
+      ]
+    },
+    {
+      "image_id": "newtray_img_1591_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.875619
+      ]
+    },
+    {
+      "image_id": "newtray_img_1592_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.786347
+      ]
+    },
+    {
+      "image_id": "newtray_img_1592_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.885585
+      ]
+    },
+    {
+      "image_id": "newtray_img_1593_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.789564
+      ]
+    },
+    {
+      "image_id": "newtray_img_1593_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.66737
+      ]
+    },
+    {
+      "image_id": "newtray_img_1594_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.602918
+      ]
+    },
+    {
+      "image_id": "newtray_img_1594_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.794105
+      ]
+    },
+    {
+      "image_id": "newtray_img_1595_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.646987
+      ]
+    },
+    {
+      "image_id": "newtray_img_1595_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.771937
+      ]
+    },
+    {
+      "image_id": "newtray_img_1596_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.547244
+      ]
+    },
+    {
+      "image_id": "newtray_img_1596_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.665199
+      ]
+    },
+    {
+      "image_id": "newtray_img_1557_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.672608
+      ]
+    },
+    {
+      "image_id": "newtray_img_1557_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1558_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.496261
+      ]
+    },
+    {
+      "image_id": "newtray_img_1558_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1559_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.522938
+      ]
+    },
+    {
+      "image_id": "newtray_img_1559_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1560_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.658394
+      ]
+    },
+    {
+      "image_id": "newtray_img_1560_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1561_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.601317
+      ]
+    },
+    {
+      "image_id": "newtray_img_1561_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1562_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.638569
+      ]
+    },
+    {
+      "image_id": "newtray_img_1562_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1563_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.714851
+      ]
+    },
+    {
+      "image_id": "newtray_img_1563_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1564_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.7332
+      ]
+    },
+    {
+      "image_id": "newtray_img_1564_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1565_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.77173
+      ]
+    },
+    {
+      "image_id": "newtray_img_1565_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1566_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.496188
+      ]
+    },
+    {
+      "image_id": "newtray_img_1566_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1567_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.634071
+      ]
+    },
+    {
+      "image_id": "newtray_img_1567_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1568_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.820884
+      ]
+    },
+    {
+      "image_id": "newtray_img_1568_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1569_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.701934
+      ]
+    },
+    {
+      "image_id": "newtray_img_1569_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1570_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.493182
+      ]
+    },
+    {
+      "image_id": "newtray_img_1570_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1571_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.503233
+      ]
+    },
+    {
+      "image_id": "newtray_img_1571_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1572_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.706917
+      ]
+    },
+    {
+      "image_id": "newtray_img_1572_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1573_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.474138
+      ]
+    },
+    {
+      "image_id": "newtray_img_1573_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1574_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.703987
+      ]
+    },
+    {
+      "image_id": "newtray_img_1574_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1575_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.658293
+      ]
+    },
+    {
+      "image_id": "newtray_img_1575_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1576_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.783773
+      ]
+    },
+    {
+      "image_id": "newtray_img_1576_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1577_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.811919
+      ]
+    },
+    {
+      "image_id": "newtray_img_1577_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1578_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.012319
+      ]
+    },
+    {
+      "image_id": "newtray_img_1578_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1579_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.688902
+      ]
+    },
+    {
+      "image_id": "newtray_img_1579_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1580_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.734884
+      ]
+    },
+    {
+      "image_id": "newtray_img_1580_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1581_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.593107
+      ]
+    },
+    {
+      "image_id": "newtray_img_1581_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1582_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.488618
+      ]
+    },
+    {
+      "image_id": "newtray_img_1582_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1583_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.673361
+      ]
+    },
+    {
+      "image_id": "newtray_img_1583_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1584_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.683918
+      ]
+    },
+    {
+      "image_id": "newtray_img_1584_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1585_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.63681
+      ]
+    },
+    {
+      "image_id": "newtray_img_1585_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1586_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.728372
+      ]
+    },
+    {
+      "image_id": "newtray_img_1586_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1587_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.578151
+      ]
+    },
+    {
+      "image_id": "newtray_img_1587_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1588_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.738705
+      ]
+    },
+    {
+      "image_id": "newtray_img_1588_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1660_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.776314
+      ]
+    },
+    {
+      "image_id": "newtray_img_1660_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.642426
+      ]
+    },
+    {
+      "image_id": "newtray_img_1661_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.718596
+      ]
+    },
+    {
+      "image_id": "newtray_img_1661_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.784298
+      ]
+    },
+    {
+      "image_id": "newtray_img_1662_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.704293
+      ]
+    },
+    {
+      "image_id": "newtray_img_1662_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.696096
+      ]
+    },
+    {
+      "image_id": "newtray_img_1663_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.695238
+      ]
+    },
+    {
+      "image_id": "newtray_img_1663_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.688284
+      ]
+    },
+    {
+      "image_id": "newtray_img_1664_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.425826
+      ]
+    },
+    {
+      "image_id": "newtray_img_1664_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.632805
+      ]
+    },
+    {
+      "image_id": "newtray_img_1665_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.707183
+      ]
+    },
+    {
+      "image_id": "newtray_img_1665_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.742685
+      ]
+    },
+    {
+      "image_id": "newtray_img_1666_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.679149
+      ]
+    },
+    {
+      "image_id": "newtray_img_1666_tool2",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.74389
+      ]
+    },
+    {
+      "image_id": "newtray_img_1635_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.599878
+      ]
+    },
+    {
+      "image_id": "newtray_img_1635_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1636_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.589701
+      ]
+    },
+    {
+      "image_id": "newtray_img_1636_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1637_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.621495
+      ]
+    },
+    {
+      "image_id": "newtray_img_1637_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1638_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.754062
+      ]
+    },
+    {
+      "image_id": "newtray_img_1638_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1639_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.812339
+      ]
+    },
+    {
+      "image_id": "newtray_img_1639_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1640_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.740367
+      ]
+    },
+    {
+      "image_id": "newtray_img_1640_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1641_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.753834
+      ]
+    },
+    {
+      "image_id": "newtray_img_1641_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1642_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.529722
+      ]
+    },
+    {
+      "image_id": "newtray_img_1642_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1643_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.733095
+      ]
+    },
+    {
+      "image_id": "newtray_img_1643_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1644_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.773209
+      ]
+    },
+    {
+      "image_id": "newtray_img_1644_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1645_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.805915
+      ]
+    },
+    {
+      "image_id": "newtray_img_1645_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1646_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.780769
+      ]
+    },
+    {
+      "image_id": "newtray_img_1646_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1647_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.705168
+      ]
+    },
+    {
+      "image_id": "newtray_img_1647_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1648_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.70598
+      ]
+    },
+    {
+      "image_id": "newtray_img_1648_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1649_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.632496
+      ]
+    },
+    {
+      "image_id": "newtray_img_1649_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1650_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.809219
+      ]
+    },
+    {
+      "image_id": "newtray_img_1650_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1651_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.817121
+      ]
+    },
+    {
+      "image_id": "newtray_img_1651_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1652_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.809228
+      ]
+    },
+    {
+      "image_id": "newtray_img_1652_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1653_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.667151
+      ]
+    },
+    {
+      "image_id": "newtray_img_1653_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1654_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.619757
+      ]
+    },
+    {
+      "image_id": "newtray_img_1654_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1655_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.651967
+      ]
+    },
+    {
+      "image_id": "newtray_img_1655_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1656_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.654165
+      ]
+    },
+    {
+      "image_id": "newtray_img_1656_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1657_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.576914
+      ]
+    },
+    {
+      "image_id": "newtray_img_1657_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1658_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.696147
+      ]
+    },
+    {
+      "image_id": "newtray_img_1658_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1659_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.711668
+      ]
+    },
+    {
+      "image_id": "newtray_img_1659_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "newtray_img_1669_tool1",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.782419
+      ]
+    },
+    {
+      "image_id": "newtray_img_1669_tool2",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    }
+  ]
+}

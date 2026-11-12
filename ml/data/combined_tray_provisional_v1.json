@@ -1,0 +1,3725 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-15T13:46:39+00:00",
+  "status": "provisional_unreviewed_new_tray_boxes",
+  "review_bypass_reason": "presentation urgency; review remains required before authoritative use",
+  "old_source": "/Users/christophcuan/Desktop/medetect-api/Whole toolbox/Tools.v12i.yolov8",
+  "new_source": "/Users/christophcuan/Desktop/medetect-api/medetect/ml/annotation/local/new_tray_detection_candidates/yolo",
+  "local_path": "ml/data/local/tray_detection/combined_provisional_v1",
+  "class_mapping": {
+    "0": "chop phaco",
+    "1": "forceps macpherson",
+    "2": "forceps utrata",
+    "3": "hook sinskey"
+  },
+  "splits": {
+    "train": {
+      "old": {
+        "images": 158,
+        "instances_by_class": {
+          "0": 144,
+          "1": 119,
+          "2": 117,
+          "3": 143
+        }
+      },
+      "new": {
+        "images": 109,
+        "instances_by_class": {
+          "3": 158
+        }
+      },
+      "total_images": 267
+    },
+    "valid": {
+      "old": {
+        "images": 26,
+        "instances_by_class": {
+          "0": 23,
+          "1": 19,
+          "2": 19,
+          "3": 22
+        }
+      },
+      "new": {
+        "images": 26,
+        "instances_by_class": {
+          "3": 41
+        }
+      },
+      "total_images": 52
+    },
+    "test": {
+      "old": {
+        "images": 26,
+        "instances_by_class": {
+          "0": 22,
+          "1": 21,
+          "2": 22,
+          "3": 22
+        }
+      },
+      "new": {
+        "images": 16,
+        "instances_by_class": {
+          "3": 24
+        }
+      },
+      "total_images": 42
+    }
+  },
+  "instances_by_class": {
+    "0": 189,
+    "1": 159,
+    "2": 158,
+    "3": 410
+  },
+  "tree_sha256": "36da575f84ef3e64ec062df4c987ac255695fe69701448e21359a10643ecb4e8",
+  "files": [
+    {
+      "path": "data.yaml",
+      "bytes": 252,
+      "sha256": "c97dae0ea170a4eb6539b5d82625f02037de118badef24d013d9be214ddb7f5d"
+    },
+    {
+      "path": "new_test.txt",
+      "bytes": 2720,
+      "sha256": "51389d6103fb9ffb0384e57072c4e0e10a62f362005a1ca268e0dd5791ab1e4c"
+    },
+    {
+      "path": "new_test.yaml",
+      "bytes": 255,
+      "sha256": "97a7a5da872ad554f3ccf227890dbc854dd84743327f1fb12c285fc63ed445ae"
+    },
+    {
+      "path": "new_valid.txt",
+      "bytes": 4428,
+      "sha256": "00ce0712cc337a511ca0a4edca298baafee74bacc1f5930ed5dacda180787d9d"
+    },
+    {
+      "path": "old_test.txt",
+      "bytes": 4888,
+      "sha256": "9779159741d8b78e66e505a15a9a427f3b76bf90d1a059539b0c43144f09d3b6"
+    },
+    {
+      "path": "old_test.yaml",
+      "bytes": 255,
+      "sha256": "c877aefd7569d569a85a290c0dfa67523fbe790c9ba1db16236e8da1dafe3282"
+    },
+    {
+      "path": "old_valid.txt",
+      "bytes": 4914,
+      "sha256": "df8d7026f8d48f7d6930c5f23b5702bdde25a9d680c22985f97675661b7f8fa4"
+    },
+    {
+      "path": "test/images/new__test__One Tool Dry__Defect__IMG_1538.jpeg",
+      "bytes": 6037765,
+      "sha256": "970d71d2efa6915c34db1af2762d36f5d3864ab10fb106cdbae8885803ad43f2"
+    },
+    {
+      "path": "test/images/new__test__One Tool Dry__Defect__IMG_1539.jpeg",
+      "bytes": 6291977,
+      "sha256": "253102cbef2d458a3753af2f98534ac539e8b920a85d9baa13662e3a4b6fc462"
+    },
+    {
+      "path": "test/images/new__test__One Tool Dry__Defect__IMG_1540.jpeg",
+      "bytes": 5964895,
+      "sha256": "9e5844753cfd0708587df943f1afb0f7f1a4b88f9c00816d430f63de31792983"
+    },
+    {
+      "path": "test/images/new__test__One Tool Dry__Defect__IMG_1541.jpeg",
+      "bytes": 6046615,
+      "sha256": "4041f1ca7942230d3722fb3e4e11048116e9537aa32afbb9fc907b2ca044236a"
+    },
+    {
+      "path": "test/images/new__test__One Tool Wet__Defect__IMG_1631.jpeg",
+      "bytes": 5632730,
+      "sha256": "3633c785191c9cb81957cba40e7103d2e0caa0146558abca10c925b97d66756d"
+    },
+    {
+      "path": "test/images/new__test__One Tool Wet__Defect__IMG_1632.jpeg",
+      "bytes": 5637432,
+      "sha256": "54b8bb2f4080ccab9fab5e73c03528e281eeeb7353ae047090828573ce2984e5"
+    },
+    {
+      "path": "test/images/new__test__One Tool Wet__Defect__IMG_1633.jpeg",
+      "bytes": 5574011,
+      "sha256": "9b6607111e65070e71ae21f53b0a3dc7ddfb1cc83811083f4c14ef9324851881"
+    },
+    {
+      "path": "test/images/new__test__One Tool Wet__Defect__IMG_1634.jpeg",
+      "bytes": 5996584,
+      "sha256": "0ff948455f8f5931a19567cfd64e30b06cd464d004190bd44bff46843be8eea1"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1561.jpeg",
+      "bytes": 5921805,
+      "sha256": "aa5fb2afe6efaabfac04195253c7dfb7a104f20383fae79a61eb41bbf63bd0d7"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1562.jpeg",
+      "bytes": 5737401,
+      "sha256": "da2faa8b01c90d95020f424a4ccf1fce528dfcd613f306316a255f7f73bcb27f"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1563.jpeg",
+      "bytes": 6070737,
+      "sha256": "572d8ac2b467ab679df1e3c9a18dcedd4cd53e4256662f3b780ad5ce2edf4a7a"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1564.jpeg",
+      "bytes": 6194894,
+      "sha256": "548ba63dcf5b1c3ccb7ccbae9632fdeb509cf6c3d5eef8c15a3f8cbfc39aa79a"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1647.jpeg",
+      "bytes": 6058100,
+      "sha256": "6c900c0641bb4b290a53033daa3e52a4b30c98c7a02690101260639940061496"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1648.jpeg",
+      "bytes": 5954687,
+      "sha256": "802cfe430d91ebd038ba1488b610749e16678fe9ec7a6e132807c22a2c7c6319"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1649.jpeg",
+      "bytes": 5994424,
+      "sha256": "573eb64e5debf565822757b31d56db091a1143606c342a584529f66dd0126f78"
+    },
+    {
+      "path": "test/images/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1650.jpeg",
+      "bytes": 6008358,
+      "sha256": "97aa739f4079611bd8cac55adc2a6b66cffc46fe4d27032c646d151f0ab542ea"
+    },
+    {
+      "path": "test/images/old__1-1_20260213_131502549_png.rf.25855fa55363d78378eeb43dee403ae6.jpg",
+      "bytes": 126356,
+      "sha256": "332c1e416a7e2223a88ef1c848d41979e1c772f58ea66048fb6cf110a0d28984"
+    },
+    {
+      "path": "test/images/old__1-1_20260213_131926588_png.rf.cdd99f0fc9e547f9cf25d24cc83638e3.jpg",
+      "bytes": 117369,
+      "sha256": "00f8f9bcb2fe6c5172db3f79be4064c7caab84ab1b8827257e2853898852c4b1"
+    },
+    {
+      "path": "test/images/old__1-1_20260213_132419956_png.rf.cc7c40ae38f9f1ea7d33d4bc74a23476.jpg",
+      "bytes": 123903,
+      "sha256": "5a1ae82c1972acd6fc86058806dd545adf7539c0024ba4634a994f76f576f55d"
+    },
+    {
+      "path": "test/images/old__1-1_20260213_132555988_png.rf.0a5fa9ba8ff61822b770a5812b2d93b0.jpg",
+      "bytes": 127141,
+      "sha256": "57b58b47a05b3b815ceef0b7f3c2f8f6ee650342d3efd6b07fddc4d23186412a"
+    },
+    {
+      "path": "test/images/old__1-1_20260220_112358410_png.rf.29c60b58ccf8626cdeaa68b92fb5d9f3.jpg",
+      "bytes": 136441,
+      "sha256": "ee7325f45ee2f2d85d98f71f7e33b9cb532f57edfb8c7879fcc79dcea2aa8ed7"
+    },
+    {
+      "path": "test/images/old__1-1_20260220_112509386_png.rf.fd8b78de65bd98f346b987343f14068a.jpg",
+      "bytes": 137495,
+      "sha256": "4eb9f03d912cff990a1c7d99cae9789f977a23b26be4fbd856eee50384646937"
+    },
+    {
+      "path": "test/images/old__1-1_20260220_112640362_png.rf.d48ea125a75f49d28354bd760068d991.jpg",
+      "bytes": 137285,
+      "sha256": "dd9990ad994fed06733497d865e7b3f2fbc1b2dedab8105b501fd1ef7c5e66e2"
+    },
+    {
+      "path": "test/images/old__1-2_20260213_133230134_png.rf.dd15f880245b48de4ffe3db2799176b0.jpg",
+      "bytes": 119076,
+      "sha256": "2234597a48d776d91c59932b6730631ee3438ed238811ded87a68210b83b9923"
+    },
+    {
+      "path": "test/images/old__1-2_20260213_133725932_png.rf.7522da04a5c1bbf01e470eb3f27c63b4.jpg",
+      "bytes": 113254,
+      "sha256": "fbdc8bd0c0e8a898c29c502e5a57ac9091fd96ae11017cbeb350024c47f30390"
+    },
+    {
+      "path": "test/images/old__1-2_20260213_134152185_png.rf.8bf4bcbda29951d2e679366ff4e5431d.jpg",
+      "bytes": 112025,
+      "sha256": "39aab802222057d01826f05ef6ff5a50eba11419a6c87e433dc8226606493698"
+    },
+    {
+      "path": "test/images/old__1-2_20260213_134506252_png.rf.6c469318098ff5d8b9d83223c9298558.jpg",
+      "bytes": 120673,
+      "sha256": "56eb55ef25cd7c5d573b988b63fc7e2bcaabf55346a0d5f0c37eba81962ce799"
+    },
+    {
+      "path": "test/images/old__1-3_20260213_140036207_png.rf.cccdd97fb47c275b99556083f19a63a5.jpg",
+      "bytes": 122672,
+      "sha256": "4a0e4fb9bef625453f31a8a86edbddfbc7ddb575a4006586001e612efd903f58"
+    },
+    {
+      "path": "test/images/old__1-3_20260213_140138239_png.rf.581bf664e09d32f392488100bcd89c04.jpg",
+      "bytes": 123041,
+      "sha256": "e81903d2d07353d4f993638aaf43a554af73a3490dad9c08bf554fb5ec0e77f8"
+    },
+    {
+      "path": "test/images/old__1-3_20260213_140238339_png.rf.1b374a9bd9679dbaa6467e10db153396.jpg",
+      "bytes": 123296,
+      "sha256": "36d58a77ab0f3781e452eb94ec0e45abe89fab6eac8045707e0f0a84fe100834"
+    },
+    {
+      "path": "test/images/old__1-3_20260213_140322031_png.rf.b533491dfa28ec68f7f9d00d8ae6bd8e.jpg",
+      "bytes": 126451,
+      "sha256": "47e8fa84b745270a0880734be768a3c876fb75f0444000f548f250b02066f693"
+    },
+    {
+      "path": "test/images/old__1-3_20260213_140351648_png.rf.0d1379bd9f742b49fbe2c4cab5de516b.jpg",
+      "bytes": 124782,
+      "sha256": "05642917e9f3a8293ea48b9aefca4022c5077cacbaabbbd0ed3d724bf4f4ed32"
+    },
+    {
+      "path": "test/images/old__1-3_20260213_141654257_png.rf.825edda77a5bc68a3b5885948f07f709.jpg",
+      "bytes": 113130,
+      "sha256": "e6d6b055a85404bd8bc49743b518e12685b3219af3e4d7edf80d586ea9ff4791"
+    },
+    {
+      "path": "test/images/old__1-3_20260220_104427731_png.rf.18815996dbb06ad95a083a3fd02510fe.jpg",
+      "bytes": 129187,
+      "sha256": "6b3ddd6400b2687d75af286ce9c54413be3f1599cd0b589be2b56f218e251731"
+    },
+    {
+      "path": "test/images/old__1-3_20260220_104605444_png.rf.51dacb4232b8ef505354a1d10c4412da.jpg",
+      "bytes": 128105,
+      "sha256": "0d3a71164a46cb24c245b7276f97f93fa6fdb270861bf91f93e27b780fca3e41"
+    },
+    {
+      "path": "test/images/old__1-3_20260220_104817777_png.rf.6f2bce6c908190f294cfbf7630bdac41.jpg",
+      "bytes": 128917,
+      "sha256": "7cbd4492e3364a088c9bf3b10f5b25b29cc270b56e06d6d47edd4ee663d4888d"
+    },
+    {
+      "path": "test/images/old__1-3_20260220_105223353_png.rf.bda8b44721dd22af21e57eead058903f.jpg",
+      "bytes": 124237,
+      "sha256": "ec4f1c64e5bdac4560448ce4fccc40c779ff7a1f7d1ca8cba9fb2d7f85da2e03"
+    },
+    {
+      "path": "test/images/old__1-3_20260220_110034690_png.rf.da34eecf1927dcad1d03133c4011ced1.jpg",
+      "bytes": 125100,
+      "sha256": "51f52a210760560d764d317f3f60178ada3aaed37710ceebc9d3604e56ca708a"
+    },
+    {
+      "path": "test/images/old__1-4_20260213_142519974_png.rf.17467e2027915af092b2a891dcbc421a.jpg",
+      "bytes": 105071,
+      "sha256": "b1ebb04bcef3cda017cf23e23d33685e67d0eb20b3b4cd9f9dbdb1d8af34a4e7"
+    },
+    {
+      "path": "test/images/old__1-4_20260213_142653066_png.rf.b513fb9ebc1d387b8fe56906ba2ed684.jpg",
+      "bytes": 103748,
+      "sha256": "75a4aba312258f8b923dc22ce985ced6932d09c89235f48bf8ba41c80a467923"
+    },
+    {
+      "path": "test/images/old__1-4_20260213_142709418_png.rf.32f6a102ee9e07f55e31365c0327a645.jpg",
+      "bytes": 104220,
+      "sha256": "68e585009502c4d0d97edf7ad2e59ee4b9af5fe8a7e236855dc03bf94e4a5b6f"
+    },
+    {
+      "path": "test/images/old__1-4_20260220_113733802_png.rf.33674513fe77496e40b74b112cf15c1f.jpg",
+      "bytes": 122202,
+      "sha256": "f242b2b4851bf28a3e8459fea19ec4e95e031218abe40febd11370f817f59dff"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Dry__Defect__IMG_1538.txt",
+      "bytes": 46,
+      "sha256": "5071378dba0b080ccd04d6e91fb5562b079ff57e8b70fe98ddbd4d924d44a2b5"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Dry__Defect__IMG_1539.txt",
+      "bytes": 46,
+      "sha256": "50899e6d8e0224f03c63fb890102ab4da2e154bd9e077f98de83519946fe269f"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Dry__Defect__IMG_1540.txt",
+      "bytes": 46,
+      "sha256": "7bf178cfcda373cc48315c5626f9f8128b3a8a5ee08b4820f79142d52f028fb6"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Dry__Defect__IMG_1541.txt",
+      "bytes": 46,
+      "sha256": "9a805c630e894e08fb392172331e4a433dad158da591a66af1355a1284ad22ec"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Wet__Defect__IMG_1631.txt",
+      "bytes": 46,
+      "sha256": "7bce66bbbfc4d2e397bfea4bedb3ceea520d033b599ecc25faa1503a224d7e7e"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Wet__Defect__IMG_1632.txt",
+      "bytes": 46,
+      "sha256": "adeef058df2c16b69ab459ee7e398ce486517b57102b1e72135ef67b0fa70317"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Wet__Defect__IMG_1633.txt",
+      "bytes": 46,
+      "sha256": "25ce7561a207d0f6a2c0ee6cabc14929448f9c5dbb1786b98878215ebfaa72ab"
+    },
+    {
+      "path": "test/labels/new__test__One Tool Wet__Defect__IMG_1634.txt",
+      "bytes": 46,
+      "sha256": "13684086164e6d027df8f627b7277ef3ed91ab2f21f7d1a1341850cf2ceabf56"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1561.txt",
+      "bytes": 92,
+      "sha256": "642b48504c4b7073ba0adf26edd89beac4674407744fdd2ce3e7a882ab0ae7d7"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1562.txt",
+      "bytes": 92,
+      "sha256": "c94c0291b69dfd66455896da9f781f4c01b7ccbf35b4fe2b1aa729b445cfbef6"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1563.txt",
+      "bytes": 92,
+      "sha256": "025741f72a126fbb173e9c00db16cb120408d0fe6f36933247682bb687ce1da0"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Dry__Non-Defect + Defect__IMG_1564.txt",
+      "bytes": 92,
+      "sha256": "3ca52226c8a27cd522c6c2dfd6e24715c19e0845ea2437243a0b6e686e4d2b66"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1647.txt",
+      "bytes": 92,
+      "sha256": "0e2f241f325496752b23e633216e0cb5a769bb0ad5d8b7ff90c63c8b8b718cdf"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1648.txt",
+      "bytes": 92,
+      "sha256": "afa746e937417df475f055c5ba13cb56cd183eec48e256148ff89157078f189d"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1649.txt",
+      "bytes": 92,
+      "sha256": "2bc4b44b120dc0c2694b10678a29ad79313ce19c19fb3a3299db69ac00f3aca4"
+    },
+    {
+      "path": "test/labels/new__test__Two Tools Wet__Non-Defect + Defect__IMG_1650.txt",
+      "bytes": 92,
+      "sha256": "096eaedfe3ef9db43d2160afa2aaec5706dc62990e794855c68f4ad7e2f8341c"
+    },
+    {
+      "path": "test/labels/old__1-1_20260213_131502549_png.rf.25855fa55363d78378eeb43dee403ae6.txt",
+      "bytes": 317,
+      "sha256": "9d45560d385cce138185a5e19b7c67e5634c589f836234b90b2e77c7226d3b76"
+    },
+    {
+      "path": "test/labels/old__1-1_20260213_131926588_png.rf.cdd99f0fc9e547f9cf25d24cc83638e3.txt",
+      "bytes": 318,
+      "sha256": "5e61ac2aec9df2944877c1d73ef56be9b38578c1190dd5404fa2fb13fa5a575a"
+    },
+    {
+      "path": "test/labels/old__1-1_20260213_132419956_png.rf.cc7c40ae38f9f1ea7d33d4bc74a23476.txt",
+      "bytes": 300,
+      "sha256": "555ed064c63f4d51901c034a777770e7380617968a9cc02bfbb4d08c7a27a59d"
+    },
+    {
+      "path": "test/labels/old__1-1_20260213_132555988_png.rf.0a5fa9ba8ff61822b770a5812b2d93b0.txt",
+      "bytes": 311,
+      "sha256": "e1864262043890a3de88717085110c7053d65f7b8ce4be51768971ebf8e5077b"
+    },
+    {
+      "path": "test/labels/old__1-1_20260220_112358410_png.rf.29c60b58ccf8626cdeaa68b92fb5d9f3.txt",
+      "bytes": 301,
+      "sha256": "17602159f664df110f97a1979ac173ea2dddc5f6376443f96f84a6d8b64409ff"
+    },
+    {
+      "path": "test/labels/old__1-1_20260220_112509386_png.rf.fd8b78de65bd98f346b987343f14068a.txt",
+      "bytes": 296,
+      "sha256": "80afeada45ba9395d26916a6b766240b28f53c04962642ba8bcfe2663e579c64"
+    },
+    {
+      "path": "test/labels/old__1-1_20260220_112640362_png.rf.d48ea125a75f49d28354bd760068d991.txt",
+      "bytes": 297,
+      "sha256": "ba75c3161151d91ca0e7e514728fe2120e79180e901bb4edb185b3f6dc0cb5f7"
+    },
+    {
+      "path": "test/labels/old__1-2_20260213_133230134_png.rf.dd15f880245b48de4ffe3db2799176b0.txt",
+      "bytes": 159,
+      "sha256": "4cac414b08e535f743b9aac750769ac54f1415153f5c63bda156bc25a4f9322b"
+    },
+    {
+      "path": "test/labels/old__1-2_20260213_133725932_png.rf.7522da04a5c1bbf01e470eb3f27c63b4.txt",
+      "bytes": 158,
+      "sha256": "90464cd1fa5dccb648434760f0557e1a084d4f06cd07af55b0aad673525bc0b7"
+    },
+    {
+      "path": "test/labels/old__1-2_20260213_134152185_png.rf.8bf4bcbda29951d2e679366ff4e5431d.txt",
+      "bytes": 160,
+      "sha256": "0deb022da53c1e823cd3183f6acd8e9211dd75c7afc1f77e3bd38c0665f065ef"
+    },
+    {
+      "path": "test/labels/old__1-2_20260213_134506252_png.rf.6c469318098ff5d8b9d83223c9298558.txt",
+      "bytes": 145,
+      "sha256": "16b120e44e15abfd746b862038ee13e4faaf5f0cec7dfe39b74ff8341694eab9"
+    },
+    {
+      "path": "test/labels/old__1-3_20260213_140036207_png.rf.cccdd97fb47c275b99556083f19a63a5.txt",
+      "bytes": 318,
+      "sha256": "71daffa8ca983619441f609f5ed2b668fbfa58b6a2134e5aeec945ade7b83e3d"
+    },
+    {
+      "path": "test/labels/old__1-3_20260213_140138239_png.rf.581bf664e09d32f392488100bcd89c04.txt",
+      "bytes": 318,
+      "sha256": "aee8c6c44578f8c52625334786c95a94e0dc6cb6560f6516b36e5650fa305b74"
+    },
+    {
+      "path": "test/labels/old__1-3_20260213_140238339_png.rf.1b374a9bd9679dbaa6467e10db153396.txt",
+      "bytes": 315,
+      "sha256": "fccd8501060e2e4aeb85431f69d40dd6f396ca68ccb2a69afceadb501c8b5691"
+    },
+    {
+      "path": "test/labels/old__1-3_20260213_140322031_png.rf.b533491dfa28ec68f7f9d00d8ae6bd8e.txt",
+      "bytes": 309,
+      "sha256": "fe38c2c3a7d461b278da74d28f054e49d87e782f4ec68cdab41951d35eb260a8"
+    },
+    {
+      "path": "test/labels/old__1-3_20260213_140351648_png.rf.0d1379bd9f742b49fbe2c4cab5de516b.txt",
+      "bytes": 296,
+      "sha256": "d49f60645a6f6a382b13405f11a4d09ecfdb08d979c812bcd70eda223f1f456c"
+    },
+    {
+      "path": "test/labels/old__1-3_20260213_141654257_png.rf.825edda77a5bc68a3b5885948f07f709.txt",
+      "bytes": 237,
+      "sha256": "b8e579c8d3185925fabd613d623de49e41ef713dc44f63db58a5860ec934cf46"
+    },
+    {
+      "path": "test/labels/old__1-3_20260220_104427731_png.rf.18815996dbb06ad95a083a3fd02510fe.txt",
+      "bytes": 317,
+      "sha256": "456342c969b5f332420b09c96418684ed21af3bfe37ce0e0c008a82bc964392a"
+    },
+    {
+      "path": "test/labels/old__1-3_20260220_104605444_png.rf.51dacb4232b8ef505354a1d10c4412da.txt",
+      "bytes": 316,
+      "sha256": "40d8b660713ffa8615974ffa6624895ac7d12ba856c775e6e558173c488e3613"
+    },
+    {
+      "path": "test/labels/old__1-3_20260220_104817777_png.rf.6f2bce6c908190f294cfbf7630bdac41.txt",
+      "bytes": 319,
+      "sha256": "3fc2850c075886102367e0f27e86af66ced6a2e5298b80efc1fe6425ed54b50c"
+    },
+    {
+      "path": "test/labels/old__1-3_20260220_105223353_png.rf.bda8b44721dd22af21e57eead058903f.txt",
+      "bytes": 295,
+      "sha256": "f5f4efba3b830aa61821939acb77c607b7eec563b1d149a5d82f990bfa626fea"
+    },
+    {
+      "path": "test/labels/old__1-3_20260220_110034690_png.rf.da34eecf1927dcad1d03133c4011ced1.txt",
+      "bytes": 321,
+      "sha256": "7d7bbbe93f9f0f3c0eb75c663ec080459796473c29a6b4c7338573559737e924"
+    },
+    {
+      "path": "test/labels/old__1-4_20260213_142519974_png.rf.17467e2027915af092b2a891dcbc421a.txt",
+      "bytes": 148,
+      "sha256": "09e1f6cc5b348e5f4be2c13a2cc1dc7dc01c10559013f4e6a10dd4d6d2c4fa7a"
+    },
+    {
+      "path": "test/labels/old__1-4_20260213_142653066_png.rf.b513fb9ebc1d387b8fe56906ba2ed684.txt",
+      "bytes": 137,
+      "sha256": "c4e939336eb49918b3d65e97e2367f5d2ea7b30eefe9f4469325acdd871a3c6d"
+    },
+    {
+      "path": "test/labels/old__1-4_20260213_142709418_png.rf.32f6a102ee9e07f55e31365c0327a645.txt",
+      "bytes": 158,
+      "sha256": "79d5470054b8e10b64375504b7b61ce22ed7fbaf343fc49df4f1ca09071b5c44"
+    },
+    {
+      "path": "test/labels/old__1-4_20260220_113733802_png.rf.33674513fe77496e40b74b112cf15c1f.txt",
+      "bytes": 157,
+      "sha256": "53e175a75601dfef1255c8fa2eeb20c0bbf4c23561295c0ad53bedf218fd3d80"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1526.jpeg",
+      "bytes": 6285878,
+      "sha256": "f1843e2aa5c150efc0361feedffd67796d4c305ce41001a4360010aba424d79d"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1527.jpeg",
+      "bytes": 6564027,
+      "sha256": "9896a8e583fa466960fce34da6452890566a7f89b314e16ac33894234d836143"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1528.jpeg",
+      "bytes": 6257387,
+      "sha256": "54d8350d283ed4945741ac9c41e169b581e83e11e57b6831b40caa35c7527adb"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1529.jpeg",
+      "bytes": 6193036,
+      "sha256": "e97bcf223bacef264c298f75d1c04173e3d24e927461a405cde052789976436f"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1530.jpeg",
+      "bytes": 6072956,
+      "sha256": "7b238340688453e3a2ef3e580bfdf3bcc5b2a2da254fdf7b1d261b2aabfd4dba"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1531.jpeg",
+      "bytes": 6203992,
+      "sha256": "6970ee60338281a1be980cea869313cb0866649615b4ef84f0e5eb4f62bb7658"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1532.jpeg",
+      "bytes": 5984822,
+      "sha256": "73c4785a0023f2cb4ce23c8ccfd0a79d0284f619e830a326f6e538b80e0e322d"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1533.jpeg",
+      "bytes": 6276940,
+      "sha256": "f721ca78fb1a6293818a2906a9daccf7c4fa1ee9a8e81dd3d0f49f1092cbedd9"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1534.jpeg",
+      "bytes": 6259499,
+      "sha256": "f32a9443905b7f85b21898726ec1c55393816b755c7ebe63106bd5f098fff75c"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1535.jpeg",
+      "bytes": 6110998,
+      "sha256": "e505f9ac4859dec33f204373e681118b8b47df192fda624af81bc2257dd6c3e0"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1536.jpeg",
+      "bytes": 6431997,
+      "sha256": "863d21784abfb87cfe0e3477bb2317becb3813339a2b06b462dd66fb77c1e2d5"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1537.jpeg",
+      "bytes": 5932148,
+      "sha256": "2d4878175c21e15316c0466db10192b4b8c508ff7f181e39d6881cb10e00805c"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1542.jpeg",
+      "bytes": 6080249,
+      "sha256": "b9c9e467d347b244e4fc9a44c711ed95107432a0ccd762605605d152705ae9a3"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1543.jpeg",
+      "bytes": 6173139,
+      "sha256": "8cca0a48de7ae41854dd694d0dadb54f34efff3b96fa799dc4bb31baa1999b5e"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1544.jpeg",
+      "bytes": 6162688,
+      "sha256": "031e6b05bea5e24aa6a8e77dffb7f57a516483fe0a19c6b4148e1b810af7717b"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1545.jpeg",
+      "bytes": 6201072,
+      "sha256": "5fc0ea752fe45f101c832e7dcea31c1d7a3020dbbfefd99ce6b87d84fa855620"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1546.jpeg",
+      "bytes": 6245239,
+      "sha256": "778c64ca1709c13f70ca75d2586cfc13b4565e3f709f54f2b5b542f939a4fd2b"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1547.jpeg",
+      "bytes": 5962766,
+      "sha256": "27e96c68c904e94686c04ef243c903a3196668742c19c658ea5a895a213526ab"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1548.jpeg",
+      "bytes": 5998598,
+      "sha256": "163a5cd0ad5e125c90a9c67a2b616a333d608787415842f62a1dc1687db90d7c"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1549.jpeg",
+      "bytes": 5948278,
+      "sha256": "84d8aece8d9ba062ecd91fcc565be5f9c4101e87c3a735132cab5acee0bfe599"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1551.jpeg",
+      "bytes": 6153878,
+      "sha256": "b058862c96d59dc12d6b17602fbe83aff12357bc0c98433d0e4f87b2df07538e"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1552.jpeg",
+      "bytes": 5951006,
+      "sha256": "486333e4362812683ec5473a3309bb8946da4081766c4b82d566b7feb8af6546"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1553.jpeg",
+      "bytes": 5048036,
+      "sha256": "3aaed8dbaa2c0ce99508f3cb991ab01f9e611ed2c9436d2462758a3b2db02d69"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1554.jpeg",
+      "bytes": 6277851,
+      "sha256": "3c5e167a11dbf1d9db12a0c5c8bea28a59c2059c737338305a226175391d446d"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1555.jpeg",
+      "bytes": 5998729,
+      "sha256": "21490def834e4ede59c95aaee08ec533fe62a0bf04078e72058294b28b5a7a6d"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1667.jpeg",
+      "bytes": 5921742,
+      "sha256": "e4d31da8466974dd1305c9be37493b09c337906865a9729195ef838195eb03e6"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1668.jpeg",
+      "bytes": 5723154,
+      "sha256": "d747f204cbf773e228e1abafd137f2aa1d445828af6d21773dba4b9e59c9ffb0"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Defect__IMG_1670.jpeg",
+      "bytes": 6092217,
+      "sha256": "53d02a77ed35875d4c86cce59acb4fb5bfe20032d98240b412d0e37d769d2e09"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Non-Defect__IMG_1516.jpeg",
+      "bytes": 6150518,
+      "sha256": "6b37a6f8020cc6482b0b7569481c1e35400bbc4fed65706f77e807006caebc4d"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Non-Defect__IMG_1517.jpeg",
+      "bytes": 6240734,
+      "sha256": "1f76a5315ee449c17f91e8c8068ca7cd10e12dbf07bfbd264114bb53ab404ae3"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Non-Defect__IMG_1519.jpeg",
+      "bytes": 6075248,
+      "sha256": "d4d8b4c85561ee96e22d83f9ef6cd9feff36c3a035c6fc79560cb8957a7cb906"
+    },
+    {
+      "path": "train/images/new__train__One Tool Dry__Non-Defect__IMG_1520.jpeg",
+      "bytes": 6009478,
+      "sha256": "4e68026630ecb8e86cd4a30dc3282775177be6ad02b6de81b59abe80d3f2bc17"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1603.jpeg",
+      "bytes": 6432919,
+      "sha256": "7f43239d0baae8def30545e2a8ad65de26eff755f026af99507aaf250a567799"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1604.jpeg",
+      "bytes": 6243300,
+      "sha256": "7e7d1e6efcd40847078c15ad83b427eda5dcf834da1ebac099ad1ee5d23c5ce3"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1605.jpeg",
+      "bytes": 6167144,
+      "sha256": "3699f5cd39006f28f84f3edeea8b43392b5fb2adc9dc85910aa0f26cb3848290"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1606.jpeg",
+      "bytes": 6165742,
+      "sha256": "3487e8a427e79c31743d138b471251235b7dec51204ff75bbfadc997058a423e"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1607.jpeg",
+      "bytes": 6029756,
+      "sha256": "e4334bbadf96aca0e13d498dbc8ca4d06710f9b087eafb2f8ab746fd4764c2c0"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1608.jpeg",
+      "bytes": 5735705,
+      "sha256": "6a27d570c1753dccd22619f2761e58a5e3d3d4dd32932e0eb4c2863755b0bd0d"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1609.jpeg",
+      "bytes": 6187074,
+      "sha256": "71b7e858ae7dbbe1e2770a1d56a6347182f2c18e8c0f2157f223b4bd51b921fb"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1610.jpeg",
+      "bytes": 5898683,
+      "sha256": "4bb2fd3630c473c71ce3613349067efd7357ccb298b52b9420eb3784767ca9bf"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1615.jpeg",
+      "bytes": 6417585,
+      "sha256": "5ddb36caad571223c2477c587000764966798e1897079230893a58adf620ecc0"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1616.jpeg",
+      "bytes": 6051033,
+      "sha256": "233546b175082f0a6b1a827111c3e3d00916170f2fe34dcb1eab34327fb4b7fb"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1617.jpeg",
+      "bytes": 5854698,
+      "sha256": "f9b7115b56356c282ef7b4b8a754391db95a57eb619d7c01df81e39dff62b109"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1618.jpeg",
+      "bytes": 5795543,
+      "sha256": "ebcb8211a0bc7bd8bf45464221b9fb84dc025e44ff24bca0d5154941d06450ae"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1619.jpeg",
+      "bytes": 6281097,
+      "sha256": "bbd545383175bdcd42e98b77f1bdf3322f4e39fd8f6bd6e5b42c36e94bfd95e3"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1620.jpeg",
+      "bytes": 6116158,
+      "sha256": "e2aac37270834626e09f4f67f1fffcf9dffd5f89455b414299d8b29ba5fa7196"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1621.jpeg",
+      "bytes": 5702867,
+      "sha256": "08cdf513e17f1532a3888a0cb4c5e75d1b57aa80520c0d983507b8ab6d59c3b6"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1622.jpeg",
+      "bytes": 5942844,
+      "sha256": "6ec754d5679d64b6f49383a79193707286f55874e8dafcb97202fc539b5db244"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1623.jpeg",
+      "bytes": 6002047,
+      "sha256": "98f7555236e875516099eb4f602060b18f73e3cedd0c23350656f8afa000e7db"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1624.jpeg",
+      "bytes": 5872227,
+      "sha256": "4958a1d8324b1263bb82ad62c6ac46602bd8dfb3914628d7e4c63fbef13bd6e5"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1625.jpeg",
+      "bytes": 5760297,
+      "sha256": "48eed913d6d90d212dbaecf8311432aaea0b0f0a0a133bbf55c55e1b8067ce92"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1626.jpeg",
+      "bytes": 5518542,
+      "sha256": "bfe6912007c807c675d054d593fe767421338901d65febce15166bbefde8c970"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1627.jpeg",
+      "bytes": 6036682,
+      "sha256": "3f21e47d69c0cc6e9efde9f88f255a47c7906602980af287f7a4b301313db9d5"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1628.jpeg",
+      "bytes": 6280296,
+      "sha256": "df2a6a7665acc9c307befdf29b0879c029bb3891530c9226cde69869c56457bd"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1629.jpeg",
+      "bytes": 6053222,
+      "sha256": "ffb5c95e8949605a1327edbd97b261948be4bb65e4e7afecd7e172022df4c617"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Defect__IMG_1630.jpeg",
+      "bytes": 6217186,
+      "sha256": "47f4df116f3f14cec74995fef3b77e036ad679d4521f80bd8d0f25f54caaf2df"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Non-Defect__IMG_1597.jpeg",
+      "bytes": 5878701,
+      "sha256": "31ded95f4c437a14407b81c36af3b1deb6ec0b375a368ff5c6e8486f5d3aeef8"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Non-Defect__IMG_1598.jpeg",
+      "bytes": 5722607,
+      "sha256": "7349f58bf585393ada22ea275a4d997996cd25704897f39281443a655783df63"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Non-Defect__IMG_1599.jpeg",
+      "bytes": 7169347,
+      "sha256": "5f57d0f9a8c1f64846662515f600d116e8d46286674afbabbb05ff0ca2d6e727"
+    },
+    {
+      "path": "train/images/new__train__One Tool Wet__Non-Defect__IMG_1600.jpeg",
+      "bytes": 7005894,
+      "sha256": "7527751adf7fe30c9e5918ed633db33c81c93460f4600485f8e059ece3b0fd4b"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Defect2__IMG_1590.jpeg",
+      "bytes": 6107421,
+      "sha256": "7c4613bf6a3e60c879998aadb5b5a09904018ecdd38464ae9ba7b22e79ec7cee"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Defect2__IMG_1591.jpeg",
+      "bytes": 5966650,
+      "sha256": "d3d6e838adf71c4fcf0ac8deb732f41b0af0ab217ea7d751dccc881d1f9d9f8a"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Defect2__IMG_1592.jpeg",
+      "bytes": 5530236,
+      "sha256": "df2006582f62ea03598f3e02198db484801ce145708fb55a2e711e3d9f215e5d"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Defect2__IMG_1593.jpeg",
+      "bytes": 5642382,
+      "sha256": "c019ca2895f167bd8952cab1dbdaa27985d37d9899e9d99a0178005d55674af6"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1565.jpeg",
+      "bytes": 5922663,
+      "sha256": "8df8e3de15645a3383393a93a9294cdb64e4b76401b2cee9fe614d845465b51e"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1566.jpeg",
+      "bytes": 5699320,
+      "sha256": "0121ee0852cf7a006aedb122a17d4e3dbf5d82a295711c0f4fd4bc4402ead8d8"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1567.jpeg",
+      "bytes": 5852782,
+      "sha256": "7a68e8647c277b9f4f04a732fe833a48e8529d1e1b44a1164b3f932e0e11a125"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1568.jpeg",
+      "bytes": 6179201,
+      "sha256": "2cd1be6c6ba1e619ed9afd03f7deecb0daf2b22588c61297aedc4eb027920d14"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1569.jpeg",
+      "bytes": 5695045,
+      "sha256": "a25f38aa07c720a1e281c9d395f9202458779306445c8a5f849f3252fc053c0d"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1570.jpeg",
+      "bytes": 5874276,
+      "sha256": "3abfee8f28800f66ab05201f65daad77dc2b5ac8ce3924f67a624955dd8cafb1"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1571.jpeg",
+      "bytes": 5835671,
+      "sha256": "f76ef5ba61428c7e5bcd4d54ae488b1bc68f656cf6f634b896a58625d1ff8d73"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1572.jpeg",
+      "bytes": 6146450,
+      "sha256": "fa1904c883a9da8d8331520b91d8bb0055fff154a259daa724b91aa0e95da2c2"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1573.jpeg",
+      "bytes": 6027618,
+      "sha256": "30890b9818d3593cace8ae2f9d8d1bd84bb9da78d589062683a3ac30599b71f1"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1574.jpeg",
+      "bytes": 5970390,
+      "sha256": "912012d6977360f2c23154b3c18643f61f230f8d9502da0b7298dfe2e221989d"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1575.jpeg",
+      "bytes": 6082372,
+      "sha256": "1a1f8d4ab453751ec38712f8e86c71ed266682d064e7bf5af7d80ce4d399e12c"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1576.jpeg",
+      "bytes": 6129667,
+      "sha256": "b0625ca574a5afa585b1992c997cc4f3fd1706f70e4b1ab98025ab9d661a3615"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1577.jpeg",
+      "bytes": 6410969,
+      "sha256": "6af84c05334e5090355b5ebdaafc1d78fff04ab1165c3ea83ad93e38f05beda4"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1578.jpeg",
+      "bytes": 5987883,
+      "sha256": "fdce2c2061b7c1af44a63408b9ec50cb167c55014921e545a025f19e7d9f39a6"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1579.jpeg",
+      "bytes": 5601207,
+      "sha256": "4fb360d2d70f16bbd51fa3d9013697d520af12e7a0e14ebb33069b5f6517dadc"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1580.jpeg",
+      "bytes": 6012390,
+      "sha256": "33dcba7fb40eb09691795a0699a8cd533c41e9fda7d7309e0b5b3e3d2a9e7eef"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1581.jpeg",
+      "bytes": 5912573,
+      "sha256": "942662aac80d73c9382a7bdaccd5f8bdf8309e70b3d701282659b75b4000f3be"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1582.jpeg",
+      "bytes": 5677579,
+      "sha256": "829fe88f7ccf53366ba7add71c918e0aab5c4de7e1e5c1c69af71337ced83d87"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1583.jpeg",
+      "bytes": 6061867,
+      "sha256": "66cd7f869cb90ec28bd0cdc42fb15cdb72e478a5acdb40543b6d55057007423f"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1584.jpeg",
+      "bytes": 5922774,
+      "sha256": "62ec1e1b8b2eb0cf9f49927da3727e6c335aec76a06f8164f3a23f8150650d97"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1585.jpeg",
+      "bytes": 5938221,
+      "sha256": "88e0ef53710e887a7dbbd13ec4f1e494eba9de9f1ffbdcb7ff7a7f03d1f71234"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1586.jpeg",
+      "bytes": 5913184,
+      "sha256": "201a6b033d9bfc8ce8c826f5af0eb2ce79682c0cffe6a463e5d1b9a014217265"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1587.jpeg",
+      "bytes": 5873794,
+      "sha256": "8a0922306eb5864f5a4e387d6172823e0f479ca14139ce625863403e8ac8506d"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1588.jpeg",
+      "bytes": 5931444,
+      "sha256": "34bdc3b02f195473a9c00f3d17b98c37dc585925c03f55c581c0b6313075982c"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Defect2__IMG_1664.jpeg",
+      "bytes": 5802109,
+      "sha256": "c4acb49e408525c3a2fa3060240a4f115b973045326aa2e4e59f45f5472325a5"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Defect2__IMG_1665.jpeg",
+      "bytes": 6142834,
+      "sha256": "38bbf0db54c03b4647b57f9fc3d85a6e270199031f33d0a7eb165cd5f6061b5a"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Defect2__IMG_1666.jpeg",
+      "bytes": 5674360,
+      "sha256": "af9a17036212c09ebc4875689a9a9e7f043edd234c21493c43d5e51645e069ae"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1635.jpeg",
+      "bytes": 5919965,
+      "sha256": "11a3ccdf908ff9cd94021e2878df2e81ad48cfe3eaad20b1d0446e6d5021df16"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1636.jpeg",
+      "bytes": 5498934,
+      "sha256": "bbff70c1a77d7d35392bde722f4463fdbc1dd3c05834a63c14089cbbdb601a99"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1637.jpeg",
+      "bytes": 5873513,
+      "sha256": "e766035f8768c2aed7997b17e99ec7ea7e44d81143cd6b687386ff3485eff9e3"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1638.jpeg",
+      "bytes": 5969549,
+      "sha256": "993cd8d4e499acd5a7d03024c28609f8c6bba9887aee64248d64636bf35b17cf"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1639.jpeg",
+      "bytes": 6079553,
+      "sha256": "3188add20531b13b874f0f55a87261fc93bf5ead0f6612816e3d425f98e4313f"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1640.jpeg",
+      "bytes": 5978207,
+      "sha256": "4a8a6a8e67a383ad3c0aa4a7d252eb848171e16b0f4d3588f95303045d1efd60"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1641.jpeg",
+      "bytes": 6022393,
+      "sha256": "ad1cd2361334ee89cefae9825424bb32086053f849d9571a9efaca29885afb74"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1642.jpeg",
+      "bytes": 5677939,
+      "sha256": "2e1518755e675daf13137a76ca4f31dfd30e05398f8bb915674eed9e5c95086e"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1643.jpeg",
+      "bytes": 5798866,
+      "sha256": "ce3d548bec47866b1c7a305f25cac823cb5c6de1e09d9de3d5d987ccae336d6c"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1644.jpeg",
+      "bytes": 5575341,
+      "sha256": "458bd4d0689997f19d160b6b360f17107ed0eb2040704e5ac9881f216300afd7"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1645.jpeg",
+      "bytes": 6111410,
+      "sha256": "f12797a9b1ff56ff319388244a3ca8bf553abbb84fdc25a24b1a6ea8d122dcd3"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1646.jpeg",
+      "bytes": 6381740,
+      "sha256": "82c715733f6de64a439dfe965fffd7466bf4e3154fddb6fff6d08fdacae032dc"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1651.jpeg",
+      "bytes": 5917431,
+      "sha256": "3edede77135f33eae5cb0e9877091492cdc18c26cc0819e4c63a5c681842f73f"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1652.jpeg",
+      "bytes": 6041285,
+      "sha256": "19a59c8e6a3f32a1e05dec2b3f51b2ff98e33ae1ec77763c28d67933b7253927"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1653.jpeg",
+      "bytes": 6096727,
+      "sha256": "d514266847d8834724ea10aafeff8cdf92d3b6feb53d9c7f5793f97de079328c"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1654.jpeg",
+      "bytes": 5944648,
+      "sha256": "29f99cade1328c770ca3ac5b387c0a9976ce63df7c985d3305ef0cc924740c64"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1659.jpeg",
+      "bytes": 6196999,
+      "sha256": "f1f990856cc5c873a71151a82518016fc5100f9e1f065dd0a0853d81e2471cc5"
+    },
+    {
+      "path": "train/images/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1669.jpeg",
+      "bytes": 5911644,
+      "sha256": "82f94e1a830ed3b01bc0a6509c6c451d51d5f074dbcedb9e62be504f58180d3a"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_131111362_png.rf.16432a7703c6483cbdc1ddbd1df835f3.jpg",
+      "bytes": 135646,
+      "sha256": "2ab4fd634bcf0f2a25750ecf46ca798afd15af35e463873531d5256097efa0d8"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_131304604_png.rf.c375b235455bc215619688de79fbdaf6.jpg",
+      "bytes": 132179,
+      "sha256": "78482a54b19e2e22c54f4ba9843fedb506044939e96ebac8d3938c7e3428dece"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_131720722_png.rf.b3cfb1045d1f4f6aa8c1e01cc4271acd.jpg",
+      "bytes": 118845,
+      "sha256": "00c2806eee8058d126bcff00492e8330f9f2aff15b76f2a5a0626723bdf1da13"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_131826704_png.rf.6caaa19b8c0b5fb61ae5627f83d64ded.jpg",
+      "bytes": 117581,
+      "sha256": "b7201a43604b906c476237db628759854885057e143536586355d7f5e2081c7f"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_131958923_png.rf.a718edd6a175f25faa80e7f168aadcae.jpg",
+      "bytes": 116712,
+      "sha256": "0fe8419bc83da1beb2ca9b7d521c209eca39fd69dfb2cffea9e4c43567d4e733"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_132017816_png.rf.825eea3f36666fb66f5bf107310cee75.jpg",
+      "bytes": 117144,
+      "sha256": "930aa33abad72198fdf28cb0391ee27bca6a36feb723970a4f52a8ebff1a310b"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_132142175_png.rf.73a158ddf6cb9c380e7e50925c10a83e.jpg",
+      "bytes": 116818,
+      "sha256": "c30a24e2d284056a7101f5071809c191aca8b72a74d15c746abba64f2097ab18"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_132214483_png.rf.50182e605c4ad982368a607eaa375817.jpg",
+      "bytes": 117676,
+      "sha256": "d1ba3947d0928b4e37c2e2153d016bcff72fd2e7b4e3773311e00962bdbd73e5"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_132341776_png.rf.7e4d0bd35e737054ad7f544ae15f52d7.jpg",
+      "bytes": 121367,
+      "sha256": "50323bb4ef3de3fd8d0720ea4ee9f6ddab517c8bbb514cfb4471b86e2d389ee9"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_132659079_png.rf.b00e052188e249ff94783389fdfe0482.jpg",
+      "bytes": 128410,
+      "sha256": "314885e1e17312ae742fda5f5b5e4bd418ab57c59aef3592ecd8fe53154f6fbb"
+    },
+    {
+      "path": "train/images/old__1-1_20260213_132718285_png.rf.e9b4c4d1fa2c28e598dd15e5fc18fe57.jpg",
+      "bytes": 129347,
+      "sha256": "9b2ac3b419af353a90dc95c274e0f872824fc3541f7cf10bcc923db70cc95fb0"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_111829652_png.rf.96d96061c552207394addc3ee913af3f.jpg",
+      "bytes": 135730,
+      "sha256": "716bb74ec5d53e48d7aac0325035cdd8ec08b35b37d927fb625ee2e6af3b2cbe"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_111834388_png.rf.53985a0181a1bc1014af6e1b890ab767.jpg",
+      "bytes": 136155,
+      "sha256": "03cb38efc9da72f2e707711f225ea13fd90f09f9305b391465b910c249e93c32"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_111908881_png.rf.07948cb3a3525eeabb810a1dcd90c1b7.jpg",
+      "bytes": 136984,
+      "sha256": "0afe42fff5c8b88ac34fd14f8ef5579e0b10eda2491f196eaad018c8fb5a9d80"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_111949214_png.rf.3417bce72c46f8a90a3774273bed4514.jpg",
+      "bytes": 135149,
+      "sha256": "4ee8201ff78ea4211e74897626a3d123db96bd2f0675a09ce4ec676f7d385cf7"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112029081_png.rf.b688699a6e9f14f40d47974025bf481f.jpg",
+      "bytes": 134075,
+      "sha256": "b7a78339cab7ae9633ee2e984fc44bf1b00447897f96932f36ff43c1c0ac3196"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112116523_png.rf.bb2579dabb147e5028b2c6c7393c282f.jpg",
+      "bytes": 134741,
+      "sha256": "3badd4fa926ba660dddeae0b6f893a29220890c93aa5f8f5ed67933583b0701f"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112211280_png.rf.9ebf6a43ea3bd23da3cfc65c6ab52d1d.jpg",
+      "bytes": 133099,
+      "sha256": "3944f86e6a03fcd49fa9fd3c857e1cae2b4b6e3835006ec4ba4a85ba34e2bd6e"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112234431_png.rf.e765446abe1bb5c6db9da52de0be27b0.jpg",
+      "bytes": 132980,
+      "sha256": "bd9a666c08b250ab3d88f417097231945d600be14bbcaabcf13d36f0d316dba4"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112253546_png.rf.5d7938348df0863b1395b66fb324f8d5.jpg",
+      "bytes": 133733,
+      "sha256": "49400ea14226e9f383cfecb7358d119a6d9f792c54f3e605dc50f092ae6c7c33"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112318050_png.rf.db2e90463b1da8115d051ae8cfbf29b4.jpg",
+      "bytes": 133735,
+      "sha256": "f587da0cbc710e2b9915f4097d6fd9f84530e2d8a97f9864dc522eb8b89e9ace"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112429543_png.rf.922652cfdca2a972c0fce212d87594da.jpg",
+      "bytes": 135992,
+      "sha256": "3f4ec9d0b615dd7c0b0add1a6c108ae8c36aa2dd11498cbe6ee9bf94952ec4c6"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112553183_png.rf.311fe7a5a1a9f51bf5e1dd791a8436aa.jpg",
+      "bytes": 138479,
+      "sha256": "f5a54b86542dfd281fa54e16dcd80dc079f950434ac9c2072a98d38ec80dbb90"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112710868_png.rf.208122ecf2fa2a95346cea7dd4b71b40.jpg",
+      "bytes": 134392,
+      "sha256": "41edcdedfdbc7825f53840e12cdc7caf3f7cc2a4a68e1cfe5ab837e33b0876e4"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112738786_png.rf.23dee3e55697ebae9618d37d0e93e8bb.jpg",
+      "bytes": 134460,
+      "sha256": "9cc2ee5af1867b97a44b1d9059a2b91ee464bef7fc0bee8525b37bf464beec74"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112811239_png.rf.7c68537e84955ef9f55babb6cf6f958c.jpg",
+      "bytes": 134693,
+      "sha256": "b798826fff02f6197c1f4018382fe795656d26f1bdc5e028636e349503cdee3e"
+    },
+    {
+      "path": "train/images/old__1-1_20260220_112827204_png.rf.7f7dfd25b9eba54fd92bd8e0ae06411e.jpg",
+      "bytes": 134711,
+      "sha256": "9236fa1175c9bb4d1598a271dd9db8c2c2fff5c4ded4eed894cfe39e3c578404"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133334260_png.rf.6f11589863c901c0cf807216befacde4.jpg",
+      "bytes": 117359,
+      "sha256": "828c0e36ffcab04d426a230f40c5472e7c437afd1d063c990df87af93bc4e073"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133430306_png.rf.886a37cb369cc69bdbeb09ffa4188ec8.jpg",
+      "bytes": 119183,
+      "sha256": "cad50913a8580b9150e7fcbd6b6d981797bea95f4f918c829628c83aa601f1c5"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133449990_png.rf.ec9fc7ba1ac33b9c4cb96929ad117d5a.jpg",
+      "bytes": 117581,
+      "sha256": "0b05b79a110651ff0ded03835f0d268277a02c95c8623acce6e1490a3cb4e846"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133513628_png.rf.0d5125c8c629845a153bd7d1d1053497.jpg",
+      "bytes": 117780,
+      "sha256": "244f802daa27c55b7d6938828f1cb2efa268b29b82821dec27e932ec09eb5f86"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133616508_png.rf.de5b6ae8f32b1a67302af46efe30048e.jpg",
+      "bytes": 114201,
+      "sha256": "f6a7568d7d01a7188b6924b2e304e1c183572d94f03978df76c517a4b838e9d1"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133651974_png.rf.11cf3bfb84fed53f3f160968d889d147.jpg",
+      "bytes": 114940,
+      "sha256": "079e760fe73f20ae8c98479d092c804f35844df3859ce39f21df26b2adb115a2"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_133942711_png.rf.c96c5b554072e1c83e5f99e7d6ab8b28.jpg",
+      "bytes": 113290,
+      "sha256": "16bedd57c17fdcbc7ea38fc3edef3ddaa782415515e4d4c191a8284d05c9dd9a"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134016844_png.rf.6335b929636ec731c1889d8a4344bd7d.jpg",
+      "bytes": 113588,
+      "sha256": "885b8decf831c019719a8a05a63437db0746a4e71aaa5c0076ea3211d22fb11f"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134039478_png.rf.de19492d9ce90270cc259ae4933aff69.jpg",
+      "bytes": 113069,
+      "sha256": "a0434ecb538617d715edfdaf558e1839a31aea4775f7b527716fc26de5763062"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134102737_png.rf.91b7ff072e4e0cb15e3d37402fd6b429.jpg",
+      "bytes": 111245,
+      "sha256": "638ee8de6303c76d64f8259b9852d173bfb20dc9321a67c056679cac83f59b06"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134127574_png.rf.a03f61746cddcb9c32eefbfe1d7fb9bf.jpg",
+      "bytes": 112051,
+      "sha256": "385fe66985ca7cf67fa6a1b69377bdd7e4993295b225c34f75234e534891a9ca"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134214440_png.rf.8194bb9013dc7bc91ee0569945ec2534.jpg",
+      "bytes": 112979,
+      "sha256": "f4ed4be515bed2c6c5f04d724c3fe9cd8356726e56569c5b88aaea80eaef629a"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134302794_png.rf.447846665398de2de4448af004f7ba58.jpg",
+      "bytes": 114012,
+      "sha256": "a62422965c5cede32b9d5c5d0028883487d42a5c11d4ce60709cba467a915f53"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134329167_png.rf.dff6b0e3d5abb8b1a53f7248265fefa5.jpg",
+      "bytes": 115573,
+      "sha256": "2869c4b0b9736a7824f8a27ada9f308857a7f03d689f154bf36f7781495bb04d"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134358524_png.rf.4af7009fbbfdbd7eebad932e67c2bff1.jpg",
+      "bytes": 116456,
+      "sha256": "72b9aef374e8e5b3850a9edc591c3400791e66fc445b236f28fad9e88b23e9c0"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134436379_png.rf.ca627f888175620f0f07350834cfd12e.jpg",
+      "bytes": 119389,
+      "sha256": "1b45ab1f7d6672835f8f9439a274a0f5bfc194ac4b061e92f18514dc7571f801"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134537453_png.rf.619f4698ab9ff66a2d49b5efafd196ca.jpg",
+      "bytes": 122606,
+      "sha256": "612969c84ce42c9c84628afc44853374d7e378797850bf6c1771cf750991a284"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134610903_png.rf.410643f559c717fe325dd746a4bdb04f.jpg",
+      "bytes": 123926,
+      "sha256": "9200a42ab9c3856e7ff42e29f6a87459f59bca6f9cd424c52be2d79b16660780"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134652391_png.rf.56601d4534c2041db14f22bf5f1be8d9.jpg",
+      "bytes": 124913,
+      "sha256": "3531d67510ae79644362941f2b2df20bbb1e653e6e46156680fc492283e19748"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134737049_png.rf.944b6a3329be4646503f987ed8b58107.jpg",
+      "bytes": 122228,
+      "sha256": "5f54f952e2b719742ddd8effdb950221bb9cc2836da7d964b4ed0fcd34fc6353"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134806064_png.rf.efa807ce2d8455f1bb7c0163736772fd.jpg",
+      "bytes": 124131,
+      "sha256": "25a08e62519028a73b64256ce7e432b5c737d8d70eb8a3a1fb6d7a9d820acbc3"
+    },
+    {
+      "path": "train/images/old__1-2_20260213_134839823_png.rf.929a86ebebdb3976094a3303b833e445.jpg",
+      "bytes": 123020,
+      "sha256": "b578f437ac70690c13aae99c40cca414efa215ad05e173fc783d6c29fef35a2f"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_135753825_png.rf.856e823406f5b9dac49de43c3e4734bc.jpg",
+      "bytes": 120821,
+      "sha256": "4978cebda3596834680f67cf7f776144cd429be448e49b8e095cc941715835e7"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_135916506_png.rf.49675624535f0de9ab40a9ba153f9557.jpg",
+      "bytes": 121913,
+      "sha256": "c5694ef6c7205cea3be98ab8c586c4cd42837a4d3a4010ea848d333f2653f258"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140117951_png.rf.c6f2cfef62ef8b8a0fa2ba8ec98647c0.jpg",
+      "bytes": 123342,
+      "sha256": "931c288d8ca6ec8508c975934a42f028f093912d63ca553677a65f4740a2f5fb"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140203429_png.rf.bb79b11c1dcd7ebb87070daefa401a79.jpg",
+      "bytes": 123351,
+      "sha256": "190b453fe01054254a3b077a2cbaaec162c8da371e87d512eb82af4efb1a021e"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140252790_png.rf.b93d9abc3849ba6dbbe932f289313772.jpg",
+      "bytes": 123819,
+      "sha256": "231a3c388971f747ba8831f79952f0fa0b5da26009e06120ccf44ab7b08557fb"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140419491_png.rf.70b3a1e4cb3422b04b00533959e9c4d0.jpg",
+      "bytes": 124951,
+      "sha256": "c955af8629848e2b04518738404d993865d611d3d41a9ffa6b38e5c9f61f184f"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140500273_png.rf.78b390c44e93717634db5b3212109bc0.jpg",
+      "bytes": 123730,
+      "sha256": "8e34be7d654e3a6a63dfd3244389a3be0b8d143a77e62e44fafe1b9f9faa2574"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140528010_png.rf.2f6e2d9a36c64ce5d5df95b691571797.jpg",
+      "bytes": 123402,
+      "sha256": "cc31caccbd20d9133147302a2faa8496216e97c0f4fd3d0acff91f134779d363"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140706721_png.rf.fd442a8dd57a82d48d3d9e3a60a808ad.jpg",
+      "bytes": 123611,
+      "sha256": "e965598d8566c5cf57c199b32461e1986b0e5ac5c16caa28eb986d6d09b46187"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140903833_png.rf.1d217566d67d91fc629561cba58c926c.jpg",
+      "bytes": 121806,
+      "sha256": "581507b0f44ee0fc62d88fc342cb24db0ec7f7236bd8e542b457149ebb83613b"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140927650_png.rf.1ce0249f076b53623ee6f0a29cc92347.jpg",
+      "bytes": 120727,
+      "sha256": "076ae7bbb899bbe4c1f6449f419a60eb988a0b613a7152c1692d11476e4a475b"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_140951861_png.rf.5b10c8da94a21cded0743df554ca16da.jpg",
+      "bytes": 120736,
+      "sha256": "f98da1ebe1bfb9d1088a96f3b6d5723e4590423b7569d31511b0fb0cc7c9bcdd"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141144888_png.rf.9c9c9be7e2b13f93712d43f5c41089c0.jpg",
+      "bytes": 118888,
+      "sha256": "cdfa953861fc656a2600b965e42c756938c6d17de61025a5f48b65b23e63b10a"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141300357_png.rf.d56bb3c23596f14568883db68507531a.jpg",
+      "bytes": 117710,
+      "sha256": "28ebfd9949796aa3f89828de3721751d90082d151ddfd9d61a7ea906fb3fe4b3"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141334705_png.rf.23e96626e81f14267cec90ab879cfa28.jpg",
+      "bytes": 117620,
+      "sha256": "1e0d37f288e288fa06f1a7977715fc2da26bf8f75d82083b006b1d322501e405"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141402058_png.rf.79b77545287db0471919323486782f48.jpg",
+      "bytes": 115816,
+      "sha256": "3f7789dd2d62261ae983572debbb95c591d2e6917349726abc245499cb8bedaf"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141519604_png.rf.c4bc0079535e396ced537689a387b537.jpg",
+      "bytes": 113033,
+      "sha256": "8b5acd46347b6ccbb5ee6fef39bb3c9448b05a2fe4bfe1bf039f1bbbdce55110"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141558805_png.rf.4719d541740234d82e887feae08c2ccf.jpg",
+      "bytes": 109177,
+      "sha256": "81e72d2bafef0a59c231139166ca570acb7e45429c3d4f90ef3ac5e366fa65c2"
+    },
+    {
+      "path": "train/images/old__1-3_20260213_141712493_png.rf.555cb4e269950a16c07d82af68715f92.jpg",
+      "bytes": 116141,
+      "sha256": "147bc1c6e218c2f4a7cb188677ad06f6fa5645d16f9d5a229cf155356b9c2c98"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104256009_png.rf.4fcfb3d201fd7e1624749c96efcc5f90.jpg",
+      "bytes": 127285,
+      "sha256": "19675a2ed4705835742356a9df1a55cfba363378db3d25e03e832738efb22a24"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104326903_png.rf.4bee5dae2753c5c76d155c223d542b19.jpg",
+      "bytes": 127161,
+      "sha256": "a2cdc102fc6a335002320cd6f3b35c5fe74dd98accfb86fca49650a9ee7999c4"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104353620_png.rf.d93e5470a90b6501e025d5492221427d.jpg",
+      "bytes": 130409,
+      "sha256": "5707fe050e322dd4432673a329bd8bff9496cd2dc9e8e9c2a76154878879c762"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104515225_png.rf.d5f14f22749e199d25edab7eea27bad8.jpg",
+      "bytes": 128071,
+      "sha256": "5c3cde51e1c42de92494e3307b17404535089d08346cf48081d5918cf8bceaa0"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104546978_png.rf.7ac68a26c7f06d5a23445a959ca6b320.jpg",
+      "bytes": 128297,
+      "sha256": "27f072bf260cb87716f3c068e3501232803d54b5c633030256d24b816a83f11f"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104630370_png.rf.b16408b3b71afee59e6530963b2a7596.jpg",
+      "bytes": 130291,
+      "sha256": "bd112ecab61d0c614ad9952ae2b4000e73751c3a1063a0f2efe6e5ab2dafdf19"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104718799_png.rf.df80be332c2c48d48b9e1e88cdfb2789.jpg",
+      "bytes": 127031,
+      "sha256": "d3a8d046444377117c510db8b7112448f5c862e23dcc0510dbb496f75d4dda39"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104841219_png.rf.b61ca34ca7d83b65c85ab41dcc514d91.jpg",
+      "bytes": 128034,
+      "sha256": "9a512823ea385c472478416085dbbf923483987710844c843091d2c0b69e4563"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104856381_png.rf.dbff18c98b7ab3ca778a1a8638dd963b.jpg",
+      "bytes": 127430,
+      "sha256": "d387dcaa9562abcb66a4138179ff0cd72939f6a9671b8bf8e5bbced9708a2af5"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104921802_png.rf.9ecd57a9df585626f0d30405f4a9d24e.jpg",
+      "bytes": 128384,
+      "sha256": "90c1f5da5dc1e149c4fa82618a6e84f1374aa90d9eaeb2b5d6aab2598aea8dc2"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_104945138_png.rf.d11f99fcb061beb1157a53db98e56701.jpg",
+      "bytes": 128859,
+      "sha256": "817b18411dc5b93a40e8608ad9af36048867a6aefd276371863c3bae2940fe4b"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105005731_png.rf.75d508311e85c3a82c5033acc709a697.jpg",
+      "bytes": 128218,
+      "sha256": "f89011df1dd570d41e33220006c1d1133c2a9784e3c536eb3b3bb683bee0ecef"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105118237_png.rf.163891eabda3072de767f4cdab68d133.jpg",
+      "bytes": 128277,
+      "sha256": "56a9a7df10926ad5831ff2727d0df1739f1d1d7f6a6a0f13d0c81c96bf3fb7f7"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105205338_png.rf.36aaa7721946c5c12ca29b6ec33309d6.jpg",
+      "bytes": 124391,
+      "sha256": "5e1f833ba9c5dfa57ca2e0efc87bbd20c2324a5dbfc9f4a9d75022f3397853ba"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105304490_png.rf.e9dd70852ba8a10493a5851d4edbdd79.jpg",
+      "bytes": 124589,
+      "sha256": "bf9a94eabe3da7c3cd37bdf708b26b99cdcc45e86bb53a168035737e9ee83b15"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105330698_png.rf.f773b12081f23149efd164a5e2cc9003.jpg",
+      "bytes": 124677,
+      "sha256": "402967b2dbe4e242bf8ca06f66b41083f1771aafac306ebe77f4660c17965b60"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105401620_png.rf.1b88cf8081ade7001738eb59fcbf969d.jpg",
+      "bytes": 126574,
+      "sha256": "46cc57d3a7ace03533d5e9e1466b7d6bbb50a5acaa5e56968ce96e2cc19eedeb"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105434286_png.rf.32c1eb19766e131323f8085d6ff900d2.jpg",
+      "bytes": 127473,
+      "sha256": "3080b10497a28f6005137ba4a8395b10a680bca53ef9b23f995442b99bb2a342"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105518289_png.rf.c24d9a1a22f6f8cd6853b1d62ba34219.jpg",
+      "bytes": 125636,
+      "sha256": "6156bc433d621943f6dec9aa80f3b09496be91a8ef4817f6f8ec8595d7999015"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105534518_png.rf.2ad725729671e7ede3430f2ab629e13b.jpg",
+      "bytes": 126168,
+      "sha256": "3f3aeff31fc97b9956788efc8a754779e4b70063c72dd866a13e50f783653d6d"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105558192_png.rf.1d7ef309077d798dbfae961d4362a7fb.jpg",
+      "bytes": 125622,
+      "sha256": "3b6153988d901002f5285e3790d496c48a429bce4a20213cc3658259a64f9551"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105625378_png.rf.c1858e3db266f861b2ac71c30a9e451d.jpg",
+      "bytes": 125427,
+      "sha256": "95aaaea5c59577a3f0f453aa072dcf47399baccbfcafc91d133f4a8a7a2aa0a8"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105650583_png.rf.291c7125ff2b45f3c8d375bfffb1bdc3.jpg",
+      "bytes": 125120,
+      "sha256": "622f2182c5a3e5675907d4b66bc2de0725f61444d54065e58ef11cdd22833f3f"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105709347_0000000000_T0000_01_CAM_png.rf.9ec63f667bc627ed2ee05b224a114522.jpg",
+      "bytes": 125365,
+      "sha256": "b7cbe6c302c627ed8f79c30edf6a57178fb0f50e3fbd541326a728893730f976"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105733680_png.rf.e1d24367b872d01e6064c3afb3335b53.jpg",
+      "bytes": 125391,
+      "sha256": "7e387c65272055bb89b63a1aaa0e0b5d9a31cbf0eeec226c313445638990eef9"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105805274_png.rf.fedcc53de4aa4693acf2275c67f630ba.jpg",
+      "bytes": 125740,
+      "sha256": "a4ebad0911274231802dc1ea78d2608ba18f8f847c4d8392fe7695228aa9cc11"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105829218_png.rf.f606d2af609bd74483c9ea5522f42668.jpg",
+      "bytes": 125634,
+      "sha256": "b5eaa27b228ec356d696dc85a8303d1ca088d76443c7bffffdb89c50ae0e718e"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105903239_png.rf.f4e9d58fa47cefab1812b56fd1f6c33e.jpg",
+      "bytes": 126172,
+      "sha256": "32021dcf0fbd1e83ad4f8bd9cda2325bc8f489964904726f5c3c7809d3020e09"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105921685_png.rf.0eb4072e2aaaf34e9d0ccf853f173fc0.jpg",
+      "bytes": 126476,
+      "sha256": "db9ff22e8b70257838db17e06f3eb5b12a509efdaa88e3b8b3b38dd72bb3076f"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_105949301_png.rf.75b8e48e4a088801be52477f66a4b9f4.jpg",
+      "bytes": 126083,
+      "sha256": "3951fa4219091e96dd4f3e7af5a725da1eb82c5735200b8badea17bc644962c8"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110004147_png.rf.895f3130ee51e3f377d9830e4b85f1fb.jpg",
+      "bytes": 125936,
+      "sha256": "8df26ed6d98483a4598af40cbdd07abfe28babbfe961d741cdacf7c78d7194b7"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110048852_png.rf.e2c3a613b9826e677dfcd1539f15a80f.jpg",
+      "bytes": 125842,
+      "sha256": "c377e85de43911cbda93eb2c744db95c7b2c7786f5f03c751b9bdb44339cbe98"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110123061_png.rf.8d111d3852ea76610043584dee70ae41.jpg",
+      "bytes": 125483,
+      "sha256": "fe733d19c82b19685051b1c5a6422362dc08cc1224b4689acb6d4acae8dbff28"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110155375_png.rf.d7da2bf2805a6426db006ef3ef029206.jpg",
+      "bytes": 125440,
+      "sha256": "97cbd5a0fb93358bf59c3ec0926a9d5de811627266a856ca7293cb50e5a9ae3e"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110229627_png.rf.21a82ef2f43b33a91ef659b97b5ca2aa.jpg",
+      "bytes": 125026,
+      "sha256": "01a0ba7b82b99dfec996ad7d8f31a768edd876e3b2af957735a904107c48c55d"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110248358_png.rf.804ab199a626bc4acb8c52e11b8a4818.jpg",
+      "bytes": 125220,
+      "sha256": "cb7620a87eb536751410deaebf48e63ec10aba0f1c729f3b4dbb1cae14536f05"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110316406_png.rf.b06e4cd4cb877d07973dc6ab6a137d75.jpg",
+      "bytes": 120492,
+      "sha256": "c9db8afc900b68f26a86a3231457be7c1cf13ece99a563b05b27b8c80cd911ae"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110347074_png.rf.e4610f62c625ef506410453eda9b3882.jpg",
+      "bytes": 120676,
+      "sha256": "2498af7411d4120f305c5ac0a6400c2638ffae6056a2148b2bc114c3b98ca6fb"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110404507_png.rf.a784316b813612cdef50508604153f5a.jpg",
+      "bytes": 121099,
+      "sha256": "db60747a3a8fe35c02cf2baaee2a20f08ff8c1534284dd93c4b61227ba3ffe2f"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110421981_png.rf.1c8c9787c6819c9f3282242a3a946f42.jpg",
+      "bytes": 120565,
+      "sha256": "cf9be29de2d7ff7e0ba3986c576f63e160925174e7b91a564b20856d249f1b0b"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110442724_png.rf.8c7167d272577acf3951159f0e607f68.jpg",
+      "bytes": 120322,
+      "sha256": "32a1aad35df949f17a80fccb54066cc2abcfceb1866c2964aef1c9d6dd48d5af"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110610175_png.rf.632e46d88841f077ca3418be743b559f.jpg",
+      "bytes": 127510,
+      "sha256": "8abb18f100ae4a7758f1bf725d247569312ad14cdbec878e4ba3610f47243091"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110650449_png.rf.3bc53370b970f7c3560a37a8feaa0606.jpg",
+      "bytes": 127940,
+      "sha256": "e097e8b18d6b08d3df94f0965b57f0eaa4206e5ac97e2c60560c0fbea87018ce"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110715559_png.rf.53832f9cc5c4e6afb1abafdf5c2f64b0.jpg",
+      "bytes": 127993,
+      "sha256": "1949b26986116b571cb2187c3e02f0a9e9a2930f34e04f781d67615d95ee5c1b"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110801038_png.rf.87fff8baa6117ae776835811459fe782.jpg",
+      "bytes": 127315,
+      "sha256": "9a5d0701c8aa861e94f5e24e31e992017815e8e342c5c58856a09c0b35ccf1b2"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110837439_png.rf.e4e131e4d03810795c75269465f0c3f5.jpg",
+      "bytes": 127149,
+      "sha256": "fe2a929879a7273e584ac2ca1035794148998883728565545ff06819f7d2aebe"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110919413_png.rf.ab53bdc35b7f664d3db5d1080fe77088.jpg",
+      "bytes": 127213,
+      "sha256": "55ceff8d89af1737f5cb60ce8ae98beb8fe46bdcd90608110d9710973abf16ff"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_110944346_png.rf.5051712af3d5fb8e1b2287ef6ca50ffd.jpg",
+      "bytes": 128033,
+      "sha256": "04f105e6e05c923d4749ea2ddb3289b75b1240a46cba7853b8e50fcb3edfb71b"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111030839_png.rf.a57b7ef81ebee7b5e52eb207ff657578.jpg",
+      "bytes": 127978,
+      "sha256": "434f785515a72276e36dfd350a7514e10f6de53b75a2bbc3b51231ff616341d2"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111101917_png.rf.cda95de598b90d7461f0f25361f72e88.jpg",
+      "bytes": 128561,
+      "sha256": "582ccfd7cefac56fcc67e131a9e448b0a0054b3b2a5d24c91062274f0c54eacf"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111132682_png.rf.06bcc7ce37123ff6025219262a4e3402.jpg",
+      "bytes": 125064,
+      "sha256": "e22959ae514bfaea85d03e3ed5dd3abd1b13c6740cd88d51ce331b8a21e95806"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111203231_png.rf.2d96c625af9eec2ea1dd6711a02d151e.jpg",
+      "bytes": 125517,
+      "sha256": "4b1575a471664d67bddb6f8afddd23fe376635ef69f823f85824890b8ce69c38"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111234649_png.rf.cd094403a817e65e1bd872cf0ade556b.jpg",
+      "bytes": 125180,
+      "sha256": "2173b1b77b0d4d9ad2de91e78ceefbc6a34a3bd60ed2091ad8125a5e6bea4590"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111258890_png.rf.b2f0f9e9a936a1bcd0c05ee0d52568bb.jpg",
+      "bytes": 125436,
+      "sha256": "6a9710b947a0d3b5956acee82e4a57729f744843062c3e2f932719f5be3f9ab5"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111320584_png.rf.5b155eaa518e39ce83a96aed90212406.jpg",
+      "bytes": 125087,
+      "sha256": "36058cdec1e05bf5c96dd0e255bc07267e0fbc730640f318a513561b3fd091d0"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111416650_png.rf.08720e040bc608b9e07d5a4aa425ae9b.jpg",
+      "bytes": 126414,
+      "sha256": "a82dd28880137fd33d52c6723e0f60b91e4fc5b22ff630c191da7d7c2fdc076a"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111432059_png.rf.f22d663af0eec79ea371b7bf1cf4a851.jpg",
+      "bytes": 126986,
+      "sha256": "d410f08142ea7ef52f8360d7a7f76f09995511a1469df9d543b89d33c004be7f"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111456759_png.rf.f0bd84707cdf54d348ce927af523aed3.jpg",
+      "bytes": 126412,
+      "sha256": "02a92cac011de2f1a2371b5ea45e85eb28cdba2bc1243f857a776b9466e5f10e"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111527296_png.rf.fb2b546f41c98c341698a303efa3bee3.jpg",
+      "bytes": 127166,
+      "sha256": "63079ede18085e0443a42cc42bda5fead146d66f61cf442baf2097a17201c407"
+    },
+    {
+      "path": "train/images/old__1-3_20260220_111633091_png.rf.be92e2312f3a1ec32a17782755793950.jpg",
+      "bytes": 126940,
+      "sha256": "3f49e354e21d6e7985d2c19a1b880b0bb34e3137cb5fc0bd5f8c6642fea17734"
+    },
+    {
+      "path": "train/images/old__1-4_20260213_142507483_png.rf.c691545e87dfe402e73dfaba9a471248.jpg",
+      "bytes": 105519,
+      "sha256": "4b607d773753d0d428c87d489749540d5195947104ed940ee0dd4872ac6055c0"
+    },
+    {
+      "path": "train/images/old__1-4_20260213_142548974_png.rf.005565993adad17198e58f607ce5c59e.jpg",
+      "bytes": 104139,
+      "sha256": "ed2e096f260e9db040b04756609d92096699968688d822bc78100e38ba44f0e5"
+    },
+    {
+      "path": "train/images/old__1-4_20260213_142747197_png.rf.048a36147167d9aba94828cd8aa910e2.jpg",
+      "bytes": 105552,
+      "sha256": "196db7b9cbce371eecbc2cbfe73003156e7130040f5b00e612c43a9ff7795d89"
+    },
+    {
+      "path": "train/images/old__1-4_20260213_142818059_png.rf.adf8614f82a61303a6748fa049e87a90.jpg",
+      "bytes": 105741,
+      "sha256": "4168addb3ded1325328308428ff33f9a17cc64d68ad398a3cf416f55917e172d"
+    },
+    {
+      "path": "train/images/old__1-4_20260213_142841700_png.rf.00752a44b9628f4d868c35938e471012.jpg",
+      "bytes": 108086,
+      "sha256": "25c3c0995ed4e2af30bee16ea7ec24b60c41c7f41e4025d64210910456dbba0b"
+    },
+    {
+      "path": "train/images/old__1-4_20260213_142901864_png.rf.e7533898fab12078e92061766f4b25da.jpg",
+      "bytes": 108991,
+      "sha256": "ee1305c03918aac84d436f8e0651da1c6bb94d05893eb4fe060a6e213abd2183"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113558713_png.rf.8257bc019f332162fa0b1c94bbb935ce.jpg",
+      "bytes": 124315,
+      "sha256": "2a976d214743d7bad3ee2e39d14006a938315a4736b94e10989fef8c48c90b8e"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113610856_png.rf.130b98183bb9a9d1d044352075ae2474.jpg",
+      "bytes": 124541,
+      "sha256": "d4160f90c5a6b04dcecc1ce42e21fdbec4f0da8222cda8355605e1e76e43f685"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113620742_png.rf.0cd3e3f6e3c0a99cdc85be3bf17aaec7.jpg",
+      "bytes": 124015,
+      "sha256": "855bbebb7a858980b4537646419327a8c2f893a6eb8bce6fd4cf94c2ec109ce9"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113631316_png.rf.b015eb735fcfa97722edd67037f17beb.jpg",
+      "bytes": 123423,
+      "sha256": "8286c6ab81f772d904f612d2320f5d0b7298ad4ec8f17cfc44509d1e92226a61"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113702129_png.rf.616f348407e5cef0afd8140f7c387f54.jpg",
+      "bytes": 122314,
+      "sha256": "4ac62f8636cc408ef540dbcf2d3b25977cc0e451447337b12330345cb7dc4877"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113713315_png.rf.2bd09f27cfa43b21910393e9d57bb213.jpg",
+      "bytes": 122551,
+      "sha256": "d1ce56a93b5a25c97021fe580954118b6f5cdd34a0020115253ad0affffc67a5"
+    },
+    {
+      "path": "train/images/old__1-4_20260220_113802882_png.rf.c0779eb548d769d0bb8877056dbb940f.jpg",
+      "bytes": 120631,
+      "sha256": "7ba6a141401657120c01a1abe02f538bf72d877464a884200094361f93b4c39b"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143151014_png.rf.c41ca8e926ce3c2130049dcfadedc542.jpg",
+      "bytes": 108182,
+      "sha256": "c8aaf406d71dbf0836be008d9f6b8996dfb927111f429995de3ee17b5d74fe55"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143211615_png.rf.9dc03f3b56285d8af3fd938aa29a6615.jpg",
+      "bytes": 107694,
+      "sha256": "fce193738503a87c7f8cca6e7f3508cf833b4d322683cc9771ed2531a0d78497"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143227600_png.rf.4be51c9942c6127c3bd89fac10369e0c.jpg",
+      "bytes": 106795,
+      "sha256": "4cb2e54276407bb1d567f2c68f6e44d9237063514bfed8e41f45e365ccfcd170"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143245294_png.rf.a3198e54aa26f4bf51690951dfd79b98.jpg",
+      "bytes": 106752,
+      "sha256": "32715e6e4644fd39a0780b2e10f16f2001acf3965a523413c1e22f48c6a1a9b3"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143302661_png.rf.3535e2432ff8c270f9f281abc9d182fa.jpg",
+      "bytes": 106261,
+      "sha256": "5223aa62504b010375c7e032edf77748b6950c2e9d46bf0b6eb8603e1503fd21"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143333191_png.rf.8c07dd01e2df99e3bf290249e39142b3.jpg",
+      "bytes": 105508,
+      "sha256": "d7e0d1057017fa9824b943e0cf91cf90df113d3b9368a5758c7f96208f4d8c01"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143414736_png.rf.e6e31473f4829af9b2f45331ea9ad13a.jpg",
+      "bytes": 105212,
+      "sha256": "15de36dcdd356d0a39f9fbd3241f40f4bf413b13cfb6812d815ca2a0088f0bbf"
+    },
+    {
+      "path": "train/images/old__1-5_20260213_143440873_png.rf.19b6318a6a90ecdfbcf0c928ad4f54cd.jpg",
+      "bytes": 104972,
+      "sha256": "b839c74cd539763c78f709ca18dfe9dcee004045ac5e4b2ebfa2722c7dabdbf4"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113105821_png.rf.c1cbc813099c57e37adf501ed44c6fa1.jpg",
+      "bytes": 121095,
+      "sha256": "fdd25434e0260c66eaf021e5eaf2a4aac0bfdb4e729eaf72e3546fb9bbbd7508"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113144722_png.rf.8a5e6728c49de63c85d554d0109b4440.jpg",
+      "bytes": 120473,
+      "sha256": "678ebd523e23a8641a361c695dd3d0fdd4fd83b32abf07e5f5251fe542ea4704"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113200856_png.rf.caeace031b5f26c28d818c383c35c32e.jpg",
+      "bytes": 123583,
+      "sha256": "641f197b73f5d4dc3b53fd8dad01935ea0f35f95544182ee153156e8337938de"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113231012_png.rf.e82707f0b952404deec4cadbde21cf14.jpg",
+      "bytes": 124007,
+      "sha256": "a070039d7eecadbfcf84983e25ff665527b55ad4bff6f3a14012be37cd849586"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113249315_png.rf.c1cade3b6a05719df65d6ed34ebca01c.jpg",
+      "bytes": 124010,
+      "sha256": "63b0f7a74c0f43bf9b28e965aa20e9d8abfcc147909611951fdf30462984082b"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113307176_png.rf.808af85ccfd7bee9896261e29f466054.jpg",
+      "bytes": 123626,
+      "sha256": "dfae8d229d085fa9befdf22d26fab8693abd6283ae40c8f6ca7bac6a64eddb49"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113319240_png.rf.cdbc3ee5512a40859a88e21bd9c8af59.jpg",
+      "bytes": 123725,
+      "sha256": "1d00bb40bbe45954f7c541c2c4ed0fef26130b3d5fd1c5d7d10134b2ac180dd4"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113336876_png.rf.b0b82c0237345e05fb75d354cffd675c.jpg",
+      "bytes": 123265,
+      "sha256": "0c322cb49511b1f30cf6ebe78939271c2d14a1d3442ceaf852b2646e9c2264b0"
+    },
+    {
+      "path": "train/images/old__1-5_20260220_113351064_png.rf.d2fb114c3af3fd6865b66a2071e2052e.jpg",
+      "bytes": 123312,
+      "sha256": "eafc37d1ac2fa67e5a7ea3d9b4d1164413582109f82a329fa4de6588c7f81569"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1526.txt",
+      "bytes": 46,
+      "sha256": "f4ed5beb921439dc87e53fedf2bac7f58e6bafdda72824ecf0af8b527826f917"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1527.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1528.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1529.txt",
+      "bytes": 46,
+      "sha256": "3aa5f61574ef8ff447506b0624a965c2a5f8bcf05054ab4528218aedad47c138"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1530.txt",
+      "bytes": 46,
+      "sha256": "72c4078a499cbb47f0bde238b73231800733fccc92e0dc8d7c85122beda2af96"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1531.txt",
+      "bytes": 46,
+      "sha256": "c92390ede795370691da23693ead53dbd44e2b357527bf89b42649fabac87e77"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1532.txt",
+      "bytes": 46,
+      "sha256": "919d02f366ae10fb5f907e627a755ffd8c428d3060d355a53d3c4502fe9fcc29"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1533.txt",
+      "bytes": 46,
+      "sha256": "46c745f60dd730d3fd21f5daab85018f0ac3404e392bb6bf15700855c6f285d4"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1534.txt",
+      "bytes": 46,
+      "sha256": "84ac348c9d02a92efcd5e7d023a50c231bd8f430285bedf95f0080553e495c7b"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1535.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1536.txt",
+      "bytes": 46,
+      "sha256": "7490233abf86a6d91c03fa2ddfd246ce96b85990cdce3e604e252f63d75aa068"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1537.txt",
+      "bytes": 46,
+      "sha256": "0bbb235bc1abd5789f0026908b948d139595db499f230691451b9b9ecdb4bd5a"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1542.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1543.txt",
+      "bytes": 46,
+      "sha256": "0b16bac6935fb5cde39e72f43b38450bf9e966f8c42372f701ca58aa75dda18d"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1544.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1545.txt",
+      "bytes": 46,
+      "sha256": "847073f70cb863ce6b5e6ae912d3922244fb2c884f316b9f53f54f51c811cb71"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1546.txt",
+      "bytes": 46,
+      "sha256": "348db4b6d17025a92087611807a13d042eb66afde7e05f61e9fe7a3f2504b907"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1547.txt",
+      "bytes": 46,
+      "sha256": "e98ed545241d84ce8b8044bfa3c349cf61e93b47574f1882dc1dad3398aadd75"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1548.txt",
+      "bytes": 46,
+      "sha256": "efa30241e9b675e4ffaf14ac12cedeb16fe6165adcc1f6be2c4aa892509cbe68"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1549.txt",
+      "bytes": 46,
+      "sha256": "e02eb6f2cd7615f42d6f3619e317b773b57a69c4f1cc3aac2e748bde595b2004"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1551.txt",
+      "bytes": 46,
+      "sha256": "cfe2c2ea29d7f7a938ba97ff73d371473acee6a5f02c967fb9402a5ab5c34660"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1552.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1553.txt",
+      "bytes": 46,
+      "sha256": "e26e6b4ccb4809b21cfcf456341c24619f4865bd87e261527f61fc76f134db8a"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1554.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1555.txt",
+      "bytes": 46,
+      "sha256": "a5a10d4e49544d7b98a2bc31c89ff556a2ec3d214d0fbca583014b4b69b5b9b0"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1667.txt",
+      "bytes": 46,
+      "sha256": "c8b3a0b60b2f8648960ff91daac53a8f5275bf143f1b4f4dac87a03b6dd34a12"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1668.txt",
+      "bytes": 46,
+      "sha256": "5cbe942cbce50b0a87477960a62a4c0b57839caa9fc9c0b5e99b35ee0517cdb2"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Defect__IMG_1670.txt",
+      "bytes": 46,
+      "sha256": "3f44ba26d185916c854face0542c173b39e87f283180b2690694b1f99eade82e"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Non-Defect__IMG_1516.txt",
+      "bytes": 46,
+      "sha256": "5a1f0a4fe3819b32a64fcc207213bb3c7ab1b346fedbee75069aa2f2eb8ff4d6"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Non-Defect__IMG_1517.txt",
+      "bytes": 46,
+      "sha256": "6f3f5d50050c1794087715cfc6f83c5a0b1d071ce27870a6fa2757e99aeec23b"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Non-Defect__IMG_1519.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Dry__Non-Defect__IMG_1520.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1603.txt",
+      "bytes": 46,
+      "sha256": "1e97a72df7d65732784eba8ef4ea0a9e4b6fc9f489e98ff629c8ce0cc6710eea"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1604.txt",
+      "bytes": 46,
+      "sha256": "ddc07099dc9d9130dd4f05c7fdd54e948e399c6e8ffa77292b43fc76fbadd6a4"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1605.txt",
+      "bytes": 46,
+      "sha256": "ef74506ce747a053949e37125c94c0cddb11791437ce9b59e6f013bab0764191"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1606.txt",
+      "bytes": 46,
+      "sha256": "069deb937cb64544bd8bf03a7a493dd6de26c07a2699b7ae59d6cf66f23c49df"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1607.txt",
+      "bytes": 46,
+      "sha256": "d219ab5a3a9048d92595c13e5e3a825d2312e0dda26419d9cb5bc9f3ee0b6a0e"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1608.txt",
+      "bytes": 46,
+      "sha256": "0ee1fd25aea73dc5c84b719632fa530d59a439fe8c6605b629c79e810945fba5"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1609.txt",
+      "bytes": 46,
+      "sha256": "6d5c30bf99ea9b705f6d7935947fb1a95c65e3b55ce119bf75a61f83e7e29f1f"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1610.txt",
+      "bytes": 46,
+      "sha256": "8ba2ec415dbf5afee47a20e734524452ca7fa6ddea0d2f62189274a385c8764f"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1615.txt",
+      "bytes": 46,
+      "sha256": "96759c5b6db80e2f074f870acb0fca15d46565cda2a8c838592779cf946a7d82"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1616.txt",
+      "bytes": 46,
+      "sha256": "05812cdd0268cbdf311eddba56c7fe453a8d2d897a1a4bc90ac98da33a3603f7"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1617.txt",
+      "bytes": 46,
+      "sha256": "e0b1314237673faa40e811346a7eb156e1c54579f5aeaef9fc06948a741be9ee"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1618.txt",
+      "bytes": 46,
+      "sha256": "9ea8d1e2b1f679dbbb0c741e00e69386341aa9100aa7ea56795d9ae21484ea3a"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1619.txt",
+      "bytes": 46,
+      "sha256": "3cd6304fc312ba5fb5bbf9804bac0c7791c69497739ce15c4a981771c821fe38"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1620.txt",
+      "bytes": 46,
+      "sha256": "0b202bcc60452f5a056c3de957b0f80a2ad285df8b04d98f660068eb71fb95ca"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1621.txt",
+      "bytes": 46,
+      "sha256": "b6c21fc395943c6ad495634bf760686164d00572604ef943ec4957da6778bb0d"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1622.txt",
+      "bytes": 46,
+      "sha256": "1a738d09984702356a9d002d77187e56f575a66c534848d4d801716871d752ec"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1623.txt",
+      "bytes": 46,
+      "sha256": "cf71d738c03737cc3f71450f1cc55ce17bf6382bd05a86ca035ebb27b87f014f"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1624.txt",
+      "bytes": 46,
+      "sha256": "ef48b4ab95c025191d7fb818a5790ef55ba6cefafb67f35579ce29f3217e91c8"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1625.txt",
+      "bytes": 46,
+      "sha256": "70c740d98d519dfc450e23f99b9e40b80776ccc52bed50e1c14be77197dcb007"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1626.txt",
+      "bytes": 46,
+      "sha256": "fb45d1216e90072384635d161ee980b8a5b547b776e3ef225af508f8f5a474ab"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1627.txt",
+      "bytes": 46,
+      "sha256": "74fb595aa236b64b3c1c8b8e89db0809f08f565ef9e1e91e000ac1a9914ad1dd"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1628.txt",
+      "bytes": 46,
+      "sha256": "4a75a05c8bf234798d48c50dfa0e809c7372b49b85422a40121f7b0283bda5f2"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1629.txt",
+      "bytes": 46,
+      "sha256": "95167bad3e850688e2dd4f59d51944c53f4c36677eb56896122424eea7c6ab01"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Defect__IMG_1630.txt",
+      "bytes": 46,
+      "sha256": "ba928a27b075b1434e845db2013d26e53aa5b396f817bd8b625cab6e0c63364b"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Non-Defect__IMG_1597.txt",
+      "bytes": 46,
+      "sha256": "7791de6b26006117431a305377c67d30c7c051f14b2dc73dbb0f6f3ef2f34645"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Non-Defect__IMG_1598.txt",
+      "bytes": 46,
+      "sha256": "55484347458ff41165e8b730ec1bf177a091412f5e6e9a944c6e28d8ae419a23"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Non-Defect__IMG_1599.txt",
+      "bytes": 46,
+      "sha256": "dbdb676083727923dc90ed19572e1477dec059bc5303d0cc2f3f200a7c460fc0"
+    },
+    {
+      "path": "train/labels/new__train__One Tool Wet__Non-Defect__IMG_1600.txt",
+      "bytes": 46,
+      "sha256": "f85589ced351994c9477ddf1a551479241c3dcb035eb6eaa43fd8873d2ee1235"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Defect2__IMG_1590.txt",
+      "bytes": 92,
+      "sha256": "ef0488bfe645701328fb192d7afbafb005343bf2e21b468a2da72ca8ce77ca6e"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Defect2__IMG_1591.txt",
+      "bytes": 92,
+      "sha256": "c3788c4956f9f243b7802fa9cc4eab66f3db9b067d50fed65bf0cde83b3732d6"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Defect2__IMG_1592.txt",
+      "bytes": 92,
+      "sha256": "e67f9b73e8fdc8b2953c99070298a68ae4bf18597a904d2110b1b8fb5a9e3693"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Defect2__IMG_1593.txt",
+      "bytes": 92,
+      "sha256": "af23d85b4549e395eb1849c29158579783d019315f25d2ff93da6c3630cded4c"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1565.txt",
+      "bytes": 92,
+      "sha256": "11fd00547a742f12e851cf5578769b07e7c4b9ac17ceccd850bff500a35e88f8"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1566.txt",
+      "bytes": 92,
+      "sha256": "966f5c5e3ee9dc70f64e3205e76bafeb7fd164e8bc234ea5b1deadb200ea9bee"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1567.txt",
+      "bytes": 92,
+      "sha256": "4f220fe4870027fd5cab4c8098a9460e285db07d5fc6c3d864c3f42a76ca6f46"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1568.txt",
+      "bytes": 92,
+      "sha256": "219195d511f46a857fa4bd9e713980755f46c9d7639bdc6c05f40024c55b5d48"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1569.txt",
+      "bytes": 92,
+      "sha256": "49a1dc18873a73afcc339091d1b114484f059652cbc170c521da4c3d6c35c036"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1570.txt",
+      "bytes": 92,
+      "sha256": "728dea7a14f7c772e5ef9865cf985c3460572e110e0bbbec4355c43f013a0195"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1571.txt",
+      "bytes": 92,
+      "sha256": "9965de3e29581fd1d3e176f48f95e5293cc242113bf0d83cb771598d8d56f1ae"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1572.txt",
+      "bytes": 92,
+      "sha256": "433345eee757d3106c913b02a7fd90b27d36c87616e830bb6d6e277662d67e11"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1573.txt",
+      "bytes": 92,
+      "sha256": "825c0151c97ef4aceed675e57c9adf2157cd00a7409a059cef8f1b9d284562b9"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1574.txt",
+      "bytes": 92,
+      "sha256": "b0dbe1f2dd80b0c68be9fd2cb9b00869f0b5363b83e859bd4de055b060cb7776"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1575.txt",
+      "bytes": 92,
+      "sha256": "2dfbc3c2cfd2427f2605737204ca6fe1baf932baf82f8bc26c84055ced5eafd4"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1576.txt",
+      "bytes": 92,
+      "sha256": "2761ca19eabfb7de6110052f02f2822bbf528e2fe34ae551dacdf1ede955f494"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1577.txt",
+      "bytes": 92,
+      "sha256": "8e9d681d44f25c512f80d5e0e234017a8bf377e4a6f13d1de6ed41dc9dedc3c0"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1578.txt",
+      "bytes": 92,
+      "sha256": "1e91860ae5ed0eb5b0b6020fa37376632bdd3187c1f63a4df60f9fdc885cfb23"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1579.txt",
+      "bytes": 92,
+      "sha256": "51ed2ad6c74fe58e6d6408a40ce714bcc82e689792d6edde975f9dc56c82ebab"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1580.txt",
+      "bytes": 92,
+      "sha256": "8f1bba6137385eda26082d81cb582f2f5dc91b40871e0f2f34a5c923c80ce742"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1581.txt",
+      "bytes": 92,
+      "sha256": "6737aa0c7648b430f1f11b8f5aebbe9f34de26536a72da9d37b6514276bdd512"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1582.txt",
+      "bytes": 92,
+      "sha256": "4ddc53fba492b269e93794d62bdd97e829c2f05a46319d21bf1a695cd9c70c8c"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1583.txt",
+      "bytes": 92,
+      "sha256": "f9350867e300837201c961702e0d72f1959d37ba045b68fd414ca25b283686dc"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1584.txt",
+      "bytes": 92,
+      "sha256": "7631fe72cde73566f3b7aac4b4f47d0927ec5c6238edf4f19def5cc482b4cca0"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1585.txt",
+      "bytes": 92,
+      "sha256": "e7374d0cbea09d58f9a1bb69fa00b137cbae75a2a780fe69b22794be77f369f6"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1586.txt",
+      "bytes": 92,
+      "sha256": "03d7b537f7a20f6ad079e1b93a3214e60a340660157fdbb6b7863321e65e64f7"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1587.txt",
+      "bytes": 92,
+      "sha256": "07bd7ba32d3305272dbce6a47f717e76545e928a31ef3b9290099c261850159b"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Dry__Non-Defect + Defect__IMG_1588.txt",
+      "bytes": 92,
+      "sha256": "090fbd88d66f9d4bba9e06e9f10cd16117f26207e466825acf78a43b12e7de52"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Defect2__IMG_1664.txt",
+      "bytes": 92,
+      "sha256": "b5c1b2d6b534ed22293c2fbca29971a05aafe8677176242d9c366460ff5717db"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Defect2__IMG_1665.txt",
+      "bytes": 92,
+      "sha256": "e32ee89fc158ba429e3e46f6a0ca5985d4565a6ff720750d006ec098e8b89f4e"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Defect2__IMG_1666.txt",
+      "bytes": 92,
+      "sha256": "f514261a3fe3d40dd21fdaca2e8e6d9102d71efa578455771e0bfc91b30e176d"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1635.txt",
+      "bytes": 92,
+      "sha256": "4daa9754239bf2344a930598a543a8b810e23bb4dc41ea3d508e9fc0046afc41"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1636.txt",
+      "bytes": 92,
+      "sha256": "272eb932476a1c620294bfbc1a22e1901a25ba8a3c19d38f3590277cde38ce81"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1637.txt",
+      "bytes": 92,
+      "sha256": "344468466a2d3fbc514ed039ea4143fc00aa5390b3589900256885b0bd426f94"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1638.txt",
+      "bytes": 92,
+      "sha256": "2fb33557f3a7a966450d13f39ca735d4dd8b10e2bbfaf357323855e2c39aec04"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1639.txt",
+      "bytes": 92,
+      "sha256": "8dc02392ddc7df45449b367bce1540d44c6e7c949e34ee6a14ca4c9c14c0d959"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1640.txt",
+      "bytes": 92,
+      "sha256": "4f8eaac0591202e23f23da0a52daba687591bfb05e2a3971ced65396651bb248"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1641.txt",
+      "bytes": 92,
+      "sha256": "1fc189ef6b15a82446aa45ba32f0627ae74ee188dd14ae444fa9f6a3518353ab"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1642.txt",
+      "bytes": 92,
+      "sha256": "d4f4469fc402984596e6b727b8f65dfc7e15c832dd4a30ad3147dc1874d82d6e"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1643.txt",
+      "bytes": 92,
+      "sha256": "6cb31a2dfed11a73d7bb0a4e13c061776a52cb886937b180134f24d75d171c1b"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1644.txt",
+      "bytes": 92,
+      "sha256": "85f49ae8fd13cb6f18e78d80122b086a036ef94d571f854eabd5da22761f2bf3"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1645.txt",
+      "bytes": 92,
+      "sha256": "604988b6f9fecdbb1715643142ab8c2244896dcfdd0f33fef8025492e6c42e3b"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1646.txt",
+      "bytes": 92,
+      "sha256": "7594706eb813f6a647332949b91cf8a94375b641b33b9af71f5593701b1d9804"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1651.txt",
+      "bytes": 92,
+      "sha256": "b2555a37722bb097d097186cd4164b9682b06f9be0d41509f6b682e4f01ca7b2"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1652.txt",
+      "bytes": 92,
+      "sha256": "edde66061a19b63c9a24dc93a3722ec20a0387428b7320319ffee2652772c517"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1653.txt",
+      "bytes": 92,
+      "sha256": "bedfbedb75719de5017cf0270dca4ee211a672c5d2168f125e5a727fa16b70fb"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1654.txt",
+      "bytes": 92,
+      "sha256": "b582f667d3cf38ec0c5792bfd225355a424de201053511618a27095db76b1020"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1659.txt",
+      "bytes": 92,
+      "sha256": "dabe4cfc0f9d150444625e0bc7955f1704fa7339f9c74fea4dbd609e600542a8"
+    },
+    {
+      "path": "train/labels/new__train__Two Tools Wet__Non-Defect + Defect__IMG_1669.txt",
+      "bytes": 92,
+      "sha256": "9bfa8a89e7e9a629d3ab9daad0867ab221e777b310cd276494916b033d73afee"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_131111362_png.rf.16432a7703c6483cbdc1ddbd1df835f3.txt",
+      "bytes": 320,
+      "sha256": "d09d934f6274828f944751b7e719b3dc8975107388d82b16fe2c62218c7e187e"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_131304604_png.rf.c375b235455bc215619688de79fbdaf6.txt",
+      "bytes": 290,
+      "sha256": "365ce02268fcc028817595a426101181d31b434a12b85c7bca7771c5d2ae0a9c"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_131720722_png.rf.b3cfb1045d1f4f6aa8c1e01cc4271acd.txt",
+      "bytes": 321,
+      "sha256": "ba7b22916a53b21decf8d4137671cccc091b7a5dbe36d440deccd7bc50679406"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_131826704_png.rf.6caaa19b8c0b5fb61ae5627f83d64ded.txt",
+      "bytes": 316,
+      "sha256": "fa7270d8efd4caa45c09837386e5e9e3dfde11c0b5bb890e014ee528677e0961"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_131958923_png.rf.a718edd6a175f25faa80e7f168aadcae.txt",
+      "bytes": 296,
+      "sha256": "e6e04a71c68be1419e045c5f10bf437377d6aab823c7c89571d24ea80b41c97d"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_132017816_png.rf.825eea3f36666fb66f5bf107310cee75.txt",
+      "bytes": 316,
+      "sha256": "6b23348ecd4fbc94deabb0b266082463c506d65de080cf8ba7e129378315849b"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_132142175_png.rf.73a158ddf6cb9c380e7e50925c10a83e.txt",
+      "bytes": 301,
+      "sha256": "1fdaee1408a71956261fe529cf0498fc838be7541e6cd34a3ebac0226b602f15"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_132214483_png.rf.50182e605c4ad982368a607eaa375817.txt",
+      "bytes": 317,
+      "sha256": "67998c4b86c0c2f4be9cb3182dd099e20f52d4ddc5adc814dfb6595b2966dfc7"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_132341776_png.rf.7e4d0bd35e737054ad7f544ae15f52d7.txt",
+      "bytes": 321,
+      "sha256": "070d358fb1c9319c51fa3a7835527e4ad17f3c1e46ed771a77f8eb63b26038df"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_132659079_png.rf.b00e052188e249ff94783389fdfe0482.txt",
+      "bytes": 309,
+      "sha256": "0aaf6b8d2b6d94059fe2d24f3d21defa414ad2773c45ef689dbbefce9eb74c98"
+    },
+    {
+      "path": "train/labels/old__1-1_20260213_132718285_png.rf.e9b4c4d1fa2c28e598dd15e5fc18fe57.txt",
+      "bytes": 308,
+      "sha256": "8c98fe37a0830ff28bc9fd69c4c88d0e56fa3b2172ee1e875f7d425f9cf4ecec"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_111829652_png.rf.96d96061c552207394addc3ee913af3f.txt",
+      "bytes": 318,
+      "sha256": "c17d6a034f7a39f77cf09ce0dda6933ce53ec0ce564b3fded2dfd75c0289ae12"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_111834388_png.rf.53985a0181a1bc1014af6e1b890ab767.txt",
+      "bytes": 297,
+      "sha256": "7135d1e171d18fc914a748853efb6cb7ed6bde36fc63c96b3bd23ffe51b51c5a"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_111908881_png.rf.07948cb3a3525eeabb810a1dcd90c1b7.txt",
+      "bytes": 320,
+      "sha256": "93db28eec1528c37d703d45be29a79ecf20b14ba3d4e974427d21749503e428a"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_111949214_png.rf.3417bce72c46f8a90a3774273bed4514.txt",
+      "bytes": 305,
+      "sha256": "e9d6d45e145b04a4099ee697d18f10b8f5bb264d6be6007531b4e58b6a2f15be"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112029081_png.rf.b688699a6e9f14f40d47974025bf481f.txt",
+      "bytes": 307,
+      "sha256": "39936be43f5d48233180aeb0aec373fcb16b16d6809cec3bd6406355ebe3d647"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112116523_png.rf.bb2579dabb147e5028b2c6c7393c282f.txt",
+      "bytes": 290,
+      "sha256": "3dea5d418c876c62fdac0a5884175fcf6570c35cd6d0f3985b881a0a583447de"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112211280_png.rf.9ebf6a43ea3bd23da3cfc65c6ab52d1d.txt",
+      "bytes": 301,
+      "sha256": "a35a9e291f2f0533b08170cd90bee578e57624338a0d94286a540b65c845c778"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112234431_png.rf.e765446abe1bb5c6db9da52de0be27b0.txt",
+      "bytes": 319,
+      "sha256": "5a6abb1190efd921b82a2f4accc03f372e861defb43fdbc22cf9f4838b5ea04b"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112253546_png.rf.5d7938348df0863b1395b66fb324f8d5.txt",
+      "bytes": 319,
+      "sha256": "d0a7ceda4a039257d68a8be6ba0c4a5a6e58b23a57360e8fe0d43dd6b1e66f61"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112318050_png.rf.db2e90463b1da8115d051ae8cfbf29b4.txt",
+      "bytes": 317,
+      "sha256": "b53f967e633d127bcb675b4e88d0aae6d6ac7e9d6058753103a7c159ec8687ad"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112429543_png.rf.922652cfdca2a972c0fce212d87594da.txt",
+      "bytes": 299,
+      "sha256": "8736c5ab715a81e4073e3fb198dca9413664b0df11f206759aadbdd2e480837a"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112553183_png.rf.311fe7a5a1a9f51bf5e1dd791a8436aa.txt",
+      "bytes": 318,
+      "sha256": "dbaff4a6047e85df4d6e7a14a76873cf692664e7a59d020997c8997acf2a7942"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112710868_png.rf.208122ecf2fa2a95346cea7dd4b71b40.txt",
+      "bytes": 289,
+      "sha256": "21d1244ed2e095cd6cfbf22a0c3e7d42ebd2e5c1b726094b4514a77266bd50d7"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112738786_png.rf.23dee3e55697ebae9618d37d0e93e8bb.txt",
+      "bytes": 297,
+      "sha256": "e183d875722f6d17ecd99333161a74ca92872e310da9c94963910627f8fedb41"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112811239_png.rf.7c68537e84955ef9f55babb6cf6f958c.txt",
+      "bytes": 296,
+      "sha256": "b2697133d4697c253dc011a8e14192c109556e63269b8e3ae1403baf317e9b5b"
+    },
+    {
+      "path": "train/labels/old__1-1_20260220_112827204_png.rf.7f7dfd25b9eba54fd92bd8e0ae06411e.txt",
+      "bytes": 308,
+      "sha256": "7026aca0f94e6862a246f0fdbf9955a8d53258ea3e123bb6621afa41b11383a6"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133334260_png.rf.6f11589863c901c0cf807216befacde4.txt",
+      "bytes": 148,
+      "sha256": "60c989dd35fa92a8215c587ac4e2456c04f31ad3a347241a78966b9f1da92a0a"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133430306_png.rf.886a37cb369cc69bdbeb09ffa4188ec8.txt",
+      "bytes": 157,
+      "sha256": "29386eb7db6b872aa4d59159fbc87a4d331ecf75c4f802033439bb4d916bed5b"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133449990_png.rf.ec9fc7ba1ac33b9c4cb96929ad117d5a.txt",
+      "bytes": 149,
+      "sha256": "6a8cfdf936dd0b471675ed9a5dccbd907383497f842ec799c6a014117a3ee9f1"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133513628_png.rf.0d5125c8c629845a153bd7d1d1053497.txt",
+      "bytes": 148,
+      "sha256": "8581f1c7edc68461f38ec59a3f7b115868c7f5c66cb986d6ec7c747e73137e2d"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133616508_png.rf.de5b6ae8f32b1a67302af46efe30048e.txt",
+      "bytes": 159,
+      "sha256": "8ff74d441768c1bc9d51d0bd715b724bd91a9f92797ea513be7854eda196d3fd"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133651974_png.rf.11cf3bfb84fed53f3f160968d889d147.txt",
+      "bytes": 159,
+      "sha256": "e07e293f5399468ebdfea74b900944feaa36beaeee9b7a2fba1dcf4a6eedc2f7"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_133942711_png.rf.c96c5b554072e1c83e5f99e7d6ab8b28.txt",
+      "bytes": 148,
+      "sha256": "b2c79e8cce1d68e171d2907f47bd78dc21cc965acea187707446b5ba9116efe1"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134016844_png.rf.6335b929636ec731c1889d8a4344bd7d.txt",
+      "bytes": 125,
+      "sha256": "f5d311cf933ed6b08c49a4bb9815321237b7b2e3746a2d5ce10df14011877f6a"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134039478_png.rf.de19492d9ce90270cc259ae4933aff69.txt",
+      "bytes": 160,
+      "sha256": "b6fae528fe8f746d8a15353ce3aff28adc743a12ac1965f95b032c108bc036ae"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134102737_png.rf.91b7ff072e4e0cb15e3d37402fd6b429.txt",
+      "bytes": 161,
+      "sha256": "ec0c3cf1d0894a335a49c74c37f37b141869ea8df8db8c43e5da2ae23e6bc340"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134127574_png.rf.a03f61746cddcb9c32eefbfe1d7fb9bf.txt",
+      "bytes": 161,
+      "sha256": "50c9b51d63afaab58c9528b5748bb6c87ddad6e5f6b7cac71abbcb9518a6c45a"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134214440_png.rf.8194bb9013dc7bc91ee0569945ec2534.txt",
+      "bytes": 161,
+      "sha256": "f6f4a28953bd631448966742583319048485411973445734d3388a9982d857cd"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134302794_png.rf.447846665398de2de4448af004f7ba58.txt",
+      "bytes": 159,
+      "sha256": "8c6076aeb8e3b3e298bd9775ab67f193ef76aca63409310c165dc87bbce4cb34"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134329167_png.rf.dff6b0e3d5abb8b1a53f7248265fefa5.txt",
+      "bytes": 159,
+      "sha256": "ca93245f6e448f99100a70471a1934cb72aa79c2186261af0ca23c9eea0a91a5"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134358524_png.rf.4af7009fbbfdbd7eebad932e67c2bff1.txt",
+      "bytes": 160,
+      "sha256": "f26e37a004f4b6d31f68dd874f0863d902c5d4e941cef624091549001ee2a8ca"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134436379_png.rf.ca627f888175620f0f07350834cfd12e.txt",
+      "bytes": 159,
+      "sha256": "660e9ab3dc551a612901fa9b170ebc91ee25960a735b4437d5d089daad2b9728"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134537453_png.rf.619f4698ab9ff66a2d49b5efafd196ca.txt",
+      "bytes": 145,
+      "sha256": "800354357c7f9407e6033a61eeb2fe5aa70ec7b3fea8b5f0e2166cdcfced4505"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134610903_png.rf.410643f559c717fe325dd746a4bdb04f.txt",
+      "bytes": 158,
+      "sha256": "a1c4ddedbd08164afe27181a9902ba6dd3b5d20aa66269cf0ed2cae7a7851c83"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134652391_png.rf.56601d4534c2041db14f22bf5f1be8d9.txt",
+      "bytes": 162,
+      "sha256": "9c2df4400f2f779383acd283abfa4748272a2eccc739407a99b9543deef08d22"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134737049_png.rf.944b6a3329be4646503f987ed8b58107.txt",
+      "bytes": 148,
+      "sha256": "4d5e47a145f43f498fac17227fc02dc433e78b5874e12d004e8a364f16372dbc"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134806064_png.rf.efa807ce2d8455f1bb7c0163736772fd.txt",
+      "bytes": 161,
+      "sha256": "f1d950ea2388475a90f5808f760af305e347eeba3197c04e1f1357e02d3c4851"
+    },
+    {
+      "path": "train/labels/old__1-2_20260213_134839823_png.rf.929a86ebebdb3976094a3303b833e445.txt",
+      "bytes": 158,
+      "sha256": "c5c80811f7b9f3a6e5bc011c910d00fcff649b86914e5d64b2bb6adc15cded19"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_135753825_png.rf.856e823406f5b9dac49de43c3e4734bc.txt",
+      "bytes": 151,
+      "sha256": "afd393ce40501aac0dfedc38698265fd45ef8a67ffd761bedaa2ca23aeeaa7e7"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_135916506_png.rf.49675624535f0de9ab40a9ba153f9557.txt",
+      "bytes": 299,
+      "sha256": "0a47a3c8c7240faeeaa203d11f8d1eb9147e29cfcc96986db624735d45f575ad"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140117951_png.rf.c6f2cfef62ef8b8a0fa2ba8ec98647c0.txt",
+      "bytes": 318,
+      "sha256": "f25b035275abfbc9fc52e233017b5d5be81e1b52447dc3991cd637a0957ee65d"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140203429_png.rf.bb79b11c1dcd7ebb87070daefa401a79.txt",
+      "bytes": 297,
+      "sha256": "5bf0a2499a7696d37a6ed3d96d873bf547655c8e44cd3cd547c19f22ed61d3ab"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140252790_png.rf.b93d9abc3849ba6dbbe932f289313772.txt",
+      "bytes": 309,
+      "sha256": "eb57e33afe228d9f22cbd967b5281f8d2e71ec72c0efee217ad4d183939c75ad"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140419491_png.rf.70b3a1e4cb3422b04b00533959e9c4d0.txt",
+      "bytes": 287,
+      "sha256": "6845d2d53473b76323029d2460091d02680bbe83bca478df1b98197563056388"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140500273_png.rf.78b390c44e93717634db5b3212109bc0.txt",
+      "bytes": 319,
+      "sha256": "6f00370bdf456eb3b85088800c495f765cdc4ad5e91901c01de68221fb9b0800"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140528010_png.rf.2f6e2d9a36c64ce5d5df95b691571797.txt",
+      "bytes": 319,
+      "sha256": "40be5c8264267494386efb9bd9b2df096d2da903fde9408e39795420eb97f24e"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140706721_png.rf.fd442a8dd57a82d48d3d9e3a60a808ad.txt",
+      "bytes": 314,
+      "sha256": "989d6c54e712d45a90c52a76257fd4e6581f5703fa58dcf500b6f979131a7eed"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140903833_png.rf.1d217566d67d91fc629561cba58c926c.txt",
+      "bytes": 315,
+      "sha256": "2d7d0e020a2a75e5d879d25562ee6fabcd9815d81a0312b2541769340a49bb21"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140927650_png.rf.1ce0249f076b53623ee6f0a29cc92347.txt",
+      "bytes": 318,
+      "sha256": "fb2d5c8f7c7dbd04f5de0bc8356e881ba89d50b6e69eb6f297799fa37cca2eac"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_140951861_png.rf.5b10c8da94a21cded0743df554ca16da.txt",
+      "bytes": 313,
+      "sha256": "ad23ea1b2a94298cd8ca6a902354bfeb686d16e31fd64513023843013b29a934"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141144888_png.rf.9c9c9be7e2b13f93712d43f5c41089c0.txt",
+      "bytes": 321,
+      "sha256": "9d01a29415d73ec25815d231299d55030d1a60cecf81c678286a71add3d18fc6"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141300357_png.rf.d56bb3c23596f14568883db68507531a.txt",
+      "bytes": 321,
+      "sha256": "d3e87025409338ad63147e763b12278c72df68bca93021bb86378280da259f52"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141334705_png.rf.23e96626e81f14267cec90ab879cfa28.txt",
+      "bytes": 299,
+      "sha256": "d55735ecb40724037cf291edc3997366b604ed898cfedd203ecec3c92e8afedd"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141402058_png.rf.79b77545287db0471919323486782f48.txt",
+      "bytes": 318,
+      "sha256": "665273d4213985e7d8ecd7223a4de38c2d8e893f8f0cc6638f070d012c2233a8"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141519604_png.rf.c4bc0079535e396ced537689a387b537.txt",
+      "bytes": 159,
+      "sha256": "e6903e95f778ce3285d5982598ad8921ab67c6fa0806eaafae683ee57ae1a66a"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141558805_png.rf.4719d541740234d82e887feae08c2ccf.txt",
+      "bytes": 235,
+      "sha256": "bb5e3df64d680592897848be49529f18450a4d598933de41d5e0aa207f440377"
+    },
+    {
+      "path": "train/labels/old__1-3_20260213_141712493_png.rf.555cb4e269950a16c07d82af68715f92.txt",
+      "bytes": 317,
+      "sha256": "057d2848d038e6b5af59f0250db2ef788b32bae312be0aad69ab5fe10c25c130"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104256009_png.rf.4fcfb3d201fd7e1624749c96efcc5f90.txt",
+      "bytes": 317,
+      "sha256": "d8e0cf4fa8f103346865b75d76fed396156729d671ed5f8a426070482e019401"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104326903_png.rf.4bee5dae2753c5c76d155c223d542b19.txt",
+      "bytes": 306,
+      "sha256": "a9efe5c39289088829f327ceef9629cb60be8e4e016c6536057af7ddeab90641"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104353620_png.rf.d93e5470a90b6501e025d5492221427d.txt",
+      "bytes": 317,
+      "sha256": "77e97cadf76c667d5ea9252991a8dcc855f0305d339ab63f2e9e93e4725c0b58"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104515225_png.rf.d5f14f22749e199d25edab7eea27bad8.txt",
+      "bytes": 316,
+      "sha256": "a87fef682690472d0b2dc3ed544f24855893476e119e38670ff39cb957f2a3a9"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104546978_png.rf.7ac68a26c7f06d5a23445a959ca6b320.txt",
+      "bytes": 319,
+      "sha256": "dd3ad0d3f6e632b52cd476cfeed9b720941447bbcf2b9d042d6f211868deffca"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104630370_png.rf.b16408b3b71afee59e6530963b2a7596.txt",
+      "bytes": 319,
+      "sha256": "06fcf6ed3f2fbe61a7a7575838a6128a225dbda1404b081bf18814248be96f39"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104718799_png.rf.df80be332c2c48d48b9e1e88cdfb2789.txt",
+      "bytes": 319,
+      "sha256": "11841bab8cd2b1a46d2df8af4a5d2852d2d77a27b7c3c75591d39f23a8665500"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104841219_png.rf.b61ca34ca7d83b65c85ab41dcc514d91.txt",
+      "bytes": 308,
+      "sha256": "610661dda2c2a5f15b5cb4ea267d3fb501485f4750960a52b41de4219a2bf10c"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104856381_png.rf.dbff18c98b7ab3ca778a1a8638dd963b.txt",
+      "bytes": 312,
+      "sha256": "04f55c94d1c564c1fde88e5ec3e4420c97afda11cf7eddf1dc1883b96acb89d7"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104921802_png.rf.9ecd57a9df585626f0d30405f4a9d24e.txt",
+      "bytes": 306,
+      "sha256": "a1fdc7997d0eb89d6a2fe7634366c0639d9158cc0155141319814f6889cf5b87"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_104945138_png.rf.d11f99fcb061beb1157a53db98e56701.txt",
+      "bytes": 309,
+      "sha256": "4af87d4be8264cb13a77201cbe5ebf08a678a37ede50f4bb5b0c19c59e3ae64e"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105005731_png.rf.75d508311e85c3a82c5033acc709a697.txt",
+      "bytes": 272,
+      "sha256": "e3201401e45515739e47b34e9c796a699cfd7829d8b848437371cd6efd7b3689"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105118237_png.rf.163891eabda3072de767f4cdab68d133.txt",
+      "bytes": 309,
+      "sha256": "f058b071aaa82c366edd35fb254e4c55749c39075e5a24c1dd1900539dfbccfb"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105205338_png.rf.36aaa7721946c5c12ca29b6ec33309d6.txt",
+      "bytes": 310,
+      "sha256": "1b0ebe420aa50f39f77e3fa5c28060d8e258ddeb62142afaaca6be54daa723e1"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105304490_png.rf.e9dd70852ba8a10493a5851d4edbdd79.txt",
+      "bytes": 298,
+      "sha256": "cc7991527f5c49cf3c2a8d76361cf77a47c5cc3ae00b1cd9fba8c846fcc1d0ab"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105330698_png.rf.f773b12081f23149efd164a5e2cc9003.txt",
+      "bytes": 313,
+      "sha256": "44808fc154132ef9f49c51e99c51b15ab79b3c7ffa8fe0803f14f3ee215bad14"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105401620_png.rf.1b88cf8081ade7001738eb59fcbf969d.txt",
+      "bytes": 317,
+      "sha256": "37785da5432e5288a8d300092db53831594a268f7615418ae89376eda3de3d24"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105434286_png.rf.32c1eb19766e131323f8085d6ff900d2.txt",
+      "bytes": 319,
+      "sha256": "ccbdb917f7b0f784e23a51248c38ab121a0a1e83dd907a14d3402531532b05ff"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105518289_png.rf.c24d9a1a22f6f8cd6853b1d62ba34219.txt",
+      "bytes": 308,
+      "sha256": "fe1a7792769ec728f53c1ca55ee2a19fc231ca2895d124dade8c229a1e35202a"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105534518_png.rf.2ad725729671e7ede3430f2ab629e13b.txt",
+      "bytes": 307,
+      "sha256": "91b633dd612d22ae29afaf9e2c7095a8d1ea11f386ae58f378718b380d8c66eb"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105558192_png.rf.1d7ef309077d798dbfae961d4362a7fb.txt",
+      "bytes": 317,
+      "sha256": "f59105ee9305bb53097be983d57d2b6390d5b37947b93356632ed1ed3041c906"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105625378_png.rf.c1858e3db266f861b2ac71c30a9e451d.txt",
+      "bytes": 306,
+      "sha256": "a17c7a6295af1d0e39da7175d5d8fbf4ae84e1b51ba855051a5a467af6668e1e"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105650583_png.rf.291c7125ff2b45f3c8d375bfffb1bdc3.txt",
+      "bytes": 305,
+      "sha256": "9d3dfb49fb93858e5e6e5fce4a7ef7f239982a7dfc13741ed22b8e280042a495"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105709347_0000000000_T0000_01_CAM_png.rf.9ec63f667bc627ed2ee05b224a114522.txt",
+      "bytes": 302,
+      "sha256": "705bca9437563d8dbd9d95e8a1b7a3e9ac383f288734aa87e15a76866ac8b024"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105733680_png.rf.e1d24367b872d01e6064c3afb3335b53.txt",
+      "bytes": 294,
+      "sha256": "ac27d27eb4b2fac5e934fe8ddaae9f88607940a47707e119d969fbce2b198607"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105805274_png.rf.fedcc53de4aa4693acf2275c67f630ba.txt",
+      "bytes": 296,
+      "sha256": "984b9900f6f8dcef84ae59512e7cd13dae672ce21e906ecda3e01384c18ba3cf"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105829218_png.rf.f606d2af609bd74483c9ea5522f42668.txt",
+      "bytes": 318,
+      "sha256": "3260b9bc8b26fdfb6c6fc38886a5a5b4dbcea3f7ebc51132cbe56db8acbc2e92"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105903239_png.rf.f4e9d58fa47cefab1812b56fd1f6c33e.txt",
+      "bytes": 316,
+      "sha256": "bcb5bd11b5f5de76fa21eff6e3ef11025ef8d5b94edce2615752fa8ea4fda5f5"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105921685_png.rf.0eb4072e2aaaf34e9d0ccf853f173fc0.txt",
+      "bytes": 319,
+      "sha256": "e274022862cedcd52d9bddd4122afe630179f928c879d42970cc5cb1ac75cf1c"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_105949301_png.rf.75b8e48e4a088801be52477f66a4b9f4.txt",
+      "bytes": 308,
+      "sha256": "87740dcec15b75bb700ceb2fea143d769e33bfbaf8baef3601f70d22311a217a"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110004147_png.rf.895f3130ee51e3f377d9830e4b85f1fb.txt",
+      "bytes": 289,
+      "sha256": "e6be367eb9e5aff45568b4f657819c640a635c129d32ce1b75727706a709184a"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110048852_png.rf.e2c3a613b9826e677dfcd1539f15a80f.txt",
+      "bytes": 309,
+      "sha256": "55dae516a874a8f651314f3799a075b37eb71e553648fbcbd53d154e9fcc9e77"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110123061_png.rf.8d111d3852ea76610043584dee70ae41.txt",
+      "bytes": 297,
+      "sha256": "bbd70c908b258d52459c3ca7e9acc41a5c4f4889c96be51eb81e09fd138c70cd"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110155375_png.rf.d7da2bf2805a6426db006ef3ef029206.txt",
+      "bytes": 318,
+      "sha256": "4fed83cc852393346d9bd3a2f648bb25a1d5d3a49a6b29cee3323dcb8f41e5cf"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110229627_png.rf.21a82ef2f43b33a91ef659b97b5ca2aa.txt",
+      "bytes": 321,
+      "sha256": "13f4c44fa857e804fcfecdf644f95ebf2a1b4c0d3e1c91a5bb3cb7c7485ac164"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110248358_png.rf.804ab199a626bc4acb8c52e11b8a4818.txt",
+      "bytes": 301,
+      "sha256": "2295e163d92134549f9f229d1d4e0a824bea9b4617b598f7b5258230bc9a929f"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110316406_png.rf.b06e4cd4cb877d07973dc6ab6a137d75.txt",
+      "bytes": 320,
+      "sha256": "099ca4d70c58d0694e47e5c3e59fb10f32316102c5cb4b29a5a67bee681e5501"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110347074_png.rf.e4610f62c625ef506410453eda9b3882.txt",
+      "bytes": 316,
+      "sha256": "4adcbe4346244bbb3cbc0f11ba07801f45f9a041086952bcb2cfd9cf02b578ad"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110404507_png.rf.a784316b813612cdef50508604153f5a.txt",
+      "bytes": 295,
+      "sha256": "c0a10eb5092b485ec1b4d5d6ada1529d736aa27aae69420a54e506bd64bb24d7"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110421981_png.rf.1c8c9787c6819c9f3282242a3a946f42.txt",
+      "bytes": 308,
+      "sha256": "dbc6564c959df7e2707f647de7fbdbb34aa12d997cd4feecef0a18fe59232fbf"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110442724_png.rf.8c7167d272577acf3951159f0e607f68.txt",
+      "bytes": 317,
+      "sha256": "60cba1775cf0c16c4ce0b3f52500859ae68c9031201b09ee99f764c930dfb46f"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110610175_png.rf.632e46d88841f077ca3418be743b559f.txt",
+      "bytes": 320,
+      "sha256": "fafafc05e6a1023d5bcdff191d44a074737fa7f1318186e6f787be95023b9242"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110650449_png.rf.3bc53370b970f7c3560a37a8feaa0606.txt",
+      "bytes": 307,
+      "sha256": "9a0bfaf8c230036ba02b601a8700f862a0efc6bcb1bcce988927726774e71c20"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110715559_png.rf.53832f9cc5c4e6afb1abafdf5c2f64b0.txt",
+      "bytes": 298,
+      "sha256": "4a0c026e93f7d889f6028c7742cbaa4f64b137c3b9b09354cbe49c2db4302221"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110801038_png.rf.87fff8baa6117ae776835811459fe782.txt",
+      "bytes": 301,
+      "sha256": "39aed2fad9de792285fa6eab993c838090e3e3d6d0d7d26edc7101da02060e49"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110837439_png.rf.e4e131e4d03810795c75269465f0c3f5.txt",
+      "bytes": 297,
+      "sha256": "172cc11d3f52173fe60ecda9e3ff1a79cda24fd7aa1bce5adf4a31087a1da201"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110919413_png.rf.ab53bdc35b7f664d3db5d1080fe77088.txt",
+      "bytes": 310,
+      "sha256": "517fc2647d2c4760982bb95a277ce27bd1ee9a35edb44a93a41d8fa977b433a2"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_110944346_png.rf.5051712af3d5fb8e1b2287ef6ca50ffd.txt",
+      "bytes": 315,
+      "sha256": "3aae7523ff1d9097e0d566e3dabdfe57976c77cdf58b9d46e32e9c4e031286d0"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111030839_png.rf.a57b7ef81ebee7b5e52eb207ff657578.txt",
+      "bytes": 295,
+      "sha256": "8858635afea1b7563341e1e594e223f9b4540b22cea07f1dbc1feb87556bdc82"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111101917_png.rf.cda95de598b90d7461f0f25361f72e88.txt",
+      "bytes": 306,
+      "sha256": "8176aa0a3d1d8da2bfffd5584bfe07ef4c26afdea367bc801d9eda7657dddd18"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111132682_png.rf.06bcc7ce37123ff6025219262a4e3402.txt",
+      "bytes": 308,
+      "sha256": "e11b031af2593edc3d44b35042d3c4a90122b79ee80e5c447c4e1187831b37d7"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111203231_png.rf.2d96c625af9eec2ea1dd6711a02d151e.txt",
+      "bytes": 318,
+      "sha256": "3addac8764f8f68c79dcaf56c182e73eaad7889ea7cc9af76ccedffa13cd295e"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111234649_png.rf.cd094403a817e65e1bd872cf0ade556b.txt",
+      "bytes": 315,
+      "sha256": "790503faa41102a8d99d320f78cf832125b06e3b548df95cf430f7e59cc67cbd"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111258890_png.rf.b2f0f9e9a936a1bcd0c05ee0d52568bb.txt",
+      "bytes": 290,
+      "sha256": "7d141667adb47e30044808f2ee7b681e2134791fcaef1d78d3b9e42a8e8b6b92"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111320584_png.rf.5b155eaa518e39ce83a96aed90212406.txt",
+      "bytes": 318,
+      "sha256": "b43404571c93641f1f6d13f043f7b73c27f2fa3b0632124a7a63ac42c7c9efb3"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111416650_png.rf.08720e040bc608b9e07d5a4aa425ae9b.txt",
+      "bytes": 295,
+      "sha256": "deb2081ad55c82ca4128753892d0401758584634ad8fb19fbee14f716dd4ee6d"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111432059_png.rf.f22d663af0eec79ea371b7bf1cf4a851.txt",
+      "bytes": 305,
+      "sha256": "5554e5e03517cdc85a3bd3676112ecceae2c39c814887fe4778308b96c11aaea"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111456759_png.rf.f0bd84707cdf54d348ce927af523aed3.txt",
+      "bytes": 318,
+      "sha256": "5b8d1275f0d1156e1a1209e642ca9a1d9b102c9c7fb0ac600ca68683bc3da1ba"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111527296_png.rf.fb2b546f41c98c341698a303efa3bee3.txt",
+      "bytes": 317,
+      "sha256": "6c4955668d4cecafe8483c3b51d8d0fb121dac2f54ba1967c3d40d497c8b79f7"
+    },
+    {
+      "path": "train/labels/old__1-3_20260220_111633091_png.rf.be92e2312f3a1ec32a17782755793950.txt",
+      "bytes": 310,
+      "sha256": "85be10d3775e1d385e2fa83b059669c227267d7165cc9f10f7929b5300d257f7"
+    },
+    {
+      "path": "train/labels/old__1-4_20260213_142507483_png.rf.c691545e87dfe402e73dfaba9a471248.txt",
+      "bytes": 159,
+      "sha256": "e686a40ef64683dc0697e769a299f78684b376d602e12cf33168392a7903869c"
+    },
+    {
+      "path": "train/labels/old__1-4_20260213_142548974_png.rf.005565993adad17198e58f607ce5c59e.txt",
+      "bytes": 158,
+      "sha256": "716402a7f8a227ad396e87d9f481eda62cd20c3cfd860c5f54af3d52c462c56f"
+    },
+    {
+      "path": "train/labels/old__1-4_20260213_142747197_png.rf.048a36147167d9aba94828cd8aa910e2.txt",
+      "bytes": 153,
+      "sha256": "533b37a3c41d5d425a27810fb89b66a3e5a3143c719947f92ca8e5506b8fd5fe"
+    },
+    {
+      "path": "train/labels/old__1-4_20260213_142818059_png.rf.adf8614f82a61303a6748fa049e87a90.txt",
+      "bytes": 160,
+      "sha256": "09c06d23b096eac594ffc9289a3b66e21793f53007904742ac418619643c6b46"
+    },
+    {
+      "path": "train/labels/old__1-4_20260213_142841700_png.rf.00752a44b9628f4d868c35938e471012.txt",
+      "bytes": 159,
+      "sha256": "2c97f4c6bee0609bb06e72e4ef613447346b0f243d86138cba8478ec8492d823"
+    },
+    {
+      "path": "train/labels/old__1-4_20260213_142901864_png.rf.e7533898fab12078e92061766f4b25da.txt",
+      "bytes": 160,
+      "sha256": "597e3d809d863a4edb9348e5cf6873db82f1b5e4ec7c81be57f6cedd5c52179a"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113558713_png.rf.8257bc019f332162fa0b1c94bbb935ce.txt",
+      "bytes": 157,
+      "sha256": "4f1532537326e85c586aed5301fa6d9946959c9a7a0a3d6a86b388f7b36766e7"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113610856_png.rf.130b98183bb9a9d1d044352075ae2474.txt",
+      "bytes": 157,
+      "sha256": "db160c5776caf2a8b3cedc371d9204f69090976963122fb20f7f4b2799af3592"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113620742_png.rf.0cd3e3f6e3c0a99cdc85be3bf17aaec7.txt",
+      "bytes": 157,
+      "sha256": "ffb1e13da52c41afd27389cf4283b3841fb9d28e3a6bcdfc43306e910440abcf"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113631316_png.rf.b015eb735fcfa97722edd67037f17beb.txt",
+      "bytes": 150,
+      "sha256": "a464106734af5e17fe6ad4618f89abc4de7e50ef41f91455ac0282c7ccc5f6dc"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113702129_png.rf.616f348407e5cef0afd8140f7c387f54.txt",
+      "bytes": 158,
+      "sha256": "01c0fca8d627df341a6e3ea6fc037541e1c822323927a91c7eb39077dc0e7427"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113713315_png.rf.2bd09f27cfa43b21910393e9d57bb213.txt",
+      "bytes": 159,
+      "sha256": "b2b21d32fbeb78b894a920ef1a761b1794c02cfa305f6421b8fed39ecd082481"
+    },
+    {
+      "path": "train/labels/old__1-4_20260220_113802882_png.rf.c0779eb548d769d0bb8877056dbb940f.txt",
+      "bytes": 159,
+      "sha256": "34d4798d1054c11cecd17f55a0556cff869718f3e85aa6ee91a50c33ae0bc7d8"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143151014_png.rf.c41ca8e926ce3c2130049dcfadedc542.txt",
+      "bytes": 159,
+      "sha256": "789d13be7409a4ff8cf327b3f2931d5b7807c92218eb5aebd807d967dd2c445f"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143211615_png.rf.9dc03f3b56285d8af3fd938aa29a6615.txt",
+      "bytes": 158,
+      "sha256": "859d1ac1627d0a2ad10b7e3b984e3e89f9e14cc70cba3711e0fa829696e69fa0"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143227600_png.rf.4be51c9942c6127c3bd89fac10369e0c.txt",
+      "bytes": 158,
+      "sha256": "f1b234a451b65737920d7f7b62514d835ac4e97b9adc46e12562e3c1337a1049"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143245294_png.rf.a3198e54aa26f4bf51690951dfd79b98.txt",
+      "bytes": 157,
+      "sha256": "8f5f27cbff8aad891deb52ff8c7622b3b6ad0a56e801a05dc11f0fc7b62317f0"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143302661_png.rf.3535e2432ff8c270f9f281abc9d182fa.txt",
+      "bytes": 156,
+      "sha256": "1bfc76c151b29d74b2d53c361fc0654ca47abf56538cbe235ab50ec450ba12ae"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143333191_png.rf.8c07dd01e2df99e3bf290249e39142b3.txt",
+      "bytes": 156,
+      "sha256": "321216534b26c3c3b1556d5ce9c817ee9c35262f80d12901acc2bbdbd0052797"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143414736_png.rf.e6e31473f4829af9b2f45331ea9ad13a.txt",
+      "bytes": 157,
+      "sha256": "4eca7622488c44799f4f467a998c65315697dc68c5072ee437ded7f6b8403eb6"
+    },
+    {
+      "path": "train/labels/old__1-5_20260213_143440873_png.rf.19b6318a6a90ecdfbcf0c928ad4f54cd.txt",
+      "bytes": 158,
+      "sha256": "812adb64366d21bc11e407e3b88ee239acec794e901c780b933aea4a5dd48c0a"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113105821_png.rf.c1cbc813099c57e37adf501ed44c6fa1.txt",
+      "bytes": 147,
+      "sha256": "a0465a12e2ec7c4f8bd2895087d0f1d37b9caf30e70419bf341ae8af636b73e6"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113144722_png.rf.8a5e6728c49de63c85d554d0109b4440.txt",
+      "bytes": 159,
+      "sha256": "5c512392dc6feb74c89beab3aa87dceefaca17045dc4113a0bfb82ebad2bb925"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113200856_png.rf.caeace031b5f26c28d818c383c35c32e.txt",
+      "bytes": 159,
+      "sha256": "dc29cc91bf2b1c51be4936f70a39f7ca51a3feaba30217424945dac969375207"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113231012_png.rf.e82707f0b952404deec4cadbde21cf14.txt",
+      "bytes": 159,
+      "sha256": "a0a8b7cb98d9d6a13ae5ea0c94e9c7ec2380008a513f574b3eadd6bee90c194c"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113249315_png.rf.c1cade3b6a05719df65d6ed34ebca01c.txt",
+      "bytes": 138,
+      "sha256": "e944b8e8863f8c827141dbd4f494109e21ab5d2b0527a7fb3a4eb7c50b1aadb8"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113307176_png.rf.808af85ccfd7bee9896261e29f466054.txt",
+      "bytes": 160,
+      "sha256": "501fb7f599d7b004bb492f41c4b088a67681ecc3a17631accb6b9e30cf4ad57e"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113319240_png.rf.cdbc3ee5512a40859a88e21bd9c8af59.txt",
+      "bytes": 160,
+      "sha256": "31a9be8c0693779ecdfcffff708d97f46b24184681c60af034dc3ea17f23b2b1"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113336876_png.rf.b0b82c0237345e05fb75d354cffd675c.txt",
+      "bytes": 156,
+      "sha256": "0be47218d489a06bf663618f521db1e3cb8d446a28c6efd89d87f3d8e0291eef"
+    },
+    {
+      "path": "train/labels/old__1-5_20260220_113351064_png.rf.d2fb114c3af3fd6865b66a2071e2052e.txt",
+      "bytes": 159,
+      "sha256": "918cf0fcb2ab459cc0bf3ab54b2459cb4a1a3773b86c7b8ca6a0be859202165a"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Dry__Defect__IMG_1522.jpeg",
+      "bytes": 6157540,
+      "sha256": "e9aff65dbed5d113a8738560e16b9612ebb20b3ab4cd234e8dcbe42e67daf528"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Dry__Defect__IMG_1523.jpeg",
+      "bytes": 6242895,
+      "sha256": "2013758b48afb1a58ab1b934616bb3effc47a490e4b9d1da4fb0996d961ab131"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Dry__Defect__IMG_1524.jpeg",
+      "bytes": 6104477,
+      "sha256": "e481cb3663e5c60d7c5cdba9beadaa4e0189bc91a24698b07226d2a70a4c5d29"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Dry__Defect__IMG_1525.jpeg",
+      "bytes": 6272964,
+      "sha256": "0d09345844b22bfb4bbf959866524ee30f79029926caf90c2f54107363aab2b9"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Dry__Non-Defect__IMG_1521.jpeg",
+      "bytes": 6230774,
+      "sha256": "57c6660c10616203a8261e5f8472bc5c26ba53648e41fac369c6dbc2133a81dd"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Wet__Defect__IMG_1611.jpeg",
+      "bytes": 6333755,
+      "sha256": "707716aba5596f74eb91a3deaf8a20d33f17889709fe2663e3c7c46b68c7e511"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Wet__Defect__IMG_1612.jpeg",
+      "bytes": 6008759,
+      "sha256": "515572f09f07ceb379e2466cc034c283bb9716919778c637d1705de1fd90713a"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Wet__Defect__IMG_1613.jpeg",
+      "bytes": 5911133,
+      "sha256": "cc28ba5cf1e5701e7193aa16aa71665dcd683a139520b0030fe4f3834c1b59ab"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Wet__Defect__IMG_1614.jpeg",
+      "bytes": 6210585,
+      "sha256": "bb74de36741fe377c6541ce52773724f23c5ed88dfd475031182bff0c51ce74a"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Wet__Non-Defect__IMG_1601.jpeg",
+      "bytes": 6739537,
+      "sha256": "ada6cef0cef364eb027eb7f0c15df5b761064612c673e0742db53ec6e0aadb2a"
+    },
+    {
+      "path": "valid/images/new__valid__One Tool Wet__Non-Defect__IMG_1602.jpeg",
+      "bytes": 7037002,
+      "sha256": "c65dd3f008410a543b601aa983fce05f7333bf084fc12cfa67c3201e97cebe9f"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Defect2__IMG_1594.jpeg",
+      "bytes": 6020676,
+      "sha256": "683112994002c2f7bc2d9edd5647b9c5b56d52d80714490c46b21b66c20fd422"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Defect2__IMG_1595.jpeg",
+      "bytes": 5520616,
+      "sha256": "3a553e3857f0b1b196ba38ebf2ea0e7f1af70501633fd26942b81294d9907d00"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Defect2__IMG_1596.jpeg",
+      "bytes": 6013887,
+      "sha256": "6a4ecaae19d96af61325e32c6cd766a1ebb830d4e587b0c07d7cb718be094e84"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1557.jpeg",
+      "bytes": 6072774,
+      "sha256": "adc44bc975a5dd1a52635dafafe3f24782e354ee87f2578715513db3e45f91c5"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1558.jpeg",
+      "bytes": 6134207,
+      "sha256": "1a713ff43b01dbf359202bb0cf61a8d650b2415ed8b3f26ad51aec8e98e5d8bd"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1559.jpeg",
+      "bytes": 6083595,
+      "sha256": "e63d6a6951feecb6f8ae5381fbb30faa153a8f09468a097f4c5d5f1b275ccd6c"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1560.jpeg",
+      "bytes": 5955137,
+      "sha256": "6a466decb96e6942b27da34b568455c6a61040514de1a5deef4aeab4568dc4d0"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Defect2__IMG_1660.jpeg",
+      "bytes": 5826366,
+      "sha256": "0463a61001144c78b43e683058b6042f57ef0c6fcaac9eeb091614a5d01e97de"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Defect2__IMG_1661.jpeg",
+      "bytes": 6034425,
+      "sha256": "8b2cf49a0b0d7d3be132599cdd72d391a3f5763ba78846dd42946d985a23e92e"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Defect2__IMG_1662.jpeg",
+      "bytes": 5677028,
+      "sha256": "7f9976c4318b3b5a90bcd261491d8e9965d928a3c13c3ecde5fb4643517f5841"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Defect2__IMG_1663.jpeg",
+      "bytes": 5525526,
+      "sha256": "cf9f942e243c561012a23395124dda60088936051e61beddb5aa93895899f297"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1655.jpeg",
+      "bytes": 5575444,
+      "sha256": "ebfafe45c44182934e655aed9fe04225fcbb67ae4b0438f351347c4047f9892c"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1656.jpeg",
+      "bytes": 6145372,
+      "sha256": "82988477b21897bc0f21ec76a2e5b93069448272f4104b1c01085157e1982786"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1657.jpeg",
+      "bytes": 5957904,
+      "sha256": "496bca218ccbbb5aac95d15c3ded5bbb047b9a971e7620b13efdb79973f28210"
+    },
+    {
+      "path": "valid/images/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1658.jpeg",
+      "bytes": 6254707,
+      "sha256": "d377edbd68c9f27c8351c3718603a8d45ce1a5edddf037009542b98f5b4aeef2"
+    },
+    {
+      "path": "valid/images/old__1-1_20260213_131144977_png.rf.1a8dfeabee3fc866d4ee43f5976e66b8.jpg",
+      "bytes": 133497,
+      "sha256": "5c0655e1af590cc7db26f667c25cfc65e31ffa9dcef1e4b8ca28d2f543391e53"
+    },
+    {
+      "path": "valid/images/old__1-1_20260213_131752477_png.rf.a931388b2153f41c7bef10317b7319da.jpg",
+      "bytes": 120710,
+      "sha256": "cfcb59de77d8e407fc158f2666f59b13af48ec75dfde84114e87ecb8ce699336"
+    },
+    {
+      "path": "valid/images/old__1-1_20260213_132112823_png.rf.d2ae9a576ec398c398f41d896efbe5af.jpg",
+      "bytes": 116731,
+      "sha256": "64f14562e8d1b610ebd9f660db943e13ba1a0fb3be6a7fa2e23816d5a0407968"
+    },
+    {
+      "path": "valid/images/old__1-1_20260213_132248758_png.rf.ae6dcce2cb8fc103b9bbd7630735c857.jpg",
+      "bytes": 119365,
+      "sha256": "29e127c68821847ffc8114743ce3996e3ffc7a82ae57521c40db86dfe9627674"
+    },
+    {
+      "path": "valid/images/old__1-1_20260213_132532324_png.rf.e1bed4073fdfe82f4dc919dae2184fb2.jpg",
+      "bytes": 126293,
+      "sha256": "cc4e723362f29ef0ffc0726262aa8117f4895b96d0c0c62d88d0adfed8e6b2a0"
+    },
+    {
+      "path": "valid/images/old__1-1_20260220_112903163_png.rf.0fbf49ff53adc1ab7835f9f9b1a13378.jpg",
+      "bytes": 135017,
+      "sha256": "03ee55f3f50ee66b701caf29a7b11a9cf2f98e31c8d94b178a75334fb6e670f7"
+    },
+    {
+      "path": "valid/images/old__1-2_20260213_133546301_png.rf.c5eb02cb95e477465979fc0857eb0632.jpg",
+      "bytes": 115377,
+      "sha256": "a21c40f2873a2ed2683054908b344bc3951dacc44799e47f77aa1de7aa5035d3"
+    },
+    {
+      "path": "valid/images/old__1-2_20260213_133753073_png.rf.5d119e02c0002ede60d49bb496ef6959.jpg",
+      "bytes": 112592,
+      "sha256": "f52c76f18245879056748bc6209c695d091013ce233eca95052ba9de78208052"
+    },
+    {
+      "path": "valid/images/old__1-2_20260213_134244768_png.rf.e96393cc09841c6e6a2f8a61550f078b.jpg",
+      "bytes": 113584,
+      "sha256": "924f7fcc919c95d9f07994041774e8e63a5d26011ee7ef06f36e6991e927385a"
+    },
+    {
+      "path": "valid/images/old__1-2_20260213_134907210_png.rf.ae86cac71c097eb37cb97297ec0568cc.jpg",
+      "bytes": 124083,
+      "sha256": "e4548c36a1eeb24f6e87ad93b530371541fdee6180ea9e0e306526653547c5e1"
+    },
+    {
+      "path": "valid/images/old__1-3_20260213_135901171_png.rf.087df27ca513d55a01d90238070ea95e.jpg",
+      "bytes": 121893,
+      "sha256": "20321e9f27ac37b0607b54bdfbf05ba981d162cb68b1895f1f92183c39378089"
+    },
+    {
+      "path": "valid/images/old__1-3_20260213_135958117_png.rf.4b121b7e59be5ee340aaf44578ad2876.jpg",
+      "bytes": 123048,
+      "sha256": "721fd63384f887c1799206f951325b8adf9e56e5f12fbbb38d08549911fd0c1e"
+    },
+    {
+      "path": "valid/images/old__1-3_20260213_140806731_png.rf.87386f6fbb592a4de013fcfc66a40ceb.jpg",
+      "bytes": 123102,
+      "sha256": "b2f55fc17b47dff93d5026773df77abf04a304758fab5df9158fdf653c494af3"
+    },
+    {
+      "path": "valid/images/old__1-3_20260213_141220692_png.rf.1fdaf2c88f59c36edfa5aa23f9a6f4c2.jpg",
+      "bytes": 118329,
+      "sha256": "1e74788537418a44089c1914f4a29d22ecf1a331a9fec3e8d044935b4638daf4"
+    },
+    {
+      "path": "valid/images/old__1-3_20260213_141626150_png.rf.50aea39c4bc4087bcd62519ff846d0fe.jpg",
+      "bytes": 110951,
+      "sha256": "cea744412c38b5609bbcc461c6a26a12804ad5147506b3b0e4fd71f95363f21a"
+    },
+    {
+      "path": "valid/images/old__1-3_20260220_104449416_png.rf.a75d1005f5c0adeb1a7bc5b2db0d0221.jpg",
+      "bytes": 129945,
+      "sha256": "0075dd16ca1d8d9097c488ab720396c0c579e080e3eebf715b563c078f588124"
+    },
+    {
+      "path": "valid/images/old__1-3_20260220_104651757_png.rf.2193b1ca93ec8fa21a2d082200550f81.jpg",
+      "bytes": 129353,
+      "sha256": "bee653d49a692aa18fcaaacf89c98f6692197259248d9d7e1ca3b3da5baa870c"
+    },
+    {
+      "path": "valid/images/old__1-3_20260220_104756276_png.rf.c294738c81e6845d13ea8ad11cfbf5b5.jpg",
+      "bytes": 127654,
+      "sha256": "6ecc1f748604c671078cb6e148daaf4fefcd323924d5f2336ca1ca4b20ceec9e"
+    },
+    {
+      "path": "valid/images/old__1-3_20260220_105039642_png.rf.a3722a2c2d1841c60436a8386e41fea3.jpg",
+      "bytes": 129602,
+      "sha256": "cba4de6bd86ee14b17f1721942f2049dcc89408a9d0454fc39f3c468037de895"
+    },
+    {
+      "path": "valid/images/old__1-3_20260220_110855841_png.rf.641501a698c62049f8b2a06d65a45513.jpg",
+      "bytes": 127642,
+      "sha256": "cf5123ab167bc7b02f08f64ec8e3346286631ade8dd4085120798649da14236f"
+    },
+    {
+      "path": "valid/images/old__1-4_20260213_142613073_png.rf.f8337ba14721801acd6c789f8ca24c24.jpg",
+      "bytes": 103398,
+      "sha256": "ba17f04be67a28be1124b0b88c014f331359bfbcd128d34e118a6c731ee5ca35"
+    },
+    {
+      "path": "valid/images/old__1-4_20260220_113533172_png.rf.6c2ff43cd17e6a2521d1398f9c681efc.jpg",
+      "bytes": 123795,
+      "sha256": "1f74bf7e89dc1aa33f2db53f5fe8d97e018eb8597757cf73a0b4883a6d7485db"
+    },
+    {
+      "path": "valid/images/old__1-4_20260220_113745929_png.rf.ef9ba8a61ef562454c509155ce83f2ec.jpg",
+      "bytes": 121165,
+      "sha256": "126bec95762f01a1b6f66fa60d429070b4bb96cc464f8b2f317785fa994a9847"
+    },
+    {
+      "path": "valid/images/old__1-5_20260213_143138272_png.rf.4369de450734503e3326f0084b635631.jpg",
+      "bytes": 109224,
+      "sha256": "14b4ae17274ff9d8f6b227f4b0b8fa9b92962c8f9d6bf15825a448f51cdb6e40"
+    },
+    {
+      "path": "valid/images/old__1-5_20260213_143350873_png.rf.3d4f71dd92f4fdccf1cff1cb5051da89.jpg",
+      "bytes": 105654,
+      "sha256": "6aee45fb8685cdb5cd970bbfa9b62a822f3ae342ff5f76a04e07b389a0354955"
+    },
+    {
+      "path": "valid/images/old__1-5_20260220_113118668_png.rf.a7bc3f4ffc588dcc295be51388af0c8e.jpg",
+      "bytes": 120127,
+      "sha256": "df58190810f4161674bef0301eec1a2daf09a8b08e00ca3352168f0ba5c855bc"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Dry__Defect__IMG_1522.txt",
+      "bytes": 46,
+      "sha256": "02587ae0d7405fc430f239371ec2184b6b5d554d7bdac62b401c622cab2f1395"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Dry__Defect__IMG_1523.txt",
+      "bytes": 46,
+      "sha256": "5cb73afb3cadb83221aa3bceaeb49b140fe61733eadd59f2f9accf7476e8ccc9"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Dry__Defect__IMG_1524.txt",
+      "bytes": 46,
+      "sha256": "dca58b3bb5aebb8b94ca6e46cd02e200621f78accd98da8e3896d7334a79dd13"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Dry__Defect__IMG_1525.txt",
+      "bytes": 46,
+      "sha256": "b004d5d774658414bc4ddccddf25fa7fc833762078ba6287349c200390bfca2a"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Dry__Non-Defect__IMG_1521.txt",
+      "bytes": 46,
+      "sha256": "42004d3c9a4130f66fb86f3937a415df1d1588119cf8ce6667a72e993af91114"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Wet__Defect__IMG_1611.txt",
+      "bytes": 46,
+      "sha256": "a1b283aa3d8fd088c193708f984d40f04361ecc0636c10ea70dc29ee98dfdb92"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Wet__Defect__IMG_1612.txt",
+      "bytes": 46,
+      "sha256": "99746e56b60ac871621b4f852f778e00c4e459f700bedc4ea5856ed74e605eec"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Wet__Defect__IMG_1613.txt",
+      "bytes": 46,
+      "sha256": "0b534e8626cee3c66bb864d289aa6fb100845dc3bd5f4c3d3338422d24879f5a"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Wet__Defect__IMG_1614.txt",
+      "bytes": 46,
+      "sha256": "b42dcba7c06bdc7f6359792ffba4702d906a1669c66ca5df3b393705daed76a8"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Wet__Non-Defect__IMG_1601.txt",
+      "bytes": 46,
+      "sha256": "9428a61fa249a1147df8ab906cb3ee03bba3974847a442dbdac86012d6acf3a6"
+    },
+    {
+      "path": "valid/labels/new__valid__One Tool Wet__Non-Defect__IMG_1602.txt",
+      "bytes": 46,
+      "sha256": "aa3c09d5b8b73d5d9e3b56132c89f03d8eeed945e0a10049d3651ae38a2cd340"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Defect2__IMG_1594.txt",
+      "bytes": 92,
+      "sha256": "34d54941107cc147ee6d3a3a1b0e6124518c1a64dc73e4798dcb5ae947e7c159"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Defect2__IMG_1595.txt",
+      "bytes": 92,
+      "sha256": "37ac9827635f954cf21534e2d21d5add7a980522ac995bf34211230a843930a2"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Defect2__IMG_1596.txt",
+      "bytes": 92,
+      "sha256": "465d7d2872fae4a3666b1bdcd066789ca51df9188a7b4c14964426eebd9a4ac8"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1557.txt",
+      "bytes": 92,
+      "sha256": "5ae656f5272a7efa331354f45e7a1117c212c8589cdbc8b5e8686faf7e7fb19a"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1558.txt",
+      "bytes": 92,
+      "sha256": "3896451c422a8907506b678ee065b592a2471d739c790dc14767ca43123cba67"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1559.txt",
+      "bytes": 92,
+      "sha256": "b996ae93705c1e896a8614ee1a318b26a764cb9e60b02c9a5cab89d77f4c1923"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Dry__Non-Defect + Defect__IMG_1560.txt",
+      "bytes": 92,
+      "sha256": "9ffcdeb4a0b241c76385f73db0f80684df5065152b846064fc79dc15695321ef"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Defect2__IMG_1660.txt",
+      "bytes": 92,
+      "sha256": "836cd2f017fa5d81565d54a086a3ccfe1edb5a8a1393dad3209145a31ecc417d"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Defect2__IMG_1661.txt",
+      "bytes": 92,
+      "sha256": "84a6f7911bd0c429f7d75a0f3cc912ef298e9cca95c8fd691ab361935e8702b5"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Defect2__IMG_1662.txt",
+      "bytes": 92,
+      "sha256": "ef02dff0b5a6007b949e4d455df3b5db1bb02e828c572576f7ced61ac2d5c6d2"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Defect2__IMG_1663.txt",
+      "bytes": 92,
+      "sha256": "63a24604a493976ff6c91af7e43ab02aa6cdaabda9a8d855c487f3e145d53c30"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1655.txt",
+      "bytes": 92,
+      "sha256": "fd234542fc8626da516db19634cf6e3feea5a4d50462954adf5a441c2bb7acf6"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1656.txt",
+      "bytes": 92,
+      "sha256": "88ba5ca8cfc75598511531cb5dd51da4fd17f44ec98d45e64fd4c2f8dcc4c21e"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1657.txt",
+      "bytes": 92,
+      "sha256": "acbc07972c4bd32ce17682b58a462ef6275d1ea8ffdbd43534e08a09ce55027f"
+    },
+    {
+      "path": "valid/labels/new__valid__Two Tools Wet__Non-Defect + Defect__IMG_1658.txt",
+      "bytes": 92,
+      "sha256": "fb2aed67946ef414a6d2742a38e2fa645efe0d37684c20ebce8926afbeec9498"
+    },
+    {
+      "path": "valid/labels/old__1-1_20260213_131144977_png.rf.1a8dfeabee3fc866d4ee43f5976e66b8.txt",
+      "bytes": 320,
+      "sha256": "a284037887a431af4a000dee7434e1b61f2bf1400436b1ea5430b7620565e558"
+    },
+    {
+      "path": "valid/labels/old__1-1_20260213_131752477_png.rf.a931388b2153f41c7bef10317b7319da.txt",
+      "bytes": 319,
+      "sha256": "fc8606f85023d3e0bac1cdcb1ce84f535ef6a97ffe4884b1a1deb96b0944bb9f"
+    },
+    {
+      "path": "valid/labels/old__1-1_20260213_132112823_png.rf.d2ae9a576ec398c398f41d896efbe5af.txt",
+      "bytes": 307,
+      "sha256": "26cd96aad200a658c50e397eb227f667978a07b85538e90a71eef4ae9804bfdd"
+    },
+    {
+      "path": "valid/labels/old__1-1_20260213_132248758_png.rf.ae6dcce2cb8fc103b9bbd7630735c857.txt",
+      "bytes": 320,
+      "sha256": "7cb96b83b941525ea7a77285c29f7d47305013158bcc018cc05982996b1a54fe"
+    },
+    {
+      "path": "valid/labels/old__1-1_20260213_132532324_png.rf.e1bed4073fdfe82f4dc919dae2184fb2.txt",
+      "bytes": 274,
+      "sha256": "73934c9ab2361870696477774eca71e066ddc433538381872210b03b2d1f165b"
+    },
+    {
+      "path": "valid/labels/old__1-1_20260220_112903163_png.rf.0fbf49ff53adc1ab7835f9f9b1a13378.txt",
+      "bytes": 318,
+      "sha256": "e6848db042e319a647230031bf9926411fbd03e28711dbf6ae34afc498649324"
+    },
+    {
+      "path": "valid/labels/old__1-2_20260213_133546301_png.rf.c5eb02cb95e477465979fc0857eb0632.txt",
+      "bytes": 157,
+      "sha256": "0e5cab31072d2decc1a41abd4fecef708a4839dca664264acba33b0856e9d431"
+    },
+    {
+      "path": "valid/labels/old__1-2_20260213_133753073_png.rf.5d119e02c0002ede60d49bb496ef6959.txt",
+      "bytes": 159,
+      "sha256": "4d968ab3af2109a24ce4b81b8a1c4175d3a78c1298480f998f53932f2fc14eb0"
+    },
+    {
+      "path": "valid/labels/old__1-2_20260213_134244768_png.rf.e96393cc09841c6e6a2f8a61550f078b.txt",
+      "bytes": 148,
+      "sha256": "53a2c13cf0134613dcbefa2ff5c81e4b4b3a9b02fac0d1168d3f703f8cc02e46"
+    },
+    {
+      "path": "valid/labels/old__1-2_20260213_134907210_png.rf.ae86cac71c097eb37cb97297ec0568cc.txt",
+      "bytes": 161,
+      "sha256": "f5b12fb622646a9a8bdd707a00d3db12419150b2ca7766422394961fed0503e2"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260213_135901171_png.rf.087df27ca513d55a01d90238070ea95e.txt",
+      "bytes": 319,
+      "sha256": "0b85552bddb73379ca04da6ec9be177af6dc835223acb437469c4dc7ec288a26"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260213_135958117_png.rf.4b121b7e59be5ee340aaf44578ad2876.txt",
+      "bytes": 320,
+      "sha256": "b07753690fb5d4f67bcfb1b0cd94644eeb11fdf74bf5260838c2252b946ccd12"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260213_140806731_png.rf.87386f6fbb592a4de013fcfc66a40ceb.txt",
+      "bytes": 320,
+      "sha256": "12065239cf80affa87d45ef0401fc12a1bde008a861e62393f9682abce6abfce"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260213_141220692_png.rf.1fdaf2c88f59c36edfa5aa23f9a6f4c2.txt",
+      "bytes": 307,
+      "sha256": "25da3adf0dadbb631422ba4267a31ac1f142587b8eee50b3f32635f23a2b57a2"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260213_141626150_png.rf.50aea39c4bc4087bcd62519ff846d0fe.txt",
+      "bytes": 236,
+      "sha256": "1f8aaaf90087c687174922cb6a1e16f3633c431579c059dc4f91cb58cd499976"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260220_104449416_png.rf.a75d1005f5c0adeb1a7bc5b2db0d0221.txt",
+      "bytes": 318,
+      "sha256": "07850979311bc5548b28b69e2232eb1b3a270a36428f920329c1a6ec127068c1"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260220_104651757_png.rf.2193b1ca93ec8fa21a2d082200550f81.txt",
+      "bytes": 318,
+      "sha256": "09a6a905e2f4db7be8ec938088fa8684b6d309aa3b5112c57a81de6229091dcf"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260220_104756276_png.rf.c294738c81e6845d13ea8ad11cfbf5b5.txt",
+      "bytes": 306,
+      "sha256": "8d022310f85a6569a9b92d87e2e5de01955eb77d4616883c875af11ecaf8f8b3"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260220_105039642_png.rf.a3722a2c2d1841c60436a8386e41fea3.txt",
+      "bytes": 309,
+      "sha256": "64ff2b7b7015d2bcd7d2a12bd3f0438f676aba30c3051d780841782be6d61695"
+    },
+    {
+      "path": "valid/labels/old__1-3_20260220_110855841_png.rf.641501a698c62049f8b2a06d65a45513.txt",
+      "bytes": 306,
+      "sha256": "13787291f4a178bfadc299b2c5ebde33625e98013942a7f824dc9a1f9f289135"
+    },
+    {
+      "path": "valid/labels/old__1-4_20260213_142613073_png.rf.f8337ba14721801acd6c789f8ca24c24.txt",
+      "bytes": 160,
+      "sha256": "40f340404d19067a49261b2432d3a07aab7b4c7a0e6a0648447d1eaa8c919363"
+    },
+    {
+      "path": "valid/labels/old__1-4_20260220_113533172_png.rf.6c2ff43cd17e6a2521d1398f9c681efc.txt",
+      "bytes": 147,
+      "sha256": "843c7ceec0e816c07da47815b5d6b5cd47874ab18a26c5b582351d385e0f0a43"
+    },
+    {
+      "path": "valid/labels/old__1-4_20260220_113745929_png.rf.ef9ba8a61ef562454c509155ce83f2ec.txt",
+      "bytes": 159,
+      "sha256": "0f98c4fd0f7c7b3dfb537321ecc6fca1a1b52ed0ea8f34793a638c757c866f78"
+    },
+    {
+      "path": "valid/labels/old__1-5_20260213_143138272_png.rf.4369de450734503e3326f0084b635631.txt",
+      "bytes": 157,
+      "sha256": "01f33f4d2aced07bced124ae8cd3a06a58f2ab0e6bb9cb149044d47a2010c3b0"
+    },
+    {
+      "path": "valid/labels/old__1-5_20260213_143350873_png.rf.3d4f71dd92f4fdccf1cff1cb5051da89.txt",
+      "bytes": 157,
+      "sha256": "5ce6b53a64fd92396188e52f35dcd2c04ae906bdeb3cb4493be6e3c2685cd44d"
+    },
+    {
+      "path": "valid/labels/old__1-5_20260220_113118668_png.rf.a7bc3f4ffc588dcc295be51388af0c8e.txt",
+      "bytes": 157,
+      "sha256": "839b4ff97a37ec6c748c22cc6a280dde03bc45ca842ca7b607a2121e3695d0d5"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-10-22T15:53:20+00:00",
+  "dataset_version": "hook_sinskey_combined_reviewed_v3",
+  "dataset_sha256": "f3d2e02f34c3f910dcdb12c902bb1bed8fd4ff78043a6fb846353c089bb17e8c",
+  "selection_split": "valid",
+  "test_split_accessed": false,
+  "operating_points": [
+    {
+      "model": "legacy_yolo",
+      "score_threshold": 0.1,
+      "minimum_mask_area": null,
+      "selection": "inherited operating point; unchanged",
+      "test_split_accessed": false
+    },
+    {
+      "model": "detr_detection",
+      "score_threshold": 0.09902049601078033,
+      "minimum_mask_area": null,
+      "validation_metrics": {
+        "tp": 55,
+        "tn": 6,
+        "fp": 14,
+        "fn": 1,
+        "precision": 0.7971014492753623,
+        "sensitivity": 0.9821428571428571,
+        "specificity": 0.3,
+        "f1": 0.8799999999999999
+      },
+      "validation_images": 76,
+      "candidate_predictions": "ml/runs/combined_reviewed_v3/detr_detection/validation_candidates.jsonl",
+      "candidate_predictions_sha256": "8f8ec5c66f03923f514bbcba9a54f0a615b617fa78300b85915c71ab3a3c363a",
+      "test_split_accessed": false
+    },
+    {
+      "model": "detr_segmentation",
+      "score_threshold": 0.15334101021289825,
+      "minimum_mask_area": 1,
+      "validation_metrics": {
+        "tp": 56,
+        "tn": 0,
+        "fp": 20,
+        "fn": 0,
+        "precision": 0.7368421052631579,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "f1": 0.8484848484848484
+      },
+      "validation_images": 76,
+      "candidate_predictions": "ml/runs/combined_reviewed_v3/detr_segmentation/validation_candidates.jsonl",
+      "candidate_predictions_sha256": "989848760f59377ca7f37d5c0909379b275d638f7c5f8d1b0479daf46882b8ea",
+      "test_split_accessed": false
+    },
+    {
+      "model": "mask_rcnn",
+      "score_threshold": 0.6978445053100586,
+      "minimum_mask_area": 1,
+      "validation_metrics": {
+        "tp": 55,
+        "tn": 9,
+        "fp": 11,
+        "fn": 1,
+        "precision": 0.8333333333333334,
+        "sensitivity": 0.9821428571428571,
+        "specificity": 0.45,
+        "f1": 0.9016393442622951
+      },
+      "validation_images": 76,
+      "candidate_predictions": "ml/runs/combined_reviewed_v3/mask_rcnn/validation_candidates.jsonl",
+      "candidate_predictions_sha256": "93cbde887fb19339cad9be741090ee977f01f2f27aca232a4fef003d1d75ed53",
+      "test_split_accessed": false
+    }
+  ]
+}

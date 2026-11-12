@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-23",
+  "tool": "hook_sinskey",
+  "dataset_sha256": "aab031079814138d9f4137b007c3eeebcac3291e94ab7fbcfddfa5e2e2370ad2",
+  "sample_manifest": "ml/annotation/pilot_sample.json",
+  "model_id": "facebook/sam2.1-hiera-tiny",
+  "model_revision": "de431c4043854a71d8101e17995dfe596bf101a5",
+  "license": "Apache-2.0",
+  "device": "mps",
+  "image_count": 20,
+  "defective_image_count": 14,
+  "healthy_image_count": 6,
+  "candidate_mask_count": 15,
+  "coco_sha256": "ece888db5454b2b622f06204c21292e0ad30f6c502f9e2cbfdf7c755b9405a6b",
+  "review_queue_sha256": "3bc6c7dfaab6f922dae26661262cda81eed6f6d2e80fdbbae2b7a5692fa85cce",
+  "cvat_zip": "ml/cvat/hook_sinskey_pilot_candidates.zip",
+  "cvat_zip_sha256": "3256594814eb68770e9c92df40772580ba9be5e6445ae61a56ce3fbbb21fdaa6",
+  "local_package": "ml/annotation/local/hook_sinskey_pilot",
+  "review_status": "approved",
+  "review_method": "visual_overlays",
+  "reviewer": "Christoph",
+  "reviewed_on": "2026-09-24",
+  "corrections_requested": 0,
+  "images": [
+    {
+      "image_id": "train/6-3_20260213_151412456_png.rf.97357b3ae58f4dc0a602627965b75852",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "train/6-3_20260213_151846453_png.rf.359c2840f9852bf40bf406b6283672c1",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "train/6-3_20260213_153537232_png.rf.f6efaa77593966042b65dc2632b77c06",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "train/6-3_20260213_153845340_png.rf.32a483609e656ba630dec419625a1b9c",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "train/6-4_20260214_164917365_png.rf.f9819d4acd263f647a340971e8351fbe",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.739484
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_165442542_png.rf.9eb0a590661a219a04c8e90e9a43a4c0",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.832478
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_165806582_png.rf.be7d2543e197fc8f7b796fd2822233ca",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.789111
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_165939327_png.rf.ec9c2c5d556382116b813dcfca6f9a8c",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.794119
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_165955043_png.rf.72e13b65b8ff16903603970dd9143339",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.787516
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_170203167_png.rf.27acdf1c20f3b1bcbc3cd2185b3ba7a7",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.842865
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_170520031_png.rf.da1d3b32937354519860b8496e5c1449",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.774162
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_170740133_png.rf.1ebb8ee2589a9e125ac4222cf7cb8351",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.77891
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_170817078_png.rf.11f60207499477763083e834c590a517",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.850728
+      ]
+    },
+    {
+      "image_id": "train/6-4_20260214_170951739_png.rf.4598458e9c970a0cac8324b77c5f4fe0",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.780986
+      ]
+    },
+    {
+      "image_id": "valid/6-3_20260213_151429752_png.rf.fd8426d556ffe68d8007660700eae4b4",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "valid/6-3_20260213_153823026_png.rf.f6d7559e7d8582bfa4db0167808f286d",
+      "status": "healthy",
+      "candidate_masks": 0,
+      "sam2_predicted_iou": []
+    },
+    {
+      "image_id": "valid/6-4_20260214_164622107_png.rf.9c386eb0775d9ff3942f4670a87ef577",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.78772
+      ]
+    },
+    {
+      "image_id": "valid/6-4_20260214_170243994_png.rf.2cdaaed13473e09ffbf2239a3ca25b7e",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.768654
+      ]
+    },
+    {
+      "image_id": "valid/6-4_20260214_170931400_png.rf.20c1ed9215c751249f24c8cbe05e9b7b",
+      "status": "defective",
+      "candidate_masks": 1,
+      "sam2_predicted_iou": [
+        0.722344
+      ]
+    },
+    {
+      "image_id": "valid/6-4_20260214_171943253_png.rf.14a40784628376a23e6ad45ffd18862b",
+      "status": "defective",
+      "candidate_masks": 2,
+      "sam2_predicted_iou": [
+        0.811243,
+        0.701182
+      ]
+    }
+  ]
+}

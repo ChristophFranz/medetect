@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-21T09:53:50+00:00",
+  "status": "human_approved",
+  "human_review": {
+    "reviewer": "Christoph",
+    "reviewed_on": "2026-10-21",
+    "decision": "approved",
+    "scope": "all selected test images contain the working tip and remain visually valid; proposed training-only augmentation strengths preserve the labels",
+    "augmentation_strengths": "approved"
+  },
+  "model": {
+    "architecture": "resnet50_frozen_coco_backbone",
+    "initialization": "maskrcnn_resnet50_fpn_v2_coco",
+    "local_checkpoint": "/Users/christophcuan/.cache/torch/hub/checkpoints/maskrcnn_resnet50_fpn_v2_coco-73cbd019.pth"
+  },
+  "device": "cpu",
+  "seed": 42,
+  "dataset_sha256": "ea91d8ff682c34d875e63bed0c1aeb0fd042cbe33d9a7addc7911e7807cb2f27",
+  "config": "ml/configs/endpoint_selector.yaml",
+  "config_sha256": "e2e4f9a1d2e8612b235620bc80dcc261c0ed438867284ad093ab0e9626c6cc8c",
+  "source_checkpoint_sha256": "73cbd0190fcbe3ba339921fbce2c3a0b6bb9126c9a133c85e43a2a8e060a109e",
+  "best_epoch": 1,
+  "threshold_selected_on_validation": 0.4876754879951477,
+  "validation": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "f1": 1.0,
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 41,
+      "fp": 0,
+      "fn": 0,
+      "tp": 41
+    }
+  },
+  "validation_pair_selection": {
+    "source_instruments": 41,
+    "correct": 41,
+    "accuracy": 1.0,
+    "errors": []
+  },
+  "test": {
+    "accuracy": 0.9791666666666666,
+    "precision": 1.0,
+    "sensitivity": 0.9583333333333334,
+    "specificity": 1.0,
+    "f1": 0.9787234042553191,
+    "pr_auc": 0.9999999999999999,
+    "roc_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 24,
+      "fp": 0,
+      "fn": 1,
+      "tp": 23
+    }
+  },
+  "test_pair_selection": {
+    "source_instruments": 24,
+    "correct": 24,
+    "accuracy": 1.0,
+    "errors": []
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6733834343667356,
+      "validation_threshold": 0.4876754879951477,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 41,
+        "fp": 0,
+        "fn": 0,
+        "tp": 41
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6334184785807355,
+      "validation_threshold": 0.5022128820419312,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 41,
+        "fp": 0,
+        "fn": 0,
+        "tp": 41
+      }
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.593835629291416,
+      "validation_threshold": 0.4964912235736847,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 41,
+        "fp": 0,
+        "fn": 0,
+        "tp": 41
+      }
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.5558785718420277,
+      "validation_threshold": 0.5025246739387512,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 41,
+        "fp": 0,
+        "fn": 0,
+        "tp": 41
+      }
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.5206663088398691,
+      "validation_threshold": 0.48964154720306396,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 41,
+        "fp": 0,
+        "fn": 0,
+        "tp": 41
+      }
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.4992156628496158,
+      "validation_threshold": 0.48182499408721924,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "pr_auc": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 41,
+        "fp": 0,
+        "fn": 0,
+        "tp": 41
+      }
+    }
+  ],
+  "elapsed_seconds": 253.3913850830868,
+  "trainable_parameters": 4098,
+  "total_parameters": 23512130,
+  "checkpoint": "ml/runs/endpoint_selector/v1/best.pt",
+  "checkpoint_sha256": "79bd6dd9d77cefed55811854faed03b9671579b339eee68fe9072946896cc740",
+  "test_predictions": "ml/runs/endpoint_selector/v1/test_predictions.jsonl",
+  "test_predictions_sha256": "4c5f252f4f4c5d7aa746074c42d80f1ec9627ea4206cf742579fa86010bdd709",
+  "test_pair_selections": "ml/runs/endpoint_selector/v1/test_pair_selections.json",
+  "gallery": "ml/runs/endpoint_selector/v1/gallery/index.html"
+}

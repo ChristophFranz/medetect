@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-15T13:47:14+00:00",
+  "status": "provisional_unreviewed_new_tray_boxes",
+  "checkpoint": "/Users/christophcuan/Desktop/medetect-api/Whole toolbox/runs/detect/train/weights/best.pt",
+  "checkpoint_sha256": "5e855766cfad7bb25037c0edc20b59783f31eea86109ed8df119a0aa7c014dcb",
+  "test_split_used_for_tuning": false,
+  "evaluations": [
+    {
+      "domain": "combined",
+      "precision": 0.8540390093428094,
+      "recall": 0.792943930563925,
+      "map50": 0.842723850305468,
+      "map50_95": 0.5879069886176106,
+      "map50_95_by_class": {
+        "chop phaco": 0.6463766418889627,
+        "forceps macpherson": 0.7274120342196503,
+        "forceps utrata": 0.7149084082584084,
+        "hook sinskey": 0.26293087010342125
+      },
+      "speed_ms_per_image": {
+        "preprocess": 0.466496071090833,
+        "inference": 77.45965576032177,
+        "loss": 5.8526417151803065e-05,
+        "postprocess": 0.2351011942318153
+      }
+    },
+    {
+      "domain": "inherited_tray",
+      "precision": 0.8831469452227608,
+      "recall": 0.870141078446808,
+      "map50": 0.9611221684685047,
+      "map50_95": 0.6561607346821061,
+      "map50_95_by_class": {
+        "chop phaco": 0.6431687431720127,
+        "forceps macpherson": 0.7126845224692747,
+        "forceps utrata": 0.7249664890664891,
+        "hook sinskey": 0.5438231840206482
+      },
+      "speed_ms_per_image": {
+        "preprocess": 0.21568111752947935,
+        "inference": 61.99222757445219,
+        "loss": 4.811087050116979e-05,
+        "postprocess": 0.2978028451952224
+      }
+    },
+    {
+      "domain": "redesigned_tray",
+      "precision": 0.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0,
+      "map50_95_by_class": {
+        "chop phaco": 0.0,
+        "forceps macpherson": 0.0,
+        "forceps utrata": 0.0,
+        "hook sinskey": 0.0
+      },
+      "speed_ms_per_image": {
+        "preprocess": 0.20503125415416434,
+        "inference": 83.26952600327786,
+        "loss": 3.9064616430550814e-05,
+        "postprocess": 0.2589193099993281
+      }
+    }
+  ]
+}

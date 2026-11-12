@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "default_tip_side": "right",
+  "overrides": {
+    "newtray_img_1519_tool1": "left",
+    "newtray_img_1520_tool1": "left",
+    "newtray_img_1521_tool1": "left",
+    "newtray_img_1526_tool1": "left",
+    "newtray_img_1527_tool1": "left",
+    "newtray_img_1528_tool1": "left",
+    "newtray_img_1529_tool1": "left",
+    "newtray_img_1534_tool1": "left",
+    "newtray_img_1535_tool1": "left",
+    "newtray_img_1536_tool1": "left",
+    "newtray_img_1537_tool1": "left",
+    "newtray_img_1542_tool1": "left",
+    "newtray_img_1543_tool1": "left",
+    "newtray_img_1544_tool1": "left",
+    "newtray_img_1545_tool1": "left",
+    "newtray_img_1551_tool1": "left",
+    "newtray_img_1552_tool1": "left",
+    "newtray_img_1553_tool1": "left",
+    "newtray_img_1554_tool1": "left"
+  },
+  "review": {
+    "method": "visual audit of all 226 human-reviewed full-instrument boxes",
+    "status": "agent_audited_pending_human_confirmation",
+    "reason": "The collection contains both left-facing and right-facing Hook Sinskey instruments."
+  }
+}

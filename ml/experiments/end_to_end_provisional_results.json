@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "status": "provisional_unreviewed_linked_new_tray_test",
+  "cohort": {
+    "eligible_instances": 22,
+    "defective": 14,
+    "healthy": 8,
+    "quarantined_before_evaluation": 2
+  },
+  "tool_identification": {
+    "identified": 22,
+    "rate": 1.0
+  },
+  "crop_generation": {
+    "generated": 22,
+    "rate": 1.0
+  },
+  "models": [
+    {
+      "model": "legacy_yolo",
+      "label": "Inherited YOLO",
+      "localization_type": "box",
+      "correct_defect_decisions": 18,
+      "defect_decision_accuracy": 0.8181818181818182,
+      "localized_end_to_end_successes": 6,
+      "localized_end_to_end_rate": 0.2727272727272727,
+      "per_image": [
+        {
+          "image_id": "new__newtray_img_1538_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.24926899051111087,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1540_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.47740161836783657,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1561_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1561_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1562_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.3409324860656118,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1562_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1563_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.8486281769351183,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1563_tool2",
+          "truth": "healthy",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1564_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1564_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1631_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1632_tool1",
+          "truth": "defective",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1633_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.18885336921083215,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1634_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.13297558410398594,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1647_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.1648716717153551,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1647_tool2",
+          "truth": "healthy",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1648_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.34026577038516576,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1648_tool2",
+          "truth": "healthy",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1649_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.29968806424726685,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1649_tool2",
+          "truth": "healthy",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1650_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1650_tool2",
+          "truth": "healthy",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": true
+        }
+      ]
+    },
+    {
+      "model": "detr_detection",
+      "label": "DETR detection",
+      "localization_type": "box",
+      "correct_defect_decisions": 14,
+      "defect_decision_accuracy": 0.6363636363636364,
+      "localized_end_to_end_successes": 0,
+      "localized_end_to_end_rate": 0.0,
+      "per_image": [
+        {
+          "image_id": "new__newtray_img_1538_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.32399827357410055,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1540_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1561_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1561_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1562_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1562_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1563_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1563_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1564_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1564_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1631_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.02286529137942012,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1632_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1633_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1634_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1647_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1647_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1648_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1648_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1649_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1649_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1650_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1650_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        }
+      ]
+    },
+    {
+      "model": "mask_rcnn",
+      "label": "Mask R-CNN",
+      "localization_type": "mask",
+      "correct_defect_decisions": 14,
+      "defect_decision_accuracy": 0.6363636363636364,
+      "localized_end_to_end_successes": 11,
+      "localized_end_to_end_rate": 0.5,
+      "per_image": [
+        {
+          "image_id": "new__newtray_img_1538_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.6847747963584092,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1540_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.49675085826385484,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1561_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.8547636005040268,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1561_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1562_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.7731575848167777,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1562_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1563_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.7398474310074041,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1563_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1564_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.7217176702862784,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1564_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1631_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.28322981366459626,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1632_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.3918956043956044,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1633_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.6215677149125723,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1634_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.8192310066037154,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1647_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.6857212594581401,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1647_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1648_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.5751917702325028,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1648_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1649_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.8284529159053874,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1649_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        },
+        {
+          "image_id": "new__newtray_img_1650_tool1",
+          "truth": "defective",
+          "decision_correct": true,
+          "best_localization_iou": 0.7201997837392513,
+          "localized_success": true
+        },
+        {
+          "image_id": "new__newtray_img_1650_tool2",
+          "truth": "healthy",
+          "decision_correct": false,
+          "best_localization_iou": 0.0,
+          "localized_success": false
+        }
+      ]
+    }
+  ],
+  "definition": "Localized end-to-end success requires a matched tray detection and exported crop; healthy cases require a correct no-defect decision; defective cases require a correct defect decision and at least one predicted box/mask with IoU >= 0.50.",
+  "limitations": [
+    "New-tray detector boxes and SAM2 reference masks are unreviewed.",
+    "Two defective test instances were quarantined before this 22-instance cohort was formed.",
+    "YOLO and DETR localization is box-based; only Mask R-CNN localization is mask-based."
+  ]
+}

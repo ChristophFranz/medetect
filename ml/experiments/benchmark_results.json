@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "event": "controlled_benchmark",
+  "date": "2026-09-25",
+  "tool": "hook_sinskey",
+  "dataset_version": "hook_sinskey_segmentation_v1",
+  "dataset_sha256": "771a2e13e818ac6c6d70a06c9b9973b5fd701a415373f0dc265b20e37c1eb74e",
+  "threshold_freeze": "ml/experiments/frozen_thresholds.json",
+  "threshold_freeze_sha256": "d02b011aa00ef8a5e23233ea4854a5ace3e34c79b46181ae027ca4787d57ee39",
+  "test_images": 24,
+  "test_evaluations_per_model": 1,
+  "models": [
+    {
+      "schema_version": 1,
+      "event": "frozen_test_evaluation",
+      "model": "legacy_yolo",
+      "test_images": 24,
+      "score_threshold": 0.1,
+      "minimum_mask_area": null,
+      "classification": {
+        "accuracy": 0.875,
+        "precision": 0.8571428571428571,
+        "sensitivity": 1.0,
+        "specificity": 0.5,
+        "f1": 0.9230769230769231,
+        "pr_auc": 0.9359827016044768,
+        "roc_auc": 0.8333333333333334,
+        "confusion_matrix": {
+          "tn": 3,
+          "fp": 3,
+          "fn": 0,
+          "tp": 18
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.7916666666666666,
+          0.9583333333333334
+        ],
+        "precision": [
+          0.782608695652174,
+          0.9473684210526315
+        ],
+        "sensitivity": [
+          1.0,
+          1.0
+        ],
+        "specificity": [
+          0.16666666666666666,
+          0.8333333333333334
+        ],
+        "f1": [
+          0.8780487804878049,
+          0.972972972972973
+        ],
+        "pr_auc": [
+          0.8554180836828863,
+          1.0
+        ],
+        "roc_auc": [
+          0.6111111111111112,
+          1.0
+        ]
+      },
+      "detection": {
+        "map50_95": 0.25825612918434704,
+        "ap50": 0.6051408987052551,
+        "ap75": 0.2306400282885431
+      },
+      "operational": {
+        "median_latency_ms": 17.697833507554606,
+        "p95_latency_ms": 26.76602050487417,
+        "model_size_bytes": 6255786,
+        "parameter_count": 3011238,
+        "peak_driver_memory_bytes": 112574464,
+        "device": "mps"
+      },
+      "prediction_records": "ml/runs/benchmark/legacy_yolo/test_predictions.jsonl",
+      "test_split_accessed_once": true,
+      "status": "complete",
+      "test_summary_sha256": "64bb84801b5371b451f682d893c28ec482d786e6b293cbcc22f5b2f6d3ffe1eb",
+      "test_predictions_sha256": "f3dd95887cc280da46ad85449edb9cf75ab327cf902d2886cb1fe91decee53d6"
+    },
+    {
+      "schema_version": 1,
+      "event": "frozen_test_evaluation",
+      "model": "detr_detection",
+      "test_images": 24,
+      "score_threshold": 0.09881528466939926,
+      "minimum_mask_area": null,
+      "classification": {
+        "accuracy": 0.7083333333333334,
+        "precision": 0.7391304347826086,
+        "sensitivity": 0.9444444444444444,
+        "specificity": 0.0,
+        "f1": 0.8292682926829268,
+        "pr_auc": 0.8358605642532371,
+        "roc_auc": 0.5648148148148148,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 6,
+          "fn": 1,
+          "tp": 17
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.625,
+          0.75
+        ],
+        "precision": [
+          0.7142857142857143,
+          0.75
+        ],
+        "sensitivity": [
+          0.8333333333333334,
+          1.0
+        ],
+        "specificity": [
+          0.0,
+          0.0
+        ],
+        "f1": [
+          0.7692307692307693,
+          0.8571428571428571
+        ],
+        "pr_auc": [
+          0.7191591581671422,
+          0.9380346376227382
+        ],
+        "roc_auc": [
+          0.2962962962962963,
+          0.8055555555555556
+        ]
+      },
+      "detection": {
+        "map50_95": 0.044539411923737594,
+        "ap50": 0.14035749259071442,
+        "ap75": 0.004836391284790482
+      },
+      "operational": {
+        "median_latency_ms": 43.316145485732704,
+        "p95_latency_ms": 50.41935168264899,
+        "model_size_bytes": 166590163,
+        "parameter_count": 41501638,
+        "peak_driver_memory_bytes": 1461649408,
+        "device": "mps"
+      },
+      "prediction_records": "ml/runs/benchmark/detr_detection/test_predictions.jsonl",
+      "test_split_accessed_once": true,
+      "status": "complete",
+      "test_summary_sha256": "367d31d75435ab3bf3d5b70556f24ea151b66b0cbcb1fdcce6bb509e0b4b2259",
+      "test_predictions_sha256": "1bc4037da8dc25acc34c70942419f1691b22cb2c39a50657e0f94922d21a20fb"
+    },
+    {
+      "schema_version": 1,
+      "event": "frozen_test_evaluation",
+      "model": "detr_segmentation",
+      "test_images": 24,
+      "score_threshold": 0.0748167335987091,
+      "minimum_mask_area": 1,
+      "classification": {
+        "accuracy": 0.75,
+        "precision": 0.75,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "f1": 0.8571428571428571,
+        "pr_auc": 0.8229895846468849,
+        "roc_auc": 0.6018518518518519,
+        "confusion_matrix": {
+          "tn": 0,
+          "fp": 6,
+          "fn": 0,
+          "tp": 18
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.75,
+          0.75
+        ],
+        "precision": [
+          0.75,
+          0.75
+        ],
+        "sensitivity": [
+          1.0,
+          1.0
+        ],
+        "specificity": [
+          0.0,
+          0.0
+        ],
+        "f1": [
+          0.8571428571428571,
+          0.8571428571428571
+        ],
+        "pr_auc": [
+          0.693383039210245,
+          0.9491925505718719
+        ],
+        "roc_auc": [
+          0.28703703703703703,
+          0.8703703703703703
+        ]
+      },
+      "segmentation": {
+        "map50_95": 0.12759945058360625,
+        "ap50": 0.30815500125321255,
+        "ap75": 0.03153183059781225,
+        "iou": 0.5204884286754599,
+        "dice": 0.675769828534523,
+        "overlap_scope": "defective test images; union of instances per image"
+      },
+      "operational": {
+        "median_latency_ms": 430.4150835087057,
+        "p95_latency_ms": 496.03187507018447,
+        "model_size_bytes": 171939123,
+        "parameter_count": 42835295,
+        "peak_driver_memory_bytes": 3642818560,
+        "device": "mps"
+      },
+      "prediction_records": "ml/runs/benchmark/detr_segmentation/test_predictions.jsonl",
+      "test_split_accessed_once": true,
+      "status": "complete",
+      "test_summary_sha256": "105f7a20fa1e06d8a9c38b05cff7d6ef8e8325776a5ddf5262569a0a0601c596",
+      "test_predictions_sha256": "af1c462a2dcc8fc439e979410426488cab961fda7b8a16f87bf9688bd2e4b3a5"
+    },
+    {
+      "schema_version": 1,
+      "event": "frozen_test_evaluation",
+      "model": "mask_rcnn",
+      "test_images": 24,
+      "score_threshold": 0.2375008463859558,
+      "minimum_mask_area": 1,
+      "classification": {
+        "accuracy": 0.875,
+        "precision": 0.8571428571428571,
+        "sensitivity": 1.0,
+        "specificity": 0.5,
+        "f1": 0.9230769230769231,
+        "pr_auc": 0.9407311053144387,
+        "roc_auc": 0.851851851851852,
+        "confusion_matrix": {
+          "tn": 3,
+          "fp": 3,
+          "fn": 0,
+          "tp": 18
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.7916666666666666,
+          0.9583333333333334
+        ],
+        "precision": [
+          0.782608695652174,
+          0.9473684210526315
+        ],
+        "sensitivity": [
+          1.0,
+          1.0
+        ],
+        "specificity": [
+          0.16666666666666666,
+          0.8333333333333334
+        ],
+        "f1": [
+          0.8780487804878049,
+          0.972972972972973
+        ],
+        "pr_auc": [
+          0.8512331504961739,
+          1.0
+        ],
+        "roc_auc": [
+          0.6201388888888891,
+          1.0
+        ]
+      },
+      "segmentation": {
+        "map50_95": 0.3621530297572134,
+        "ap50": 0.7300576982625783,
+        "ap75": 0.2833914876281904,
+        "iou": 0.6160955157562049,
+        "dice": 0.7517103809476313,
+        "overlap_scope": "defective test images; union of instances per image"
+      },
+      "operational": {
+        "median_latency_ms": 185.8548960299231,
+        "p95_latency_ms": 299.25452860479703,
+        "model_size_bytes": 183889149,
+        "parameter_count": 45880411,
+        "peak_driver_memory_bytes": 1296515072,
+        "device": "mps"
+      },
+      "prediction_records": "ml/runs/benchmark/mask_rcnn/test_predictions.jsonl",
+      "test_split_accessed_once": true,
+      "status": "complete",
+      "test_summary_sha256": "c8b490c55741671aa913a69dc7cd15c313c29687a8e127a459bb827d0c9c4371",
+      "test_predictions_sha256": "a52d98e5987cf964a17987880a7a1e30ce2f6aa7f271b8651f6f3e4dad891fc7"
+    }
+  ],
+  "error_gallery": "ml/runs/benchmark/error_gallery/index.html",
+  "error_count": 19,
+  "status": "awaiting_human_review"
+}

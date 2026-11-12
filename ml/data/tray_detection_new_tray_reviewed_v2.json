@@ -1,0 +1,1533 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-23T03:23:47+00:00",
+  "dataset_version": "hook_sinskey_tray_detection_new_tray_reviewed_v2",
+  "status": "human_reviewed_frozen",
+  "reviewer": "Christoph",
+  "reviewed_on": "2026-10-20",
+  "source_coco": "ml/annotation/local/new_tray_detection_reviewed/annotations/instances_default.json",
+  "source_coco_sha256": "d583d9cdcf59b7214ffa9650d2265434d8f041a06131dd952a1e954785429510",
+  "local_path": "ml/data/local/tray_detection/new_tray_reviewed_v2",
+  "counts": {
+    "test_boxes": 24,
+    "test_images": 16,
+    "train_boxes": 161,
+    "train_images": 109,
+    "valid_boxes": 41,
+    "valid_images": 26
+  },
+  "tree_sha256": "0efdbad64f08e72b0acf9e2429ae064e5581aa5894ef5d81e22f70b2b1c907f1",
+  "test_split_frozen": true,
+  "records": [
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1538.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1538.jpeg",
+      "image_sha256": "0f294e78f3952ee2fc57479d25a3f2508fb5a7085542ce3a86e306d7fd6582b4",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1538.txt",
+      "label_sha256": "ef53ed79c63a2e4ff7ed3f33dd0deaa315284ed3a4bde7686966eca189f4eea4",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-04"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1539.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1539.jpeg",
+      "image_sha256": "bacef0d5fbbce4e2c4a68c66421c4f55c0db06b4a245f609d6c7bbb0098775e1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1539.txt",
+      "label_sha256": "3412b7a90cc5e11334d3523e3ac60a3ac1e7e45eda8cb520f7f10798cf358602",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-04"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1540.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1540.jpeg",
+      "image_sha256": "6ad19709b5fb9b3ca6f0e083012d0b890295bfaffbc796236ad6e08ca829355a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1540.txt",
+      "label_sha256": "06bc4430e75dc4bc46c692252b48bde94915cfde652b5d71ef65d7d88f59efa7",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-04"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1541.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1541.jpeg",
+      "image_sha256": "f82f3ecc6e402aeab02af812cd4eff3b7205cf9fc5050a05fbbd64e64a9d3ad8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1541.txt",
+      "label_sha256": "a6f4fa921e0b9d1e03a7075b265d206314d7e4d4ae69aa3db77d8e0c0aceb654",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-04"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1631.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1631.jpeg",
+      "image_sha256": "0c41e1319f2d9350927270ac196d0dab93c82aea1461dcf883e1046dfc5da141",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1631.txt",
+      "label_sha256": "77fed7b0efea506e8bb7b26a40872721b8a85a63d3647acccfecad9ff7734584",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-07"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1632.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1632.jpeg",
+      "image_sha256": "e033261e7acacbe3a180d85829e5626a53d57da0338cea4ed673a95ac46cd28a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1632.txt",
+      "label_sha256": "ef5f84b9a8431a0f52e302fe25d3ee5a22c9a0051835bb22fd1f6ff0e8056f90",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-07"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1633.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1633.jpeg",
+      "image_sha256": "041b0d09c8b351056f229fc539f4310e9fa698deb494b5c331a216cb9870d4c9",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1633.txt",
+      "label_sha256": "e81d0c15de8c1ac036a771a4a5771e02538c91b3dc10524f855c263f274bc7c3",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-07"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1634.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1634.jpeg",
+      "image_sha256": "20e0d8462373c9022ba3ce8b187006383a615f35273e905625750eaf9df83451",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1634.txt",
+      "label_sha256": "ea3f35a76a0f98a7c9e54ad87d56e0c12d94aaf3af757a40698763f5af3752b6",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-07"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1561.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1561.jpeg",
+      "image_sha256": "c5095db1d67562f0180d04743e5d465cf0340ba4f9d822a2c20e6d8aedd30550",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1561.txt",
+      "label_sha256": "f93dc5f3004e3fce7b81f7d8490ac7646eecdcf79aab3cc7b12e264f553ce3b5",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1562.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1562.jpeg",
+      "image_sha256": "2803d9e8aebb887d61fbb10b40e10aa3d7277260c4f908c858ccfa850dceaea2",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1562.txt",
+      "label_sha256": "429925d31d1d0c72d94d47d32600349afdd265e30208a18dddfe7fdf33d80bd4",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1563.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1563.jpeg",
+      "image_sha256": "6ad74f265efc02158471c65136dbd1dd613ba294041d5b92ca0423b5cf11aa2e",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1563.txt",
+      "label_sha256": "9c88a464917d9acc10182f5cb05520b852f4e9a445050b0134f53c1b3d8caaf4",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1564.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1564.jpeg",
+      "image_sha256": "40485cec132fddaf5d0ff758bc389d4297ff5b3c043618fac05c034652002744",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1564.txt",
+      "label_sha256": "23178d56e448e5dc4e6d029847933268c66c34a7f221110e894558b770d55ebd",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1647.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1647.jpeg",
+      "image_sha256": "1373e99558db3d33ca18e8a01342217bd23e688fc05eb993387db066122ba2b1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1647.txt",
+      "label_sha256": "ee83a6c2c8048a1c206a04b5c07a7c299edd13eb59ad9ab21e6f8ce6bf941116",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1648.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1648.jpeg",
+      "image_sha256": "eb8bac3ac3b8bd994a34617c48d0a5d317382bdaacc6e3563f88423eeb5b91b4",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1648.txt",
+      "label_sha256": "9bc0d350b27065b19960c1eca6aed6315fcf45c9501f8eede87874b39fcfa64e",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1649.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1649.jpeg",
+      "image_sha256": "a504ee1179577ad75dae2fda648ba4698c7731ca5456a2ad773880a8c7b3c5b8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1649.txt",
+      "label_sha256": "298e897d4564555e7b5e32870eeda67fdc83510380e3dcd4bd7d40f0475d4358",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "test",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1650.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/images/IMG_1650.jpeg",
+      "image_sha256": "8a3bd1b51b3aa14d8857f3076d575ca5e170a162d7e95074df307663bae96c52",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/test/labels/IMG_1650.txt",
+      "label_sha256": "cfa580445c29e7404a7d1e22d8e2adb95cc35309494b8577af271c410f278e59",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1526.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1526.jpeg",
+      "image_sha256": "325d97a4cc0f0754333f75b79b646b31a81097100caee6d49709fe8dddf2e934",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1526.txt",
+      "label_sha256": "e946f9cd563cc81147c3774f0fca209128994f489a8f18eb832e653dc4fcb7db",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1527.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1527.jpeg",
+      "image_sha256": "3b349fe4bccda7307fba8cfa6944001078a2fa22e3a16086cc5ca0ca3e17bd79",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1527.txt",
+      "label_sha256": "fb3586006b6eef64c19dd9ee3e7e989e5fd87d91a92e15b4a990045220ddff33",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1528.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1528.jpeg",
+      "image_sha256": "ccd0455388ce0f094339b6e26139f990621bff2dcfa5f30f2dddea50237b5046",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1528.txt",
+      "label_sha256": "99264e780404fd70c0cbc97b4021e0b3294a291548301c977155c52a75731959",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1529.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1529.jpeg",
+      "image_sha256": "799231321ad52b8361c636af2701f65312f1b86e2e5570cf7a6886e2bd50c5aa",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1529.txt",
+      "label_sha256": "8b3478341b67da835432dfeca0258a92e63a904a28d4414e6394167d6f954802",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1530.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1530.jpeg",
+      "image_sha256": "ab202d17fdc341468bee454143f52d246aa303d1ce36d778ff37baecf4b82719",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1530.txt",
+      "label_sha256": "3860054c3d96a34c02b7a87274a43cff153af49326f9d3df8d3175f50a06ce28",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1531.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1531.jpeg",
+      "image_sha256": "e73aca6724ef26afdcb16de57098fabdc8146a41724369ebd01843e818029623",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1531.txt",
+      "label_sha256": "becc740c5ffe44275d04aabf7be38d9916d698169e3c65ab43887c9786ef4766",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1532.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1532.jpeg",
+      "image_sha256": "1d9a08c62d5b00ef161f2ebdd717213d8c4292784882dbe93cdbe4ddf6c71fdc",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1532.txt",
+      "label_sha256": "9027233830f0439176b3f30c5b7f06f315dd05641b4df45cdc41ff4c84bb1e8f",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1533.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1533.jpeg",
+      "image_sha256": "ed2210f8a7c998c847a1cc628c41a3c548dafc64004903f16c963ab2e57fc9e1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1533.txt",
+      "label_sha256": "6c0f2c6b50b34236c03aa206dbb6b611d5e7504ed5546c09a884aacfedef7146",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1534.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1534.jpeg",
+      "image_sha256": "5d9fc065249925ac10a7b37686616997ce846355a03f062bd42a584eea2e0aeb",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1534.txt",
+      "label_sha256": "ff98bc9acde9f575ec7624a8ee6a0aeb7000f1cdc7f79b6979c8e6d11c3b8f53",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1535.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1535.jpeg",
+      "image_sha256": "84ac457fd09c09999b2e9bc784bf910150a963b964fa5c483ed1f3ffdbe89c7f",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1535.txt",
+      "label_sha256": "87a88e8a24f4d55c46fdd74a7f840efc90851ef3e61e326012ad9dd6c56f395f",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1536.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1536.jpeg",
+      "image_sha256": "4ccdca24ca1ab64b96f62efaf390ae19348c77aac924c1c3f41787101800ce08",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1536.txt",
+      "label_sha256": "624e17d9269aeb679b35a9ee0d8d417359433d7698f2df4faee55dc9e692962b",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1537.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1537.jpeg",
+      "image_sha256": "ce063efd053cf30ae210f3272ce20bc1dda790cb3c733e1769921636b2488544",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1537.txt",
+      "label_sha256": "2be7f2f0b8f029ae53bc8bb4a8b52623a4e5371dcaedf234f52d3802e3135f11",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1542.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1542.jpeg",
+      "image_sha256": "b9ea7debacd0de9575317a4b688db4921e1abbb323c9a61981eb74b78e6ad735",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1542.txt",
+      "label_sha256": "6d5737a4dfeb9a185b04b9e09842baac64e01e8f1fd665d8d8fb8f7ddf63af4d",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1543.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1543.jpeg",
+      "image_sha256": "5a7f29e1537dec1461a2d6bc1df15d1a87d2ae98c7ad6cf20886eb64e57abf2e",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1543.txt",
+      "label_sha256": "eb5b4ce01ab1b0abfb665d6c5ed223e56f9478899b642a301f95552baa40ded6",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1544.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1544.jpeg",
+      "image_sha256": "4681f2f5620fce503a0807b5e5fffa336540bb433cea977c1abc930611dd8abe",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1544.txt",
+      "label_sha256": "eca1e548992b92e49445ec3748f5fd46302ed6efe2ff820692939de8e98cc63b",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1545.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1545.jpeg",
+      "image_sha256": "11544fd6dda09d4c172513fd04b05092743b1c470c7b21f3bf3bf8472a0fc5d9",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1545.txt",
+      "label_sha256": "a8dd4f567c86c1ca4fa968e1b5065e1ff706413cf70f6b3400e367a75c607e4b",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1546.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1546.jpeg",
+      "image_sha256": "d0026c899507d6cff6aba0d1fb64b24d510408d0c94b4b8171a24fe28f20f6c2",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1546.txt",
+      "label_sha256": "d21ce8835dfcba24b92c6a11f25a467628450f65e6313ea1ed668fd420f28625",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1547.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1547.jpeg",
+      "image_sha256": "85db48dc99855dc7f509d545cb63d6b6e122502cd4497a5533fd764ec9b629c4",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1547.txt",
+      "label_sha256": "cfed35170b18b8176bcc6b985593961b412d6ed97aadf5e5c92eef0c4018e3be",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1548.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1548.jpeg",
+      "image_sha256": "9f87c5b4db30c1ac5d142d168315f5e09cc39e076c75b3356529309136d6cd4d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1548.txt",
+      "label_sha256": "98004b0c835c3d9f8c5cf63badd9368133c33ec37a44aaeb87e3f2015f70c163",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1549.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1549.jpeg",
+      "image_sha256": "73660b884f2c6fc5c2103ac1df829095de2650d1d341a7f02d2c57c20ae4b4c0",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1549.txt",
+      "label_sha256": "408edc03c985613e6df5a1d4b5c86616c539275ceec719b902858fe6d765ba78",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1551.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1551.jpeg",
+      "image_sha256": "581515ff2995285f5a670509f6448fecd857ab4533ccd80bc7fd8fac18e51b43",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1551.txt",
+      "label_sha256": "f404f56397367c7e4a611934b382dc330aade1ad76c4def0ff54c5feac73dfae",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1552.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1552.jpeg",
+      "image_sha256": "75d0d00dc8d6e1d8f3e40b8d00113c1f464d472014387f82ee8158c363722231",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1552.txt",
+      "label_sha256": "c7bdd7b40b3de2cb3bb415d0f4fd1e02335dca38b6ce78fda523eb2a6e38ebed",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1553.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1553.jpeg",
+      "image_sha256": "e3f64977890f6a7acba5a1a9e56c2b4af665b3b970ed7a54f543432386aab825",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1553.txt",
+      "label_sha256": "1efcf78f81298d368c9cff742958ab581bac62d0e5096533a343acd75a1d6d97",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1554.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1554.jpeg",
+      "image_sha256": "2f5f10e6635d3bfa5aae94baa68dd6a2ddc6057dffc4c94f47b93e56a2097a03",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1554.txt",
+      "label_sha256": "7d237404475ac30f231b0f32d3b35449c4a20b4355350d994eb444d699b753be",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1555.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1555.jpeg",
+      "image_sha256": "f52772f1c826a744732afe3ad275460072914fe2452196bfa7d77b3ab62dee43",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1555.txt",
+      "label_sha256": "44baa080a274408e601e18644c5154fdf6468093620ce5c6970a81a991799033",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-08"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1667.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1667.jpeg",
+      "image_sha256": "0ccd54e083c7d320fc7676159be957dd54824a63877f4792f6772085e26f8cf8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1667.txt",
+      "label_sha256": "5a4a66053550d24af35ba954cc0bebea92c57934b1c579ad7113070afa204da0",
+      "boxes": 2,
+      "capture_group": "One Tool Dry/Defect/burst-08"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1668.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1668.jpeg",
+      "image_sha256": "895112201cb70a34b9635be7493c5e5bab9df627b4b4d7ca4c7c62b1f294e03c",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1668.txt",
+      "label_sha256": "20e8f96d93bd1894982ed2d773b38b89bfdbd58b752d5a8f7b5a9db5e71ff05b",
+      "boxes": 2,
+      "capture_group": "One Tool Dry/Defect/burst-08"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1670.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1670.jpeg",
+      "image_sha256": "45e8e358d9c6bde5b3155b0bf20a65f219f4aa67719dd2ee1b288fdf139a5d02",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1670.txt",
+      "label_sha256": "71a9d187325cb884aa74d2a56a14ec67def72b07dab1bf027c2882acfa183835",
+      "boxes": 2,
+      "capture_group": "One Tool Dry/Defect/burst-08"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Non-Defect/IMG_1516.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1516.jpeg",
+      "image_sha256": "8debae910ef6aee082c0b44ebd118598aaafec2e6bfd12ff0448218d585e9bbb",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1516.txt",
+      "label_sha256": "cfbc2519d967fe5a6bbcaef83196791ca521b25ff33ae5f099c12be6bf3b23ae",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Non-Defect/IMG_1517.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1517.jpeg",
+      "image_sha256": "d43505e904fc87dfd79e86278ec82fe4f3aa0934f05c5f31cd46ea5aeae5972b",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1517.txt",
+      "label_sha256": "142d39dd16d26a6a427998cdf9257a7f9b15f77afa3d63e9b6cc7402f96f700f",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Non-Defect/IMG_1519.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1519.jpeg",
+      "image_sha256": "45203e74e28d42b4ed96936c2b75722e0293496318826d426fb1a225990d62b1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1519.txt",
+      "label_sha256": "5e16a22d1888bbac3b2116ad1716696e1cbfc8d827356882697c5282ec49b99a",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Dry/Non-Defect/IMG_1520.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1520.jpeg",
+      "image_sha256": "5aae9dee66e6890cd28e93f14fe16de1d03b7f86b9f8aae18492ae0528788187",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1520.txt",
+      "label_sha256": "39eeee175c55f1cfba7c085cc7d09d1478c6b7478678ea42a781c81106e75755",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1603.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1603.jpeg",
+      "image_sha256": "af880ea54f62e8f12a7e60c829647b405cdda0635b14d3e3e5e5f0a50f569cbe",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1603.txt",
+      "label_sha256": "4b2ddd131eaf59c5f6f49b03191b1019acd74a2dfcb3c2cf8e0e819a302a87cc",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1604.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1604.jpeg",
+      "image_sha256": "16efdc9d44e59b6ca18470065cadb5dd2d30848f061c75913b3f547c015255ec",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1604.txt",
+      "label_sha256": "b0701f1859d14b5c97a97541242376d4a104c61574a5e9304cdbd735de4014d6",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1605.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1605.jpeg",
+      "image_sha256": "a87ba1c9385bca3bd7c50b5899db712078f6f37e9496c6b6f8a846743bcc0abf",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1605.txt",
+      "label_sha256": "416a92d6841e9c47da1f5239401cf2b20e587a93e3a0e622064f83dd7c6c7f73",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1606.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1606.jpeg",
+      "image_sha256": "f51bb726f32e1449e751b61fb739a9a71c1079d3e57e17e360f100a958cf0198",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1606.txt",
+      "label_sha256": "dbd6dd6f4b60073d349e3c8b2dbce6d447ee55af3832bb0f0da2619d160718f8",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1607.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1607.jpeg",
+      "image_sha256": "c1463918ec2d7c689b16a21d7bb00b5ed1d4eb2295bb0b4ae5487cc513b32ad0",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1607.txt",
+      "label_sha256": "788c9d6aa7776f89f24ad9bdb3704ae520eff8e5d898d3bfcccaea29aaa8341a",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1608.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1608.jpeg",
+      "image_sha256": "8ad8b662c82e2bc064e989d93a97dc239d81da990ea5a06d36863cdb70581053",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1608.txt",
+      "label_sha256": "1c3d114f5c45ca2b8f771e31115eb732dd3c7b924ce8ba35dee30dcdf57eabbf",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1609.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1609.jpeg",
+      "image_sha256": "62b73e61dc22ad9de820bd4779fbaffcc08160f753e8617e00ea12c72996faba",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1609.txt",
+      "label_sha256": "75ebe03f71996e45a8fe01c6907610af7c8b6ff871533b05fc8d58d71f2935e5",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1610.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1610.jpeg",
+      "image_sha256": "a410030ad08fefa6154b3069d7a650e1e52dcdd4b849fb62ff5e8ee00d527a82",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1610.txt",
+      "label_sha256": "b512014ac6171370216dffec450c21b3dae925ce6711553e81b6b3b99187aacc",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1615.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1615.jpeg",
+      "image_sha256": "1202bcab7c83c7147df988e7e798d8e9893daad1572cbd05a40634c2b300f4bc",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1615.txt",
+      "label_sha256": "62978a5a390d9359d140ab6c3c87d1ecd3dba47ae42facc91e3a91ef7d174d55",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1616.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1616.jpeg",
+      "image_sha256": "29407639b2118dd6c6cd2ab4b76f7330ba9d3365d54d31effcfdbfbab3e30958",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1616.txt",
+      "label_sha256": "9c7587605ef6a8c552f867dd0e9cbd6f9cf35a54b54e0e29f61b3ba98a5d9b62",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1617.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1617.jpeg",
+      "image_sha256": "97c069fa3482fcd166921ca120f51a0782c35f5a434385ba7b4878fd4395f4e8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1617.txt",
+      "label_sha256": "1624bc66114d9c24b66712b794042088a4b7fb03e4e76e5e1e9ff0d4693853ab",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1618.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1618.jpeg",
+      "image_sha256": "58028d43b9890001bdf4a839ac54dd8af39bbef5d52573ee4bd003be0f8206c6",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1618.txt",
+      "label_sha256": "611ceba86496de6fede4d4ee64cbb724535abbde4af6f4ac303809fc7cff7dd2",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1619.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1619.jpeg",
+      "image_sha256": "c00182adbc51a00106dcfc95fe31a5ba6279be8a7f40d128a90dbf14d1586ca8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1619.txt",
+      "label_sha256": "1f1b25d3a23e1771adaf8f8550ef002ba7d8b7ab27e93afa16b0bc7b7b30f304",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1620.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1620.jpeg",
+      "image_sha256": "0a6a951095a4781e10af67729acf85ec9b4a19f955473c0f318143d68385a5f3",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1620.txt",
+      "label_sha256": "8b5ea5b21b45b7721081c020776d6576fbfa5e049470f91cb0d8f5046316d41d",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1621.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1621.jpeg",
+      "image_sha256": "78685e77399ff4b2577111bcf598f92c3384414ebc1c29249149b9425985eba9",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1621.txt",
+      "label_sha256": "135d8c00c66cc8b380a466880ac917524bffaf8ac5b65463b243820c5426eb44",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1622.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1622.jpeg",
+      "image_sha256": "db441b00116817cc9cbaaa6adfa8abe2ad20352b66d7e9d3c1cf0aa00261f720",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1622.txt",
+      "label_sha256": "26a036363351a83f2899a7a7432d67081975def8e96d2bc48d02d9d3c2dfd457",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1623.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1623.jpeg",
+      "image_sha256": "e0302b7af2757bacd6c55808db36fe297569e25268d27a0e8165dacc89d307e1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1623.txt",
+      "label_sha256": "f94ef8d84b1707e5dba3ea5386e8dbb4581ed01f1686a358f425784737184b49",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1624.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1624.jpeg",
+      "image_sha256": "296a716920c5c23227d64f11db4e3b82aaa76c9c2515515559c797b8b2382539",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1624.txt",
+      "label_sha256": "c1dff3b0af3782133a7975a532fa42b2181f68393da43e6efef5a5e1ad11d1d4",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1625.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1625.jpeg",
+      "image_sha256": "1d5677165a87630755033e02e0a94b06d696a57739a64f282477d91dd5cc36b8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1625.txt",
+      "label_sha256": "6f95859131804f92e1362f5ce924572f86b1acf9568c505033a8d9739f12c116",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1626.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1626.jpeg",
+      "image_sha256": "70ef339adeaabe6d4f49b1b6ad0603f8c1a21b1c00986b1ac33d9e0c536dbe57",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1626.txt",
+      "label_sha256": "da5476dfaad762b6409ec0b5f759d1b69fd9c2bf8d1a3014c626742baccf0ce4",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1627.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1627.jpeg",
+      "image_sha256": "002ad2dffdf832ed0a15e6439d9aac94b8edeb53ab0a1fbe877996aba59d0877",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1627.txt",
+      "label_sha256": "977205d0b2c82089320c95cc3138d296444872bc6d885452d2d3bfc1bd986d11",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1628.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1628.jpeg",
+      "image_sha256": "d532bcc2656ea04db27d062001142f9f69c59f8858cb869798d08743e3350ee8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1628.txt",
+      "label_sha256": "f706b91ecf18b04cc40df7d4ac51eb3d5bcb4f670c8f3714ca51b32c473bae52",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1629.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1629.jpeg",
+      "image_sha256": "2284edb49d9fdaf9fd364c662117cc583f74bc791f2d0115e8e0f916b35e5c41",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1629.txt",
+      "label_sha256": "920971718952f393fbf49bca24d8499a129e7978ae9fa77c4f333675a1fbfad0",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1630.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1630.jpeg",
+      "image_sha256": "398cdabdb860fddf8fe4e223f56364ad1854c87fa02c8b7722d94d4c641db732",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1630.txt",
+      "label_sha256": "43e1d2895adcbbd974296d846a8ddcce9d75c8610eb7db02ea6a5afbf02eb0d5",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Non-Defect/IMG_1597.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1597.jpeg",
+      "image_sha256": "8784c574c8eecf9706c003a0a35ecd1e8e41bcbb68ef18712b1f4354b9524c7d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1597.txt",
+      "label_sha256": "d8e20d9cae61fa849c1e8e7b324931d798bb991d4b4a395703f8bebbcaf3e542",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Non-Defect/IMG_1598.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1598.jpeg",
+      "image_sha256": "c50c688e699199d47a1e47e037af2a343dcde0c0ecd3d6fb386323f68cf40ce0",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1598.txt",
+      "label_sha256": "176c731bef0f06707cc5b902405dedc6f0028c04f711942ab28f8630060bb3bc",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Non-Defect/IMG_1599.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1599.jpeg",
+      "image_sha256": "c083eb7e421edfda33bffce2d3f33e2b654354527d58c6727309c9710e17aec5",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1599.txt",
+      "label_sha256": "69dd520c43a4719e0b1b6202224db84258a0009fb014cdf51a757c78dfb81e34",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "One Tool Wet/Non-Defect/IMG_1600.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1600.jpeg",
+      "image_sha256": "a9515de504ce55d1e43504caf0912dbd4958df68870effaaba34a85e849e47fb",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1600.txt",
+      "label_sha256": "8895d3b53276bd80c92e7a8e009c673f3b8fe50e2823e7918eb6df8a6de55af5",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Non-Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1590.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1590.jpeg",
+      "image_sha256": "ac2d4791aa8de1f30c4af6a934cb142d56fc9c9621f04e9dbafeff16039cf5f0",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1590.txt",
+      "label_sha256": "4f9ee1296d23900763b1c2cd7143d1966b4c6c54d9576ede45159d4e0749a372",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1591.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1591.jpeg",
+      "image_sha256": "0c3c2b88ea783f21bc249daec1ef165a26c14051d021bfa130a56eb989e7d087",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1591.txt",
+      "label_sha256": "d1a9b2e967da52dcef2fcf48585d1e68b90ea95d977c6d36cb72cba668333d9b",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1592.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1592.jpeg",
+      "image_sha256": "2380a75de9ccd695479f1c6063dad9be831f9762942f010237ee0bf8ea7b024d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1592.txt",
+      "label_sha256": "6a494f38c39fdbe80253744d889d5bdd924957e74504cd97bd52f6c5c993b341",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1593.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1593.jpeg",
+      "image_sha256": "af71704d4280f475a0eb11507ff5f7ac13fdc7d6579065cde2e130f7de4b6378",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1593.txt",
+      "label_sha256": "0b12ec1dda5b0cb51ab3721315beef6344a59a6c093f35c9cba929c80aafee40",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1565.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1565.jpeg",
+      "image_sha256": "d3eeb35717b5817bb8b095efc09a4a271ce4faea21be42fa7db93d93629e0050",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1565.txt",
+      "label_sha256": "c9e120a7b71e6ce85b99a2f82cb1d62e45ee7a3a64201e7794c3edc985dbae88",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1566.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1566.jpeg",
+      "image_sha256": "5730b7e2fdc6427c9eb14661ecdad743d6f2692cafb21283af2c412fd7f86333",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1566.txt",
+      "label_sha256": "2e8b7434ca0c4ed2175a0b8761baafd5644a931ed9c0ae59cd5f1919e17e7c22",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1567.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1567.jpeg",
+      "image_sha256": "c0ca943a7ed574d4c8cf76ef5ff3c3b962f4bf7ca3c49fe3829f23080ba543b5",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1567.txt",
+      "label_sha256": "0cd4199f46c105570c9214b280efabecd529d23e08d4b0b91dfb4b61485cc90d",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1568.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1568.jpeg",
+      "image_sha256": "1dedc8e1b4507148abcd61b0c4561d9c5dee9b90c6fcd2853cd9962d8bbd8e15",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1568.txt",
+      "label_sha256": "8e98d0a2098bb65a6509b63a66a2290e9055ee6e846459db31461ff9607a11de",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1569.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1569.jpeg",
+      "image_sha256": "83352007a4688d7758b7f4a2604477914f71228e875fead3e7941b8943cee487",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1569.txt",
+      "label_sha256": "d0aba6eb1ac4beb50d4a9013d615e93d2788556d5582c728c82959abb2376348",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1570.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1570.jpeg",
+      "image_sha256": "51c424dfd6a18972c7b857c847d74589c7b9d74d2e168b3dbf9ed946796da10d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1570.txt",
+      "label_sha256": "9f900f38d55c7e3c2338fd88558743f3d5ad1625b7be832691422276a027ff34",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1571.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1571.jpeg",
+      "image_sha256": "cd8d26318975fabc873c2cdce38980fae9e78656bd6c85b3290ee385cb26ce13",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1571.txt",
+      "label_sha256": "778274d66500f4d5b9a5d0f52540b3c5e99250bd546cea6ad27d324001e6dc21",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1572.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1572.jpeg",
+      "image_sha256": "c354e6af9d26a115b9b71a367f66d093ccdd3669e07e3beed982a3327957e2dc",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1572.txt",
+      "label_sha256": "fbfe4b6fbed789113daaadeff0307c629ce942317190c643743e8ac0881ecbec",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-03"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1573.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1573.jpeg",
+      "image_sha256": "dfded9ad70efa77214aec4ccb76daf64c0af62834fd7864534fb8ded6a249801",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1573.txt",
+      "label_sha256": "e676e98dfca94f8356c28f86b8c02d8dee371bb8d39316a6e483226f4280197f",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1574.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1574.jpeg",
+      "image_sha256": "a5c81b3fcd33cd45e57b5d0771aad0ff79fe72e21d04eb1119ea613a40382e86",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1574.txt",
+      "label_sha256": "47544c40ee871d9054a9558f008cff8c8499ce5a310c984ff6e15f8795b666cb",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1575.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1575.jpeg",
+      "image_sha256": "f62716cd884fe554426ca2271c0d123b541f001f2c70e621afc514c455e9053d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1575.txt",
+      "label_sha256": "3f9accaa79a8de3f175d33af28f7f67a78edf8c0dacdbf26b546efb07b9a26d2",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1576.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1576.jpeg",
+      "image_sha256": "e31f0bbc097751267ca4919f78128ece9c3e5c95eded8a79eab111073f6fa170",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1576.txt",
+      "label_sha256": "c2a9357b3d17a93ccb3fd530f4ce0859de3ffc11c5324f0012832efc09d21fbf",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1577.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1577.jpeg",
+      "image_sha256": "18a512febb1430521f9e5a9be8d1dc969ab3df619e4cc9f7704c7bed6d59bdca",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1577.txt",
+      "label_sha256": "06296bcc31adf17b988cfc5acb6058fdcb15e12e701079ee9d933c2bce554b34",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1578.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1578.jpeg",
+      "image_sha256": "04f0a9e453e073d29d4b748ed825f1d591d1b8d49985ef440b93ac494dffde39",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1578.txt",
+      "label_sha256": "45865bbcf22772d45a4ea10a6d6423a2b8819e39f2dac96df1e1154247dc1ddf",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1579.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1579.jpeg",
+      "image_sha256": "ad153a4f3d38fa3baffa82a9f9c18eeb0460fd7b216739f21b2482aee3785c10",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1579.txt",
+      "label_sha256": "2287daa3f27676d4e730f2bf16d497dcc27561d6804295b851d023eefe2ec2fa",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1580.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1580.jpeg",
+      "image_sha256": "7ea9fd28e0757b9049d0b6c65aabd42d09ecdac35c30b99ac21b2a9d95ce1548",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1580.txt",
+      "label_sha256": "edf39289df3c61dd849801029fb5963b64b2bd5f3bcffd03931e0d12fc69d14b",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1581.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1581.jpeg",
+      "image_sha256": "7ea2e32511e72588ff728fa567acd71d6832f65bc80076a8bfc716f4f4af8b63",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1581.txt",
+      "label_sha256": "142454b60711dd919607acf66701b8b1727441ee161e547e60abb8f2186b0251",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1582.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1582.jpeg",
+      "image_sha256": "9b9db5e4bdd5d07c83f5829381e6a6795feffe6e7305532c0c72a9e341e8b402",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1582.txt",
+      "label_sha256": "f76a4550a5fa6ff4e9b991eb4efc6cf5bb6be25a1b0c097cdda2b17ded77b8bb",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1583.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1583.jpeg",
+      "image_sha256": "25973b029e0c1c697e1233b06a3d1f3a7426bf32176037f8b12b365e88d2ba3a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1583.txt",
+      "label_sha256": "b8de98fd1644118920e332aa80ad54eff09d6515ee0f59d82d52b3b9d867f5ee",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1584.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1584.jpeg",
+      "image_sha256": "5cfd7d4085ef63d4510951e367719f3f8fde428dd0ce459608e940c2d2921601",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1584.txt",
+      "label_sha256": "52e4a39fb464d4e4052e00583890d0fc5b0e825213aa787bc6d0b32b035cb4ca",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1585.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1585.jpeg",
+      "image_sha256": "48f2c83a6e3493cac12bea35397888347f54e03c27209cb19f5d0af37649b152",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1585.txt",
+      "label_sha256": "ee863dd417d17aedb8da3706aa2931d938a85c903f5f86c7338882ddd7da4290",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1586.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1586.jpeg",
+      "image_sha256": "d60e3173b562d9bdc766de0183dee8c4b569c7a6bc9f896221e16603b63a991a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1586.txt",
+      "label_sha256": "c789b745ed2cece6be5eada455bf13a651dcc5db56507b419f359b61192c9dac",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1587.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1587.jpeg",
+      "image_sha256": "7e824afafd0c5978bf69cc4a6f5c966535752d96c9a6b27dd896c3e3c6d86e18",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1587.txt",
+      "label_sha256": "0eda38143067daa9bc5d4924eaaa8a836cb381a70279265c3ff27c0822068b2a",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1588.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1588.jpeg",
+      "image_sha256": "544f69e2a00ae37f05d276f9365cc5cb9bffac8f9dc7363130869b247c6f9553",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1588.txt",
+      "label_sha256": "d4a5735e1df323076115464063f1e823d8792fd88db89c96409ff4f63eae4a52",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-07"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1664.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1664.jpeg",
+      "image_sha256": "140fccf5594be979e9b020809868f1dd3ae3ceafbbe976b066693567af390adc",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1664.txt",
+      "label_sha256": "b1568b3ea007b7c63d1f0b99586a8e1aa211d7bb20be652674fc23629b974450",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1665.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1665.jpeg",
+      "image_sha256": "447c7189329bd8c033c6e499c190cfac3ce2470e60b7683178203f47eff45397",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1665.txt",
+      "label_sha256": "ddd76591bab611674f6ccca5d6c6a22757c08f7994fde4e367a6351e16670904",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1666.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1666.jpeg",
+      "image_sha256": "09c1bd5c986bad7124d75cb3f92ad2ca1cee044c6c80a11f4bea831cb617594d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1666.txt",
+      "label_sha256": "b3bd959ab8a123d473c88340ce33417530f1b1876ba5950a24729b7a8826bad6",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1635.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1635.jpeg",
+      "image_sha256": "4b0920bed746f00ddacaf8f032957c4159d3cbdc8e4e8281c277e5b69a49b242",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1635.txt",
+      "label_sha256": "e6834961a3a51ed16041af35ba6e317bb71a84c8b86a22da685c940167f7c073",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1636.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1636.jpeg",
+      "image_sha256": "8927614bd62c89c09a2b0686d468b7831919e89d7262c0bf141f86a8b04df131",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1636.txt",
+      "label_sha256": "8fa7b3ee4e27e9bb1d403ed35d93628a019b2db2e4490b367cef6acd7dcca9f1",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1637.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1637.jpeg",
+      "image_sha256": "f3dc5beed023e946b1c291c116b27931a43298098d98fff439fd9e7a64e48862",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1637.txt",
+      "label_sha256": "1e646e88d3f0c31103791632da7cb143ffcbb78cd03fc9bfe8a4c1ee3f2c6cdf",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1638.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1638.jpeg",
+      "image_sha256": "c2d5fd6636432f35e12dd035f345f5f76e524702545b22c923cac453383c1d7a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1638.txt",
+      "label_sha256": "6dca9c102523d86d3718b896453b4c65e0425459219cdfffffa1ab113c20477f",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1639.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1639.jpeg",
+      "image_sha256": "0860ba599b6c7ac2a3a20ccaac1ec63f2d6d8b897944eb431eda16b4551f9cc5",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1639.txt",
+      "label_sha256": "1ec7c0ce848c2383fd078190c0139a0eede12c29ff7976d75bfa405122ecf74b",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1640.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1640.jpeg",
+      "image_sha256": "b5ce049f0a1dda5426cc551f80826968310cecadfba40807b4462a0d11420917",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1640.txt",
+      "label_sha256": "7ea648e87cecd76f808ba5322eee00cddf5583073f204a7c17acef46a14d5d50",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1641.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1641.jpeg",
+      "image_sha256": "72bdf3a3a65125cf2e8c5a3bcc7e92d0c923c0a08c8d3b55149626505560266d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1641.txt",
+      "label_sha256": "b153b620bf2158d59c7c1cd63d5b97697bd6e947da162d3d99ad411269922d60",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1642.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1642.jpeg",
+      "image_sha256": "a11c1f87f830090eac4f38af6903e6814accf6be6809fe5f575d79eac6929d07",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1642.txt",
+      "label_sha256": "7e40848766e9440dbcded1598856be6edc3741e4d11e81afc7f6e83fa51107f5",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-01"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1643.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1643.jpeg",
+      "image_sha256": "40696a13545830f47e25050b714275f52b278eac0a4e4d28c6a4f116c5400a4f",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1643.txt",
+      "label_sha256": "2ee749859709a54eb066e66618fb46410622a6956e7dd2ca0f5eb7082b7415ba",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1644.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1644.jpeg",
+      "image_sha256": "f0c7c30fc19d4faadf3fded0ff814d2e40ae7559b4ff49e4b4f4030d11e36769",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1644.txt",
+      "label_sha256": "25551c7cbce1dfb47f9c4bef4cb45fd8e7e019db4ae7a05e65aea2b603407c19",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1645.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1645.jpeg",
+      "image_sha256": "67505c98bda1f1b3496378f6b348204ceb569457b33fef489c4f61ef6ad67ec1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1645.txt",
+      "label_sha256": "21bf8bce3c7105e5b25cc71d48e44b7372751e239257a308f75a8ee598d24dfa",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1646.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1646.jpeg",
+      "image_sha256": "18e7b8a15c3835120161279451f99f8cb15467c8cb6f047002230883e006319a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1646.txt",
+      "label_sha256": "d14b96a34038d7a1e0c306f87a058d0a1d0cd2d338a808a9fe4ad2cdac7fbc08",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-02"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1651.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1651.jpeg",
+      "image_sha256": "2b31d58074678335dbae5a328804fad18fa7d02c001bf1dbf7eea424126de2d8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1651.txt",
+      "label_sha256": "710f13d853ab03f377660f53d00abcd743a4b1e29fd2c1462090ce180c2d6699",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1652.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1652.jpeg",
+      "image_sha256": "0c41c3bfa90b70182b78abae0d668dbe030159f2d6bbc40f7835241c4fecc1ce",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1652.txt",
+      "label_sha256": "77147b170f11737cba10730c32dec27c7025578e3cf22d4aa8035b6886aa99c0",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1653.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1653.jpeg",
+      "image_sha256": "035e01b4446b9b83e93fb5ae2dc7d17508308dea2ec60edd44f065a904130198",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1653.txt",
+      "label_sha256": "96d901959d0bc4041c3ab44025e7a7c36bdd408f810b71ccb23dfc7338b81918",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1654.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1654.jpeg",
+      "image_sha256": "c26b3ee34d0f7bb314b711c1a6d87b771e147e5261f2a348a0c7e11ce864ae32",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1654.txt",
+      "label_sha256": "eecadfaadb25b93a9127f222199e6e4f99ac446389710f9052c72bc45e4b9dc3",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-04"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1659.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1659.jpeg",
+      "image_sha256": "2569572e60eacd69741fb0d05932aab8dbf6665f991c6d088ccccaa6d7dc6e6e",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1659.txt",
+      "label_sha256": "52009a1e855df6600ed5784d1d4ecf4d832af68df21aa75ac6cea79cae0fa207",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-06"
+    },
+    {
+      "split": "train",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1669.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/images/IMG_1669.jpeg",
+      "image_sha256": "b1424935c5fab500fb4cc02ee0475eeefa715936367757c611faf9e9240a042e",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/train/labels/IMG_1669.txt",
+      "label_sha256": "e6c37a9c3251c1cd268f993b643a5668696967d99879826558a248c6c6c27116",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-06"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1522.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1522.jpeg",
+      "image_sha256": "f7e155566000711275224370bcf3e44e2a1907f947a13681728ea22cf8290397",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1522.txt",
+      "label_sha256": "bc56b06290ae4962903031a92fcdfe7b21c1761152391b680229bd568825c5d2",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1523.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1523.jpeg",
+      "image_sha256": "1c0e518f0e4ea957ad23de302c1d1fd41b96fc3e30e848d8184a9a79661d8584",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1523.txt",
+      "label_sha256": "14a42471caaa2081c28098fe21700c1451a0935f4925369fe96fec4ef4032c6b",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1524.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1524.jpeg",
+      "image_sha256": "7117cc9a99eb71b5b667a8ad673eb57f467ad1e8a332b64e612255a28e9c7db6",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1524.txt",
+      "label_sha256": "9e8fcaef9da4f670723fb5d70748dc81443bb062722ad64a526db12300d66b0a",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Dry/Defect/IMG_1525.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1525.jpeg",
+      "image_sha256": "9aa7c2cf94c2677fd90a059926af4a064d1e25b7a93633ac612c7038f3ed91ad",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1525.txt",
+      "label_sha256": "4eeaba03ea0182699ae1b1e583d9f14866713574f39c2d393b6dc5ebdbab7015",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Dry/Non-Defect/IMG_1521.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1521.jpeg",
+      "image_sha256": "882ec1a5f8a6f08d478d5b0c1ad24ba9d58da56dabd0340ce21425a6dd5f5854",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1521.txt",
+      "label_sha256": "4db64198411096967094b17d480bbb45ce2974bb36c768fb5f8aa1d2b821f977",
+      "boxes": 1,
+      "capture_group": "One Tool Dry/Non-Defect/burst-01"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1611.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1611.jpeg",
+      "image_sha256": "d520f18918bb2fae137fb7123d29ae6230316bce8ad9c913597ac790ebcae801",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1611.txt",
+      "label_sha256": "e9a96d510e44a30c52629174e6cee00271c6302aa3a03ba29d6e40a2cecda067",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-02"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1612.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1612.jpeg",
+      "image_sha256": "852b7ac9b92d2eb745b48989e4164ac5b176a3fa3c719ee30613e21d5526b55a",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1612.txt",
+      "label_sha256": "3fdce4fc2a27dc12703a5c104ed6c9df94f9c368a9a33697d154338529d0d020",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-02"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1613.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1613.jpeg",
+      "image_sha256": "495ba21cc2a1c3327c70664dd4a1dbc435f453f0e46ae542b897062152be7737",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1613.txt",
+      "label_sha256": "09f9059c38bd87a0344e60609dbe0493cc08abb37188b4d5cc7e3a6e4939ee07",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-02"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Wet/Defect/IMG_1614.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1614.jpeg",
+      "image_sha256": "fe1eb2a7b4ed135e036fdefc571391f0ad3059fecfd8676567be0da656bf97e3",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1614.txt",
+      "label_sha256": "58571481400dad50b790a51dfe96bafaa204573bb1c7a05bc4b4de1754a81c6f",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Defect/burst-02"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Wet/Non-Defect/IMG_1601.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1601.jpeg",
+      "image_sha256": "3816cc1a05e9c77de842e0738fdac7bf94c302e14d273bbcbcf691ed00f6918e",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1601.txt",
+      "label_sha256": "b11107e27d910475b093c1f258e35d0372543c6db2f37b31320a8a2b4ee8c746",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Non-Defect/burst-01"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "One Tool Wet/Non-Defect/IMG_1602.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1602.jpeg",
+      "image_sha256": "43acfec08e99bc0415dd3dde2b5558606c6828a0b266e90bd077591161dc6618",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1602.txt",
+      "label_sha256": "0b6cd4363d1d16a61e4814fd116b78279f0bb5fab7c7f086a38eef13031fc2f1",
+      "boxes": 1,
+      "capture_group": "One Tool Wet/Non-Defect/burst-01"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1594.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1594.jpeg",
+      "image_sha256": "598acd10bc2e63d451bcc25cdc88c292209176f72ce7df856ded48079f9d9619",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1594.txt",
+      "label_sha256": "b77795a56432f478eb14055fea48ec381be4b1559b72ce04dfcba3e19b6481da",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-01"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1595.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1595.jpeg",
+      "image_sha256": "88f013fa61cbc671ca07d42831806c926d904b87287c2f65e20e814084f0f680",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1595.txt",
+      "label_sha256": "1d93f40bc22fb2b322ddbd305920c96a4de762d3fd70c498db24b3894d0ed2da",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-01"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Defect2/IMG_1596.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1596.jpeg",
+      "image_sha256": "880e88478b7c99c2db3ccb3dd7668128421b7f88e800126280f811204e4d6652",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1596.txt",
+      "label_sha256": "cc73020ce7d3957fe311ce503da4c6a6e6582aa9e0e88fd4cfadf103c52b8f82",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Defect2/burst-01"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1557.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1557.jpeg",
+      "image_sha256": "a13615545496bc957081a3a75a0139116c0568acdbd39b7583f2ca3a244d2c73",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1557.txt",
+      "label_sha256": "3350624525a93d714ec4a838fbd2b7aa160b93ee91ec65343f45d423824c682d",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1558.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1558.jpeg",
+      "image_sha256": "f863483c855b6b40b9722b35e1cbda67bd88dd56126580a411a311469ebcfcc6",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1558.txt",
+      "label_sha256": "9ff41464c524b4b07a1638aee9b0d43208be87f28f61891a9d60fe4f35aa1786",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1559.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1559.jpeg",
+      "image_sha256": "eb60eb1c63bf2a8cb516d570c8efafe9495e7067ab47f5f3218fd18a42ca9678",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1559.txt",
+      "label_sha256": "df12e07b29d242408b277d14ed6b9034de56aa1e9b58cb9b2031dfc5f11242c2",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Dry/Non-Defect + Defect/IMG_1560.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1560.jpeg",
+      "image_sha256": "ce0afa6805cd5ee5b9b3d05f4736b25ac58e7135f28f1da1eeac45457edccfc8",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1560.txt",
+      "label_sha256": "da3c59930f7b80c97d55e630ad70ea3207df612aa16fd2aae9b2a4122c1bd98f",
+      "boxes": 2,
+      "capture_group": "Two Tools Dry/Non-Defect + Defect/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1660.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1660.jpeg",
+      "image_sha256": "7ec8627ccf544059db84401905303e55d39061e4087270b0c1f9c2d66d8aa66d",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1660.txt",
+      "label_sha256": "8e840fef50a4977c0c9a30095bfd02525603af5ac27c8ccc0db1d6d174078709",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1661.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1661.jpeg",
+      "image_sha256": "910740dd5a62a5d0df33474eb641e131feaef4d959c0397501888287636b78e3",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1661.txt",
+      "label_sha256": "150b4f6dcfd4cd39d73bba3b44fa74d9609aa119dadf2c839568d2dd1ef89ffa",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1662.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1662.jpeg",
+      "image_sha256": "1ef1b1f54c49fbeac7a26066ab81a6be791f473ce3abd64c79a78561272c7bcf",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1662.txt",
+      "label_sha256": "378d2f5559880beba6ca5649ac73a1ff3dadf20fac1bbd7e6e8cf22a1c387582",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Defect2/IMG_1663.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1663.jpeg",
+      "image_sha256": "b2ca17985a7aafddb24c90562f6c550c72d1bd79dace4bb747c97825840a79af",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1663.txt",
+      "label_sha256": "51e464a987fa14ce03a9b64dfb14f15dea3c10df689589ed1a180e14d14396db",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Defect2/burst-00"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1655.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1655.jpeg",
+      "image_sha256": "64ef4ba4718765c734ad75581355eefcf833c8ec8e21c19f7223e28b87943144",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1655.txt",
+      "label_sha256": "03e1f2a889eef826a600227d7d9a7ba74c9b1301e93bb05a9382fbd2697e8e01",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1656.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1656.jpeg",
+      "image_sha256": "439e6c5b0c638184a9fe9f1a2303d5e04287113da60d7ec2aad10c05fabb61d1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1656.txt",
+      "label_sha256": "9b0a049079b6466c99ebc0c749cd205ee3527c2faaa506fd7c306b97f04385c1",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1657.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1657.jpeg",
+      "image_sha256": "8510a09f55ea8bcf77224834ae37e2ab3dd1e5f3e3505a39d91ba7d596132ab1",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1657.txt",
+      "label_sha256": "b9547a8b0cb11aa25ae8e62bc4a264c69b885de2b85a60505571392326444d0a",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-05"
+    },
+    {
+      "split": "valid",
+      "source_relative_path": "Two Tools Wet/Non-Defect + Defect/IMG_1658.jpeg",
+      "image": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/images/IMG_1658.jpeg",
+      "image_sha256": "db485454efe7cb3d11ab938721672666b11399b7114e8d5d34f1ca6f67b49be2",
+      "label": "ml/data/local/tray_detection/new_tray_reviewed_v2/valid/labels/IMG_1658.txt",
+      "label_sha256": "3197eac08291049c1c96207fa71a15e6262c912cfd85bbf2c079663d911b254c",
+      "boxes": 2,
+      "capture_group": "Two Tools Wet/Non-Defect + Defect/burst-05"
+    }
+  ]
+}

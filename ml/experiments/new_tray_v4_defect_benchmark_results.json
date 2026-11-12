@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-23T15:18:23+00:00",
+  "status": "confirmatory_awaiting_human_review",
+  "evaluation_level": "defect_model_on_reviewed_tip_crops",
+  "cohort_note": "Previously exposed 24-crop redesigned-tray test cohort; not an untouched external test.",
+  "dataset": "ml/data/hook_sinskey_new_tray_reviewed_v4_augmented_50_50.json",
+  "dataset_version": "hook_sinskey_new_tray_reviewed_v4_augmented_50_50",
+  "threshold_freeze": "ml/experiments/new_tray_v4_thresholds.json",
+  "test_images": 24,
+  "defective_images": 16,
+  "healthy_images": 8,
+  "models": [
+    {
+      "model": "yolo_detection",
+      "checkpoint": "ml/runs/new_tray_v4/defect_yolo/fine_tuned/weights/best.pt",
+      "checkpoint_sha256": "c202c6a1e8ac6a5f3ef40ff6019e5d1083df924cfc029abf1a5f2806368abd0e",
+      "score_threshold": 0.0016247844323515892,
+      "minimum_mask_area": null,
+      "classification": {
+        "accuracy": 0.8333333333333334,
+        "precision": 0.9285714285714286,
+        "sensitivity": 0.8125,
+        "specificity": 0.875,
+        "f1": 0.8666666666666667,
+        "pr_auc": 0.9419365356865357,
+        "roc_auc": 0.859375,
+        "confusion_matrix": {
+          "tn": 7,
+          "fp": 1,
+          "fn": 3,
+          "tp": 13
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.6666666666666666,
+          0.9583333333333334
+        ],
+        "precision": [
+          0.8,
+          1.0
+        ],
+        "sensitivity": [
+          0.625,
+          1.0
+        ],
+        "specificity": [
+          0.625,
+          1.0
+        ],
+        "f1": [
+          0.7142857142857143,
+          0.9696969696969697
+        ],
+        "pr_auc": [
+          0.8667650420827266,
+          0.9930555555555556
+        ],
+        "roc_auc": [
+          0.6794921875000004,
+          0.984375
+        ]
+      },
+      "localization": {
+        "type": "detection",
+        "map50_95": 0.351369128939472,
+        "ap50": 0.6033156804052499,
+        "ap75": 0.4361338991041961
+      },
+      "operational": {
+        "median_latency_ms": 30.5377500008035,
+        "p95_latency_ms": 34.62363120088412,
+        "model_size_bytes": 6230762,
+        "parameter_count": 3011043
+      },
+      "prediction_records": "ml/runs/new_tray_v4/yolo_detection/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/new_tray_v4/yolo_detection/test_outputs"
+    },
+    {
+      "model": "detr_detection",
+      "checkpoint": "ml/runs/new_tray_v4/detr_detection/best.pt",
+      "checkpoint_sha256": "67a718297e1fbb698ac7f19e3392e0b01b948af26209c8cb1134a745a971b3c0",
+      "score_threshold": 0.13076183199882507,
+      "minimum_mask_area": null,
+      "classification": {
+        "accuracy": 0.5416666666666666,
+        "precision": 0.6666666666666666,
+        "sensitivity": 0.625,
+        "specificity": 0.375,
+        "f1": 0.6451612903225806,
+        "pr_auc": 0.7595436951954695,
+        "roc_auc": 0.546875,
+        "confusion_matrix": {
+          "tn": 3,
+          "fp": 5,
+          "fn": 6,
+          "tp": 10
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.3333333333333333,
+          0.75
+        ],
+        "precision": [
+          0.5,
+          0.8235294117647058
+        ],
+        "sensitivity": [
+          0.375,
+          0.875
+        ],
+        "specificity": [
+          0.0,
+          0.75
+        ],
+        "f1": [
+          0.4444444444444444,
+          0.8
+        ],
+        "pr_auc": [
+          0.6263935625976172,
+          0.89743353296843
+        ],
+        "roc_auc": [
+          0.296875,
+          0.78125
+        ]
+      },
+      "localization": {
+        "type": "detection",
+        "map50_95": 0.0461681217382822,
+        "ap50": 0.1467590108764571,
+        "ap75": 0.0049504950495049506
+      },
+      "operational": {
+        "median_latency_ms": 61.517063000792405,
+        "p95_latency_ms": 68.04479374841321,
+        "model_size_bytes": 166590163,
+        "parameter_count": 41501638
+      },
+      "prediction_records": "ml/runs/new_tray_v4/detr_detection/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/new_tray_v4/detr_detection/test_outputs"
+    },
+    {
+      "model": "detr_segmentation",
+      "checkpoint": "ml/runs/new_tray_v4/detr_segmentation/best.pt",
+      "checkpoint_sha256": "ec3f03e94282057576888da81059cb46197710012079999e72881e21747c9226",
+      "score_threshold": 0.25707900524139404,
+      "minimum_mask_area": 1,
+      "classification": {
+        "accuracy": 0.7916666666666666,
+        "precision": 0.7894736842105263,
+        "sensitivity": 0.9375,
+        "specificity": 0.5,
+        "f1": 0.8571428571428571,
+        "pr_auc": 0.75622321408167,
+        "roc_auc": 0.7265625,
+        "confusion_matrix": {
+          "tn": 4,
+          "fp": 4,
+          "fn": 1,
+          "tp": 15
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.6666666666666666,
+          0.9166666666666666
+        ],
+        "precision": [
+          0.6842105263157895,
+          0.9375
+        ],
+        "sensitivity": [
+          0.8125,
+          1.0
+        ],
+        "specificity": [
+          0.125,
+          0.875
+        ],
+        "f1": [
+          0.7565878378378382,
+          0.9411764705882353
+        ],
+        "pr_auc": [
+          0.6175711922048754,
+          0.9926470588235294
+        ],
+        "roc_auc": [
+          0.421875,
+          0.984375
+        ]
+      },
+      "localization": {
+        "type": "segmentation",
+        "map50_95": 0.3402016835708368,
+        "ap50": 0.6005300562666327,
+        "ap75": 0.3731468981634158,
+        "iou": 0.7214110406588051,
+        "dice": 0.8138693456991299
+      },
+      "operational": {
+        "median_latency_ms": 342.71766649908386,
+        "p95_latency_ms": 488.62846689808066,
+        "model_size_bytes": 171939123,
+        "parameter_count": 42835295
+      },
+      "prediction_records": "ml/runs/new_tray_v4/detr_segmentation/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/new_tray_v4/detr_segmentation/test_outputs"
+    },
+    {
+      "model": "mask_rcnn",
+      "checkpoint": "ml/runs/new_tray_v4/mask_rcnn/best.pt",
+      "checkpoint_sha256": "8339ebbe968e78bc88e53b40570d32dc8223d861653d85a63e127af8e547d2e0",
+      "score_threshold": 0.9461801648139954,
+      "minimum_mask_area": 1,
+      "classification": {
+        "accuracy": 0.9583333333333334,
+        "precision": 1.0,
+        "sensitivity": 0.9375,
+        "specificity": 1.0,
+        "f1": 0.967741935483871,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "confusion_matrix": {
+          "tn": 8,
+          "fp": 0,
+          "fn": 1,
+          "tp": 15
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.875,
+          1.0
+        ],
+        "precision": [
+          1.0,
+          1.0
+        ],
+        "sensitivity": [
+          0.8125,
+          1.0
+        ],
+        "specificity": [
+          1.0,
+          1.0
+        ],
+        "f1": [
+          0.896551724137931,
+          1.0
+        ],
+        "pr_auc": [
+          1.0,
+          1.0
+        ],
+        "roc_auc": [
+          1.0,
+          1.0
+        ]
+      },
+      "localization": {
+        "type": "segmentation",
+        "map50_95": 0.5126732673267328,
+        "ap50": 0.9306930693069307,
+        "ap75": 0.48514851485148525,
+        "iou": 0.7188074252236345,
+        "dice": 0.8115543229570654
+      },
+      "operational": {
+        "median_latency_ms": 197.24316649808316,
+        "p95_latency_ms": 208.27775895268132,
+        "model_size_bytes": 183889149,
+        "parameter_count": 45880411
+      },
+      "prediction_records": "ml/runs/new_tray_v4/mask_rcnn/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/new_tray_v4/mask_rcnn/test_outputs"
+    }
+  ]
+}

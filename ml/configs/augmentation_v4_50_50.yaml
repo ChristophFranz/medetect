@@ -1,0 +1,31 @@
+schema_version: 1
+seed: 42
+source_dataset: ml/data/local/hook_sinskey/combined_reviewed_v3
+source_domain_filter: reviewed_new_tray
+output_dataset: ml/data/local/hook_sinskey/new_tray_reviewed_v4_augmented_50_50
+output_record: ml/data/hook_sinskey_new_tray_reviewed_v4_augmented_50_50.json
+
+# Materialize exactly one transformed training image for every original
+# training image. Validation and test remain byte-identical to reviewed v3.
+training_composition:
+  originals_per_source: 1
+  augmentations_per_source: 1
+  expected_original_images: 161
+  expected_augmented_images: 161
+
+transforms:
+  horizontal_flip_probability: 0.5
+  rotation_degrees: 10
+  brightness: 0.15
+  contrast: 0.15
+  gaussian_blur_probability: 0.10
+  sharpness_probability: 0.10
+  gaussian_noise_probability: 0.15
+  gaussian_noise_std: 0.015
+  salt_pepper_probability: 0.05
+  salt_pepper_fraction: 0.002
+
+review:
+  status: pending
+  gallery_pairs: 40
+

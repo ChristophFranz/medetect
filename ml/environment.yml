@@ -1,0 +1,30 @@
+name: medetect-ml
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pytorch=2.9.1
+  - torchvision=0.24.1
+  - transformers
+  - datasets
+  - accelerate
+  - huggingface_hub
+  - safetensors
+  - timm
+  - ultralytics
+  - numpy
+  - scipy
+  - scikit-learn
+  - pandas
+  - pillow
+  - opencv
+  - matplotlib
+  - seaborn
+  - pyyaml
+  - pycocotools
+  - tqdm
+  - flask
+  - flask-cors
+  - pytest
+  - ruff
+  - conda-lock

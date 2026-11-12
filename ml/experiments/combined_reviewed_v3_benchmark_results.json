@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-22T15:54:33+00:00",
+  "status": "human_approved",
+  "human_review": {
+    "reviewer": "Christoph",
+    "reviewed_on": "2026-10-23",
+    "decision": "approved",
+    "next_action": "run confirmatory connected tray-to-mask evaluation"
+  },
+  "dataset": "ml/data/combined_hook_sinskey_reviewed_v3.json",
+  "dataset_version": "hook_sinskey_combined_reviewed_v3",
+  "dataset_sha256": "f3d2e02f34c3f910dcdb12c902bb1bed8fd4ff78043a6fb846353c089bb17e8c",
+  "threshold_freeze": "ml/experiments/combined_reviewed_v3_thresholds.json",
+  "threshold_freeze_sha256": "dbc1a81f6880c9b3066c2e26cf8db28ff3586879c237b44c68ef3553c8fe2848",
+  "test_images": 48,
+  "test_evaluations_per_model": 1,
+  "models": [
+    {
+      "model": "legacy_yolo",
+      "checkpoint": "ml/artifacts/legacy/hook_sinskey/yolov8n_best.pt",
+      "checkpoint_sha256": "016d6b46669ca9d2888d9411e80107df7748192c6df3076c217a1f1230db963b",
+      "score_threshold": 0.1,
+      "minimum_mask_area": null,
+      "classification": {
+        "accuracy": 0.8541666666666666,
+        "precision": 0.8461538461538461,
+        "sensitivity": 0.9705882352941176,
+        "specificity": 0.5714285714285714,
+        "f1": 0.9041095890410958,
+        "pr_auc": 0.9385551583442135,
+        "roc_auc": 0.8886554621848739,
+        "confusion_matrix": {
+          "tn": 8,
+          "fp": 6,
+          "fn": 1,
+          "tp": 33
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.7708333333333334,
+          0.9375
+        ],
+        "precision": [
+          0.7727272727272727,
+          0.9411764705882353
+        ],
+        "sensitivity": [
+          0.9117647058823529,
+          1.0
+        ],
+        "specificity": [
+          0.2857142857142857,
+          0.8571428571428571
+        ],
+        "f1": [
+          0.8493150684931506,
+          0.9577464788732394
+        ],
+        "pr_auc": [
+          0.869203582857227,
+          0.9976152623211447
+        ],
+        "roc_auc": [
+          0.7615546218487395,
+          0.9936974789915966
+        ]
+      },
+      "classification_by_domain": {
+        "old": {
+          "accuracy": 0.875,
+          "precision": 0.8571428571428571,
+          "sensitivity": 1.0,
+          "specificity": 0.5,
+          "f1": 0.9230769230769231,
+          "pr_auc": 0.9359827016044768,
+          "roc_auc": 0.8333333333333334,
+          "confusion_matrix": {
+            "tn": 3,
+            "fp": 3,
+            "fn": 0,
+            "tp": 18
+          }
+        },
+        "new": {
+          "accuracy": 0.8333333333333334,
+          "precision": 0.8333333333333334,
+          "sensitivity": 0.9375,
+          "specificity": 0.625,
+          "f1": 0.8823529411764706,
+          "pr_auc": 0.9791666666666666,
+          "roc_auc": 0.95703125,
+          "confusion_matrix": {
+            "tn": 5,
+            "fp": 3,
+            "fn": 1,
+            "tp": 15
+          }
+        }
+      },
+      "detection": {
+        "map50_95": 0.23022644745974663,
+        "ap50": 0.5356944938191298,
+        "ap75": 0.20973874698394207
+      },
+      "operational": {
+        "median_latency_ms": 16.627021000203968,
+        "p95_latency_ms": 24.584399999912417,
+        "model_size_bytes": 6255786,
+        "parameter_count": 3011238
+      },
+      "candidate_records": "ml/runs/combined_reviewed_v3/legacy_yolo/test_candidates.jsonl",
+      "prediction_records": "ml/runs/combined_reviewed_v3/legacy_yolo/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/combined_reviewed_v3/legacy_yolo/test_outputs"
+    },
+    {
+      "model": "detr_detection",
+      "checkpoint": "ml/runs/combined_reviewed_v3/detr_detection/best.pt",
+      "checkpoint_sha256": "15e390d10de175429b368a0fd6943f5bef5a1a9eeed0b425eada2c2a9dba3102",
+      "score_threshold": 0.09902049601078033,
+      "minimum_mask_area": null,
+      "classification": {
+        "accuracy": 0.7083333333333334,
+        "precision": 0.7272727272727273,
+        "sensitivity": 0.9411764705882353,
+        "specificity": 0.14285714285714285,
+        "f1": 0.8205128205128205,
+        "pr_auc": 0.8135614377866625,
+        "roc_auc": 0.6512605042016807,
+        "confusion_matrix": {
+          "tn": 2,
+          "fp": 12,
+          "fn": 2,
+          "tp": 32
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.625,
+          0.7916666666666666
+        ],
+        "precision": [
+          0.6888888888888889,
+          0.7778455284552842
+        ],
+        "sensitivity": [
+          0.8529411764705882,
+          1.0
+        ],
+        "specificity": [
+          0.0,
+          0.35714285714285715
+        ],
+        "f1": [
+          0.7670241528478733,
+          0.868421052631579
+        ],
+        "pr_auc": [
+          0.7078483577844533,
+          0.9207220099983437
+        ],
+        "roc_auc": [
+          0.4726365546218488,
+          0.8214810924369744
+        ]
+      },
+      "classification_by_domain": {
+        "old": {
+          "accuracy": 0.75,
+          "precision": 0.75,
+          "sensitivity": 1.0,
+          "specificity": 0.0,
+          "f1": 0.8571428571428571,
+          "pr_auc": 0.84975404402004,
+          "roc_auc": 0.6759259259259259,
+          "confusion_matrix": {
+            "tn": 0,
+            "fp": 6,
+            "fn": 0,
+            "tp": 18
+          }
+        },
+        "new": {
+          "accuracy": 0.6666666666666666,
+          "precision": 0.7,
+          "sensitivity": 0.875,
+          "specificity": 0.25,
+          "f1": 0.7777777777777778,
+          "pr_auc": 0.7286619624416393,
+          "roc_auc": 0.578125,
+          "confusion_matrix": {
+            "tn": 2,
+            "fp": 6,
+            "fn": 2,
+            "tp": 14
+          }
+        }
+      },
+      "detection": {
+        "map50_95": 0.01130177275705532,
+        "ap50": 0.027526153533726217,
+        "ap75": 0.00960697479208026
+      },
+      "operational": {
+        "median_latency_ms": 58.20731199992224,
+        "p95_latency_ms": 72.7909960499346,
+        "model_size_bytes": 166590163,
+        "parameter_count": 41501638
+      },
+      "candidate_records": "ml/runs/combined_reviewed_v3/detr_detection/test_candidates.jsonl",
+      "prediction_records": "ml/runs/combined_reviewed_v3/detr_detection/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/combined_reviewed_v3/detr_detection/test_outputs"
+    },
+    {
+      "model": "detr_segmentation",
+      "checkpoint": "ml/runs/combined_reviewed_v3/detr_segmentation/best.pt",
+      "checkpoint_sha256": "c624c31ad92df0df5fd7bf529185ab3b93158d154b631341f1a4da2f4356e68b",
+      "score_threshold": 0.15334101021289825,
+      "minimum_mask_area": 1,
+      "classification": {
+        "accuracy": 0.7083333333333334,
+        "precision": 0.717391304347826,
+        "sensitivity": 0.9705882352941176,
+        "specificity": 0.07142857142857142,
+        "f1": 0.825,
+        "pr_auc": 0.7409101339388199,
+        "roc_auc": 0.6218487394957983,
+        "confusion_matrix": {
+          "tn": 1,
+          "fp": 13,
+          "fn": 1,
+          "tp": 33
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.6458333333333334,
+          0.7708333333333334
+        ],
+        "precision": [
+          0.6956521739130435,
+          0.7555555555555555
+        ],
+        "sensitivity": [
+          0.9117647058823529,
+          1.0
+        ],
+        "specificity": [
+          0.0,
+          0.21428571428571427
+        ],
+        "f1": [
+          0.7848101265822784,
+          0.8607594936708861
+        ],
+        "pr_auc": [
+          0.6458875917055781,
+          0.8970044204548046
+        ],
+        "roc_auc": [
+          0.42221638655462196,
+          0.8130777310924366
+        ]
+      },
+      "classification_by_domain": {
+        "old": {
+          "accuracy": 0.7083333333333334,
+          "precision": 0.7391304347826086,
+          "sensitivity": 0.9444444444444444,
+          "specificity": 0.0,
+          "f1": 0.8292682926829268,
+          "pr_auc": 0.8499404577398475,
+          "roc_auc": 0.6574074074074074,
+          "confusion_matrix": {
+            "tn": 0,
+            "fp": 6,
+            "fn": 1,
+            "tp": 17
+          }
+        },
+        "new": {
+          "accuracy": 0.7083333333333334,
+          "precision": 0.6956521739130435,
+          "sensitivity": 1.0,
+          "specificity": 0.125,
+          "f1": 0.8205128205128205,
+          "pr_auc": 0.6775800200172802,
+          "roc_auc": 0.5859375,
+          "confusion_matrix": {
+            "tn": 1,
+            "fp": 7,
+            "fn": 0,
+            "tp": 16
+          }
+        }
+      },
+      "segmentation": {
+        "map50_95": 0.035557811193156715,
+        "ap50": 0.09969997408055975,
+        "ap75": 0.008497936259791393,
+        "iou": 0.5328511120211339,
+        "dice": 0.6671773653367327
+      },
+      "operational": {
+        "median_latency_ms": 326.90485449938933,
+        "p95_latency_ms": 457.85362280043955,
+        "model_size_bytes": 171939123,
+        "parameter_count": 42835295
+      },
+      "candidate_records": "ml/runs/combined_reviewed_v3/detr_segmentation/test_candidates.jsonl",
+      "prediction_records": "ml/runs/combined_reviewed_v3/detr_segmentation/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/combined_reviewed_v3/detr_segmentation/test_outputs"
+    },
+    {
+      "model": "mask_rcnn",
+      "checkpoint": "ml/runs/combined_reviewed_v3/mask_rcnn/best.pt",
+      "checkpoint_sha256": "936fa7091d402fd4c6b9d61c4709479ce899c9a341461e89feed2c3b8717e422",
+      "score_threshold": 0.6978445053100586,
+      "minimum_mask_area": 1,
+      "classification": {
+        "accuracy": 0.7916666666666666,
+        "precision": 0.8,
+        "sensitivity": 0.9411764705882353,
+        "specificity": 0.42857142857142855,
+        "f1": 0.8648648648648649,
+        "pr_auc": 0.9334853912324135,
+        "roc_auc": 0.8382352941176471,
+        "confusion_matrix": {
+          "tn": 6,
+          "fp": 8,
+          "fn": 2,
+          "tp": 32
+        }
+      },
+      "bootstrap_95_ci": {
+        "accuracy": [
+          0.6875,
+          0.875
+        ],
+        "precision": [
+          0.7317073170731707,
+          0.8717948717948718
+        ],
+        "sensitivity": [
+          0.8529411764705882,
+          1.0
+        ],
+        "specificity": [
+          0.21428571428571427,
+          0.6428571428571429
+        ],
+        "f1": [
+          0.8,
+          0.918918918918919
+        ],
+        "pr_auc": [
+          0.8817843805609303,
+          0.9758789277197044
+        ],
+        "roc_auc": [
+          0.7142857142857142,
+          0.9369747899159665
+        ]
+      },
+      "classification_by_domain": {
+        "old": {
+          "accuracy": 0.6666666666666666,
+          "precision": 0.7272727272727273,
+          "sensitivity": 0.8888888888888888,
+          "specificity": 0.0,
+          "f1": 0.8,
+          "pr_auc": 0.7849734301567208,
+          "roc_auc": 0.4722222222222222,
+          "confusion_matrix": {
+            "tn": 0,
+            "fp": 6,
+            "fn": 2,
+            "tp": 16
+          }
+        },
+        "new": {
+          "accuracy": 0.9166666666666666,
+          "precision": 0.8888888888888888,
+          "sensitivity": 1.0,
+          "specificity": 0.75,
+          "f1": 0.9411764705882353,
+          "pr_auc": 1.0,
+          "roc_auc": 1.0,
+          "confusion_matrix": {
+            "tn": 6,
+            "fp": 2,
+            "fn": 0,
+            "tp": 16
+          }
+        }
+      },
+      "segmentation": {
+        "map50_95": 0.28719658233531786,
+        "ap50": 0.6331116030857744,
+        "ap75": 0.24628319974854623,
+        "iou": 0.6513867089955905,
+        "dice": 0.7586465138297146
+      },
+      "operational": {
+        "median_latency_ms": 207.86512500035315,
+        "p95_latency_ms": 249.1153796002436,
+        "model_size_bytes": 183889149,
+        "parameter_count": 45880411
+      },
+      "candidate_records": "ml/runs/combined_reviewed_v3/mask_rcnn/test_candidates.jsonl",
+      "prediction_records": "ml/runs/combined_reviewed_v3/mask_rcnn/test_predictions.jsonl",
+      "structured_outputs": "ml/runs/combined_reviewed_v3/mask_rcnn/test_outputs"
+    }
+  ],
+  "error_gallery": "ml/runs/combined_reviewed_v3/error_gallery/index.html",
+  "error_count": 45
+}

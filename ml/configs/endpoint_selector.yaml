@@ -1,0 +1,23 @@
+seed: 42
+device: auto
+image_size: 224
+batch_size: 16
+epochs: 20
+patience: 5
+learning_rate: 0.001
+weight_decay: 0.0001
+model:
+  architecture: resnet50_frozen_coco_backbone
+  initialization: maskrcnn_resnet50_fpn_v2_coco
+  local_checkpoint: /Users/christophcuan/.cache/torch/hub/checkpoints/maskrcnn_resnet50_fpn_v2_coco-73cbd019.pth
+augmentation:
+  horizontal_flip_probability: 0.5
+  rotation_degrees: 10
+  brightness: 0.15
+  contrast: 0.15
+  gaussian_blur_probability: 0.10
+  sharpness_probability: 0.10
+  gaussian_noise_probability: 0.15
+  gaussian_noise_std: 0.015
+  salt_pepper_probability: 0.05
+  salt_pepper_fraction: 0.002

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "human_approved",
+  "human_review": {
+    "reviewer": "Christoph",
+    "reviewed_on": "2026-10-21",
+    "decision": "approved",
+    "scope": "all selected test images contain the working tip and remain visually valid; proposed training-only augmentation strengths preserve the labels",
+    "augmentation_strengths": "approved"
+  },
+  "dataset_sha256": "ea91d8ff682c34d875e63bed0c1aeb0fd042cbe33d9a7addc7911e7807cb2f27",
+  "checkpoint": "ml/runs/endpoint_selector/v1/best.pt",
+  "checkpoint_sha256": "79bd6dd9d77cefed55811854faed03b9671579b339eee68fe9072946896cc740",
+  "device": "cpu",
+  "selection_rule": "choose the higher tip score within each left/right endpoint pair",
+  "review_policy": {
+    "method": "10th percentile of validation pair-score margins",
+    "quantile": 0.1,
+    "score_margin_threshold": 0.03314980864524841,
+    "comparison": "review when margin is below threshold"
+  },
+  "validation": {
+    "source_instruments": 41,
+    "correct": 41,
+    "selection_accuracy": 1.0,
+    "review_required": 4,
+    "automatic_accepts": 37,
+    "automatic_accept_accuracy": 1.0,
+    "errors": [],
+    "review_queue": [
+      "newtray_img_1557_tool2",
+      "newtray_img_1558_tool1",
+      "newtray_img_1559_tool2",
+      "newtray_img_1560_tool2"
+    ]
+  },
+  "validation_margin": {
+    "minimum": 0.029697537422180176,
+    "median": 0.04473692178726196,
+    "maximum": 0.07008257508277893
+  },
+  "test": {
+    "source_instruments": 24,
+    "correct": 24,
+    "selection_accuracy": 1.0,
+    "review_required": 4,
+    "automatic_accepts": 20,
+    "automatic_accept_accuracy": 1.0,
+    "errors": [],
+    "review_queue": [
+      "newtray_img_1538_tool1",
+      "newtray_img_1561_tool2",
+      "newtray_img_1562_tool2",
+      "newtray_img_1632_tool1"
+    ]
+  },
+  "test_margin": {
+    "minimum": 0.026551812887191772,
+    "median": 0.044529080390930176,
+    "maximum": 0.06813064217567444
+  },
+  "test_predictions": "ml/runs/endpoint_selector/v1/selected_tips/test_selections.jsonl",
+  "test_predictions_sha256": "329605a0e91f946ef232b005f8a8eddd8b3626eb95df69c37dc4d0cd276357e4",
+  "selected_tip_directory": "ml/runs/endpoint_selector/v1/selected_tips/test"
+}

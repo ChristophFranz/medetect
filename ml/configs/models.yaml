@@ -1,0 +1,28 @@
+seed: 42
+maximum_edge: 640
+device: auto
+
+legacy_yolo:
+  checkpoint: ml/artifacts/legacy/hook_sinskey/yolov8n_best.pt
+  confidence_threshold: 0.1
+
+detr_detection:
+  model_id: facebook/detr-resnet-50
+  revision: 1d5f47bd3bdd2c4bbfa585418ffe6da5028b4c0b
+  use_safetensors: true
+  score_threshold: 0.5
+
+detr_segmentation:
+  model_id: facebook/detr-resnet-50-panoptic
+  revision: d53b52a799403a8867920f82c869e40732b47037
+  use_safetensors: false
+  score_threshold: 0.5
+  mask_threshold: 0.5
+  minimum_mask_area: 1
+
+mask_rcnn:
+  source: torchvision
+  weights: MaskRCNN_ResNet50_FPN_V2_Weights.COCO_V1
+  score_threshold: 0.5
+  mask_threshold: 0.5
+  minimum_mask_area: 1

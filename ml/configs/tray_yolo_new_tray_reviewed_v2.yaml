@@ -1,0 +1,20 @@
+model: ml/runs/tray_yolo/combined_provisional_presentation_20e/weights/best.pt
+data: ml/data/local/tray_detection/new_tray_reviewed_v2/data.yaml
+project: ml/runs/new_tray_v4/tray_yolo
+name: fine_tuned
+task: detect
+imgsz: 640
+epochs: 30
+patience: 6
+batch: 8
+device: mps
+workers: 2
+seed: 42
+deterministic: true
+pretrained: true
+optimizer: auto
+close_mosaic: 5
+plots: true
+save: true
+val: true
+

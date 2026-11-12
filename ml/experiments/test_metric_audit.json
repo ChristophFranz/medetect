@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "purpose": "risk audit only; no model selection or test retuning",
+  "test_images": 24,
+  "test_class_counts": {
+    "defective": 18,
+    "healthy": 6
+  },
+  "accuracy_step_per_image": 0.041666666666666664,
+  "always_defective_baseline": {
+    "correct": 18,
+    "accuracy": 0.75
+  },
+  "acquisition_group_rule": {
+    "rule": "6-4 => defective; 6-3 => healthy",
+    "correct": 240,
+    "total": 240,
+    "accuracy": 1.0,
+    "warning": "filenames are not model inputs, but group-correlated visual cues may be"
+  },
+  "model_uncertainty": [
+    {
+      "model": "legacy_yolo",
+      "correct": 21,
+      "total": 24,
+      "accuracy": 0.875,
+      "accuracy_exact_95_ci": [
+        0.6763886418111671,
+        0.973440685013751
+      ],
+      "healthy_correct": 3,
+      "healthy_total": 6,
+      "specificity_exact_95_ci": [
+        0.11811724875702523,
+        0.8818827512429748
+      ]
+    },
+    {
+      "model": "detr_detection",
+      "correct": 17,
+      "total": 24,
+      "accuracy": 0.7083333333333334,
+      "accuracy_exact_95_ci": [
+        0.4890521861421669,
+        0.8738479114763087
+      ],
+      "healthy_correct": 0,
+      "healthy_total": 6,
+      "specificity_exact_95_ci": [
+        0.0,
+        0.45925812643990044
+      ]
+    },
+    {
+      "model": "detr_segmentation",
+      "correct": 18,
+      "total": 24,
+      "accuracy": 0.75,
+      "accuracy_exact_95_ci": [
+        0.5328871975773306,
+        0.902269590525467
+      ],
+      "healthy_correct": 0,
+      "healthy_total": 6,
+      "specificity_exact_95_ci": [
+        0.0,
+        0.45925812643990044
+      ]
+    },
+    {
+      "model": "mask_rcnn",
+      "correct": 21,
+      "total": 24,
+      "accuracy": 0.875,
+      "accuracy_exact_95_ci": [
+        0.6763886418111671,
+        0.973440685013751
+      ],
+      "healthy_correct": 3,
+      "healthy_total": 6,
+      "specificity_exact_95_ci": [
+        0.11811724875702523,
+        0.8818827512429748
+      ]
+    }
+  ],
+  "split_similarity": {
+    "exact_cross_split_duplicate_hashes": 0,
+    "dhash_note": "64-bit perceptual-hash distance is a screening heuristic, not proof of duplication",
+    "nearest_test_to_train_dhash": {
+      "minimum": 2,
+      "median": 10.0,
+      "maximum": 23,
+      "at_or_below_5": 6,
+      "at_or_below_10": 13
+    },
+    "nearest_pairs": [
+      {
+        "test": "6-4_20260214_171956355_png.rf.25b2e8c374516a53bdb5e112a922df12.jpg",
+        "train": "6-4_20260214_171908595_png.rf.f31b0f59dae18b320fcc73d4942b66df.jpg",
+        "dhash_hamming_64": 2
+      },
+      {
+        "test": "6-4_20260214_170801468_png.rf.385eab0e2d935ad6cc62e3c4fd6a86cc.jpg",
+        "train": "6-4_20260214_171033414_png.rf.a936cf465870736cafc22592f99660d3.jpg",
+        "dhash_hamming_64": 4
+      },
+      {
+        "test": "6-4_20260214_171857860_png.rf.d8152f99aeea7eddcc84313948046695.jpg",
+        "train": "6-4_20260214_172001674_png.rf.286d25e98a91ac729a06e0929b834ce9.jpg",
+        "dhash_hamming_64": 4
+      },
+      {
+        "test": "6-3_20260213_153151128_png.rf.0ff116916ecbfe976cd17e5bc9202bb1.jpg",
+        "train": "6-3_20260213_152958044_png.rf.366d638560392f5ccbb8636e1b8047c9.jpg",
+        "dhash_hamming_64": 5
+      },
+      {
+        "test": "6-4_20260214_165305447_png.rf.bfaf772f9975b8ba9c116ed96bdc111c.jpg",
+        "train": "6-4_20260214_164952799_png.rf.34dccbe442128b9e971109ced076291d.jpg",
+        "dhash_hamming_64": 5
+      },
+      {
+        "test": "6-4_20260214_171922297_png.rf.f34b130105282bda11c656a3f264a590.jpg",
+        "train": "6-4_20260214_171916077_png.rf.f244760c55a207f89cad7bdf2885e603.jpg",
+        "dhash_hamming_64": 5
+      },
+      {
+        "test": "6-4_20260214_171038482_png.rf.04614013d351684ac3ff7aff20211591.jpg",
+        "train": "6-4_20260214_171043128_png.rf.cc9cf940e4288af2a70ef40612e80da4.jpg",
+        "dhash_hamming_64": 6
+      },
+      {
+        "test": "6-3_20260213_153057964_png.rf.97f864d03125f544e46dbebc42eaa53b.jpg",
+        "train": "6-3_20260213_153223885_png.rf.d6f48d43f246f3e318cae4355d4eadcc.jpg",
+        "dhash_hamming_64": 7
+      },
+      {
+        "test": "6-4_20260214_164814764_png.rf.72a85ead0ed3adb8d289a1ff75752fed.jpg",
+        "train": "6-4_20260214_164917365_png.rf.f9819d4acd263f647a340971e8351fbe.jpg",
+        "dhash_hamming_64": 9
+      },
+      {
+        "test": "6-4_20260214_165008522_png.rf.4aab91bfdfcb6d85eeb70b7d50da3abe.jpg",
+        "train": "6-4_20260214_165458029_png.rf.69e798556bf8d86d2cef09466ef9d9a0.jpg",
+        "dhash_hamming_64": 9
+      }
+    ]
+  },
+  "temporal_proximity": {
+    "note": "nearest same-acquisition-group training capture based on filename timestamp",
+    "minimum_seconds": 4.646,
+    "median_seconds": 8.135,
+    "maximum_seconds": 35.009,
+    "within_30_seconds": 23,
+    "within_120_seconds": 24,
+    "nearest_pairs": [
+      {
+        "test": "6-4_20260214_171038482_png.rf.04614013d351684ac3ff7aff20211591.jpg",
+        "train": "6-4_20260214_171043128_png.rf.cc9cf940e4288af2a70ef40612e80da4.jpg",
+        "seconds": 4.646
+      },
+      {
+        "test": "6-4_20260214_165918292_png.rf.2c81a1dbc8be8110f6541b847671e698.jpg",
+        "train": "6-4_20260214_165922974_png.rf.032bfacc557c4251126bf67119a10680.jpg",
+        "seconds": 4.682
+      },
+      {
+        "test": "6-4_20260214_171956355_png.rf.25b2e8c374516a53bdb5e112a922df12.jpg",
+        "train": "6-4_20260214_172001674_png.rf.286d25e98a91ac729a06e0929b834ce9.jpg",
+        "seconds": 5.319
+      },
+      {
+        "test": "6-4_20260214_170801468_png.rf.385eab0e2d935ad6cc62e3c4fd6a86cc.jpg",
+        "train": "6-4_20260214_170806806_png.rf.d5d8436c8ab3e3a50971575eeb616f20.jpg",
+        "seconds": 5.338
+      },
+      {
+        "test": "6-4_20260214_165705532_png.rf.1babf747d8c7ea94a9cb604d67094e5c.jpg",
+        "train": "6-4_20260214_165659684_png.rf.1510cc17651d0af76a485a016f1b5af9.jpg",
+        "seconds": 5.848
+      },
+      {
+        "test": "6-4_20260214_171922297_png.rf.f34b130105282bda11c656a3f264a590.jpg",
+        "train": "6-4_20260214_171916077_png.rf.f244760c55a207f89cad7bdf2885e603.jpg",
+        "seconds": 6.22
+      },
+      {
+        "test": "6-4_20260214_170327371_png.rf.6cccde1860fc999324391e4db8548f09.jpg",
+        "train": "6-4_20260214_170333610_png.rf.537ef3244555b6d87f25ed14a26b64a9.jpg",
+        "seconds": 6.239
+      },
+      {
+        "test": "6-4_20260214_164924240_png.rf.f6a5af397c933ee0ac03e43c47c76b67.jpg",
+        "train": "6-4_20260214_164917365_png.rf.f9819d4acd263f647a340971e8351fbe.jpg",
+        "seconds": 6.875
+      },
+      {
+        "test": "6-4_20260214_165115878_png.rf.d726911fbc635e10f8e8a6d27a4aae93.jpg",
+        "train": "6-4_20260214_165123085_png.rf.d6b5056583c9d1cd791c6b655ffde01a.jpg",
+        "seconds": 7.207
+      },
+      {
+        "test": "6-3_20260213_151541282_png.rf.3421bee1bb8f7168f07270639f0d44ea.jpg",
+        "train": "6-3_20260213_151534056_png.rf.d11ddd5551469f3fa109af4770ee86fb.jpg",
+        "seconds": 7.226
+      }
+    ]
+  }
+}

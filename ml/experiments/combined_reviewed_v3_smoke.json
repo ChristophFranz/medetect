@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-21",
+  "status": "passed",
+  "dataset": "hook_sinskey_combined_reviewed_v3",
+  "dataset_sha256": "f3d2e02f34c3f910dcdb12c902bb1bed8fd4ff78043a6fb846353c089bb17e8c",
+  "config": "ml/configs/combined_reviewed_v3.yaml",
+  "config_sha256": "68f0db352ce4750cc2217bce0ae05dc2966458494889a11e8455e5acbe6b56c5",
+  "scope": {
+    "train_images": 2,
+    "validation_images": 2,
+    "epochs": 1,
+    "test_split_accessed": false,
+    "full_backbone_trainable": true
+  },
+  "cpu": {
+    "detr_detection_seconds": 8.44,
+    "detr_segmentation_seconds": 71.67,
+    "mask_rcnn_seconds": 27.92
+  },
+  "mps": {
+    "detr_detection_seconds": 1.27,
+    "detr_segmentation_seconds": 10.32,
+    "mask_rcnn_seconds": 1.93,
+    "mask_rcnn_nms_cpu_fallback": true
+  },
+  "checks": [
+    "training-only transforms are deterministic",
+    "geometric transforms keep masks and derived boxes aligned",
+    "healthy images retain empty annotations",
+    "validation data is not augmented",
+    "frozen test data is not accessed"
+  ]
+}

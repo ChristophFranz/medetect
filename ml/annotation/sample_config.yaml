@@ -1,0 +1,24 @@
+seed: 42
+tool: hook_sinskey
+canonical_class: defect
+excluded_splits:
+  - test
+quotas:
+  train:
+    defective: 10
+    healthy: 4
+  valid:
+    defective: 4
+    healthy: 2
+selection:
+  defective: evenly_spaced_by_max_normalized_defect_box_area
+  healthy: evenly_spaced_by_stable_image_id
+sam2:
+  model_id: facebook/sam2.1-hiera-tiny
+  revision: de431c4043854a71d8101e17995dfe596bf101a5
+  prompt_source: legacy_class_0_yolo_boxes
+  multimask_output: true
+  mask_threshold: 0.0
+  device_preference:
+    - mps
+    - cpu

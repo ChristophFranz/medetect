@@ -1,0 +1,23 @@
+# Local datasets and model artifacts
+data/local/
+artifacts/
+checkpoints/
+runs/
+cvat/
+annotation/local/
+
+# Generated caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.cache/
+
+# Local exports and temporary files
+exports/
+tmp/
+*.log
+
+# Keep reproducibility metadata
+!data/manifest.json
+!experiments/registry.jsonl

@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "tool": "hook_sinskey",
+  "reviewer": "Christoph",
+  "reviewed_on": "2026-10-21",
+  "review_status": "validated_ready_to_freeze",
+  "dataset_sha256": "02e7ddb403bdec8f7e9258c8957432e171af3bb3c2f869264f420aa677603b76",
+  "reviewed_export": "ml/cvat/new_tray_defect_masks_reviewed.zip",
+  "reviewed_zip_sha256": "67f18e0678efc58ea6f31e19f1ea7a96927ef64ac33d8f798fe75340c75026ba",
+  "reviewed_coco_sha256": "df5d09e5a7f146b00cdd41277623446a3f988a45b119912cf24b8c478e342eef",
+  "images": 226,
+  "masks": 154,
+  "defective_images": 154,
+  "healthy_images": 72,
+  "annotated_defective_images": 154,
+  "healthy_images_with_masks": 0,
+  "split_images": {
+    "test": 24,
+    "train": 161,
+    "valid": 41
+  },
+  "candidate_comparison": {
+    "images_with_changed_mask_pixels": 21,
+    "unchanged_images": 205,
+    "total_changed_pixels": 347407,
+    "minimum_union_iou": 0.023711,
+    "changed_images": [
+      {
+        "file_name": "train__newtray_img_1529_tool1.jpg",
+        "union_iou_vs_candidate": 0.786409,
+        "changed_pixels": 4809
+      },
+      {
+        "file_name": "train__newtray_img_1530_tool1.jpg",
+        "union_iou_vs_candidate": 0.68385,
+        "changed_pixels": 3140
+      },
+      {
+        "file_name": "train__newtray_img_1531_tool1.jpg",
+        "union_iou_vs_candidate": 0.808357,
+        "changed_pixels": 2151
+      },
+      {
+        "file_name": "train__newtray_img_1532_tool1.jpg",
+        "union_iou_vs_candidate": 0.179401,
+        "changed_pixels": 16357
+      },
+      {
+        "file_name": "train__newtray_img_1537_tool1.jpg",
+        "union_iou_vs_candidate": 0.6882,
+        "changed_pixels": 6849
+      },
+      {
+        "file_name": "train__newtray_img_1543_tool1.jpg",
+        "union_iou_vs_candidate": 0.542053,
+        "changed_pixels": 9376
+      },
+      {
+        "file_name": "train__newtray_img_1551_tool1.jpg",
+        "union_iou_vs_candidate": 0.036016,
+        "changed_pixels": 22670
+      },
+      {
+        "file_name": "train__newtray_img_1553_tool1.jpg",
+        "union_iou_vs_candidate": 0.734082,
+        "changed_pixels": 4949
+      },
+      {
+        "file_name": "train__newtray_img_1554_tool1.jpg",
+        "union_iou_vs_candidate": 0.023711,
+        "changed_pixels": 94907
+      },
+      {
+        "file_name": "train__newtray_img_1570_tool1.jpg",
+        "union_iou_vs_candidate": 0.695379,
+        "changed_pixels": 2960
+      },
+      {
+        "file_name": "train__newtray_img_1571_tool1.jpg",
+        "union_iou_vs_candidate": 0.688619,
+        "changed_pixels": 3390
+      },
+      {
+        "file_name": "train__newtray_img_1572_tool1.jpg",
+        "union_iou_vs_candidate": 0.964394,
+        "changed_pixels": 565
+      },
+      {
+        "file_name": "train__newtray_img_1573_tool1.jpg",
+        "union_iou_vs_candidate": 0.653179,
+        "changed_pixels": 3497
+      },
+      {
+        "file_name": "train__newtray_img_1580_tool1.jpg",
+        "union_iou_vs_candidate": 0.840016,
+        "changed_pixels": 2450
+      },
+      {
+        "file_name": "train__newtray_img_1619_tool1.jpg",
+        "union_iou_vs_candidate": 0.073502,
+        "changed_pixels": 148766
+      },
+      {
+        "file_name": "train__newtray_img_1635_tool1.jpg",
+        "union_iou_vs_candidate": 0.899891,
+        "changed_pixels": 1472
+      },
+      {
+        "file_name": "valid__newtray_img_1522_tool1.jpg",
+        "union_iou_vs_candidate": 0.644936,
+        "changed_pixels": 9237
+      },
+      {
+        "file_name": "valid__newtray_img_1524_tool1.jpg",
+        "union_iou_vs_candidate": 0.870878,
+        "changed_pixels": 1664
+      },
+      {
+        "file_name": "valid__newtray_img_1560_tool1.jpg",
+        "union_iou_vs_candidate": 0.841879,
+        "changed_pixels": 2760
+      },
+      {
+        "file_name": "valid__newtray_img_1594_tool2.jpg",
+        "union_iou_vs_candidate": 0.866432,
+        "changed_pixels": 1861
+      },
+      {
+        "file_name": "valid__newtray_img_1663_tool2.jpg",
+        "union_iou_vs_candidate": 0.73218,
+        "changed_pixels": 3577
+      }
+    ]
+  },
+  "checks": {
+    "single_defect_category": true,
+    "stable_unique_image_ids": true,
+    "frozen_split_membership": true,
+    "valid_in_bounds_nonempty_masks": true,
+    "derived_boxes_enclose_masks": true,
+    "healthy_images_empty": true,
+    "no_cross_split_leakage": true
+  }
+}

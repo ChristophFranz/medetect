@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-15T12:40:53+00:00",
+  "source_manifest": "ml/annotation/new_tray_manifest.json",
+  "source_dataset_sha256": "02e7ddb403bdec8f7e9258c8957432e171af3bb3c2f869264f420aa677603b76",
+  "images": 151,
+  "hook_sinskey_instances": 223,
+  "counts": {
+    "test_images": 16,
+    "test_instances": 24,
+    "train_images": 109,
+    "train_instances": 158,
+    "valid_images": 26,
+    "valid_instances": 41
+  },
+  "class_mapping": {
+    "0": "chop phaco",
+    "1": "forceps macpherson",
+    "2": "forceps utrata",
+    "3": "hook sinskey"
+  },
+  "candidate_method": "low-saturation horizontal-line localization with deterministic fallback",
+  "coco_sha256": "93f41f78925a692ecdb1cf1e379740e5234d9d875b4d8acaf825231cf18f578e",
+  "review_queue_sha256": "1f64fed7351805309a4676806c39f1edac68659aa366c7a9eed3c7cffc1793b7",
+  "cvat_zip": "ml/cvat/new_tray_detection_candidates.zip",
+  "cvat_zip_sha256": "f29d23be9c0f0913bbb5d4a27648bcaa8e158c6249f4ff0055992050eaf9e577",
+  "local_output": "ml/annotation/local/new_tray_detection_candidates",
+  "review_status": "pending"
+}
