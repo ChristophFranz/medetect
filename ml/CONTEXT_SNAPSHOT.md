@@ -1,14 +1,14 @@
 # ML Context Snapshot
 
-Generated: 2026-10-29T00:25:39+08:00
+Generated: 2026-11-13T19:28:21+08:00
 
 ## Repository
 
 - Branch: `ml/hook-sinskey-benchmark-pilot`
-- Commit: `be1091a262250291ce9fd2ad8fd6e0d7cb71bf9b`
-- ML-related working-tree entries: 231
-- Preserved non-ML working-tree entries: 120
-- Remote push performed: no
+- Commit: `94dd30b8a4d67952aa006777f400b3ab9004cd14`
+- ML-related working-tree entries: 0
+- Preserved non-ML working-tree entries: 119
+- Remote push performed: yes — `personal/ml/hook-sinskey-benchmark-pilot` on 2026-11-13
 
 ## Pilot inventory
 
